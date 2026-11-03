@@ -1,0 +1,70 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+development 1/16 arith_00_00 legacy in=58 out=22 checks=True eos=True 2.34s
+development 1/16 arith_00_00 terse in=40 out=4 checks=True eos=True 0.51s
+development 1/16 arith_00_00 nosys in=37 out=22 checks=True eos=True 2.32s
+development 2/16 arith_00_01 terse in=39 out=4 checks=True eos=True 0.43s
+development 2/16 arith_00_01 nosys in=36 out=13 checks=True eos=True 1.25s
+development 2/16 arith_00_01 legacy in=57 out=13 checks=True eos=True 1.90s
+development 3/16 arith_00_02 legacy in=59 out=49 checks=True eos=True 5.34s
+development 3/16 arith_00_02 terse in=41 out=14 checks=True eos=True 1.28s
+development 3/16 arith_00_02 nosys in=38 out=68 checks=True eos=True 7.33s
+development 4/16 arith_00_03 terse in=41 out=16 checks=True eos=True 1.74s
+development 4/16 arith_00_03 nosys in=38 out=82 checks=True eos=True 8.25s
+development 4/16 arith_00_03 legacy in=59 out=82 checks=True eos=True 9.45s
+development 5/16 arith_00_04 terse in=45 out=50 checks=True eos=True 5.74s
+development 5/16 arith_00_04 nosys in=42 out=120 checks=True eos=True 12.45s
+development 5/16 arith_00_04 legacy in=63 out=120 checks=True eos=True 12.54s
+development 6/16 arith_00_05 nosys in=57 out=272 checks=True eos=True 34.81s
+development 6/16 arith_00_05 terse in=60 out=76 checks=True eos=True 7.85s
+development 6/16 arith_00_05 legacy in=78 out=256 checks=True eos=True 26.88s
+development 7/16 arith_00_06 nosys in=68 out=118 checks=True eos=True 12.11s
+development 7/16 arith_00_06 legacy in=89 out=181 checks=True eos=True 21.81s
+development 7/16 arith_00_06 terse in=71 out=190 checks=True eos=True 20.63s
+development 8/16 arith_00_07 legacy in=59 out=8 checks=False eos=True 0.88s
+development 8/16 arith_00_07 terse in=41 out=8 checks=False eos=True 1.29s
+development 8/16 arith_00_07 nosys in=38 out=155 checks=True eos=True 16.31s
+development 9/16 arith_00_08 legacy in=64 out=146 checks=True eos=True 22.20s
+development 9/16 arith_00_08 nosys in=43 out=146 checks=True eos=True 24.46s
+development 9/16 arith_00_08 terse in=46 out=7 checks=False eos=True 1.87s
+development 10/16 arith_00_09 terse in=52 out=25 checks=False eos=True 2.96s
+development 10/16 arith_00_09 legacy in=70 out=167 checks=True eos=True 17.71s
+development 10/16 arith_00_09 nosys in=49 out=189 checks=True eos=True 25.25s
+development 11/16 arith_00_10 nosys in=36 out=18 checks=True eos=True 2.16s
+development 11/16 arith_00_10 legacy in=57 out=8 checks=True eos=True 0.87s
+development 11/16 arith_00_10 terse in=39 out=8 checks=True eos=True 0.89s
+development 12/16 arith_00_11 nosys in=37 out=56 checks=True eos=True 7.77s
+development 12/16 arith_00_11 legacy in=58 out=71 checks=True eos=True 8.59s
+development 12/16 arith_00_11 terse in=40 out=49 checks=True eos=True 4.99s
+development 13/16 code_interleave legacy in=89 out=117 checks=False eos=True 12.86s
+development 13/16 code_interleave nosys in=68 out=130 checks=False eos=True 14.38s
+development 13/16 code_interleave terse in=84 out=78 checks=True eos=True 9.22s
+development 14/16 code_clip_values legacy in=86 out=130 checks=True eos=True 14.97s
+development 14/16 code_clip_values nosys in=65 out=356 checks=True eos=True 51.56s
+development 14/16 code_clip_values terse in=81 out=111 checks=True eos=True 70.44s
+development 15/16 code_adjacent_differences legacy in=76 out=56 checks=True eos=True 10.06s
+development 15/16 code_adjacent_differences nosys in=55 out=110 checks=True eos=True 22.73s
+development 15/16 code_adjacent_differences terse in=71 out=34 checks=True eos=True 4.69s
+development 16/16 code_even_first terse in=73 out=87 checks=True eos=True 11.90s
+development 16/16 code_even_first legacy in=78 out=111 checks=True eos=True 16.54s
+development 16/16 code_even_first nosys in=57 out=54 checks=True eos=True 6.53s
+Selection frozen: {"scalar": "legacy", "code": "legacy"}
+{
+  "rows": 48,
+  "gates": {
+    "scalar": {
+      "profile": "legacy",
+      "promoted": false,
+      "old_best_results_preserved": null,
+      "reason": "No development candidate met accuracy and total token/time gates; unchanged legacy inference retained without spending validation calls."
+    },
+    "code": {
+      "profile": "legacy",
+      "promoted": false,
+      "old_best_results_preserved": null,
+      "reason": "No development candidate met accuracy and total token/time gates; unchanged legacy inference retained without spending validation calls."
+    }
+  }
+}

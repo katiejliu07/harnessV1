@@ -1,0 +1,727 @@
+{
+  "conditions": [
+    "raw",
+    "legacy",
+    "nosys",
+    "steps"
+  ],
+  "budgets": {
+    "scalar": 320,
+    "code": 1024
+  },
+  "tasks": [
+    {
+      "id": "hard_00_00",
+      "kind": "scalar",
+      "prompt": "A shop has 800 items. It sells 20 percent of them on Monday and 33 more on Tuesday, then receives 6 boxes of 22 items each. How many items does it have now?",
+      "answer": "739"
+    },
+    {
+      "id": "hard_00_01",
+      "kind": "scalar",
+      "prompt": "Pipe A fills a tank in 9 hours and pipe B fills it in 10 hours. Working together, how many hours do they take? Give an exact number or fraction.",
+      "answer": "90/19"
+    },
+    {
+      "id": "hard_00_02",
+      "kind": "scalar",
+      "prompt": "3 litres of a 10 percent salt solution are mixed with 2 litres of a 50 percent salt solution. What percent salt is the mixture? Give an exact number or fraction.",
+      "answer": "26"
+    },
+    {
+      "id": "hard_00_03",
+      "kind": "scalar",
+      "prompt": "You invest 2400 dollars at 5 percent simple interest per year for 4 years, and add 500 dollars at the end. How many dollars do you have in total?",
+      "answer": "3380"
+    },
+    {
+      "id": "hard_00_04",
+      "kind": "scalar",
+      "prompt": "A parent is 45 years old and their child is 22. In how many years will the parent be exactly twice the child's age? If that happened in the past, give a negative number.",
+      "answer": "1"
+    },
+    {
+      "id": "hard_00_05",
+      "kind": "scalar",
+      "prompt": "A car drives 210 miles at 40 mph, stops for 15 minutes, then drives 60 miles at 30 mph. What is its average speed in mph over the whole trip including the stop? Give an exact number or fraction.",
+      "answer": "36"
+    },
+    {
+      "id": "hard_00_06",
+      "kind": "scalar",
+      "prompt": "A rectangle's length is increased by 20 percent and its width is decreased by 25 percent. By what percent does its area change? Use a negative number for a decrease and give an exact number or fraction.",
+      "answer": "-10"
+    },
+    {
+      "id": "hard_00_07",
+      "kind": "scalar",
+      "prompt": "A jacket costs 100 dollars. It is discounted 15 percent, then a 20 dollar coupon is applied, then 6 percent tax is added. What is the final price in dollars? Give an exact number.",
+      "answer": "689/10"
+    },
+    {
+      "id": "hard_00_08",
+      "kind": "scalar",
+      "prompt": "4 workers finish a job in 8 days. Working at the same rate, how many days would 6 workers take? Give an exact number or fraction.",
+      "answer": "16/3"
+    },
+    {
+      "id": "hard_00_09",
+      "kind": "scalar",
+      "prompt": "An arithmetic sequence starts at 3 and increases by 3 each term. What is the sum of the first 16 terms?",
+      "answer": "408"
+    },
+    {
+      "id": "hard_00_10",
+      "kind": "scalar",
+      "prompt": "A bag holds 5 red, 4 blue and 3 green marbles. Two marbles are drawn without replacement. What is the probability both are red? Give an exact fraction.",
+      "answer": "5/33"
+    },
+    {
+      "id": "hard_00_11",
+      "kind": "scalar",
+      "prompt": "A 77 litre tank is empty. A tap adds 10 litres per minute while a leak removes 6 litres per minute. How many minutes until it is full? Give an exact number or fraction.",
+      "answer": "77/4"
+    },
+    {
+      "id": "hard_01_00",
+      "kind": "scalar",
+      "prompt": "A shop has 320 items. It sells 20 percent of them on Monday and 51 more on Tuesday, then receives 6 boxes of 28 items each. How many items does it have now?",
+      "answer": "373"
+    },
+    {
+      "id": "hard_01_01",
+      "kind": "scalar",
+      "prompt": "Pipe A fills a tank in 5 hours and pipe B fills it in 4 hours. Working together, how many hours do they take? Give an exact number or fraction.",
+      "answer": "20/9"
+    },
+    {
+      "id": "hard_01_02",
+      "kind": "scalar",
+      "prompt": "9 litres of a 40 percent salt solution are mixed with 3 litres of a 60 percent salt solution. What percent salt is the mixture? Give an exact number or fraction.",
+      "answer": "45"
+    },
+    {
+      "id": "hard_01_03",
+      "kind": "scalar",
+      "prompt": "You invest 4700 dollars at 5 percent simple interest per year for 5 years, and add 700 dollars at the end. How many dollars do you have in total?",
+      "answer": "6575"
+    },
+    {
+      "id": "hard_01_04",
+      "kind": "scalar",
+      "prompt": "A parent is 36 years old and their child is 11. In how many years will the parent be exactly twice the child's age? If that happened in the past, give a negative number.",
+      "answer": "14"
+    },
+    {
+      "id": "hard_01_05",
+      "kind": "scalar",
+      "prompt": "A car drives 240 miles at 60 mph, stops for 30 minutes, then drives 120 miles at 60 mph. What is its average speed in mph over the whole trip including the stop? Give an exact number or fraction.",
+      "answer": "720/13"
+    },
+    {
+      "id": "hard_01_06",
+      "kind": "scalar",
+      "prompt": "A rectangle's length is increased by 50 percent and its width is decreased by 20 percent. By what percent does its area change? Use a negative number for a decrease and give an exact number or fraction.",
+      "answer": "20"
+    },
+    {
+      "id": "hard_01_07",
+      "kind": "scalar",
+      "prompt": "A jacket costs 130 dollars. It is discounted 10 percent, then a 20 dollar coupon is applied, then 8 percent tax is added. What is the final price in dollars? Give an exact number.",
+      "answer": "2619/25"
+    },
+    {
+      "id": "hard_01_08",
+      "kind": "scalar",
+      "prompt": "8 workers finish a job in 7 days. Working at the same rate, how many days would 13 workers take? Give an exact number or fraction.",
+      "answer": "56/13"
+    },
+    {
+      "id": "hard_01_09",
+      "kind": "scalar",
+      "prompt": "An arithmetic sequence starts at 3 and increases by 4 each term. What is the sum of the first 18 terms?",
+      "answer": "666"
+    },
+    {
+      "id": "hard_01_10",
+      "kind": "scalar",
+      "prompt": "A bag holds 6 red, 3 blue and 3 green marbles. Two marbles are drawn without replacement. What is the probability both are red? Give an exact fraction.",
+      "answer": "5/22"
+    },
+    {
+      "id": "hard_01_11",
+      "kind": "scalar",
+      "prompt": "A 62 litre tank is empty. A tap adds 11 litres per minute while a leak removes 5 litres per minute. How many minutes until it is full? Give an exact number or fraction.",
+      "answer": "31/3"
+    },
+    {
+      "id": "code_merge_intervals",
+      "kind": "code",
+      "function": "merge_intervals",
+      "prompt": "Write merge_intervals(intervals), where intervals is a list of [start, end] pairs with start <= end in any order. Return a new list of merged [start, end] pairs sorted by start; intervals that overlap or touch (one ends where the next starts) merge. Handle empty input. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                8,
+                10
+              ]
+            ]
+          ],
+          [
+            [
+              1,
+              6
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              [
+                5,
+                7
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                4
+              ]
+            ]
+          ],
+          [
+            [
+              1,
+              4
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              [
+                1,
+                10
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          ],
+          [
+            [
+              1,
+              10
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_spiral_order",
+      "kind": "code",
+      "function": "spiral_order",
+      "prompt": "Write spiral_order(matrix), returning a list of the elements of a rectangular matrix (a list of equal-length rows) in clockwise spiral order starting at the top-left. Handle an empty matrix and empty rows. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ]
+          ],
+          [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7,
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              [
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          ],
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          [
+            [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ]
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                5,
+                6
+              ]
+            ]
+          ],
+          [
+            1,
+            2,
+            4,
+            6,
+            5,
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_top_k_frequent",
+      "kind": "code",
+      "function": "top_k_frequent",
+      "prompt": "Write top_k_frequent(words, k), returning the k most frequent words, ordered by count descending and then alphabetically for ties. Return all distinct words if there are fewer than k; return [] for k <= 0. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              "b",
+              "a",
+              "b",
+              "c",
+              "a",
+              "b"
+            ],
+            2
+          ],
+          [
+            "b",
+            "a"
+          ]
+        ],
+        [
+          [
+            [
+              "x",
+              "y"
+            ],
+            5
+          ],
+          [
+            "x",
+            "y"
+          ]
+        ],
+        [
+          [
+            [],
+            3
+          ],
+          []
+        ],
+        [
+          [
+            [
+              "a",
+              "b"
+            ],
+            0
+          ],
+          []
+        ],
+        [
+          [
+            [
+              "d",
+              "c",
+              "d",
+              "c"
+            ],
+            1
+          ],
+          [
+            "c"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_next_greater",
+      "kind": "code",
+      "function": "next_greater",
+      "prompt": "Write next_greater(values), returning a list where each position holds the first value to its right that is strictly greater, or None if there is none. Handle empty input. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              2,
+              1,
+              3,
+              2,
+              4
+            ]
+          ],
+          [
+            3,
+            3,
+            4,
+            4,
+            null
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              5,
+              5,
+              5
+            ]
+          ],
+          [
+            null,
+            null,
+            null
+          ]
+        ],
+        [
+          [
+            [
+              3,
+              2,
+              1
+            ]
+          ],
+          [
+            null,
+            null,
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_primes_upto",
+      "kind": "code",
+      "function": "primes_upto",
+      "prompt": "Write primes_upto(n), returning a list of all prime numbers less than or equal to n in increasing order; return [] when there are none.",
+      "cases": [
+        [
+          [
+            10
+          ],
+          [
+            2,
+            3,
+            5,
+            7
+          ]
+        ],
+        [
+          [
+            1
+          ],
+          []
+        ],
+        [
+          [
+            2
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            -5
+          ],
+          []
+        ],
+        [
+          [
+            30
+          ],
+          [
+            2,
+            3,
+            5,
+            7,
+            11,
+            13,
+            17,
+            19,
+            23,
+            29
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_rle_encode",
+      "kind": "code",
+      "function": "rle_encode",
+      "prompt": "Write rle_encode(text), returning a list of [character, count] pairs for each run of identical consecutive characters, in order. Return [] for an empty string.",
+      "cases": [
+        [
+          [
+            "aaabcc"
+          ],
+          [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              1
+            ],
+            [
+              "c",
+              2
+            ]
+          ]
+        ],
+        [
+          [
+            ""
+          ],
+          []
+        ],
+        [
+          [
+            "x"
+          ],
+          [
+            [
+              "x",
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            "abab"
+          ],
+          [
+            [
+              "a",
+              1
+            ],
+            [
+              "b",
+              1
+            ],
+            [
+              "a",
+              1
+            ],
+            [
+              "b",
+              1
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_sliding_max",
+      "kind": "code",
+      "function": "sliding_max",
+      "prompt": "Write sliding_max(values, k), returning the maximum of every window of exactly k consecutive values, in order. Return [] for k <= 0 or k > len(values). Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            3
+          ],
+          [
+            3,
+            3,
+            5,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          [
+            [
+              4
+            ],
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            3
+          ],
+          []
+        ],
+        [
+          [
+            [],
+            1
+          ],
+          []
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            0
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "id": "code_tokenize_expr",
+      "kind": "code",
+      "function": "tokenize_expr",
+      "prompt": "Write tokenize_expr(text), returning a list of tokens from an arithmetic expression: non-negative integers as int values and each of + - * / ( ) as a one-character string, skipping spaces.",
+      "cases": [
+        [
+          [
+            "12+(3*4)"
+          ],
+          [
+            12,
+            "+",
+            "(",
+            3,
+            "*",
+            4,
+            ")"
+          ]
+        ],
+        [
+          [
+            ""
+          ],
+          []
+        ],
+        [
+          [
+            " 7 "
+          ],
+          [
+            7
+          ]
+        ],
+        [
+          [
+            "10 / 2-0"
+          ],
+          [
+            10,
+            "/",
+            2,
+            "-",
+            0
+          ]
+        ]
+      ]
+    }
+  ]
+}

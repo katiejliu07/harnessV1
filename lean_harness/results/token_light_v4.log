@@ -1,0 +1,349 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+development 1/16 arith_00_00 legacy in=58 out=22 checks=True eos=True 2.83s
+development 1/16 arith_00_00 nosys in=37 out=22 checks=True eos=True 2.68s
+development 1/16 arith_00_00 steps in=52 out=13 checks=True eos=True 1.12s
+development 1/16 arith_00_00 terse in=40 out=4 checks=True eos=True 0.43s
+development 2/16 arith_00_01 steps in=51 out=12 checks=True eos=True 1.16s
+development 2/16 arith_00_01 terse in=39 out=4 checks=True eos=True 0.44s
+development 2/16 arith_00_01 nosys in=36 out=13 checks=True eos=True 1.18s
+development 2/16 arith_00_01 legacy in=57 out=13 checks=True eos=True 1.19s
+development 3/16 arith_00_02 legacy in=59 out=49 checks=True eos=True 5.03s
+development 3/16 arith_00_02 nosys in=38 out=68 checks=True eos=True 6.62s
+development 3/16 arith_00_02 terse in=41 out=14 checks=True eos=True 1.35s
+development 3/16 arith_00_02 steps in=53 out=14 checks=True eos=True 1.54s
+development 4/16 arith_00_03 legacy in=59 out=82 checks=True eos=True 9.10s
+development 4/16 arith_00_03 terse in=41 out=16 checks=True eos=True 1.52s
+development 4/16 arith_00_03 steps in=53 out=28 checks=True eos=True 2.79s
+development 4/16 arith_00_03 nosys in=38 out=82 checks=True eos=True 8.59s
+development 5/16 arith_00_04 legacy in=63 out=120 checks=True eos=True 13.77s
+development 5/16 arith_00_04 steps in=57 out=48 checks=True eos=True 5.05s
+development 5/16 arith_00_04 terse in=45 out=50 checks=True eos=True 5.02s
+development 5/16 arith_00_04 nosys in=42 out=120 checks=True eos=True 11.54s
+development 6/16 arith_00_05 terse in=60 out=76 checks=True eos=True 7.74s
+development 6/16 arith_00_05 steps in=72 out=76 checks=True eos=True 8.12s
+development 6/16 arith_00_05 legacy in=78 out=256 checks=True eos=True 44.57s
+development 6/16 arith_00_05 nosys in=57 out=272 checks=True eos=True 33.00s
+development 7/16 arith_00_06 terse in=71 out=190 checks=True eos=True 19.83s
+development 7/16 arith_00_06 steps in=83 out=167 checks=True eos=True 16.35s
+development 7/16 arith_00_06 legacy in=89 out=181 checks=True eos=True 19.78s
+development 7/16 arith_00_06 nosys in=68 out=118 checks=True eos=True 12.16s
+development 8/16 arith_00_07 legacy in=59 out=8 checks=False eos=True 0.83s
+development 8/16 arith_00_07 nosys in=38 out=155 checks=True eos=True 15.25s
+development 8/16 arith_00_07 steps in=53 out=26 checks=True eos=True 2.57s
+development 8/16 arith_00_07 terse in=41 out=8 checks=False eos=True 0.82s
+development 9/16 arith_00_08 terse in=46 out=7 checks=False eos=True 0.74s
+development 9/16 arith_00_08 nosys in=43 out=146 checks=True eos=True 14.93s
+development 9/16 arith_00_08 legacy in=64 out=146 checks=True eos=True 16.58s
+development 9/16 arith_00_08 steps in=58 out=20 checks=True eos=True 2.13s
+development 10/16 arith_00_09 nosys in=49 out=189 checks=True eos=True 18.63s
+development 10/16 arith_00_09 steps in=64 out=25 checks=False eos=True 2.53s
+development 10/16 arith_00_09 legacy in=70 out=167 checks=True eos=True 16.30s
+development 10/16 arith_00_09 terse in=52 out=25 checks=False eos=True 2.45s
+development 11/16 arith_00_10 terse in=39 out=8 checks=True eos=True 1.00s
+development 11/16 arith_00_10 legacy in=57 out=8 checks=True eos=True 0.82s
+development 11/16 arith_00_10 steps in=51 out=14 checks=True eos=True 1.57s
+development 11/16 arith_00_10 nosys in=36 out=18 checks=True eos=True 2.21s
+development 12/16 arith_00_11 nosys in=37 out=56 checks=True eos=True 5.77s
+development 12/16 arith_00_11 steps in=52 out=18 checks=True eos=True 1.79s
+development 12/16 arith_00_11 terse in=40 out=49 checks=True eos=True 6.90s
+development 12/16 arith_00_11 legacy in=58 out=71 checks=True eos=True 9.88s
+development 13/16 code_interleave terse in=84 out=78 checks=True eos=True 9.30s
+development 13/16 code_interleave nosys in=68 out=130 checks=False eos=True 16.03s
+development 13/16 code_interleave legacy in=89 out=117 checks=False eos=True 13.34s
+development 13/16 code_interleave steps in=84 out=78 checks=True eos=True 7.97s
+development 14/16 code_clip_values terse in=81 out=111 checks=True eos=True 11.11s
+development 14/16 code_clip_values nosys in=65 out=356 checks=True eos=True 45.39s
+development 14/16 code_clip_values legacy in=86 out=130 checks=True eos=True 13.54s
+development 14/16 code_clip_values steps in=81 out=111 checks=True eos=True 10.95s
+development 15/16 code_adjacent_differences terse in=71 out=34 checks=True eos=True 3.82s
+development 15/16 code_adjacent_differences legacy in=76 out=56 checks=True eos=True 6.03s
+development 15/16 code_adjacent_differences nosys in=55 out=110 checks=True eos=True 11.31s
+development 15/16 code_adjacent_differences steps in=71 out=34 checks=True eos=True 3.80s
+development 16/16 code_even_first terse in=73 out=87 checks=True eos=True 9.67s
+development 16/16 code_even_first nosys in=57 out=54 checks=True eos=True 5.68s
+development 16/16 code_even_first legacy in=78 out=111 checks=True eos=True 11.14s
+development 16/16 code_even_first steps in=73 out=87 checks=True eos=True 9.22s
+Selection frozen: {"scalar": "nosys", "code": "steps"}
+validation 1/32 arith_00_00 legacy in=59 out=9 checks=True eos=True 0.91s
+validation 1/32 arith_00_00 nosys in=38 out=23 checks=True eos=True 2.28s
+validation 2/32 arith_00_01 nosys in=36 out=14 checks=True eos=True 1.35s
+validation 2/32 arith_00_01 legacy in=57 out=14 checks=True eos=True 1.30s
+validation 3/32 arith_00_02 legacy in=60 out=54 checks=False eos=True 4.95s
+validation 3/32 arith_00_02 nosys in=39 out=54 checks=False eos=True 5.78s
+validation 4/32 arith_00_03 nosys in=38 out=78 checks=True eos=True 7.80s
+validation 4/32 arith_00_03 legacy in=59 out=64 checks=True eos=True 6.48s
+validation 5/32 arith_00_04 nosys in=42 out=120 checks=True eos=True 11.76s
+validation 5/32 arith_00_04 legacy in=63 out=120 checks=True eos=True 11.92s
+validation 6/32 arith_00_05 nosys in=57 out=219 checks=True eos=True 21.48s
+validation 6/32 arith_00_05 legacy in=78 out=237 checks=True eos=True 26.80s
+validation 7/32 arith_00_06 nosys in=68 out=173 checks=True eos=True 18.26s
+validation 7/32 arith_00_06 legacy in=89 out=173 checks=True eos=True 17.37s
+validation 8/32 arith_00_07 legacy in=59 out=19 checks=False eos=True 2.14s
+validation 8/32 arith_00_07 nosys in=38 out=100 checks=True eos=True 10.84s
+validation 9/32 arith_00_08 legacy in=64 out=146 checks=True eos=True 15.25s
+validation 9/32 arith_00_08 nosys in=43 out=146 checks=True eos=True 14.74s
+validation 10/32 arith_00_09 legacy in=70 out=169 checks=True eos=True 16.71s
+validation 10/32 arith_00_09 nosys in=49 out=146 checks=True eos=True 15.92s
+validation 11/32 arith_00_10 nosys in=37 out=19 checks=True eos=True 1.99s
+validation 11/32 arith_00_10 legacy in=58 out=9 checks=True eos=True 0.96s
+validation 12/32 arith_00_11 nosys in=37 out=56 checks=True eos=True 5.72s
+validation 12/32 arith_00_11 legacy in=58 out=71 checks=True eos=True 7.12s
+validation 13/32 arith_01_00 legacy in=58 out=22 checks=True eos=True 2.17s
+validation 13/32 arith_01_00 nosys in=37 out=22 checks=True eos=True 2.23s
+validation 14/32 arith_01_01 legacy in=57 out=9 checks=True eos=True 0.90s
+validation 14/32 arith_01_01 nosys in=36 out=13 checks=True eos=True 1.36s
+validation 15/32 arith_01_02 legacy in=61 out=67 checks=False eos=True 7.27s
+validation 15/32 arith_01_02 nosys in=40 out=77 checks=True eos=True 7.67s
+validation 16/32 arith_01_03 legacy in=59 out=54 checks=True eos=True 5.35s
+validation 16/32 arith_01_03 nosys in=38 out=82 checks=True eos=True 7.86s
+validation 17/32 arith_01_04 nosys in=42 out=120 checks=True eos=True 11.63s
+validation 17/32 arith_01_04 legacy in=63 out=120 checks=True eos=True 11.38s
+validation 18/32 arith_01_05 legacy in=78 out=254 checks=True eos=True 32.40s
+validation 18/32 arith_01_05 nosys in=57 out=241 checks=True eos=True 30.36s
+validation 19/32 arith_01_06 nosys in=67 out=175 checks=True eos=True 19.73s
+validation 19/32 arith_01_06 legacy in=88 out=184 checks=True eos=True 19.97s
+validation 20/32 arith_01_07 nosys in=38 out=157 checks=True eos=True 16.46s
+validation 20/32 arith_01_07 legacy in=59 out=8 checks=False eos=True 0.83s
+validation 21/32 arith_01_08 nosys in=43 out=146 checks=True eos=True 15.15s
+validation 21/32 arith_01_08 legacy in=64 out=146 checks=True eos=True 15.04s
+validation 22/32 arith_01_09 legacy in=70 out=189 checks=True eos=True 20.41s
+validation 22/32 arith_01_09 nosys in=49 out=112 checks=True eos=True 12.05s
+validation 23/32 arith_01_10 nosys in=36 out=17 checks=True eos=True 1.88s
+validation 23/32 arith_01_10 legacy in=57 out=8 checks=True eos=True 0.86s
+validation 24/32 arith_01_11 nosys in=37 out=56 checks=True eos=True 5.74s
+validation 24/32 arith_01_11 legacy in=58 out=56 checks=True eos=True 6.00s
+validation 25/32 code_rotate_right legacy in=80 out=90 checks=True eos=True 9.18s
+validation 25/32 code_rotate_right steps in=75 out=88 checks=True eos=True 11.93s
+validation 26/32 code_merge_sorted steps in=71 out=151 checks=True eos=True 15.53s
+validation 26/32 code_merge_sorted legacy in=76 out=220 checks=True eos=True 26.34s
+validation 27/32 code_prefix_sums legacy in=70 out=108 checks=False eos=True 10.95s
+validation 27/32 code_prefix_sums steps in=65 out=53 checks=False eos=True 5.74s
+validation 28/32 code_moving_sums legacy in=84 out=82 checks=True eos=True 8.25s
+validation 28/32 code_moving_sums steps in=79 out=56 checks=True eos=True 6.12s
+validation 29/32 code_expand_runs legacy in=87 out=54 checks=True eos=True 5.77s
+validation 29/32 code_expand_runs steps in=82 out=28 checks=False eos=True 2.98s
+validation 30/32 code_nonzero_indices legacy in=71 out=94 checks=True eos=True 9.73s
+validation 30/32 code_nonzero_indices steps in=66 out=72 checks=True eos=True 7.65s
+validation 31/32 code_flatten_once steps in=75 out=23 checks=True eos=True 2.52s
+validation 31/32 code_flatten_once legacy in=80 out=98 checks=True eos=True 11.31s
+validation 32/32 code_keep_last steps in=74 out=115 checks=False eos=True 11.97s
+validation 32/32 code_keep_last legacy in=79 out=127 checks=False eos=True 12.20s
+regression 1/37 old_coding_00 legacy in=74 out=52 checks=True eos=True 5.66s
+regression 1/37 old_coding_00 steps in=69 out=34 checks=True eos=True 3.58s
+regression 2/37 old_coding_01 steps in=69 out=91 checks=True eos=True 8.86s
+regression 2/37 old_coding_01 legacy in=74 out=94 checks=True eos=True 10.64s
+regression 3/37 old_coding_02 legacy in=90 out=142 checks=True eos=True 14.72s
+regression 3/37 old_coding_02 steps in=85 out=69 checks=True eos=True 6.97s
+regression 4/37 old_coding_03 steps in=67 out=60 checks=False eos=True 5.80s
+regression 4/37 old_coding_03 legacy in=72 out=158 checks=True eos=True 17.07s
+regression 5/37 old_heldout_arithmetic_00 nosys in=36 out=19 checks=True eos=True 2.03s
+regression 5/37 old_heldout_arithmetic_00 legacy in=57 out=19 checks=True eos=True 1.90s
+regression 6/37 old_heldout_arithmetic_01 nosys in=36 out=13 checks=True eos=True 1.22s
+regression 6/37 old_heldout_arithmetic_01 legacy in=57 out=9 checks=True eos=True 0.84s
+regression 7/37 old_heldout_arithmetic_02 nosys in=38 out=78 checks=True eos=True 7.98s
+regression 7/37 old_heldout_arithmetic_02 legacy in=59 out=51 checks=True eos=True 5.32s
+regression 8/37 old_heldout_arithmetic_03 legacy in=62 out=116 checks=True eos=True 12.51s
+regression 8/37 old_heldout_arithmetic_03 nosys in=41 out=116 checks=True eos=True 11.75s
+regression 9/37 old_heldout_arithmetic_04 legacy in=79 out=170 checks=True eos=True 17.34s
+regression 9/37 old_heldout_arithmetic_04 nosys in=58 out=98 checks=True eos=True 9.98s
+regression 10/37 old_heldout_arithmetic_05 legacy in=73 out=250 checks=True eos=True 26.37s
+regression 10/37 old_heldout_arithmetic_05 nosys in=52 out=187 checks=True eos=True 17.85s
+regression 11/37 old_heldout_arithmetic_06 nosys in=40 out=54 checks=False eos=True 5.06s
+regression 11/37 old_heldout_arithmetic_06 legacy in=61 out=55 checks=False eos=True 5.36s
+regression 12/37 old_heldout_arithmetic_07 nosys in=38 out=151 checks=True eos=True 14.59s
+regression 12/37 old_heldout_arithmetic_07 legacy in=59 out=157 checks=True eos=True 15.85s
+regression 13/37 old_original_00 legacy in=55 out=8 checks=True eos=True 0.78s
+regression 13/37 old_original_00 nosys in=34 out=21 checks=True eos=True 2.40s
+regression 14/37 old_original_01 legacy in=66 out=8 checks=True eos=True 0.79s
+regression 14/37 old_original_01 nosys in=45 out=9 checks=True eos=True 0.89s
+regression 15/37 old_original_02 legacy in=55 out=8 checks=True eos=True 0.76s
+regression 15/37 old_original_02 nosys in=34 out=8 checks=True eos=True 0.76s
+regression 16/37 old_original_03 legacy in=60 out=8 checks=True eos=True 0.77s
+regression 16/37 old_original_03 nosys in=39 out=46 checks=True eos=True 4.36s
+regression 17/37 old_original_04 nosys in=39 out=55 checks=True eos=True 5.16s
+regression 17/37 old_original_04 legacy in=60 out=55 checks=True eos=True 5.28s
+regression 18/37 old_original_05 legacy in=58 out=8 checks=True eos=True 0.80s
+regression 18/37 old_original_05 nosys in=37 out=13 checks=True eos=True 1.31s
+regression 19/37 old_original_06 nosys in=47 out=57 checks=True eos=True 5.70s
+regression 19/37 old_original_06 legacy in=68 out=9 checks=True eos=True 0.94s
+regression 20/37 old_original_07 nosys in=46 out=7 checks=True eos=True 0.76s
+regression 20/37 old_original_07 legacy in=67 out=7 checks=True eos=True 0.71s
+regression 21/37 old_original_08 nosys in=36 out=12 checks=True eos=True 1.16s
+regression 21/37 old_original_08 legacy in=57 out=18 checks=True eos=True 1.75s
+regression 22/37 old_original_09 legacy in=61 out=63 checks=True eos=True 6.26s
+regression 22/37 old_original_09 nosys in=40 out=80 checks=True eos=True 8.34s
+regression 23/37 old_original_10 nosys in=34 out=14 checks=True eos=True 1.45s
+regression 23/37 old_original_10 legacy in=55 out=8 checks=True eos=True 0.81s
+regression 24/37 old_original_11 nosys in=35 out=7 checks=True eos=True 0.87s
+regression 24/37 old_original_11 legacy in=56 out=7 checks=True eos=True 0.92s
+regression 25/37 old_original_12 legacy in=55 out=8 checks=True eos=True 0.78s
+regression 25/37 old_original_12 nosys in=34 out=14 checks=True eos=True 1.36s
+regression 26/37 old_original_13 nosys in=36 out=11 checks=True eos=True 0.92s
+regression 26/37 old_original_13 legacy in=57 out=7 checks=True eos=True 0.78s
+regression 27/37 old_original_14 legacy in=63 out=109 checks=True eos=True 10.89s
+regression 27/37 old_original_14 nosys in=42 out=104 checks=True eos=True 10.74s
+regression 28/37 old_original_15 legacy in=63 out=109 checks=True eos=True 10.85s
+regression 28/37 old_original_15 nosys in=42 out=109 checks=True eos=True 11.08s
+regression 29/37 old_original_16 legacy in=63 out=8 checks=True eos=True 0.87s
+regression 29/37 old_original_16 nosys in=42 out=65 checks=True eos=True 6.14s
+regression 30/37 old_original_17 legacy in=67 out=122 checks=True eos=True 12.22s
+regression 30/37 old_original_17 nosys in=46 out=122 checks=True eos=True 11.53s
+regression 31/37 old_original_18 nosys in=45 out=40 checks=True eos=True 3.93s
+regression 31/37 old_original_18 legacy in=66 out=8 checks=True eos=True 0.95s
+regression 32/37 old_original_19 nosys in=36 out=12 checks=True eos=True 1.31s
+regression 32/37 old_original_19 legacy in=57 out=12 checks=True eos=True 1.25s
+regression 33/37 old_original_20 nosys in=40 out=82 checks=True eos=True 7.81s
+regression 33/37 old_original_20 legacy in=61 out=82 checks=True eos=True 7.67s
+regression 34/37 old_original_21 nosys in=39 out=52 checks=True eos=True 4.91s
+regression 34/37 old_original_21 legacy in=60 out=52 checks=True eos=True 4.88s
+regression 35/37 old_original_22 nosys in=38 out=78 checks=True eos=True 7.81s
+regression 35/37 old_original_22 legacy in=59 out=83 checks=True eos=True 8.15s
+regression 36/37 old_original_23 nosys in=37 out=48 checks=True eos=True 4.50s
+regression 36/37 old_original_23 legacy in=58 out=42 checks=True eos=True 4.04s
+regression 37/37 old_original_24 legacy in=67 out=170 checks=True eos=True 16.62s
+regression 37/37 old_original_24 nosys in=46 out=67 checks=True eos=True 6.65s
+{
+  "rows": 202,
+  "gates": {
+    "scalar": {
+      "profile": "nosys",
+      "promoted": false,
+      "old_best_results_preserved": false,
+      "stress_failures": [],
+      "comparisons": {
+        "validation": {
+          "n": 24,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.9092849519743863,
+          "total_seconds_ratio": 1.0663640260354177,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 24,
+            "baseline_mean": 156.16666666666666,
+            "intervened_mean": 142.0,
+            "mean_difference": 14.166666666666666,
+            "sd_difference": 39.766346561390066,
+            "paired_t": 1.7452498250427837,
+            "p_value_descriptive_post_selection": 0.09428961956420213,
+            "cohens_dz": 0.3562476287530362,
+            "paired_bootstrap_95": [
+              -3.25,
+              27.958333333333332
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "regression": {
+          "n": 33,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.821567106283941,
+          "total_seconds_ratio": 0.9803464311230095,
+          "eligible": true,
+          "paired_total_tokens": {
+            "n": 33,
+            "baseline_mean": 117.18181818181819,
+            "intervened_mean": 96.27272727272727,
+            "mean_difference": 20.90909090909091,
+            "sd_difference": 30.237976573718143,
+            "paired_t": 3.9722758008163246,
+            "p_value_descriptive_post_selection": 0.00037858386214650104,
+            "cohens_dz": 0.6914844602156484,
+            "paired_bootstrap_95": [
+              11.48409090909091,
+              31.818181818181817
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    },
+    "code": {
+      "profile": "steps",
+      "promoted": false,
+      "old_best_results_preserved": false,
+      "stress_failures": [
+        {
+          "stage": "validation",
+          "task_id": "code_prefix_sums"
+        },
+        {
+          "stage": "validation",
+          "task_id": "code_expand_runs"
+        },
+        {
+          "stage": "validation",
+          "task_id": "code_keep_last"
+        },
+        {
+          "stage": "regression",
+          "task_id": "old_coding_01"
+        },
+        {
+          "stage": "regression",
+          "task_id": "old_coding_03"
+        }
+      ],
+      "comparisons": {
+        "validation": {
+          "n": 8,
+          "task_check_regressions": [
+            "code_expand_runs"
+          ],
+          "checks_and_eos_regressions": [
+            "code_expand_runs"
+          ],
+          "total_token_ratio": 0.782,
+          "total_seconds_ratio": 0.6875043000302655,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 8,
+            "baseline_mean": 187.5,
+            "intervened_mean": 146.625,
+            "mean_difference": 40.875,
+            "sd_difference": 26.989085095380954,
+            "paired_t": 4.283656089690381,
+            "p_value_descriptive_post_selection": 0.0036389704290837174,
+            "cohens_dz": 1.514501134645559,
+            "paired_bootstrap_95": [
+              24.375,
+              59.0
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "regression": {
+          "n": 4,
+          "task_check_regressions": [
+            "old_coding_03"
+          ],
+          "checks_and_eos_regressions": [
+            "old_coding_03"
+          ],
+          "total_token_ratio": 0.7195767195767195,
+          "total_seconds_ratio": 0.5242574311181739,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 189.0,
+            "intervened_mean": 136.0,
+            "mean_difference": 53.0,
+            "sd_difference": 44.90731195102493,
+            "paired_t": 2.3604173885001534,
+            "p_value_descriptive_post_selection": 0.09936233488429566,
+            "cohens_dz": 1.1802086942500767,
+            "paired_bootstrap_95": [
+              15.5,
+              90.5
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    }
+  }
+}

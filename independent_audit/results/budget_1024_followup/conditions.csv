@@ -1,0 +1,9 @@
+suite,condition,n_unique_tasks,correct,task_checks_passed_ignoring_response_truncation,raw_primary_correct,automatic_task_checks_passed,truncated,mean_output_tokens,mean_task_median_total_seconds,mean_task_median_model_seconds
+coding,A_normal,4,4,4,0,4,0,465.0,33.953001979214605,33.942151270777686
+coding,B_reasoning,4,3,3,2,2,0,590.25,52.616440177022014,52.603599864494754
+coding,C_concise,4,4,4,4,4,0,111.5,8.077387666737195,8.067622395756189
+coding,E_v8_prefix,4,4,4,0,4,0,470.25,34.57646807303536,34.5583413852728
+heldout_arithmetic,A_normal,1,1,1,1,1,0,323.0,24.416451041935943,24.408571167034097
+heldout_arithmetic,B_reasoning,1,1,1,1,1,0,290.0,20.744308500085026,20.73430216696579
+heldout_arithmetic,C_concise,1,1,1,1,1,0,250.0,17.831259957980365,17.82349854207132
+heldout_arithmetic,E_v8_prefix,1,1,1,1,1,0,210.0,14.662949707941152,14.643551625078544

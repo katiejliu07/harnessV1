@@ -1,0 +1,65 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+hard_00_01 raw 320->375 truncated=False correct=True
+hard_00_02 legacy 320->394 truncated=False correct=True
+hard_00_02 raw 320->397 truncated=False correct=True
+hard_00_03 raw 320->400 truncated=False correct=True
+hard_00_05 nosys 320->447 truncated=False correct=True
+hard_00_05 raw 320->449 truncated=False correct=False
+hard_00_05 legacy 320->457 truncated=False correct=True
+hard_00_06 raw 320->482 truncated=False correct=True
+hard_00_06 nosys 320->338 truncated=False correct=True
+hard_00_06 legacy 320->348 truncated=False correct=True
+hard_00_06 steps 320->460 truncated=False correct=True
+hard_00_07 raw 320->339 truncated=False correct=True
+hard_00_08 nosys 320->371 truncated=False correct=False
+hard_00_08 legacy 320->332 truncated=False correct=False
+hard_00_08 raw 320->418 truncated=False correct=True
+hard_00_09 raw 320->340 truncated=False correct=True
+hard_00_10 legacy 320->367 truncated=False correct=True
+hard_00_10 nosys 320->367 truncated=False correct=True
+hard_00_10 raw 320->463 truncated=False correct=True
+hard_01_00 raw 320->375 truncated=False correct=False
+hard_01_01 raw 320->363 truncated=False correct=True
+hard_01_02 raw 320->403 truncated=False correct=True
+hard_01_03 raw 320->412 truncated=False correct=True
+hard_01_04 raw 320->335 truncated=False correct=True
+hard_01_05 legacy 320->327 truncated=False correct=False
+hard_01_05 raw 320->454 truncated=False correct=True
+hard_01_06 raw 320->618 truncated=False correct=True
+hard_01_07 raw 320->385 truncated=False correct=True
+hard_01_08 nosys 320->339 truncated=False correct=True
+hard_01_08 raw 320->380 truncated=False correct=True
+hard_01_08 legacy 320->364 truncated=False correct=True
+hard_01_10 nosys 320->367 truncated=False correct=True
+hard_01_10 legacy 320->390 truncated=False correct=True
+hard_01_10 raw 320->364 truncated=False correct=True
+hard_01_11 legacy 320->341 truncated=False correct=True
+{
+  "raw": {
+    "truncated_rows": 19,
+    "fixed": 17,
+    "still_truncated": 0,
+    "extra_tokens": 1672
+  },
+  "legacy": {
+    "truncated_rows": 9,
+    "fixed": 7,
+    "still_truncated": 0,
+    "extra_tokens": 440
+  },
+  "nosys": {
+    "truncated_rows": 6,
+    "fixed": 5,
+    "still_truncated": 0,
+    "extra_tokens": 309
+  },
+  "steps": {
+    "truncated_rows": 1,
+    "fixed": 1,
+    "still_truncated": 0,
+    "extra_tokens": 140
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "noop_prompt_logits_max_abs": 0.0,
+  "noop_token_parity": true,
+  "alpha_zero_token_parity": true,
+  "native_token_parity": true,
+  "cached_vs_uncached_patch_tokens": true,
+  "cached_vs_original_patch_tokens": true,
+  "patch_last_logits_max_abs": 0.0196533203125,
+  "cached_seconds": 0.7676239580614492,
+  "uncached_seconds": 2.030112500069663,
+  "cached_query_tokens": 82,
+  "uncached_query_tokens": 918,
+  "tested_new_tokens": 12,
+  "scope": "One warmup prompt; full-run no-op/alpha-zero parity is also checked in report"
+}

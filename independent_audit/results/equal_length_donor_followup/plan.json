@@ -1,0 +1,56 @@
+{
+  "arguments": {
+    "main": "independent_audit/results/mps_torch271_full",
+    "out": "independent_audit/results/equal_length_donor_followup",
+    "device": "mps",
+    "dtype": "float16"
+  },
+  "pairs": [
+    [
+      "original",
+      0,
+      "What is 8 + 6?",
+      "14"
+    ],
+    [
+      "original",
+      1,
+      "If Sarah has 24 dollars and spends 9, how much does she have left?",
+      "15"
+    ],
+    [
+      "original",
+      2,
+      "What is 7 times 9?",
+      "63"
+    ],
+    [
+      "heldout_arithmetic",
+      0,
+      "What is 26 plus 53?",
+      "79"
+    ],
+    [
+      "heldout_arithmetic",
+      1,
+      "What is 24 times 16?",
+      "384"
+    ],
+    [
+      "heldout_arithmetic",
+      2,
+      "What is 16 percent of 450?",
+      "72"
+    ]
+  ],
+  "conditions": [
+    "E_v8_prefix",
+    "F_layer2",
+    "F_layer3",
+    "F_layer6"
+  ],
+  "max_new_tokens": 320,
+  "seed": 20261029,
+  "source_sha256": "663806f5f3b7b6cdb2d554bdf68b5b309277cbc4040cf85721f7277ac626c0c0",
+  "timing_scope": "Generation only; fixed-span content control, not a new end-to-end cost comparison"
+}

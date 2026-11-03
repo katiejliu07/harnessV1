@@ -1,0 +1,10 @@
+{
+  "scalar": {
+    "profile": "nosys",
+    "promoted": false
+  },
+  "code": {
+    "profile": "steps",
+    "promoted": false
+  }
+}

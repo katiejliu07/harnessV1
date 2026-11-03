@@ -1,0 +1,30 @@
+{
+  "environment": {
+    "device": "mps",
+    "dtype": "torch.float16",
+    "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "kinds": {
+    "scalar": {
+      "profile": "legacy",
+      "promoted": false,
+      "old_best_results_preserved": null,
+      "reason": "No development candidate met accuracy and total token/time gates; unchanged legacy inference retained without spending validation calls."
+    },
+    "code": {
+      "profile": "legacy",
+      "promoted": false,
+      "old_best_results_preserved": null,
+      "reason": "No development candidate met accuracy and total token/time gates; unchanged legacy inference retained without spending validation calls."
+    }
+  },
+  "inference_source_sha256": {
+    "lean_harness/runtime.py": "fe79c9dfb2f3d08b9b662c6ab85db3cca436d0d8fdee5c74bf6187a682497373",
+    "independent_audit/engine.py": "a54fbd1d6c58e9cef9a6a36d58781268a68f3e96bb31fe764fe820f011bf86ec",
+    "independent_audit/model.py": "cd6fc7791991b00a919e151c2e0d9cac219af3c633a476123654e1afe16d6445",
+    "independent_audit/prompts.py": "69c1cc18666b781329d6454a4876924bb0199f28eafea14d00fee0ff9510d0f7"
+  },
+  "evidence": "lean_harness/results/token_light_v3",
+  "summary_sha256": "5bdaa0d68b15e9a0c93ceaa963c2dedbd9f976dc7dc61eb011d6f734897add32",
+  "scope": "Small synthetic/task-level tests, not universal code quality. Selection on development only, validation unchanged after selection. No post-generation stripping, oracle retries or extra model verification calls."
+}

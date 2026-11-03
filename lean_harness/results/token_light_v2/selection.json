@@ -1,0 +1,66 @@
+{
+  "scalar": {
+    "profile": "legacy",
+    "comparisons": {
+      "compact": {
+        "n": 12,
+        "task_check_regressions": [
+          "arith_00_03",
+          "arith_00_05",
+          "arith_00_08"
+        ],
+        "checks_and_eos_regressions": [
+          "arith_00_03",
+          "arith_00_05",
+          "arith_00_08"
+        ],
+        "total_token_ratio": 0.5348468848996832,
+        "total_seconds_ratio": 0.26813115462323295,
+        "eligible": false,
+        "paired_total_tokens": {
+          "n": 12,
+          "baseline_mean": 157.83333333333334,
+          "intervened_mean": 84.41666666666667,
+          "mean_difference": 73.41666666666667,
+          "sd_difference": 77.10495601726417,
+          "paired_t": 3.298397492387987,
+          "p_value_descriptive_post_selection": 0.007098145707435175,
+          "cohens_dz": 0.9521653400622954,
+          "paired_bootstrap_95": [
+            35.581250000000004,
+            117.66666666666667
+          ]
+        },
+        "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+      }
+    }
+  },
+  "code": {
+    "profile": "legacy",
+    "comparisons": {
+      "compact": {
+        "n": 4,
+        "task_check_regressions": [],
+        "checks_and_eos_regressions": [],
+        "total_token_ratio": 1.468371467025572,
+        "total_seconds_ratio": 2.0348714650940516,
+        "eligible": false,
+        "paired_total_tokens": {
+          "n": 4,
+          "baseline_mean": 185.75,
+          "intervened_mean": 272.75,
+          "mean_difference": -87.0,
+          "sd_difference": 94.47045393490319,
+          "paired_t": -1.8418457068058367,
+          "p_value_descriptive_post_selection": 0.16273872486294846,
+          "cohens_dz": -0.9209228534029184,
+          "paired_bootstrap_95": [
+            -177.75,
+            -15.25
+          ]
+        },
+        "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+      }
+    }
+  }
+}

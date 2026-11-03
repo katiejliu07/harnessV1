@@ -1,0 +1,18 @@
+[project]
+name = "independent-activation-patching-audit"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "torch==2.8.0",
+  "transformer-lens==2.16.1",
+  "transformers==4.57.1",
+  "numpy==1.26.4",
+  "scipy==1.16.3",
+  "pytest==8.4.2",
+  "datasets==2.14.4",
+  "pyarrow==14.0.2",
+  "fsspec==2023.6.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

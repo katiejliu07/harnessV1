@@ -1,0 +1,41 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+donor 1/37 bitwise_equal=True
+donor 2/37 bitwise_equal=True
+donor 3/37 bitwise_equal=True
+donor 4/37 bitwise_equal=True
+donor 5/37 bitwise_equal=True
+donor 6/37 bitwise_equal=True
+donor 7/37 bitwise_equal=True
+donor 8/37 bitwise_equal=True
+donor 9/37 bitwise_equal=True
+donor 10/37 bitwise_equal=True
+donor 11/37 bitwise_equal=True
+donor 12/37 bitwise_equal=True
+donor 13/37 bitwise_equal=True
+donor 14/37 bitwise_equal=True
+donor 15/37 bitwise_equal=True
+donor 16/37 bitwise_equal=True
+donor 17/37 bitwise_equal=True
+donor 18/37 bitwise_equal=True
+donor 19/37 bitwise_equal=True
+donor 20/37 bitwise_equal=True
+donor 21/37 bitwise_equal=True
+donor 22/37 bitwise_equal=True
+donor 23/37 bitwise_equal=True
+donor 24/37 bitwise_equal=True
+donor 25/37 bitwise_equal=True
+donor 26/37 bitwise_equal=True
+donor 27/37 bitwise_equal=True
+donor 28/37 bitwise_equal=True
+donor 29/37 bitwise_equal=True
+donor 30/37 bitwise_equal=True
+donor 31/37 bitwise_equal=True
+donor 32/37 bitwise_equal=True
+donor 33/37 bitwise_equal=True
+donor 34/37 bitwise_equal=True
+donor 35/37 bitwise_equal=True
+donor 36/37 bitwise_equal=True
+donor 37/37 bitwise_equal=True

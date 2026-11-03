@@ -1,0 +1,140 @@
+{
+  "summaries": [
+    {
+      "stage": "development",
+      "kind": "code",
+      "profile": "compact",
+      "n": 4,
+      "task_checks_passed": 4,
+      "checks_and_eos": 4,
+      "budget_reached": 0,
+      "mean_input_tokens": 76.25,
+      "mean_output_tokens": 196.5,
+      "mean_total_tokens": 272.75,
+      "mean_total_seconds": 22.074962375249015
+    },
+    {
+      "stage": "development",
+      "kind": "code",
+      "profile": "legacy",
+      "n": 4,
+      "task_checks_passed": 3,
+      "checks_and_eos": 3,
+      "budget_reached": 0,
+      "mean_input_tokens": 82.25,
+      "mean_output_tokens": 103.5,
+      "mean_total_tokens": 185.75,
+      "mean_total_seconds": 10.848332562483847
+    },
+    {
+      "stage": "development",
+      "kind": "scalar",
+      "profile": "compact",
+      "n": 12,
+      "task_checks_passed": 8,
+      "checks_and_eos": 8,
+      "budget_reached": 0,
+      "mean_input_tokens": 55.333333333333336,
+      "mean_output_tokens": 29.083333333333332,
+      "mean_total_tokens": 84.41666666666667,
+      "mean_total_seconds": 3.0584005764782582
+    },
+    {
+      "stage": "development",
+      "kind": "scalar",
+      "profile": "legacy",
+      "n": 12,
+      "task_checks_passed": 11,
+      "checks_and_eos": 11,
+      "budget_reached": 0,
+      "mean_input_tokens": 64.25,
+      "mean_output_tokens": 93.58333333333333,
+      "mean_total_tokens": 157.83333333333334,
+      "mean_total_seconds": 11.406360371571887
+    }
+  ],
+  "selection": {
+    "scalar": {
+      "profile": "legacy",
+      "comparisons": {
+        "compact": {
+          "n": 12,
+          "task_check_regressions": [
+            "arith_00_03",
+            "arith_00_05",
+            "arith_00_08"
+          ],
+          "checks_and_eos_regressions": [
+            "arith_00_03",
+            "arith_00_05",
+            "arith_00_08"
+          ],
+          "total_token_ratio": 0.5348468848996832,
+          "total_seconds_ratio": 0.26813115462323295,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 12,
+            "baseline_mean": 157.83333333333334,
+            "intervened_mean": 84.41666666666667,
+            "mean_difference": 73.41666666666667,
+            "sd_difference": 77.10495601726417,
+            "paired_t": 3.298397492387987,
+            "p_value_descriptive_post_selection": 0.007098145707435175,
+            "cohens_dz": 0.9521653400622954,
+            "paired_bootstrap_95": [
+              35.581250000000004,
+              117.66666666666667
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    },
+    "code": {
+      "profile": "legacy",
+      "comparisons": {
+        "compact": {
+          "n": 4,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 1.468371467025572,
+          "total_seconds_ratio": 2.0348714650940516,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 185.75,
+            "intervened_mean": 272.75,
+            "mean_difference": -87.0,
+            "sd_difference": 94.47045393490319,
+            "paired_t": -1.8418457068058367,
+            "p_value_descriptive_post_selection": 0.16273872486294846,
+            "cohens_dz": -0.9209228534029184,
+            "paired_bootstrap_95": [
+              -177.75,
+              -15.25
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    }
+  },
+  "gates": {
+    "scalar": {
+      "profile": "legacy",
+      "promoted": false,
+      "old_best_results_preserved": null,
+      "reason": "No development candidate met accuracy and total token/time gates; unchanged legacy inference retained without spending validation calls."
+    },
+    "code": {
+      "profile": "legacy",
+      "promoted": false,
+      "old_best_results_preserved": null,
+      "reason": "No development candidate met accuracy and total token/time gates; unchanged legacy inference retained without spending validation calls."
+    }
+  },
+  "rows": 32,
+  "data_sha256": "12deea56ea57e69e13df61b1023839b60c6605f7fc24615e3c74366d029939e5",
+  "plan_sha256": "be11c18663cac969be11227fbfdd0d33b0411d9090aa8a345a00d059bbb4ac64",
+  "limitations": "Small synthetic/task-level tests, not universal code quality. Selection on development only, validation unchanged after selection. No post-generation stripping, oracle retries or extra model verification calls."
+}

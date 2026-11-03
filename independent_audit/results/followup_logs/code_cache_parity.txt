@@ -1,0 +1,8 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+code cache parity 1/4 exact=True full=142.30s cached=53.79s
+code cache parity 2/4 exact=True full=76.34s cached=32.55s
+code cache parity 3/4 exact=True full=79.53s cached=33.06s
+code cache parity 4/4 exact=True full=73.36s cached=33.10s

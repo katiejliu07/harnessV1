@@ -1,0 +1,26 @@
+{
+  "summary": {
+    "C:code_toolset": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 179414,
+      "output_tokens": 2800,
+      "tokens_per_correct": 30369.0
+    },
+    "C:full_tools": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 804734,
+      "output_tokens": 3250,
+      "tokens_per_correct": 134664.0
+    }
+  },
+  "decisions": {
+    "toolset_first_rung": {
+      "losses": [],
+      "tokens_per_correct": 30369.0,
+      "full_tokens_per_correct": 134664.0,
+      "enable": true
+    }
+  }
+}

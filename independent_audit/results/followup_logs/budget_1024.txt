@@ -1,0 +1,24 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+budget 1024 coding 0 C_concise 52t truncated=False
+budget 1024 coding 0 B_reasoning 555t truncated=False
+budget 1024 coding 0 A_normal 369t truncated=False
+budget 1024 coding 0 E_v8_prefix 480t truncated=False
+budget 1024 coding 1 A_normal 447t truncated=False
+budget 1024 coding 1 E_v8_prefix 333t truncated=False
+budget 1024 coding 1 C_concise 94t truncated=False
+budget 1024 coding 1 B_reasoning 584t truncated=False
+budget 1024 coding 2 E_v8_prefix 570t truncated=False
+budget 1024 coding 2 B_reasoning 587t truncated=False
+budget 1024 coding 2 A_normal 541t truncated=False
+budget 1024 coding 2 C_concise 142t truncated=False
+budget 1024 coding 3 E_v8_prefix 498t truncated=False
+budget 1024 coding 3 C_concise 158t truncated=False
+budget 1024 coding 3 A_normal 503t truncated=False
+budget 1024 coding 3 B_reasoning 635t truncated=False
+budget 1024 heldout_arithmetic 5 E_v8_prefix 210t truncated=False
+budget 1024 heldout_arithmetic 5 B_reasoning 290t truncated=False
+budget 1024 heldout_arithmetic 5 C_concise 250t truncated=False
+budget 1024 heldout_arithmetic 5 A_normal 323t truncated=False

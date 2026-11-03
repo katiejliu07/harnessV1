@@ -1,0 +1,18 @@
+# Independent benchmark results
+
+Source: `independent_audit/results/mps_torch271_timing_repeats`. Task-specific costs include donor forwards; output tokens include EOS.
+
+Supplemental executable/complexity grading applied to 0 code rows; raw primary scores remain available in JSON. The success column requires passed task checks AND EOS before the cap. JSON separately reports checks passed even when the budget is reached. EOS is an operational stopping criterion, not proof of semantic completeness. Scalar scoring does not establish reasoning soundness.
+
+| Suite | Condition | Task checks passed | Checks passed & EOS | Budget reached | Mean output tokens | Mean task median total s |
+|---|---|---:|---:|---:|---:|---:|
+| original | A_normal | 5/5 | 5/5 | 0 | 37.20 | 2.632 |
+| original | B_reasoning | 5/5 | 5/5 | 0 | 138.40 | 10.075 |
+| original | C_concise | 5/5 | 5/5 | 0 | 17.40 | 1.277 |
+| original | E_v8_prefix | 5/5 | 5/5 | 0 | 69.80 | 5.064 |
+
+Scalar donor probes: 0; answers changed in 0; donor-answer attraction in 0.
+Coding donor probes: 0; functional pass status changed in 0; donor function name appeared without the target name in 0.
+
+These are observed sample results, not evidence of a style-specific mechanism or broad preservation of code quality.
+{'files_verified': 84, 'changed': []}

@@ -1,0 +1,83 @@
+{
+  "_note": "Profiles are presets of independent settings. Ladders run cheapest first; escalation only on a failed objective check. Technical first rungs: tool-free tasks try lean mode (pilot_v2: ~96% fewer tokens per correct, its one miss caught by the check); tool tasks try only their toolset (pilot_toolset_v1: 6/6 vs 6/6 correct, -77% tokens per correct). General/important have no check, so they never start minimal. Hygiene only for hygiene_agents on tool runs (pilot_v2: Codex -36%, Claude +4%).",
+  "agents": {
+    "claude": {
+      "command": "claude",
+      "extra_args": []
+    },
+    "codex": {
+      "command": "codex",
+      "effort_key": "model_reasoning_effort",
+      "extra_args": [
+        "--skip-git-repo-check",
+        "--ephemeral",
+        "-s",
+        "read-only"
+      ]
+    }
+  },
+  "hygiene_instruction": "Keep tool output short: use quiet or summary flags, limit long output with head, tail or grep, and pipe long logs through `python3 {compact}` before reading them. Do not re-read output you have already seen.",
+  "profiles": {
+    "technical": {
+      "system_append": null,
+      "lean_system_prompt": "You are a precise assistant. Answer the question directly.",
+      "hygiene": true,
+      "ladder": [
+        {
+          "agent": "claude",
+          "model": "sonnet",
+          "effort": "low"
+        },
+        {
+          "agent": "claude",
+          "model": "sonnet",
+          "effort": "high"
+        },
+        {
+          "agent": "claude",
+          "model": "opus",
+          "effort": "high"
+        }
+      ],
+      "lean_first_rung": true,
+      "toolset_first_rung": true
+    },
+    "important": {
+      "system_append": null,
+      "lean_system_prompt": null,
+      "hygiene": true,
+      "ladder": [
+        {
+          "agent": "claude",
+          "model": "opus",
+          "effort": "high"
+        }
+      ],
+      "lean_first_rung": false,
+      "toolset_first_rung": false
+    },
+    "general": {
+      "system_append": null,
+      "lean_system_prompt": null,
+      "hygiene": true,
+      "ladder": [
+        {
+          "agent": "claude",
+          "model": "sonnet",
+          "effort": "low"
+        }
+      ],
+      "lean_first_rung": false,
+      "toolset_first_rung": false
+    }
+  },
+  "hygiene_agents": [
+    "codex"
+  ],
+  "toolsets": {
+    "none": "",
+    "read": "Read,Grep,Glob",
+    "code": "Bash,Read,Edit,Write",
+    "full": "default"
+  }
+}

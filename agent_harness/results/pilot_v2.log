@@ -1,0 +1,143 @@
+A lean_no_tools          hard_00_01               verified=True diff=None input=2854 out=88
+A default                hard_00_01               verified=True diff=None input=20971 out=76
+A lean_no_tools_short_sys hard_00_01               verified=True diff=None input=634 out=74
+A default                hard_00_02               verified=True diff=None input=20978 out=79
+A lean_no_tools_short_sys hard_00_02               verified=True diff=None input=639 out=107
+A lean_no_tools          hard_00_02               verified=True diff=None input=2855 out=108
+A lean_no_tools          hard_00_05               verified=True diff=None input=2870 out=145
+A lean_no_tools_short_sys hard_00_05               verified=True diff=None input=650 out=113
+A default                hard_00_05               verified=True diff=None input=20987 out=122
+A lean_no_tools          hard_00_06               verified=True diff=None input=2859 out=49
+A default                hard_00_06               verified=True diff=None input=20978 out=70
+A lean_no_tools_short_sys hard_00_06               verified=True diff=None input=642 out=66
+A lean_no_tools          hard_00_08               verified=True diff=None input=2844 out=61
+A default                hard_00_08               verified=True diff=None input=20965 out=61
+A lean_no_tools_short_sys hard_00_08               verified=True diff=None input=625 out=61
+A lean_no_tools          hard_00_10               verified=True diff=None input=2854 out=61
+A lean_no_tools_short_sys hard_00_10               verified=True diff=None input=636 out=58
+A default                hard_00_10               verified=True diff=None input=20973 out=59
+A lean_no_tools_short_sys code_merge_intervals     verified=True diff=True input=676 out=170
+A default                code_merge_intervals     verified=True diff=True input=21010 out=220
+A lean_no_tools          code_merge_intervals     verified=True diff=True input=2897 out=291
+A lean_no_tools          code_spiral_order        verified=True diff=True input=2877 out=440
+A lean_no_tools_short_sys code_spiral_order        verified=True diff=True input=658 out=379
+A default                code_spiral_order        verified=True diff=True input=20998 out=481
+A lean_no_tools          code_top_k_frequent      verified=False diff=False input=2873 out=183
+A lean_no_tools_short_sys code_top_k_frequent      verified=False diff=False input=653 out=105
+A default                code_top_k_frequent      verified=True diff=True input=20992 out=158
+A lean_no_tools_short_sys code_next_greater        verified=True diff=True input=632 out=150
+A default                code_next_greater        verified=True diff=True input=20972 out=155
+A lean_no_tools          code_next_greater        verified=True diff=True input=2853 out=186
+A lean_no_tools_short_sys code_rle_encode          verified=True diff=True input=627 out=77
+A lean_no_tools          code_rle_encode          verified=True diff=True input=2848 out=77
+A default                code_rle_encode          verified=True diff=True input=20965 out=77
+A lean_no_tools_short_sys code_tokenize_expr       verified=True diff=True input=641 out=248
+A lean_no_tools          code_tokenize_expr       verified=True diff=True input=2861 out=284
+A default                code_tokenize_expr       verified=True diff=True input=20980 out=287
+B claude_hygiene         log                      verified=True diff=None input=116008 out=455
+B claude_plain           log                      verified=True diff=None input=115493 out=500
+B codex_hygiene          log                      verified=True diff=None input=33171 out=189
+B codex_plain            log                      verified=True diff=None input=49886 out=220
+B claude_hygiene         tests                    verified=True diff=None input=116100 out=483
+B claude_plain           tests                    verified=True diff=None input=115555 out=509
+B codex_plain            tests                    verified=True diff=None input=52591 out=216
+B codex_hygiene          tests                    verified=True diff=None input=33176 out=195
+B claude_plain           data                     verified=True diff=None input=139287 out=590
+B claude_hygiene         data                     verified=True diff=None input=139889 out=518
+B codex_plain            data                     verified=True diff=None input=52810 out=252
+B codex_hygiene          data                     verified=True diff=None input=35081 out=194
+B claude_hygiene         log                      verified=True diff=None input=116024 out=524
+B claude_plain           log                      verified=True diff=None input=115838 out=579
+B codex_hygiene          log                      verified=True diff=None input=35078 out=190
+B codex_plain            log                      verified=True diff=None input=52815 out=255
+B claude_plain           tests                    verified=True diff=None input=115529 out=508
+B claude_hygiene         tests                    verified=True diff=None input=140446 out=660
+B codex_plain            tests                    verified=True diff=None input=59650 out=194
+B codex_hygiene          tests                    verified=True diff=None input=35077 out=191
+B claude_hygiene         data                     verified=True diff=None input=116356 out=585
+B claude_plain           data                     verified=True diff=None input=115593 out=544
+B codex_hygiene          data                     verified=True diff=None input=33172 out=192
+B codex_plain            data                     verified=True diff=None input=52621 out=224
+{
+  "summary": {
+    "A:lean_no_tools": {
+      "n": 12,
+      "correct": 11,
+      "input_total": 34345,
+      "output_tokens": 1973,
+      "tokens_per_correct": 3301.6363636363635
+    },
+    "A:default": {
+      "n": 12,
+      "correct": 12,
+      "input_total": 251769,
+      "output_tokens": 1845,
+      "tokens_per_correct": 21134.5
+    },
+    "A:lean_no_tools_short_sys": {
+      "n": 12,
+      "correct": 11,
+      "input_total": 7713,
+      "output_tokens": 1608,
+      "tokens_per_correct": 847.3636363636364
+    },
+    "B:claude_hygiene": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 744823,
+      "output_tokens": 3225,
+      "tokens_per_correct": 124674.66666666667
+    },
+    "B:claude_plain": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 717295,
+      "output_tokens": 3230,
+      "tokens_per_correct": 120087.5
+    },
+    "B:codex_hygiene": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 204755,
+      "output_tokens": 1151,
+      "tokens_per_correct": 34317.666666666664
+    },
+    "B:codex_plain": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 320373,
+      "output_tokens": 1361,
+      "tokens_per_correct": 53622.333333333336
+    }
+  },
+  "decisions": {
+    "lean_no_tools": {
+      "losses": [
+        "code_top_k_frequent"
+      ],
+      "tokens_per_correct": 3301.6363636363635,
+      "default_tokens_per_correct": 21134.5,
+      "enable": false
+    },
+    "lean_no_tools_short_sys": {
+      "losses": [
+        "code_top_k_frequent"
+      ],
+      "tokens_per_correct": 847.3636363636364,
+      "default_tokens_per_correct": 21134.5,
+      "enable": false
+    },
+    "hygiene_claude": {
+      "losses": [],
+      "tokens_per_correct": 124674.66666666667,
+      "plain_tokens_per_correct": 120087.5,
+      "enable": false
+    },
+    "hygiene_codex": {
+      "losses": [],
+      "tokens_per_correct": 34317.666666666664,
+      "plain_tokens_per_correct": 53622.333333333336,
+      "enable": true
+    }
+  }
+}

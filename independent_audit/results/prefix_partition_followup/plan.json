@@ -1,0 +1,25 @@
+{
+  "arguments": {
+    "device": "mps",
+    "dtype": "float16",
+    "main": "independent_audit/results/mps_torch271_full",
+    "out": "independent_audit/results/prefix_partition_followup"
+  },
+  "source_sha256": "2c804cf899f8c1cb947ecd74f679a2f611eaa7809ae63d21f8f7c77096d7da01",
+  "conditions": [
+    "instruction",
+    "question",
+    "chat_or_boundary"
+  ],
+  "max_new_tokens": 320,
+  "empty_partition_policy": "Analytical identity; reuse baseline IDs with provenance, no new latency claim",
+  "timing_scope": "Donor forward, generation and decoding only; tokenization/maps excluded. This is a causal partition experiment, not the end-to-end cost benchmark.",
+  "supporting_source_sha256": {
+    "engine.py": "a54fbd1d6c58e9cef9a6a36d58781268a68f3e96bb31fe764fe820f011bf86ec",
+    "model.py": "cd6fc7791991b00a919e151c2e0d9cac219af3c633a476123654e1afe16d6445",
+    "prompts.py": "69c1cc18666b781329d6454a4876924bb0199f28eafea14d00fee0ff9510d0f7",
+    "tasks.py": "f480a6744952b628ccb654d205db08af8f184ea226c913111f3aed4a1581d4b7",
+    "scoring_v2.py": "e22ed1018fa68a00033ac3ae02b8598b12674c49153db5e1b17e035626c5c21f",
+    "code_quality.py": "2578f3cb4f4a21a618324db3a0dd3e17c1d06ab7783132f29fdc70fe5ea19c61"
+  }
+}

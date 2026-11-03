@@ -1,0 +1,1377 @@
+{
+  "arguments": {
+    "out": "lean_harness/results/token_light_v1",
+    "device": "mps",
+    "dtype": "float16",
+    "policy_out": "lean_harness/policy.json"
+  },
+  "seed": 202610293,
+  "profiles": [
+    "legacy",
+    "lean",
+    "checked"
+  ],
+  "source_sha256": {
+    "lean_harness/runtime.py": "fa8a7a63fb32ac13dcec4301fd955778aecbc3b7437b87baa80ce61fda7b2455",
+    "independent_audit/engine.py": "a54fbd1d6c58e9cef9a6a36d58781268a68f3e96bb31fe764fe820f011bf86ec",
+    "independent_audit/model.py": "cd6fc7791991b00a919e151c2e0d9cac219af3c633a476123654e1afe16d6445",
+    "independent_audit/prompts.py": "69c1cc18666b781329d6454a4876924bb0199f28eafea14d00fee0ff9510d0f7",
+    "lean_harness/benchmark.py": "bf6f37515e0ee9fa97f154534b939ad38f268d95d789a629fda0ec1cd21cab28",
+    "lean_harness/tasks.py": "9995fcc81e8955ff32f899fcda9bee15802f9dfe1901e8cba545c576b37ec014",
+    "independent_audit/code_quality.py": "2578f3cb4f4a21a618324db3a0dd3e17c1d06ab7783132f29fdc70fe5ea19c61",
+    "independent_audit/scoring_v2.py": "e22ed1018fa68a00033ac3ae02b8598b12674c49153db5e1b17e035626c5c21f",
+    "independent_audit/evaluation.py": "bad7242069d21aa1d0a070b50952db0ea9aa8b9640c7d28dfb4f7206b8d4b953"
+  },
+  "development": [
+    {
+      "id": "arith_00_00",
+      "kind": "scalar",
+      "prompt": "What is 199 plus 48?",
+      "answer": "247"
+    },
+    {
+      "id": "arith_00_01",
+      "kind": "scalar",
+      "prompt": "What is 21 times 27?",
+      "answer": "567"
+    },
+    {
+      "id": "arith_00_02",
+      "kind": "scalar",
+      "prompt": "What is 5/8 of 168?",
+      "answer": "105"
+    },
+    {
+      "id": "arith_00_03",
+      "kind": "scalar",
+      "prompt": "What is 23 percent of 220?",
+      "answer": "253/5"
+    },
+    {
+      "id": "arith_00_04",
+      "kind": "scalar",
+      "prompt": "Solve 5x + 15 = 135 for x.",
+      "answer": "24"
+    },
+    {
+      "id": "arith_00_05",
+      "kind": "scalar",
+      "prompt": "An item costs 250 dollars before a 25 percent discount and then 8 percent tax. What is its exact final price in dollars?",
+      "answer": "405/2"
+    },
+    {
+      "id": "arith_00_06",
+      "kind": "scalar",
+      "prompt": "A vehicle travels 148 miles in 4 hours, then 176 miles in 4 hours. What is the overall average speed in miles per hour? Give an exact number or fraction.",
+      "answer": "81/2"
+    },
+    {
+      "id": "arith_00_07",
+      "kind": "scalar",
+      "prompt": "What is 41 squared minus 23 squared?",
+      "answer": "1152"
+    },
+    {
+      "id": "arith_00_08",
+      "kind": "scalar",
+      "prompt": "Evaluate 8 + 5 * 11, using standard order of operations.",
+      "answer": "63"
+    },
+    {
+      "id": "arith_00_09",
+      "kind": "scalar",
+      "prompt": "A total of 126 is split in the ratio 2:4. What is the first share?",
+      "answer": "42"
+    },
+    {
+      "id": "arith_00_10",
+      "kind": "scalar",
+      "prompt": "What is (-18) times (-8)?",
+      "answer": "144"
+    },
+    {
+      "id": "arith_00_11",
+      "kind": "scalar",
+      "prompt": "How many minutes are in 5.4 hours?",
+      "answer": "324"
+    },
+    {
+      "id": "code_interleave",
+      "kind": "code",
+      "function": "interleave",
+      "prompt": "Write interleave(a, b), a Python function returning a new list that alternates items from a and b, starting with a, and appends the remaining items of a longer input. Handle empty inputs. Do not modify inputs.",
+      "cases": [
+        [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          [
+            1,
+            8,
+            2,
+            9
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4
+            ]
+          ],
+          [
+            1,
+            4,
+            2,
+            3
+          ]
+        ],
+        [
+          [
+            [],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            [],
+            []
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "id": "code_clip_values",
+      "kind": "code",
+      "function": "clip_values",
+      "prompt": "Write clip_values(values, lo, hi), returning a new list with each numeric value clipped to the inclusive range [lo, hi]. Assume lo <= hi. Preserve order, handle empty input and do not modify inputs.",
+      "cases": [
+        [
+          [
+            [
+              -3,
+              0,
+              4,
+              9
+            ],
+            0,
+            5
+          ],
+          [
+            0,
+            0,
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            [],
+            1,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            [
+              2,
+              3
+            ],
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            [
+              -4,
+              -1
+            ],
+            -3,
+            -2
+          ],
+          [
+            -3,
+            -2
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_adjacent_differences",
+      "kind": "code",
+      "function": "adjacent_differences",
+      "prompt": "Write adjacent_differences(values), returning a new list of each value minus its predecessor, in order. Lists with fewer than two values return []. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              4,
+              7,
+              2,
+              2
+            ]
+          ],
+          [
+            3,
+            -5,
+            0
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              8
+            ]
+          ],
+          []
+        ],
+        [
+          [
+            [
+              -3,
+              -7,
+              2
+            ]
+          ],
+          [
+            -4,
+            9
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_even_first",
+      "kind": "code",
+      "function": "even_first",
+      "prompt": "Write even_first(values), returning a new list with all even integers followed by all odd integers, preserving original order within each group. Handle empty input. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              3,
+              2,
+              1,
+              4,
+              2
+            ]
+          ],
+          [
+            2,
+            4,
+            2,
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              -3,
+              -2,
+              0,
+              5
+            ]
+          ],
+          [
+            -2,
+            0,
+            -3,
+            5
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              3
+            ]
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "arith_00_00",
+      "kind": "scalar",
+      "prompt": "What is 221 plus 119?",
+      "answer": "340"
+    },
+    {
+      "id": "arith_00_01",
+      "kind": "scalar",
+      "prompt": "What is 38 times 28?",
+      "answer": "1064"
+    },
+    {
+      "id": "arith_00_02",
+      "kind": "scalar",
+      "prompt": "What is 7/12 of 324?",
+      "answer": "189"
+    },
+    {
+      "id": "arith_00_03",
+      "kind": "scalar",
+      "prompt": "What is 16 percent of 150?",
+      "answer": "24"
+    },
+    {
+      "id": "arith_00_04",
+      "kind": "scalar",
+      "prompt": "Solve 6x + 13 = 175 for x.",
+      "answer": "27"
+    },
+    {
+      "id": "arith_00_05",
+      "kind": "scalar",
+      "prompt": "An item costs 230 dollars before a 10 percent discount and then 8 percent tax. What is its exact final price in dollars?",
+      "answer": "5589/25"
+    },
+    {
+      "id": "arith_00_06",
+      "kind": "scalar",
+      "prompt": "A vehicle travels 126 miles in 3 hours, then 130 miles in 5 hours. What is the overall average speed in miles per hour? Give an exact number or fraction.",
+      "answer": "32"
+    },
+    {
+      "id": "arith_00_07",
+      "kind": "scalar",
+      "prompt": "What is 33 squared minus 18 squared?",
+      "answer": "765"
+    },
+    {
+      "id": "arith_00_08",
+      "kind": "scalar",
+      "prompt": "Evaluate 15 + 9 * 6, using standard order of operations.",
+      "answer": "69"
+    },
+    {
+      "id": "arith_00_09",
+      "kind": "scalar",
+      "prompt": "A total of 242 is split in the ratio 4:7. What is the first share?",
+      "answer": "88"
+    },
+    {
+      "id": "arith_00_10",
+      "kind": "scalar",
+      "prompt": "What is (-24) times (-15)?",
+      "answer": "360"
+    },
+    {
+      "id": "arith_00_11",
+      "kind": "scalar",
+      "prompt": "How many minutes are in 4.3 hours?",
+      "answer": "258"
+    },
+    {
+      "id": "arith_01_00",
+      "kind": "scalar",
+      "prompt": "What is 312 plus 61?",
+      "answer": "373"
+    },
+    {
+      "id": "arith_01_01",
+      "kind": "scalar",
+      "prompt": "What is 28 times 14?",
+      "answer": "392"
+    },
+    {
+      "id": "arith_01_02",
+      "kind": "scalar",
+      "prompt": "What is 11/16 of 176?",
+      "answer": "121"
+    },
+    {
+      "id": "arith_01_03",
+      "kind": "scalar",
+      "prompt": "What is 13 percent of 290?",
+      "answer": "377/10"
+    },
+    {
+      "id": "arith_01_04",
+      "kind": "scalar",
+      "prompt": "Solve 6x + 16 = 118 for x.",
+      "answer": "17"
+    },
+    {
+      "id": "arith_01_05",
+      "kind": "scalar",
+      "prompt": "An item costs 120 dollars before a 20 percent discount and then 8 percent tax. What is its exact final price in dollars?",
+      "answer": "2592/25"
+    },
+    {
+      "id": "arith_01_06",
+      "kind": "scalar",
+      "prompt": "A vehicle travels 86 miles in 2 hours, then 192 miles in 3 hours. What is the overall average speed in miles per hour? Give an exact number or fraction.",
+      "answer": "278/5"
+    },
+    {
+      "id": "arith_01_07",
+      "kind": "scalar",
+      "prompt": "What is 37 squared minus 19 squared?",
+      "answer": "1008"
+    },
+    {
+      "id": "arith_01_08",
+      "kind": "scalar",
+      "prompt": "Evaluate 17 + 8 * 6, using standard order of operations.",
+      "answer": "65"
+    },
+    {
+      "id": "arith_01_09",
+      "kind": "scalar",
+      "prompt": "A total of 224 is split in the ratio 2:6. What is the first share?",
+      "answer": "56"
+    },
+    {
+      "id": "arith_01_10",
+      "kind": "scalar",
+      "prompt": "What is (-10) times (-7)?",
+      "answer": "70"
+    },
+    {
+      "id": "arith_01_11",
+      "kind": "scalar",
+      "prompt": "How many minutes are in 5.7 hours?",
+      "answer": "342"
+    },
+    {
+      "id": "code_rotate_right",
+      "kind": "code",
+      "function": "rotate_right",
+      "prompt": "Write rotate_right(values, k), returning a new list rotated right by integer k. Negative k rotates left. Handle empty input and k larger than the length. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              1,
+              2,
+              3,
+              4
+            ],
+            1
+          ],
+          [
+            4,
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2,
+              3
+            ],
+            5
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2,
+              3
+            ],
+            -1
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            [],
+            4
+          ],
+          []
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_merge_sorted",
+      "kind": "code",
+      "function": "merge_sorted",
+      "prompt": "Write merge_sorted(a, b), returning a new sorted list containing all values from the two already sorted lists, including duplicates. Handle empty inputs and do not modify inputs.",
+      "cases": [
+        [
+          [
+            [
+              1,
+              3,
+              3
+            ],
+            [
+              2,
+              3,
+              4
+            ]
+          ],
+          [
+            1,
+            2,
+            3,
+            3,
+            3,
+            4
+          ]
+        ],
+        [
+          [
+            [],
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            [
+              -5,
+              0
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          [
+            -5,
+            -3,
+            0,
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_prefix_sums",
+      "kind": "code",
+      "function": "prefix_sums",
+      "prompt": "Write prefix_sums(values), returning a new list of inclusive running sums. Handle empty input and negative numbers. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              2,
+              3,
+              -1
+            ]
+          ],
+          [
+            2,
+            5,
+            4
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              -2,
+              2,
+              4
+            ]
+          ],
+          [
+            -2,
+            0,
+            4
+          ]
+        ],
+        [
+          [
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_moving_sums",
+      "kind": "code",
+      "function": "moving_sums",
+      "prompt": "Write moving_sums(values, k), returning the sums of all consecutive windows of exactly k elements. Return [] for k <= 0 or k > len(values). Handle empty input. Do not modify inputs.",
+      "cases": [
+        [
+          [
+            [
+              1,
+              2,
+              3,
+              4
+            ],
+            2
+          ],
+          [
+            3,
+            5,
+            7
+          ]
+        ],
+        [
+          [
+            [
+              2,
+              -1,
+              5
+            ],
+            1
+          ],
+          [
+            2,
+            -1,
+            5
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            3
+          ],
+          []
+        ],
+        [
+          [
+            [],
+            1
+          ],
+          []
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            0
+          ],
+          []
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            -2
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "id": "code_expand_runs",
+      "kind": "code",
+      "function": "expand_runs",
+      "prompt": "Write expand_runs(pairs), returning a new list that expands each (value, count) pair into count copies of value in order. Counts are nonnegative integers. Handle zero counts and empty input. Do not modify inputs.",
+      "cases": [
+        [
+          [
+            [
+              [
+                "a",
+                2
+              ],
+              [
+                "b",
+                0
+              ],
+              [
+                "c",
+                1
+              ]
+            ]
+          ],
+          [
+            "a",
+            "a",
+            "c"
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              [
+                3,
+                1
+              ],
+              [
+                3,
+                2
+              ]
+            ]
+          ],
+          [
+            3,
+            3,
+            3
+          ]
+        ],
+        [
+          [
+            [
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "id": "code_nonzero_indices",
+      "kind": "code",
+      "function": "nonzero_indices",
+      "prompt": "Write nonzero_indices(values), returning a list of indices of all nonzero numbers, in original order. Handle empty input. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              0,
+              3,
+              0,
+              -2
+            ]
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              0,
+              0
+            ]
+          ],
+          []
+        ],
+        [
+          [
+            [
+              2,
+              -1
+            ]
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_flatten_once",
+      "kind": "code",
+      "function": "flatten_once",
+      "prompt": "Write flatten_once(rows), returning a new list made by concatenating the lists in rows in order, flattening exactly one level. Handle empty rows and empty input. Do not modify inputs.",
+      "cases": [
+        [
+          [
+            [
+              [
+                1,
+                2
+              ],
+              [],
+              [
+                3
+              ]
+            ]
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              [],
+              []
+            ]
+          ],
+          []
+        ],
+        [
+          [
+            [
+              [
+                [
+                  1
+                ]
+              ],
+              [
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              1
+            ],
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "code_keep_last",
+      "kind": "code",
+      "function": "keep_last",
+      "prompt": "Write keep_last(items), returning a list containing only the last occurrence of each hashable item, in the order of those last occurrences. Handle empty input. Do not modify the input.",
+      "cases": [
+        [
+          [
+            [
+              1,
+              2,
+              1,
+              3,
+              2
+            ]
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ],
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              "a",
+              "b",
+              "a"
+            ]
+          ],
+          [
+            "b",
+            "a"
+          ]
+        ],
+        [
+          [
+            [
+              null,
+              false,
+              null
+            ]
+          ],
+          [
+            false,
+            null
+          ]
+        ]
+      ]
+    }
+  ],
+  "regressions": [
+    {
+      "prompt": "Write a Python function dedup(items) returning a list of first occurrences in original order. Items are hashable. Handle empty input. Do not modify input.",
+      "function": "dedup",
+      "cases": [
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              3,
+              1,
+              3,
+              2,
+              1
+            ]
+          ],
+          [
+            3,
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            [
+              null,
+              false,
+              null,
+              false
+            ]
+          ],
+          [
+            null,
+            false
+          ]
+        ]
+      ],
+      "id": "old_coding_00",
+      "kind": "code"
+    },
+    {
+      "prompt": "Write a Python function runs(values) that returns a list of (value, count) tuples for consecutive equal values. Handle empty input. Do not modify input.",
+      "function": "runs",
+      "cases": [
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              1,
+              1,
+              2,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "a",
+              "a",
+              "a"
+            ]
+          ],
+          [
+            [
+              "a",
+              3
+            ]
+          ]
+        ]
+      ],
+      "id": "old_coding_01",
+      "kind": "code"
+    },
+    {
+      "prompt": "Write a Python function lower_bound(a, x) returning the first index i where a[i] >= x in a sorted list, or len(a) if none. Use O(log n) time, no imports, and handle empty lists.",
+      "function": "lower_bound",
+      "cases": [
+        [
+          [
+            [],
+            3
+          ],
+          0
+        ],
+        [
+          [
+            [
+              1,
+              2,
+              2,
+              4
+            ],
+            2
+          ],
+          1
+        ],
+        [
+          [
+            [
+              1,
+              2,
+              4
+            ],
+            5
+          ],
+          3
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            0
+          ],
+          0
+        ]
+      ],
+      "id": "old_coding_02",
+      "kind": "code"
+    },
+    {
+      "prompt": "Write a Python function balanced(s) that returns whether all (), [], {} brackets are balanced and correctly nested, ignoring all other characters. Handle empty strings.",
+      "function": "balanced",
+      "cases": [
+        [
+          [
+            ""
+          ],
+          true
+        ],
+        [
+          [
+            "a{b[(c)]}"
+          ],
+          true
+        ],
+        [
+          [
+            "([)]"
+          ],
+          false
+        ],
+        [
+          [
+            ")("
+          ],
+          false
+        ],
+        [
+          [
+            "(()"
+          ],
+          false
+        ]
+      ],
+      "id": "old_coding_03",
+      "kind": "code"
+    },
+    {
+      "prompt": "What is 38 plus 47?",
+      "answer": "85",
+      "id": "old_heldout_arithmetic_00",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 23 times 17?",
+      "answer": "391",
+      "id": "old_heldout_arithmetic_01",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 18 percent of 350?",
+      "answer": "63",
+      "id": "old_heldout_arithmetic_02",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "Solve 7x - 11 = 80 for x.",
+      "answer": "13",
+      "id": "old_heldout_arithmetic_03",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "A car travels 154 miles in 2 hours and 86 miles in 3 hours. What is its average speed in miles per hour?",
+      "answer": "48",
+      "id": "old_heldout_arithmetic_04",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "A 120 dollar item is discounted 25 percent, then taxed 8 percent. What is its final price?",
+      "answer": "97.2",
+      "id": "old_heldout_arithmetic_05",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 13/16 of 240?",
+      "answer": "195",
+      "id": "old_heldout_arithmetic_06",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 47 squared minus 39 squared?",
+      "answer": "688",
+      "id": "old_heldout_arithmetic_07",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 7 + 5?",
+      "answer": "12",
+      "id": "old_original_00",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+      "answer": "12",
+      "id": "old_original_01",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 6 times 4?",
+      "answer": "24",
+      "id": "old_original_02",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "A square has side length 5. What is its area?",
+      "answer": "25",
+      "id": "old_original_03",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If 2x = 14, what is x?",
+      "answer": "7",
+      "id": "old_original_04",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 100 divided by 4?",
+      "answer": "25",
+      "id": "old_original_05",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+      "answer": "60",
+      "id": "old_original_06",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+      "answer": "7",
+      "id": "old_original_07",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is the square root of 49?",
+      "answer": "7",
+      "id": "old_original_08",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If 5 + x = 13, what is x?",
+      "answer": "8",
+      "id": "old_original_09",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 9 + 8?",
+      "answer": "17",
+      "id": "old_original_10",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 15 - 6?",
+      "answer": "9",
+      "id": "old_original_11",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 7 times 8?",
+      "answer": "56",
+      "id": "old_original_12",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 81 divided by 9?",
+      "answer": "9",
+      "id": "old_original_13",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If 3x + 5 = 20, what is x?",
+      "answer": "5",
+      "id": "old_original_14",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If 4x - 6 = 10, what is x?",
+      "answer": "4",
+      "id": "old_original_15",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "A rectangle has length 8 and width 3. What is its area?",
+      "answer": "24",
+      "id": "old_original_16",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If a train travels 120 miles in 3 hours, what is its average speed?",
+      "answer": "40",
+      "id": "old_original_17",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If a store has 50 items and sells 18, how many are left?",
+      "answer": "32",
+      "id": "old_original_18",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is the square root of 64?",
+      "answer": "8",
+      "id": "old_original_19",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If 6 + x = 25, what is x?",
+      "answer": "19",
+      "id": "old_original_20",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "If x / 5 = 7, what is x?",
+      "answer": "35",
+      "id": "old_original_21",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 14 percent of 200?",
+      "answer": "28",
+      "id": "old_original_22",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "What is 3/4 of 32?",
+      "answer": "24",
+      "id": "old_original_23",
+      "kind": "scalar"
+    },
+    {
+      "prompt": "A triangle has angles 90 degrees and 45 degrees. What is the third angle?",
+      "answer": "45",
+      "id": "old_original_24",
+      "kind": "scalar"
+    }
+  ],
+  "budgets": {
+    "scalar": 320,
+    "code": 1024
+  },
+  "selection": "Per kind: zero item-level regressions against legacy on dev, lower total input+output tokens and whole-request time; choose minimum summed total tokens, deterministic profile-name tie break.",
+  "promotion": "No validation/regression quality losses, lower validation total tokens/time. Prior37-task regression gate additionally requires all candidate task checks and EOS, preserving the best observed result from old prompting controls. No validation-driven candidate replacement."
+}

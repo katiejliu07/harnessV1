@@ -1,0 +1,515 @@
+{
+  "summaries": [
+    {
+      "stage": "development",
+      "kind": "code",
+      "profile": "legacy",
+      "n": 4,
+      "task_checks_passed": 3,
+      "checks_and_eos": 3,
+      "budget_reached": 0,
+      "mean_input_tokens": 82.25,
+      "mean_output_tokens": 103.5,
+      "mean_total_tokens": 185.75,
+      "mean_total_seconds": 11.013453000050504
+    },
+    {
+      "stage": "development",
+      "kind": "code",
+      "profile": "nosys",
+      "n": 4,
+      "task_checks_passed": 3,
+      "checks_and_eos": 3,
+      "budget_reached": 0,
+      "mean_input_tokens": 61.25,
+      "mean_output_tokens": 162.5,
+      "mean_total_tokens": 223.75,
+      "mean_total_seconds": 19.600688645761693
+    },
+    {
+      "stage": "development",
+      "kind": "code",
+      "profile": "steps",
+      "n": 4,
+      "task_checks_passed": 4,
+      "checks_and_eos": 4,
+      "budget_reached": 0,
+      "mean_input_tokens": 77.25,
+      "mean_output_tokens": 77.5,
+      "mean_total_tokens": 154.75,
+      "mean_total_seconds": 7.9858728439721745
+    },
+    {
+      "stage": "development",
+      "kind": "code",
+      "profile": "terse",
+      "n": 4,
+      "task_checks_passed": 4,
+      "checks_and_eos": 4,
+      "budget_reached": 0,
+      "mean_input_tokens": 77.25,
+      "mean_output_tokens": 77.5,
+      "mean_total_tokens": 154.75,
+      "mean_total_seconds": 8.474231197993504
+    },
+    {
+      "stage": "development",
+      "kind": "scalar",
+      "profile": "legacy",
+      "n": 12,
+      "task_checks_passed": 11,
+      "checks_and_eos": 11,
+      "budget_reached": 0,
+      "mean_input_tokens": 64.25,
+      "mean_output_tokens": 93.58333333333333,
+      "mean_total_tokens": 157.83333333333334,
+      "mean_total_seconds": 11.723876680577328
+    },
+    {
+      "stage": "development",
+      "kind": "scalar",
+      "profile": "nosys",
+      "n": 12,
+      "task_checks_passed": 12,
+      "checks_and_eos": 12,
+      "budget_reached": 0,
+      "mean_input_tokens": 43.25,
+      "mean_output_tokens": 104.91666666666667,
+      "mean_total_tokens": 148.16666666666666,
+      "mean_total_seconds": 11.046837413334288
+    },
+    {
+      "stage": "development",
+      "kind": "scalar",
+      "profile": "steps",
+      "n": 12,
+      "task_checks_passed": 11,
+      "checks_and_eos": 11,
+      "budget_reached": 0,
+      "mean_input_tokens": 58.25,
+      "mean_output_tokens": 38.416666666666664,
+      "mean_total_tokens": 96.66666666666667,
+      "mean_total_seconds": 3.892936951412897
+    },
+    {
+      "stage": "development",
+      "kind": "scalar",
+      "profile": "terse",
+      "n": 12,
+      "task_checks_passed": 9,
+      "checks_and_eos": 9,
+      "budget_reached": 0,
+      "mean_input_tokens": 46.25,
+      "mean_output_tokens": 37.583333333333336,
+      "mean_total_tokens": 83.83333333333333,
+      "mean_total_seconds": 4.021101420085567
+    },
+    {
+      "stage": "regression",
+      "kind": "code",
+      "profile": "legacy",
+      "n": 4,
+      "task_checks_passed": 4,
+      "checks_and_eos": 4,
+      "budget_reached": 0,
+      "mean_input_tokens": 77.5,
+      "mean_output_tokens": 111.5,
+      "mean_total_tokens": 189,
+      "mean_total_seconds": 12.020879718475044
+    },
+    {
+      "stage": "regression",
+      "kind": "code",
+      "profile": "steps",
+      "n": 4,
+      "task_checks_passed": 3,
+      "checks_and_eos": 3,
+      "budget_reached": 0,
+      "mean_input_tokens": 72.5,
+      "mean_output_tokens": 63.5,
+      "mean_total_tokens": 136,
+      "mean_total_seconds": 6.302035520988284
+    },
+    {
+      "stage": "regression",
+      "kind": "scalar",
+      "profile": "legacy",
+      "n": 33,
+      "task_checks_passed": 32,
+      "checks_and_eos": 32,
+      "budget_reached": 0,
+      "mean_input_tokens": 61.24242424242424,
+      "mean_output_tokens": 55.93939393939394,
+      "mean_total_tokens": 117.18181818181819,
+      "mean_total_seconds": 5.635869633857951
+    },
+    {
+      "stage": "regression",
+      "kind": "scalar",
+      "profile": "nosys",
+      "n": 33,
+      "task_checks_passed": 32,
+      "checks_and_eos": 32,
+      "budget_reached": 0,
+      "mean_input_tokens": 40.24242424242424,
+      "mean_output_tokens": 56.03030303030303,
+      "mean_total_tokens": 96.27272727272727,
+      "mean_total_seconds": 5.525104681827185
+    },
+    {
+      "stage": "validation",
+      "kind": "code",
+      "profile": "legacy",
+      "n": 8,
+      "task_checks_passed": 6,
+      "checks_and_eos": 6,
+      "budget_reached": 0,
+      "mean_input_tokens": 78.375,
+      "mean_output_tokens": 109.125,
+      "mean_total_tokens": 187.5,
+      "mean_total_seconds": 11.716543520742562
+    },
+    {
+      "stage": "validation",
+      "kind": "code",
+      "profile": "steps",
+      "n": 8,
+      "task_checks_passed": 5,
+      "checks_and_eos": 5,
+      "budget_reached": 0,
+      "mean_input_tokens": 73.375,
+      "mean_output_tokens": 73.25,
+      "mean_total_tokens": 146.625,
+      "mean_total_seconds": 8.055174052002258
+    },
+    {
+      "stage": "validation",
+      "kind": "scalar",
+      "profile": "legacy",
+      "n": 24,
+      "task_checks_passed": 20,
+      "checks_and_eos": 20,
+      "budget_reached": 0,
+      "mean_input_tokens": 64.41666666666667,
+      "mean_output_tokens": 91.75,
+      "mean_total_tokens": 156.16666666666666,
+      "mean_total_seconds": 9.770203612812717
+    },
+    {
+      "stage": "validation",
+      "kind": "scalar",
+      "profile": "nosys",
+      "n": 24,
+      "task_checks_passed": 23,
+      "checks_and_eos": 23,
+      "budget_reached": 0,
+      "mean_input_tokens": 43.416666666666664,
+      "mean_output_tokens": 98.58333333333333,
+      "mean_total_tokens": 142,
+      "mean_total_seconds": 10.418593659744753
+    }
+  ],
+  "selection": {
+    "scalar": {
+      "profile": "nosys",
+      "comparisons": {
+        "nosys": {
+          "n": 12,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.938753959873284,
+          "total_seconds_ratio": 0.9422512462652668,
+          "eligible": true,
+          "paired_total_tokens": {
+            "n": 12,
+            "baseline_mean": 157.83333333333334,
+            "intervened_mean": 148.16666666666666,
+            "mean_difference": 9.666666666666666,
+            "sd_difference": 48.11224250425122,
+            "paired_t": 0.6960040494898865,
+            "p_value_descriptive_post_selection": 0.5008675701126055,
+            "cohens_dz": 0.20091906266502782,
+            "paired_bootstrap_95": [
+              -19.835416666666664,
+              32.25
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "terse": {
+          "n": 12,
+          "task_check_regressions": [
+            "arith_00_08",
+            "arith_00_09"
+          ],
+          "checks_and_eos_regressions": [
+            "arith_00_08",
+            "arith_00_09"
+          ],
+          "total_token_ratio": 0.5311510031678986,
+          "total_seconds_ratio": 0.34298394035031354,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 12,
+            "baseline_mean": 157.83333333333334,
+            "intervened_mean": 83.83333333333333,
+            "mean_difference": 74.0,
+            "sd_difference": 64.45858430736043,
+            "paired_t": 3.97687169637268,
+            "p_value_descriptive_post_selection": 0.002170403386148453,
+            "cohens_dz": 1.1480239722166852,
+            "paired_bootstrap_95": [
+              41.833333333333336,
+              110.33333333333333
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "steps": {
+          "n": 12,
+          "task_check_regressions": [
+            "arith_00_09"
+          ],
+          "checks_and_eos_regressions": [
+            "arith_00_09"
+          ],
+          "total_token_ratio": 0.6124604012671595,
+          "total_seconds_ratio": 0.3320520214838351,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 12,
+            "baseline_mean": 157.83333333333334,
+            "intervened_mean": 96.66666666666667,
+            "mean_difference": 61.166666666666664,
+            "sd_difference": 63.740715307241324,
+            "paired_t": 3.3242104010169613,
+            "p_value_descriptive_post_selection": 0.0067804875363649195,
+            "cohens_dz": 0.9596168849350483,
+            "paired_bootstrap_95": [
+              29.416666666666668,
+              96.91874999999997
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    },
+    "code": {
+      "profile": "steps",
+      "comparisons": {
+        "nosys": {
+          "n": 4,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 1.2045760430686407,
+          "total_seconds_ratio": 1.779704207724118,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 185.75,
+            "intervened_mean": 223.75,
+            "mean_difference": -38.0,
+            "sd_difference": 120.3965669499481,
+            "paired_t": -0.631247235077684,
+            "p_value_descriptive_post_selection": 0.5726952164412529,
+            "cohens_dz": -0.315623617538842,
+            "paired_bootstrap_95": [
+              -151.75,
+              50.25
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "terse": {
+          "n": 4,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.8331090174966352,
+          "total_seconds_ratio": 0.7694436248063748,
+          "eligible": true,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 185.75,
+            "intervened_mean": 154.75,
+            "mean_difference": 31.0,
+            "sd_difference": 8.906926143924924,
+            "paired_t": 6.960875053655615,
+            "p_value_descriptive_post_selection": 0.0060830008913196525,
+            "cohens_dz": 3.4804375268278074,
+            "paired_bootstrap_95": [
+              25.25,
+              39.75
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "steps": {
+          "n": 4,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.8331090174966352,
+          "total_seconds_ratio": 0.7251016410507726,
+          "eligible": true,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 185.75,
+            "intervened_mean": 154.75,
+            "mean_difference": 31.0,
+            "sd_difference": 8.906926143924924,
+            "paired_t": 6.960875053655615,
+            "p_value_descriptive_post_selection": 0.0060830008913196525,
+            "cohens_dz": 3.4804375268278074,
+            "paired_bootstrap_95": [
+              25.25,
+              39.75
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    }
+  },
+  "gates": {
+    "scalar": {
+      "profile": "nosys",
+      "promoted": false,
+      "old_best_results_preserved": false,
+      "stress_failures": [],
+      "comparisons": {
+        "validation": {
+          "n": 24,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.9092849519743863,
+          "total_seconds_ratio": 1.0663640260354177,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 24,
+            "baseline_mean": 156.16666666666666,
+            "intervened_mean": 142.0,
+            "mean_difference": 14.166666666666666,
+            "sd_difference": 39.766346561390066,
+            "paired_t": 1.7452498250427837,
+            "p_value_descriptive_post_selection": 0.09428961956420213,
+            "cohens_dz": 0.3562476287530362,
+            "paired_bootstrap_95": [
+              -3.25,
+              27.958333333333332
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "regression": {
+          "n": 33,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.821567106283941,
+          "total_seconds_ratio": 0.9803464311230095,
+          "eligible": true,
+          "paired_total_tokens": {
+            "n": 33,
+            "baseline_mean": 117.18181818181819,
+            "intervened_mean": 96.27272727272727,
+            "mean_difference": 20.90909090909091,
+            "sd_difference": 30.237976573718143,
+            "paired_t": 3.9722758008163246,
+            "p_value_descriptive_post_selection": 0.00037858386214650104,
+            "cohens_dz": 0.6914844602156484,
+            "paired_bootstrap_95": [
+              11.48409090909091,
+              31.818181818181817
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    },
+    "code": {
+      "profile": "steps",
+      "promoted": false,
+      "old_best_results_preserved": false,
+      "stress_failures": [
+        {
+          "stage": "validation",
+          "task_id": "code_prefix_sums"
+        },
+        {
+          "stage": "validation",
+          "task_id": "code_expand_runs"
+        },
+        {
+          "stage": "validation",
+          "task_id": "code_keep_last"
+        },
+        {
+          "stage": "regression",
+          "task_id": "old_coding_01"
+        },
+        {
+          "stage": "regression",
+          "task_id": "old_coding_03"
+        }
+      ],
+      "comparisons": {
+        "validation": {
+          "n": 8,
+          "task_check_regressions": [
+            "code_expand_runs"
+          ],
+          "checks_and_eos_regressions": [
+            "code_expand_runs"
+          ],
+          "total_token_ratio": 0.782,
+          "total_seconds_ratio": 0.6875043000302655,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 8,
+            "baseline_mean": 187.5,
+            "intervened_mean": 146.625,
+            "mean_difference": 40.875,
+            "sd_difference": 26.989085095380954,
+            "paired_t": 4.283656089690381,
+            "p_value_descriptive_post_selection": 0.0036389704290837174,
+            "cohens_dz": 1.514501134645559,
+            "paired_bootstrap_95": [
+              24.375,
+              59.0
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "regression": {
+          "n": 4,
+          "task_check_regressions": [
+            "old_coding_03"
+          ],
+          "checks_and_eos_regressions": [
+            "old_coding_03"
+          ],
+          "total_token_ratio": 0.7195767195767195,
+          "total_seconds_ratio": 0.5242574311181739,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 189.0,
+            "intervened_mean": 136.0,
+            "mean_difference": 53.0,
+            "sd_difference": 44.90731195102493,
+            "paired_t": 2.3604173885001534,
+            "p_value_descriptive_post_selection": 0.09936233488429566,
+            "cohens_dz": 1.1802086942500767,
+            "paired_bootstrap_95": [
+              15.5,
+              90.5
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    }
+  },
+  "rows": 202,
+  "data_sha256": "d5712c0c3c4b36bb28570677d4abe3b1e4b9410e87167886521e488d3e97140b",
+  "plan_sha256": "5f9eb263a5d55dc976519849ab0467521edef7d8f6e2439a05382fba8858dc07",
+  "limitations": "Small synthetic/task-level tests, not universal code quality. Selection on development only, validation unchanged after selection. No post-generation stripping, oracle retries or extra model verification calls."
+}

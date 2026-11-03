@@ -1,0 +1,10 @@
+{
+  "machine_model": "Mac15,6",
+  "chip_type": "Apple M3 Pro",
+  "number_processors": "proc 12:6:6",
+  "physical_memory": "18 GB",
+  "platform": "macOS-15.1-arm64-arm-64bit",
+  "cuda_available": false,
+  "gpu": "Apple M3 Pro integrated 18-core GPU",
+  "timing_environment": "Shared interactive Mac; no isolated GPU, energy, or monetary-cost measurements"
+}

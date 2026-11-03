@@ -1,0 +1,3 @@
+Command: independent_audit/.venv/bin/python -m pytest independent_audit/tests -q
+.................................                                        [100%]
+33 passed in 5.18s

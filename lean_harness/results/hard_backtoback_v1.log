@@ -1,0 +1,140 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+hard 1/32 hard_00_00 legacy in=94 out=9 checks=False eos=True trunc=False
+hard 1/32 hard_00_00 nosys in=73 out=8 checks=False eos=True trunc=False
+hard 1/32 hard_00_00 steps in=88 out=33 checks=False eos=True trunc=False
+hard 1/32 hard_00_00 raw in=76 out=307 checks=False eos=True trunc=False
+hard 2/32 hard_00_01 legacy in=84 out=205 checks=True eos=True trunc=False
+hard 2/32 hard_00_01 steps in=78 out=85 checks=False eos=True trunc=False
+hard 2/32 hard_00_01 nosys in=63 out=189 checks=False eos=True trunc=False
+hard 2/32 hard_00_01 raw in=66 out=320 checks=False eos=False trunc=True
+hard 3/32 hard_00_02 steps in=81 out=116 checks=True eos=True trunc=False
+hard 3/32 hard_00_02 legacy in=87 out=320 checks=False eos=False trunc=True
+hard 3/32 hard_00_02 nosys in=66 out=271 checks=True eos=True trunc=False
+hard 3/32 hard_00_02 raw in=68 out=320 checks=False eos=False trunc=True
+hard 4/32 hard_00_03 steps in=82 out=34 checks=False eos=True trunc=False
+hard 4/32 hard_00_03 nosys in=67 out=234 checks=True eos=True trunc=False
+hard 4/32 hard_00_03 raw in=70 out=320 checks=False eos=False trunc=True
+hard 4/32 hard_00_03 legacy in=88 out=268 checks=False eos=True trunc=False
+hard 5/32 hard_00_04 nosys in=69 out=203 checks=True eos=True trunc=False
+hard 5/32 hard_00_04 steps in=84 out=123 checks=True eos=True trunc=False
+hard 5/32 hard_00_04 raw in=72 out=310 checks=False eos=True trunc=False
+hard 5/32 hard_00_04 legacy in=90 out=260 checks=True eos=True trunc=False
+hard 6/32 hard_00_05 steps in=96 out=185 checks=False eos=True trunc=False
+hard 6/32 hard_00_05 nosys in=81 out=320 checks=False eos=False trunc=True
+hard 6/32 hard_00_05 raw in=84 out=320 checks=False eos=False trunc=True
+hard 6/32 hard_00_05 legacy in=102 out=320 checks=False eos=False trunc=True
+hard 7/32 hard_00_06 raw in=74 out=320 checks=False eos=False trunc=True
+hard 7/32 hard_00_06 nosys in=71 out=320 checks=False eos=False trunc=True
+hard 7/32 hard_00_06 legacy in=92 out=320 checks=True eos=False trunc=True
+hard 7/32 hard_00_06 steps in=86 out=320 checks=False eos=False trunc=True
+hard 8/32 hard_00_07 legacy in=95 out=226 checks=True eos=True trunc=False
+hard 8/32 hard_00_07 raw in=77 out=320 checks=True eos=False trunc=True
+hard 8/32 hard_00_07 steps in=89 out=39 checks=False eos=True trunc=False
+hard 8/32 hard_00_07 nosys in=74 out=295 checks=True eos=True trunc=False
+hard 9/32 hard_00_08 nosys in=59 out=320 checks=True eos=False trunc=True
+hard 9/32 hard_00_08 legacy in=80 out=320 checks=False eos=False trunc=True
+hard 9/32 hard_00_08 steps in=74 out=65 checks=False eos=True trunc=False
+hard 9/32 hard_00_08 raw in=61 out=320 checks=False eos=False trunc=True
+hard 10/32 hard_00_09 steps in=68 out=160 checks=True eos=True trunc=False
+hard 10/32 hard_00_09 legacy in=74 out=249 checks=True eos=True trunc=False
+hard 10/32 hard_00_09 raw in=56 out=320 checks=True eos=False trunc=True
+hard 10/32 hard_00_09 nosys in=53 out=206 checks=True eos=True trunc=False
+hard 11/32 hard_00_10 legacy in=85 out=320 checks=False eos=False trunc=True
+hard 11/32 hard_00_10 steps in=79 out=87 checks=True eos=True trunc=False
+hard 11/32 hard_00_10 nosys in=64 out=320 checks=False eos=False trunc=True
+hard 11/32 hard_00_10 raw in=67 out=320 checks=False eos=False trunc=True
+hard 12/32 hard_00_11 legacy in=90 out=221 checks=True eos=True trunc=False
+hard 12/32 hard_00_11 nosys in=69 out=183 checks=True eos=True trunc=False
+hard 12/32 hard_00_11 steps in=84 out=64 checks=False eos=True trunc=False
+hard 12/32 hard_00_11 raw in=72 out=207 checks=True eos=True trunc=False
+hard 13/32 hard_01_00 nosys in=73 out=8 checks=False eos=True trunc=False
+hard 13/32 hard_01_00 legacy in=94 out=8 checks=False eos=True trunc=False
+hard 13/32 hard_01_00 raw in=76 out=320 checks=False eos=False trunc=True
+hard 13/32 hard_01_00 steps in=88 out=33 checks=False eos=True trunc=False
+hard 14/32 hard_01_01 legacy in=83 out=190 checks=True eos=True trunc=False
+hard 14/32 hard_01_01 steps in=77 out=24 checks=False eos=True trunc=False
+hard 14/32 hard_01_01 nosys in=62 out=200 checks=True eos=True trunc=False
+hard 14/32 hard_01_01 raw in=65 out=320 checks=False eos=False trunc=True
+hard 15/32 hard_01_02 raw in=68 out=320 checks=False eos=False trunc=True
+hard 15/32 hard_01_02 nosys in=66 out=284 checks=True eos=True trunc=False
+hard 15/32 hard_01_02 legacy in=87 out=233 checks=True eos=True trunc=False
+hard 15/32 hard_01_02 steps in=81 out=59 checks=False eos=True trunc=False
+hard 16/32 hard_01_03 steps in=82 out=49 checks=False eos=True trunc=False
+hard 16/32 hard_01_03 legacy in=88 out=254 checks=True eos=True trunc=False
+hard 16/32 hard_01_03 raw in=70 out=320 checks=False eos=False trunc=True
+hard 16/32 hard_01_03 nosys in=67 out=225 checks=True eos=True trunc=False
+hard 17/32 hard_01_04 legacy in=90 out=253 checks=True eos=True trunc=False
+hard 17/32 hard_01_04 raw in=72 out=320 checks=False eos=False trunc=True
+hard 17/32 hard_01_04 nosys in=69 out=208 checks=True eos=True trunc=False
+hard 17/32 hard_01_04 steps in=84 out=125 checks=True eos=True trunc=False
+hard 18/32 hard_01_05 legacy in=103 out=320 checks=False eos=False trunc=True
+hard 18/32 hard_01_05 steps in=97 out=143 checks=False eos=True trunc=False
+hard 18/32 hard_01_05 raw in=85 out=320 checks=False eos=False trunc=True
+hard 18/32 hard_01_05 nosys in=82 out=297 checks=False eos=True trunc=False
+hard 19/32 hard_01_06 nosys in=71 out=319 checks=True eos=True trunc=False
+hard 19/32 hard_01_06 steps in=86 out=289 checks=True eos=True trunc=False
+hard 19/32 hard_01_06 raw in=74 out=320 checks=False eos=False trunc=True
+hard 19/32 hard_01_06 legacy in=92 out=8 checks=False eos=True trunc=False
+hard 20/32 hard_01_07 raw in=77 out=320 checks=False eos=False trunc=True
+hard 20/32 hard_01_07 legacy in=95 out=221 checks=True eos=True trunc=False
+hard 20/32 hard_01_07 nosys in=74 out=245 checks=True eos=True trunc=False
+hard 20/32 hard_01_07 steps in=89 out=35 checks=False eos=True trunc=False
+hard 21/32 hard_01_08 nosys in=60 out=320 checks=True eos=False trunc=True
+hard 21/32 hard_01_08 raw in=62 out=320 checks=False eos=False trunc=True
+hard 21/32 hard_01_08 legacy in=81 out=320 checks=False eos=False trunc=True
+hard 21/32 hard_01_08 steps in=75 out=66 checks=False eos=True trunc=False
+hard 22/32 hard_01_09 nosys in=53 out=228 checks=True eos=True trunc=False
+hard 22/32 hard_01_09 steps in=68 out=182 checks=True eos=True trunc=False
+hard 22/32 hard_01_09 raw in=56 out=269 checks=True eos=True trunc=False
+hard 22/32 hard_01_09 legacy in=74 out=249 checks=True eos=True trunc=False
+hard 23/32 hard_01_10 nosys in=64 out=320 checks=False eos=False trunc=True
+hard 23/32 hard_01_10 legacy in=85 out=320 checks=False eos=False trunc=True
+hard 23/32 hard_01_10 raw in=67 out=320 checks=False eos=False trunc=True
+hard 23/32 hard_01_10 steps in=79 out=95 checks=True eos=True trunc=False
+hard 24/32 hard_01_11 steps in=84 out=56 checks=True eos=True trunc=False
+hard 24/32 hard_01_11 legacy in=90 out=320 checks=True eos=False trunc=True
+hard 24/32 hard_01_11 nosys in=69 out=297 checks=True eos=True trunc=False
+hard 24/32 hard_01_11 raw in=72 out=213 checks=True eos=True trunc=False
+hard 25/32 code_merge_intervals nosys in=88 out=135 checks=False eos=True trunc=False diff=False
+hard 25/32 code_merge_intervals raw in=96 out=424 checks=False eos=True trunc=False diff=False
+hard 25/32 code_merge_intervals steps in=104 out=92 checks=False eos=True trunc=False diff=False
+hard 25/32 code_merge_intervals legacy in=109 out=132 checks=False eos=True trunc=False diff=False
+hard 26/32 code_spiral_order steps in=84 out=222 checks=True eos=True trunc=False diff=True
+hard 26/32 code_spiral_order legacy in=89 out=275 checks=True eos=True trunc=False diff=True
+hard 26/32 code_spiral_order nosys in=68 out=235 checks=True eos=True trunc=False diff=True
+hard 26/32 code_spiral_order raw in=76 out=610 checks=True eos=True trunc=False diff=True
+hard 27/32 code_top_k_frequent raw in=81 out=396 checks=True eos=True trunc=False diff=False
+hard 27/32 code_top_k_frequent legacy in=94 out=147 checks=True eos=True trunc=False diff=False
+hard 27/32 code_top_k_frequent steps in=89 out=127 checks=True eos=True trunc=False diff=False
+hard 27/32 code_top_k_frequent nosys in=73 out=147 checks=True eos=True trunc=False diff=False
+hard 28/32 code_next_greater nosys in=61 out=99 checks=False eos=True trunc=False diff=False
+hard 28/32 code_next_greater legacy in=82 out=108 checks=False eos=True trunc=False diff=False
+hard 28/32 code_next_greater raw in=69 out=336 checks=False eos=True trunc=False diff=False
+hard 28/32 code_next_greater steps in=77 out=114 checks=False eos=True trunc=False diff=False
+hard 29/32 code_primes_upto raw in=59 out=596 checks=True eos=True trunc=False diff=True
+hard 29/32 code_primes_upto legacy in=72 out=130 checks=True eos=True trunc=False diff=True
+hard 29/32 code_primes_upto steps in=67 out=96 checks=True eos=True trunc=False diff=True
+hard 29/32 code_primes_upto nosys in=51 out=118 checks=True eos=True trunc=False diff=True
+hard 30/32 code_rle_encode nosys in=55 out=93 checks=True eos=True trunc=False diff=True
+hard 30/32 code_rle_encode raw in=63 out=392 checks=False eos=True trunc=False diff=False
+hard 30/32 code_rle_encode steps in=71 out=93 checks=True eos=True trunc=False diff=True
+hard 30/32 code_rle_encode legacy in=76 out=93 checks=True eos=True trunc=False diff=True
+hard 31/32 code_sliding_max raw in=70 out=391 checks=False eos=True trunc=False diff=False
+hard 31/32 code_sliding_max steps in=78 out=49 checks=True eos=True trunc=False diff=True
+hard 31/32 code_sliding_max nosys in=62 out=61 checks=True eos=True trunc=False diff=True
+hard 31/32 code_sliding_max legacy in=83 out=94 checks=False eos=True trunc=False diff=False
+hard 32/32 code_tokenize_expr legacy in=81 out=77 checks=False eos=True trunc=False diff=False
+hard 32/32 code_tokenize_expr steps in=76 out=107 checks=True eos=True trunc=False diff=True
+hard 32/32 code_tokenize_expr nosys in=60 out=57 checks=False eos=True trunc=False diff=False
+hard 32/32 code_tokenize_expr raw in=68 out=367 checks=False eos=True trunc=False diff=False
+scalar:raw        3/24 [0.04,0.31] trunc=19 in=70 out=308 total=9073 | vs legacy +1/-9 p=0.021 | review ['hard_00_04', 'hard_01_04', 'hard_01_06']
+scalar:legacy    11/24 [0.28,0.65] trunc=9 in=88 out=239 total=7857 | vs raw +9/-1 p=0.021
+scalar:nosys     14/24 [0.39,0.76] trunc=6 in=67 out=242 total=7439 | vs raw +11/-0 p=0.001 | vs legacy +4/-1 p=0.375 | review ['hard_00_06']
+scalar:steps      9/24 [0.21,0.57] trunc=1 in=82 out=103 total=4446 | vs raw +7/-1 p=0.070 | vs legacy +5/-7 p=0.774
+code:raw          3/8 [0.14,0.69] trunc=0 in=73 out=439 total=4094 diff=2/8 | vs legacy +0/-1 p=1.000
+code:legacy       4/8 [0.22,0.78] trunc=0 in=86 out=132 total=1742 diff=3/8 | vs raw +1/-0 p=1.000
+code:nosys        5/8 [0.31,0.86] trunc=0 in=65 out=118 total=1463 diff=4/8 | vs raw +2/-0 p=0.500 | vs legacy +1/-0 p=1.000
+code:steps        6/8 [0.41,0.93] trunc=0 in=81 out=112 total=1546 diff=5/8 | vs raw +3/-0 p=0.250 | vs legacy +2/-0 p=0.500

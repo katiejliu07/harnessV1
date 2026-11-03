@@ -1,0 +1,244 @@
+{
+  "arguments": {
+    "out": "independent_audit/results/budget_1024_followup",
+    "main": "independent_audit/results/mps_torch271_full",
+    "device": "mps",
+    "dtype": "float16"
+  },
+  "selection_rule": "Any main A/B/C/E matched-donor response truncated at 320; symmetric rerun of all four conditions",
+  "targets": [
+    {
+      "suite": "coding",
+      "task_index": 0,
+      "task": {
+        "prompt": "Write a Python function dedup(items) returning a list of first occurrences in original order. Items are hashable. Handle empty input. Do not modify input.",
+        "function": "dedup",
+        "cases": [
+          [
+            [
+              []
+            ],
+            []
+          ],
+          [
+            [
+              [
+                3,
+                1,
+                3,
+                2,
+                1
+              ]
+            ],
+            [
+              3,
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              [
+                null,
+                false,
+                null,
+                false
+              ]
+            ],
+            [
+              null,
+              false
+            ]
+          ]
+        ]
+      },
+      "truncated_conditions": [
+        "B_reasoning",
+        "A_normal",
+        "E_v8_prefix"
+      ]
+    },
+    {
+      "suite": "coding",
+      "task_index": 1,
+      "task": {
+        "prompt": "Write a Python function runs(values) that returns a list of (value, count) tuples for consecutive equal values. Handle empty input. Do not modify input.",
+        "function": "runs",
+        "cases": [
+          [
+            [
+              []
+            ],
+            []
+          ],
+          [
+            [
+              [
+                1,
+                1,
+                2,
+                1
+              ]
+            ],
+            [
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "a",
+                "a",
+                "a"
+              ]
+            ],
+            [
+              [
+                "a",
+                3
+              ]
+            ]
+          ]
+        ]
+      },
+      "truncated_conditions": [
+        "B_reasoning",
+        "A_normal",
+        "E_v8_prefix"
+      ]
+    },
+    {
+      "suite": "coding",
+      "task_index": 2,
+      "task": {
+        "prompt": "Write a Python function lower_bound(a, x) returning the first index i where a[i] >= x in a sorted list, or len(a) if none. Use O(log n) time, no imports, and handle empty lists.",
+        "function": "lower_bound",
+        "cases": [
+          [
+            [
+              [],
+              3
+            ],
+            0
+          ],
+          [
+            [
+              [
+                1,
+                2,
+                2,
+                4
+              ],
+              2
+            ],
+            1
+          ],
+          [
+            [
+              [
+                1,
+                2,
+                4
+              ],
+              5
+            ],
+            3
+          ],
+          [
+            [
+              [
+                1,
+                2
+              ],
+              0
+            ],
+            0
+          ]
+        ]
+      },
+      "truncated_conditions": [
+        "E_v8_prefix",
+        "A_normal",
+        "B_reasoning"
+      ]
+    },
+    {
+      "suite": "coding",
+      "task_index": 3,
+      "task": {
+        "prompt": "Write a Python function balanced(s) that returns whether all (), [], {} brackets are balanced and correctly nested, ignoring all other characters. Handle empty strings.",
+        "function": "balanced",
+        "cases": [
+          [
+            [
+              ""
+            ],
+            true
+          ],
+          [
+            [
+              "a{b[(c)]}"
+            ],
+            true
+          ],
+          [
+            [
+              "([)]"
+            ],
+            false
+          ],
+          [
+            [
+              ")("
+            ],
+            false
+          ],
+          [
+            [
+              "(()"
+            ],
+            false
+          ]
+        ]
+      },
+      "truncated_conditions": [
+        "E_v8_prefix",
+        "A_normal",
+        "B_reasoning"
+      ]
+    },
+    {
+      "suite": "heldout_arithmetic",
+      "task_index": 5,
+      "task": {
+        "prompt": "A 120 dollar item is discounted 25 percent, then taxed 8 percent. What is its final price?",
+        "answer": "97.2"
+      },
+      "truncated_conditions": [
+        "A_normal"
+      ]
+    }
+  ],
+  "conditions": [
+    "A_normal",
+    "B_reasoning",
+    "C_concise",
+    "E_v8_prefix"
+  ],
+  "max_new_tokens": 1024,
+  "seed": 20261029,
+  "main_data_sha256": "683da6fc06f600cfd0d4457720e49d2f352b35554788d1deff9ab3376a960fca",
+  "source_sha256": "729aca2a990f9d56d62c34746e50a9adcaabb7738d2e4992033565983458d5fd",
+  "scope": "Conditional diagnostic, not independent replications or a replacement for the original 320-token benchmark"
+}

@@ -1,0 +1,2081 @@
+{
+  "strictly_parsed_json_files": [
+    "attention_category_analysis_v8.json",
+    "critical_heads.json",
+    "exp1_induce_reasoning.json",
+    "exp2_suppress_reasoning.json",
+    "generation_attention_summary.json",
+    "generation_phase_probe.json",
+    "head_level_results.json",
+    "logit_lens_summary.json",
+    "prompt_activation_comparison_v7_v8.json",
+    "quality_assessment.json",
+    "quality_assessment_v2.json",
+    "quality_assessment_v3.json",
+    "quality_assessment_v4.json",
+    "quality_assessment_v5.json",
+    "quality_assessment_v6.json",
+    "quality_assessment_v7.json",
+    "quality_assessment_v8.json",
+    "quality_assessment_v8_hardset.json",
+    "quality_assessment_v8_heads.json",
+    "quality_assessment_v8_single_layers.json",
+    "quality_stats.json",
+    "validation_results.json"
+  ],
+  "json_errors": [],
+  "replayed_token_changes": [
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "0",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "1",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "2",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "3",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "6",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "10",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "14",
+      "recalculated_change": 28,
+      "saved_change": 28,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "18",
+      "recalculated_change": 58,
+      "saved_change": 58,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "22",
+      "recalculated_change": 62,
+      "saved_change": 62,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "component": "26",
+      "recalculated_change": 58,
+      "saved_change": 58,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "0",
+      "recalculated_change": 99,
+      "saved_change": 99,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "1",
+      "recalculated_change": 99,
+      "saved_change": 99,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "2",
+      "recalculated_change": 99,
+      "saved_change": 99,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "3",
+      "recalculated_change": 99,
+      "saved_change": 99,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "6",
+      "recalculated_change": 99,
+      "saved_change": 99,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "10",
+      "recalculated_change": 103,
+      "saved_change": 103,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "14",
+      "recalculated_change": 103,
+      "saved_change": 103,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "18",
+      "recalculated_change": 76,
+      "saved_change": 76,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "22",
+      "recalculated_change": 77,
+      "saved_change": 77,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "component": "26",
+      "recalculated_change": 76,
+      "saved_change": 76,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "0",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "1",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "2",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "3",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "6",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "10",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "14",
+      "recalculated_change": 189,
+      "saved_change": 189,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "18",
+      "recalculated_change": 120,
+      "saved_change": 120,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "22",
+      "recalculated_change": 120,
+      "saved_change": 120,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "component": "26",
+      "recalculated_change": 141,
+      "saved_change": 141,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "0",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "1",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "2",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "3",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "6",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "10",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "14",
+      "recalculated_change": 119,
+      "saved_change": 119,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "18",
+      "recalculated_change": 122,
+      "saved_change": 122,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "22",
+      "recalculated_change": 135,
+      "saved_change": 135,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "component": "26",
+      "recalculated_change": 110,
+      "saved_change": 110,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "0",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "1",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "2",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "3",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "6",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "10",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "14",
+      "recalculated_change": 83,
+      "saved_change": 83,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "18",
+      "recalculated_change": 79,
+      "saved_change": 79,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "22",
+      "recalculated_change": 78,
+      "saved_change": 78,
+      "consistent": true
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "component": "26",
+      "recalculated_change": 78,
+      "saved_change": 78,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "0",
+      "recalculated_change": -113,
+      "saved_change": -113,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "1",
+      "recalculated_change": -68,
+      "saved_change": -68,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "2",
+      "recalculated_change": -101,
+      "saved_change": -101,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "3",
+      "recalculated_change": -101,
+      "saved_change": -101,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "6",
+      "recalculated_change": -98,
+      "saved_change": -98,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "10",
+      "recalculated_change": -98,
+      "saved_change": -98,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "14",
+      "recalculated_change": -52,
+      "saved_change": -52,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "18",
+      "recalculated_change": -52,
+      "saved_change": -52,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "22",
+      "recalculated_change": -58,
+      "saved_change": -58,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "component": "26",
+      "recalculated_change": -58,
+      "saved_change": -58,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "0",
+      "recalculated_change": -55,
+      "saved_change": -55,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "1",
+      "recalculated_change": -55,
+      "saved_change": -55,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "2",
+      "recalculated_change": -55,
+      "saved_change": -55,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "3",
+      "recalculated_change": -55,
+      "saved_change": -55,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "6",
+      "recalculated_change": -70,
+      "saved_change": -70,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "10",
+      "recalculated_change": -38,
+      "saved_change": -38,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "14",
+      "recalculated_change": -9,
+      "saved_change": -9,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "18",
+      "recalculated_change": 5,
+      "saved_change": 5,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "22",
+      "recalculated_change": 5,
+      "saved_change": 5,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "component": "26",
+      "recalculated_change": -9,
+      "saved_change": -9,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "0",
+      "recalculated_change": -65,
+      "saved_change": -65,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "1",
+      "recalculated_change": -112,
+      "saved_change": -112,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "2",
+      "recalculated_change": -129,
+      "saved_change": -129,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "3",
+      "recalculated_change": -129,
+      "saved_change": -129,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "6",
+      "recalculated_change": -129,
+      "saved_change": -129,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "10",
+      "recalculated_change": -90,
+      "saved_change": -90,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "14",
+      "recalculated_change": -59,
+      "saved_change": -59,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "18",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "22",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "component": "26",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "0",
+      "recalculated_change": -93,
+      "saved_change": -93,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "1",
+      "recalculated_change": -46,
+      "saved_change": -46,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "2",
+      "recalculated_change": -95,
+      "saved_change": -95,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "3",
+      "recalculated_change": -95,
+      "saved_change": -95,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "6",
+      "recalculated_change": -99,
+      "saved_change": -99,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "10",
+      "recalculated_change": -95,
+      "saved_change": -95,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "14",
+      "recalculated_change": -36,
+      "saved_change": -36,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "18",
+      "recalculated_change": 6,
+      "saved_change": 6,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "22",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "component": "26",
+      "recalculated_change": 6,
+      "saved_change": 6,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "0",
+      "recalculated_change": -64,
+      "saved_change": -64,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "1",
+      "recalculated_change": -64,
+      "saved_change": -64,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "2",
+      "recalculated_change": -64,
+      "saved_change": -64,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "3",
+      "recalculated_change": -64,
+      "saved_change": -64,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "6",
+      "recalculated_change": -64,
+      "saved_change": -64,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "10",
+      "recalculated_change": -64,
+      "saved_change": -64,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "14",
+      "recalculated_change": -2,
+      "saved_change": -2,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "18",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "22",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "component": "26",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "0",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "1",
+      "recalculated_change": -74,
+      "saved_change": -74,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "2",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "3",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "4",
+      "recalculated_change": -74,
+      "saved_change": -74,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "5",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "6",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "7",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "8",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "9",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "10",
+      "recalculated_change": -80,
+      "saved_change": -80,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "component": "11",
+      "recalculated_change": -74,
+      "saved_change": -74,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "0",
+      "recalculated_change": 33,
+      "saved_change": 33,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "1",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "2",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "3",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "4",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "5",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "6",
+      "recalculated_change": 16,
+      "saved_change": 16,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "7",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "8",
+      "recalculated_change": 33,
+      "saved_change": 33,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "9",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "10",
+      "recalculated_change": 16,
+      "saved_change": 16,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "component": "11",
+      "recalculated_change": 19,
+      "saved_change": 19,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "0",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "1",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "2",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "3",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "4",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "5",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "6",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "7",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "8",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "9",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "10",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "component": "11",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "0",
+      "recalculated_change": -4,
+      "saved_change": -4,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "1",
+      "recalculated_change": -4,
+      "saved_change": -4,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "2",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "3",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "4",
+      "recalculated_change": -4,
+      "saved_change": -4,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "5",
+      "recalculated_change": -4,
+      "saved_change": -4,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "6",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "7",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "8",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "9",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "10",
+      "recalculated_change": -4,
+      "saved_change": -4,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "component": "11",
+      "recalculated_change": 2,
+      "saved_change": 2,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "0",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "1",
+      "recalculated_change": 23,
+      "saved_change": 23,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "2",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "3",
+      "recalculated_change": 23,
+      "saved_change": 23,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "4",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "5",
+      "recalculated_change": 35,
+      "saved_change": 35,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "6",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "7",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "8",
+      "recalculated_change": 35,
+      "saved_change": 35,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "9",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "10",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "component": "11",
+      "recalculated_change": 9,
+      "saved_change": 9,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "0",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "1",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "2",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "3",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "4",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "5",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "6",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "7",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "8",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "9",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "10",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "component": "11",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "0",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "1",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "2",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "3",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "4",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "5",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "6",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "7",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "8",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "9",
+      "recalculated_change": -94,
+      "saved_change": -94,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "10",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "component": "11",
+      "recalculated_change": -100,
+      "saved_change": -100,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "0",
+      "recalculated_change": -1,
+      "saved_change": -1,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "1",
+      "recalculated_change": -1,
+      "saved_change": -1,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "2",
+      "recalculated_change": -1,
+      "saved_change": -1,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "3",
+      "recalculated_change": -1,
+      "saved_change": -1,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "4",
+      "recalculated_change": -4,
+      "saved_change": -4,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "5",
+      "recalculated_change": -1,
+      "saved_change": -1,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "6",
+      "recalculated_change": 25,
+      "saved_change": 25,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "7",
+      "recalculated_change": 25,
+      "saved_change": 25,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "8",
+      "recalculated_change": 13,
+      "saved_change": 13,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "9",
+      "recalculated_change": -1,
+      "saved_change": -1,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "10",
+      "recalculated_change": 13,
+      "saved_change": 13,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "component": "11",
+      "recalculated_change": 13,
+      "saved_change": 13,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "0",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "1",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "2",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "3",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "4",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "5",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "6",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "7",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "8",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "9",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "10",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "component": "11",
+      "recalculated_change": 0,
+      "saved_change": 0,
+      "consistent": true
+    }
+  ],
+  "token_delta_inconsistencies": 0,
+  "mean_token_changes_by_component": [
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "0",
+      "n": 5,
+      "mean": 125.6
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "1",
+      "n": 5,
+      "mean": 125.6
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "2",
+      "n": 5,
+      "mean": 125.6
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "3",
+      "n": 5,
+      "mean": 125.6
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "6",
+      "n": 5,
+      "mean": 125.6
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "10",
+      "n": 5,
+      "mean": 126.4
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "14",
+      "n": 5,
+      "mean": 104.4
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "18",
+      "n": 5,
+      "mean": 91
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "22",
+      "n": 5,
+      "mean": 94.4
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "field": "layer_results",
+      "component": "26",
+      "n": 5,
+      "mean": 92.6
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "0",
+      "n": 5,
+      "mean": -78
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "1",
+      "n": 5,
+      "mean": -69
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "2",
+      "n": 5,
+      "mean": -88.8
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "3",
+      "n": 5,
+      "mean": -88.8
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "6",
+      "n": 5,
+      "mean": -92
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "10",
+      "n": 5,
+      "mean": -77
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "14",
+      "n": 5,
+      "mean": -31.6
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "18",
+      "n": 5,
+      "mean": -8.2
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "22",
+      "n": 5,
+      "mean": -10.2
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "field": "layer_results",
+      "component": "26",
+      "n": 5,
+      "mean": -12.2
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "0",
+      "n": 9,
+      "mean": -15.88888888888889
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "1",
+      "n": 9,
+      "mean": -15.222222222222221
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "2",
+      "n": 9,
+      "mean": -16.77777777777778
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "3",
+      "n": 9,
+      "mean": -15.222222222222221
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "4",
+      "n": 9,
+      "mean": -17.11111111111111
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "5",
+      "n": 9,
+      "mean": -14.555555555555555
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "6",
+      "n": 9,
+      "mean": -14.222222222222221
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "7",
+      "n": 9,
+      "mean": -13.88888888888889
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "8",
+      "n": 9,
+      "mean": -10.777777777777779
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "9",
+      "n": 9,
+      "mean": -16.11111111111111
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "10",
+      "n": 9,
+      "mean": -16.22222222222222
+    },
+    {
+      "file": "head_level_results.json",
+      "field": "head_results",
+      "component": "11",
+      "n": 9,
+      "mean": -14.555555555555555
+    }
+  ],
+  "unrecoverable_correctness_records": [
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[0]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[1]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[2]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[3]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp1_induce_reasoning.json",
+      "path": "root[4]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[0]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[1]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[2]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[3]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "exp2_suppress_reasoning.json",
+      "path": "root[4]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[0]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[1]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.6[2]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[0]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[1]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.2[2]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[0]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[1]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    },
+    {
+      "file": "head_level_results.json",
+      "path": "root.3[2]",
+      "reason": "Only token counts saved; correctness cannot be recovered"
+    }
+  ],
+  "generation_phase_probe": {
+    "n": 25,
+    "whitespace_only_intervened_previews": 25,
+    "missing_answer_positions": {
+      "baseline": 20,
+      "intervened": 25
+    },
+    "readme_rank_claim_source": {
+      "baseline": {
+        "layer": 27,
+        "avg_logp": -23.359119601249695,
+        "avg_rank": 74970.2
+      },
+      "intervened": {
+        "layer": 27,
+        "avg_logp": -11.830625,
+        "avg_rank": 131.88
+      }
+    },
+    "interpretation": "Generation-phase hooks differ from v8 and overwrite decode-local zero under cached generation. All saved intervened previews are degenerate; rank changes do not validate v8 reasoning suppression."
+  },
+  "setup_validation_rescoring": [
+    {
+      "prompt": "What is 5 + 3?",
+      "expected": "8",
+      "baseline_correct": true,
+      "reasoning_correct": true,
+      "token_ratio_recalculated": 12.777777777777779,
+      "token_ratio_saved": 12.777777777777779
+    },
+    {
+      "prompt": "If Alice has 8 apples and gives 3 to Bob, how many does Alice have?",
+      "expected": "5",
+      "baseline_correct": true,
+      "reasoning_correct": true,
+      "token_ratio_recalculated": 3.064516129032258,
+      "token_ratio_saved": 3.064516129032258
+    },
+    {
+      "prompt": "What is 12 divided by 4?",
+      "expected": "3",
+      "baseline_correct": true,
+      "reasoning_correct": true,
+      "token_ratio_recalculated": 20.0,
+      "token_ratio_saved": 20.0
+    },
+    {
+      "prompt": "A rectangle has length 5 and width 3. What is its area?",
+      "expected": "15",
+      "baseline_correct": true,
+      "reasoning_correct": true,
+      "token_ratio_recalculated": 3.1538461538461537,
+      "token_ratio_saved": 3.1538461538461537
+    },
+    {
+      "prompt": "If a train travels 60 miles in 2 hours, what is its average speed?",
+      "expected": "30",
+      "baseline_correct": true,
+      "reasoning_correct": true,
+      "token_ratio_recalculated": 1.5798319327731092,
+      "token_ratio_saved": 1.5798319327731092
+    }
+  ],
+  "limits": "Attention/logit summaries cannot be independently recomputed from aggregate JSON without original cached activations and exact historical environment. Main quality arrays are separately recalculated."
+}

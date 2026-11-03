@@ -1,0 +1,17 @@
+{
+  "stage": "measurements_complete",
+  "orchestrator_pid": 53755,
+  "main_pid": 51388,
+  "utc": "2026-10-29T12:25:12Z",
+  "completed_stages": [
+    "unit_tests",
+    "main_quality_review",
+    "main_report",
+    "donor_early_stop",
+    "prefix_partitions",
+    "timing_repeats",
+    "timing_quality_review",
+    "timing_report"
+  ],
+  "note": "Manual review and final scientific report still required"
+}

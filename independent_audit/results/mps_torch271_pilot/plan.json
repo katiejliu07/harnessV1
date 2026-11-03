@@ -1,0 +1,22 @@
+{
+  "device": "mps",
+  "dtype": "float16",
+  "out": "independent_audit/results/mps_torch271_pilot",
+  "limit": 1,
+  "max_new_tokens": 320,
+  "repeats": 1,
+  "conditions": [
+    "A_normal",
+    "B_reasoning",
+    "C_concise",
+    "D_noop",
+    "E_v8_prefix",
+    "G_alpha0"
+  ],
+  "donor_probes": 0,
+  "reproduce": false,
+  "extensions": false,
+  "seed": 20261029,
+  "reasoning_template": "Think step-by-step to solve this problem. Show your reasoning process.\nEnd with: Final answer: <number>.\n\nQuestion: {prompt}\n\nLet me think through this step by step:",
+  "selection_policy": "Frozen controls; report all, no early EFFECTIVE stopping"
+}

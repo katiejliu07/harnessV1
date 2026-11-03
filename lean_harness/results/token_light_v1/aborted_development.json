@@ -1,0 +1,9 @@
+{
+  "reason": "Development showed aggressive shortening can increase verbosity and regress correctness. Refine candidates before exposing any fresh validation outputs.",
+  "rows_at_stop": 44,
+  "validation_rows": 0,
+  "stopped_pid": 65488,
+  "source_snapshot": "source_snapshot",
+  "utc": "2026-10-29T22:16:22Z",
+  "scope": "Partial development trial, not a completed or heldout benchmark; no positive claim."
+}

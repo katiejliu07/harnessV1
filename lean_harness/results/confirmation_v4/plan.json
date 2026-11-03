@@ -1,0 +1,7 @@
+{
+  "policy": "lean_harness/policy_v4.json",
+  "policy_sha256": "3ec0fefc30836018db6e7df965475a505b0ecc8a9cedcf5ce826594bde741563",
+  "promoted": {},
+  "tasks": [],
+  "gate": "Zero checks/EOS regressions against legacy, lower total tokens and request time, per kind."
+}

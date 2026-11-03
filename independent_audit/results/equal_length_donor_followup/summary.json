@@ -1,0 +1,30 @@
+{
+  "unique_targets": 6,
+  "comparisons": 24,
+  "by_condition": {
+    "E_v8_prefix": {
+      "n": 6,
+      "answer_changes": 0,
+      "donor_answer_attraction": 0,
+      "correct": 6
+    },
+    "F_layer2": {
+      "n": 6,
+      "answer_changes": 0,
+      "donor_answer_attraction": 0,
+      "correct": 6
+    },
+    "F_layer3": {
+      "n": 6,
+      "answer_changes": 0,
+      "donor_answer_attraction": 0,
+      "correct": 6
+    },
+    "F_layer6": {
+      "n": 6,
+      "answer_changes": 0,
+      "donor_answer_attraction": 0,
+      "correct": 6
+    }
+  }
+}

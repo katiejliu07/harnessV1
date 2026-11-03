@@ -1,0 +1,66 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+Loaded; checking parity
+Parity checks passed
+original 1/5 C_concise same 8t correct=True total=0.71s
+original 1/5 B_reasoning same 96t correct=True total=7.85s
+original 1/5 A_normal same 10t correct=True total=0.64s
+original 1/5 E_v8_prefix same 49t correct=True total=3.30s
+original 1/5 A_normal same 10t correct=True total=0.72s
+original 1/5 B_reasoning same 96t correct=True total=6.63s
+original 1/5 C_concise same 8t correct=True total=0.58s
+original 1/5 E_v8_prefix same 49t correct=True total=3.44s
+original 1/5 E_v8_prefix same 49t correct=True total=3.71s
+original 1/5 B_reasoning same 96t correct=True total=6.85s
+original 1/5 A_normal same 10t correct=True total=0.70s
+original 1/5 C_concise same 8t correct=True total=0.61s
+original 2/5 A_normal same 30t correct=True total=2.35s
+original 2/5 E_v8_prefix same 95t correct=True total=6.85s
+original 2/5 C_concise same 8t correct=True total=0.63s
+original 2/5 B_reasoning same 100t correct=True total=7.39s
+original 2/5 B_reasoning same 100t correct=True total=6.94s
+original 2/5 C_concise same 8t correct=True total=0.64s
+original 2/5 A_normal same 30t correct=True total=2.07s
+original 2/5 E_v8_prefix same 95t correct=True total=7.06s
+original 2/5 A_normal same 30t correct=True total=2.25s
+original 2/5 B_reasoning same 100t correct=True total=7.03s
+original 2/5 C_concise same 8t correct=True total=0.61s
+original 2/5 E_v8_prefix same 95t correct=True total=6.65s
+original 3/5 E_v8_prefix same 10t correct=True total=0.83s
+original 3/5 B_reasoning same 113t correct=True total=7.87s
+original 3/5 A_normal same 10t correct=True total=0.75s
+original 3/5 C_concise same 8t correct=True total=0.65s
+original 3/5 E_v8_prefix same 10t correct=True total=0.86s
+original 3/5 C_concise same 8t correct=True total=0.57s
+original 3/5 A_normal same 10t correct=True total=0.69s
+original 3/5 B_reasoning same 113t correct=True total=8.47s
+original 3/5 A_normal same 10t correct=True total=0.79s
+original 3/5 E_v8_prefix same 10t correct=True total=0.89s
+original 3/5 B_reasoning same 113t correct=True total=7.86s
+original 3/5 C_concise same 8t correct=True total=0.60s
+original 4/5 E_v8_prefix same 107t correct=True total=7.77s
+original 4/5 C_concise same 8t correct=True total=0.67s
+original 4/5 A_normal same 74t correct=True total=5.24s
+original 4/5 B_reasoning same 230t correct=True total=23.12s
+original 4/5 B_reasoning same 230t correct=True total=17.46s
+original 4/5 A_normal same 74t correct=True total=5.12s
+original 4/5 C_concise same 8t correct=True total=0.60s
+original 4/5 E_v8_prefix same 107t correct=True total=7.53s
+original 4/5 E_v8_prefix same 107t correct=True total=7.40s
+original 4/5 A_normal same 74t correct=True total=5.05s
+original 4/5 B_reasoning same 230t correct=True total=16.04s
+original 4/5 C_concise same 8t correct=True total=0.60s
+original 5/5 A_normal same 62t correct=True total=4.27s
+original 5/5 B_reasoning same 153t correct=True total=11.17s
+original 5/5 E_v8_prefix same 88t correct=True total=6.64s
+original 5/5 C_concise same 55t correct=True total=3.88s
+original 5/5 A_normal same 62t correct=True total=4.33s
+original 5/5 C_concise same 55t correct=True total=3.94s
+original 5/5 B_reasoning same 153t correct=True total=10.68s
+original 5/5 E_v8_prefix same 88t correct=True total=6.31s
+original 5/5 E_v8_prefix same 88t correct=True total=6.73s
+original 5/5 C_concise same 55t correct=True total=4.04s
+original 5/5 A_normal same 62t correct=True total=4.37s
+original 5/5 B_reasoning same 153t correct=True total=11.68s

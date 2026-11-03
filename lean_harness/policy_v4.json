@@ -1,0 +1,155 @@
+{
+  "environment": {
+    "device": "mps",
+    "dtype": "torch.float16",
+    "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "kinds": {
+    "scalar": {
+      "profile": "nosys",
+      "promoted": false,
+      "old_best_results_preserved": false,
+      "stress_failures": [],
+      "comparisons": {
+        "validation": {
+          "n": 24,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.9092849519743863,
+          "total_seconds_ratio": 1.0663640260354177,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 24,
+            "baseline_mean": 156.16666666666666,
+            "intervened_mean": 142.0,
+            "mean_difference": 14.166666666666666,
+            "sd_difference": 39.766346561390066,
+            "paired_t": 1.7452498250427837,
+            "p_value_descriptive_post_selection": 0.09428961956420213,
+            "cohens_dz": 0.3562476287530362,
+            "paired_bootstrap_95": [
+              -3.25,
+              27.958333333333332
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "regression": {
+          "n": 33,
+          "task_check_regressions": [],
+          "checks_and_eos_regressions": [],
+          "total_token_ratio": 0.821567106283941,
+          "total_seconds_ratio": 0.9803464311230095,
+          "eligible": true,
+          "paired_total_tokens": {
+            "n": 33,
+            "baseline_mean": 117.18181818181819,
+            "intervened_mean": 96.27272727272727,
+            "mean_difference": 20.90909090909091,
+            "sd_difference": 30.237976573718143,
+            "paired_t": 3.9722758008163246,
+            "p_value_descriptive_post_selection": 0.00037858386214650104,
+            "cohens_dz": 0.6914844602156484,
+            "paired_bootstrap_95": [
+              11.48409090909091,
+              31.818181818181817
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    },
+    "code": {
+      "profile": "steps",
+      "promoted": false,
+      "old_best_results_preserved": false,
+      "stress_failures": [
+        {
+          "stage": "validation",
+          "task_id": "code_prefix_sums"
+        },
+        {
+          "stage": "validation",
+          "task_id": "code_expand_runs"
+        },
+        {
+          "stage": "validation",
+          "task_id": "code_keep_last"
+        },
+        {
+          "stage": "regression",
+          "task_id": "old_coding_01"
+        },
+        {
+          "stage": "regression",
+          "task_id": "old_coding_03"
+        }
+      ],
+      "comparisons": {
+        "validation": {
+          "n": 8,
+          "task_check_regressions": [
+            "code_expand_runs"
+          ],
+          "checks_and_eos_regressions": [
+            "code_expand_runs"
+          ],
+          "total_token_ratio": 0.782,
+          "total_seconds_ratio": 0.6875043000302655,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 8,
+            "baseline_mean": 187.5,
+            "intervened_mean": 146.625,
+            "mean_difference": 40.875,
+            "sd_difference": 26.989085095380954,
+            "paired_t": 4.283656089690381,
+            "p_value_descriptive_post_selection": 0.0036389704290837174,
+            "cohens_dz": 1.514501134645559,
+            "paired_bootstrap_95": [
+              24.375,
+              59.0
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        },
+        "regression": {
+          "n": 4,
+          "task_check_regressions": [
+            "old_coding_03"
+          ],
+          "checks_and_eos_regressions": [
+            "old_coding_03"
+          ],
+          "total_token_ratio": 0.7195767195767195,
+          "total_seconds_ratio": 0.5242574311181739,
+          "eligible": false,
+          "paired_total_tokens": {
+            "n": 4,
+            "baseline_mean": 189.0,
+            "intervened_mean": 136.0,
+            "mean_difference": 53.0,
+            "sd_difference": 44.90731195102493,
+            "paired_t": 2.3604173885001534,
+            "p_value_descriptive_post_selection": 0.09936233488429566,
+            "cohens_dz": 1.1802086942500767,
+            "paired_bootstrap_95": [
+              15.5,
+              90.5
+            ]
+          },
+          "scope": "Observed matched sample only; timing is shared-host wall time; no population accuracy guarantee."
+        }
+      }
+    }
+  },
+  "inference_source_sha256": {
+    "lean_harness/runtime.py": "c8efb2eda296bd330640b01e164e602699ce71bd186340bfdda06faa8a9785be",
+    "independent_audit/engine.py": "a54fbd1d6c58e9cef9a6a36d58781268a68f3e96bb31fe764fe820f011bf86ec",
+    "independent_audit/model.py": "cd6fc7791991b00a919e151c2e0d9cac219af3c633a476123654e1afe16d6445",
+    "independent_audit/prompts.py": "69c1cc18666b781329d6454a4876924bb0199f28eafea14d00fee0ff9510d0f7"
+  },
+  "evidence": "lean_harness/results/token_light_v4",
+  "summary_sha256": "7bffcd278f227f5bc1cbafbb099b4ba851cd37b2a7f8771823962cf7869d71f4",
+  "scope": "Small synthetic/task-level tests, not universal code quality. Selection on development only, validation unchanged after selection. No post-generation stripping, oracle retries or extra model verification calls."
+}

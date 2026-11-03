@@ -1,0 +1,40 @@
+{
+  "device": "mps",
+  "dtype": "float16",
+  "out": "independent_audit/results/mps_torch271_full",
+  "limit": 0,
+  "max_new_tokens": 320,
+  "repeats": 1,
+  "conditions": [
+    "A_normal",
+    "B_reasoning",
+    "C_concise",
+    "C_length_matched",
+    "D_noop",
+    "E_v8_prefix",
+    "F_layer2",
+    "F_layer3",
+    "F_layer6",
+    "G_random_layer",
+    "G_shuffled",
+    "G_unrelated",
+    "G_alpha0",
+    "H_instruction",
+    "H_question",
+    "H_suffix"
+  ],
+  "donor_probes": 3,
+  "reproduce": true,
+  "extensions": true,
+  "seed": 20261029,
+  "reasoning_template": "Think step-by-step to solve this problem. Show your reasoning process.\nEnd with: Final answer: <number>.\n\nQuestion: {prompt}\n\nLet me think through this step by step:",
+  "selection_policy": "Frozen controls; report all, no early EFFECTIVE stopping",
+  "source_sha256": {
+    "benchmark.py": "0397c2d9a327b6a2700798c065f484c6bdfb0fab351c94dd96940a2cdb95497f",
+    "engine.py": "a54fbd1d6c58e9cef9a6a36d58781268a68f3e96bb31fe764fe820f011bf86ec",
+    "model.py": "cd6fc7791991b00a919e151c2e0d9cac219af3c633a476123654e1afe16d6445",
+    "prompts.py": "69c1cc18666b781329d6454a4876924bb0199f28eafea14d00fee0ff9510d0f7",
+    "tasks.py": "f480a6744952b628ccb654d205db08af8f184ea226c913111f3aed4a1581d4b7",
+    "evaluation.py": "bad7242069d21aa1d0a070b50952db0ea9aa8b9640c7d28dfb4f7206b8d4b953"
+  }
+}

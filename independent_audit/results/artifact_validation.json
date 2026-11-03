@@ -1,0 +1,365 @@
+{
+  "model_sha256_actual": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee",
+  "model_sha256_published": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "v8_change_field_discrepancies": [],
+  "v8_text_retokenization": [
+    {
+      "index": 0,
+      "side": "baseline",
+      "saved_tokens": 96,
+      "decoded_text_retokenized": 95,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 0,
+      "side": "intervened",
+      "saved_tokens": 49,
+      "decoded_text_retokenized": 48,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 1,
+      "side": "baseline",
+      "saved_tokens": 100,
+      "decoded_text_retokenized": 99,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 1,
+      "side": "intervened",
+      "saved_tokens": 95,
+      "decoded_text_retokenized": 94,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 2,
+      "side": "baseline",
+      "saved_tokens": 113,
+      "decoded_text_retokenized": 112,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 2,
+      "side": "intervened",
+      "saved_tokens": 10,
+      "decoded_text_retokenized": 9,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 3,
+      "side": "baseline",
+      "saved_tokens": 230,
+      "decoded_text_retokenized": 229,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 3,
+      "side": "intervened",
+      "saved_tokens": 107,
+      "decoded_text_retokenized": 106,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 4,
+      "side": "baseline",
+      "saved_tokens": 153,
+      "decoded_text_retokenized": 152,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 4,
+      "side": "intervened",
+      "saved_tokens": 88,
+      "decoded_text_retokenized": 87,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 5,
+      "side": "baseline",
+      "saved_tokens": 216,
+      "decoded_text_retokenized": 215,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 5,
+      "side": "intervened",
+      "saved_tokens": 174,
+      "decoded_text_retokenized": 173,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 6,
+      "side": "baseline",
+      "saved_tokens": 262,
+      "decoded_text_retokenized": 261,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 6,
+      "side": "intervened",
+      "saved_tokens": 169,
+      "decoded_text_retokenized": 168,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 7,
+      "side": "baseline",
+      "saved_tokens": 107,
+      "decoded_text_retokenized": 106,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 7,
+      "side": "intervened",
+      "saved_tokens": 78,
+      "decoded_text_retokenized": 77,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 8,
+      "side": "baseline",
+      "saved_tokens": 206,
+      "decoded_text_retokenized": 205,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 8,
+      "side": "intervened",
+      "saved_tokens": 97,
+      "decoded_text_retokenized": 96,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 9,
+      "side": "baseline",
+      "saved_tokens": 141,
+      "decoded_text_retokenized": 140,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 9,
+      "side": "intervened",
+      "saved_tokens": 67,
+      "decoded_text_retokenized": 66,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 10,
+      "side": "baseline",
+      "saved_tokens": 95,
+      "decoded_text_retokenized": 94,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 10,
+      "side": "intervened",
+      "saved_tokens": 49,
+      "decoded_text_retokenized": 48,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 11,
+      "side": "baseline",
+      "saved_tokens": 99,
+      "decoded_text_retokenized": 98,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 11,
+      "side": "intervened",
+      "saved_tokens": 23,
+      "decoded_text_retokenized": 22,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 12,
+      "side": "baseline",
+      "saved_tokens": 125,
+      "decoded_text_retokenized": 124,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 12,
+      "side": "intervened",
+      "saved_tokens": 39,
+      "decoded_text_retokenized": 38,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 13,
+      "side": "baseline",
+      "saved_tokens": 251,
+      "decoded_text_retokenized": 250,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 13,
+      "side": "intervened",
+      "saved_tokens": 67,
+      "decoded_text_retokenized": 66,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 14,
+      "side": "baseline",
+      "saved_tokens": 199,
+      "decoded_text_retokenized": 198,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 14,
+      "side": "intervened",
+      "saved_tokens": 164,
+      "decoded_text_retokenized": 163,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 15,
+      "side": "baseline",
+      "saved_tokens": 214,
+      "decoded_text_retokenized": 213,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 15,
+      "side": "intervened",
+      "saved_tokens": 157,
+      "decoded_text_retokenized": 156,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 16,
+      "side": "baseline",
+      "saved_tokens": 178,
+      "decoded_text_retokenized": 177,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 16,
+      "side": "intervened",
+      "saved_tokens": 100,
+      "decoded_text_retokenized": 99,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 17,
+      "side": "baseline",
+      "saved_tokens": 198,
+      "decoded_text_retokenized": 197,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 17,
+      "side": "intervened",
+      "saved_tokens": 138,
+      "decoded_text_retokenized": 137,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 18,
+      "side": "baseline",
+      "saved_tokens": 160,
+      "decoded_text_retokenized": 159,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 18,
+      "side": "intervened",
+      "saved_tokens": 73,
+      "decoded_text_retokenized": 72,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 19,
+      "side": "baseline",
+      "saved_tokens": 245,
+      "decoded_text_retokenized": 244,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 19,
+      "side": "intervened",
+      "saved_tokens": 88,
+      "decoded_text_retokenized": 87,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 20,
+      "side": "baseline",
+      "saved_tokens": 144,
+      "decoded_text_retokenized": 143,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 20,
+      "side": "intervened",
+      "saved_tokens": 69,
+      "decoded_text_retokenized": 68,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 21,
+      "side": "baseline",
+      "saved_tokens": 194,
+      "decoded_text_retokenized": 193,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 21,
+      "side": "intervened",
+      "saved_tokens": 119,
+      "decoded_text_retokenized": 118,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 22,
+      "side": "baseline",
+      "saved_tokens": 181,
+      "decoded_text_retokenized": 180,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 22,
+      "side": "intervened",
+      "saved_tokens": 97,
+      "decoded_text_retokenized": 96,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 23,
+      "side": "baseline",
+      "saved_tokens": 167,
+      "decoded_text_retokenized": 166,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 23,
+      "side": "intervened",
+      "saved_tokens": 83,
+      "decoded_text_retokenized": 82,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 24,
+      "side": "baseline",
+      "saved_tokens": 265,
+      "decoded_text_retokenized": 264,
+      "saved_minus_retokenized": 1
+    },
+    {
+      "index": 24,
+      "side": "intervened",
+      "saved_tokens": 172,
+      "decoded_text_retokenized": 171,
+      "saved_minus_retokenized": 1
+    }
+  ],
+  "exact_duplicate_json_artifact_groups": [
+    [
+      "results/activation_patching/quality_assessment_v8.json",
+      "results/activation_patching/quality_assessment.json"
+    ]
+  ],
+  "limits": "Decoded/stripped text omits EOS and may lose leading whitespace. Retokenization cannot prove exact historical generated token IDs; new runs save IDs including EOS."
+}

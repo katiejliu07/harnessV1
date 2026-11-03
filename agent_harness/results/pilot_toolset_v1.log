@@ -1,0 +1,38 @@
+C code_toolset           log                      verified=True diff=None input=32246 out=506
+C full_tools             log                      verified=True diff=None input=115543 out=527
+C full_tools             tests                    verified=True diff=None input=227048 out=660
+C code_toolset           tests                    verified=True diff=None input=32099 out=505
+C full_tools             data                     verified=True diff=None input=115469 out=500
+C code_toolset           data                     verified=True diff=None input=32152 out=511
+C code_toolset           log                      verified=True diff=None input=18542 out=232
+C full_tools             log                      verified=True diff=None input=115682 out=608
+C full_tools             tests                    verified=True diff=None input=115499 out=491
+C code_toolset           tests                    verified=True diff=None input=32284 out=569
+C code_toolset           data                     verified=True diff=None input=32091 out=477
+C full_tools             data                     verified=True diff=None input=115493 out=464
+{
+  "summary": {
+    "C:code_toolset": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 179414,
+      "output_tokens": 2800,
+      "tokens_per_correct": 30369.0
+    },
+    "C:full_tools": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 804734,
+      "output_tokens": 3250,
+      "tokens_per_correct": 134664.0
+    }
+  },
+  "decisions": {
+    "toolset_first_rung": {
+      "losses": [],
+      "tokens_per_correct": 30369.0,
+      "full_tokens_per_correct": 134664.0,
+      "enable": true
+    }
+  }
+}

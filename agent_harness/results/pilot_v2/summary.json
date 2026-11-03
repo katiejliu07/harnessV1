@@ -1,0 +1,83 @@
+{
+  "summary": {
+    "A:lean_no_tools": {
+      "n": 12,
+      "correct": 11,
+      "input_total": 34345,
+      "output_tokens": 1973,
+      "tokens_per_correct": 3301.6363636363635
+    },
+    "A:default": {
+      "n": 12,
+      "correct": 12,
+      "input_total": 251769,
+      "output_tokens": 1845,
+      "tokens_per_correct": 21134.5
+    },
+    "A:lean_no_tools_short_sys": {
+      "n": 12,
+      "correct": 11,
+      "input_total": 7713,
+      "output_tokens": 1608,
+      "tokens_per_correct": 847.3636363636364
+    },
+    "B:claude_hygiene": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 744823,
+      "output_tokens": 3225,
+      "tokens_per_correct": 124674.66666666667
+    },
+    "B:claude_plain": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 717295,
+      "output_tokens": 3230,
+      "tokens_per_correct": 120087.5
+    },
+    "B:codex_hygiene": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 204755,
+      "output_tokens": 1151,
+      "tokens_per_correct": 34317.666666666664
+    },
+    "B:codex_plain": {
+      "n": 6,
+      "correct": 6,
+      "input_total": 320373,
+      "output_tokens": 1361,
+      "tokens_per_correct": 53622.333333333336
+    }
+  },
+  "decisions": {
+    "lean_no_tools": {
+      "losses": [
+        "code_top_k_frequent"
+      ],
+      "tokens_per_correct": 3301.6363636363635,
+      "default_tokens_per_correct": 21134.5,
+      "enable": false
+    },
+    "lean_no_tools_short_sys": {
+      "losses": [
+        "code_top_k_frequent"
+      ],
+      "tokens_per_correct": 847.3636363636364,
+      "default_tokens_per_correct": 21134.5,
+      "enable": false
+    },
+    "hygiene_claude": {
+      "losses": [],
+      "tokens_per_correct": 124674.66666666667,
+      "plain_tokens_per_correct": 120087.5,
+      "enable": false
+    },
+    "hygiene_codex": {
+      "losses": [],
+      "tokens_per_correct": 34317.666666666664,
+      "plain_tokens_per_correct": 53622.333333333336,
+      "enable": true
+    }
+  }
+}

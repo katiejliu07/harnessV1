@@ -1,0 +1,418 @@
+{
+  "summaries": [
+    {
+      "suite": "original",
+      "condition": "A_normal",
+      "n_unique_tasks": 5,
+      "correct": 5,
+      "task_checks_passed_ignoring_response_truncation": 5,
+      "raw_primary_correct": 5,
+      "automatic_task_checks_passed": 5,
+      "truncated": 0,
+      "mean_output_tokens": 37.2,
+      "mean_task_median_total_seconds": 2.6317474915646017,
+      "mean_task_median_model_seconds": 2.629647808219306,
+      "repeat_token_disagreements": 0,
+      "comparison_to_reasoning": {
+        "token_stats": {
+          "n": 5,
+          "baseline_mean": 138.4,
+          "intervened_mean": 37.2,
+          "mean_difference": 101.2,
+          "sd_difference": 32.84356862461812,
+          "paired_t": 6.8899358017192265,
+          "p_value_descriptive_post_selection": 0.002326133971485304,
+          "cohens_dz": 3.081272962650741,
+          "paired_bootstrap_95": [
+            79.8,
+            130.0
+          ]
+        },
+        "seconds_stats": {
+          "n": 5,
+          "baseline_mean": 10.075232333433814,
+          "intervened_mean": 2.6317474915646017,
+          "mean_difference": 7.443484841869212,
+          "sd_difference": 2.8813016560866234,
+          "paired_t": 5.776603800143181,
+          "p_value_descriptive_post_selection": 0.0044598465312108366,
+          "cohens_dz": 2.583375755240753,
+          "paired_bootstrap_95": [
+            5.599536075047217,
+            10.055344900884666
+          ]
+        },
+        "quality_gate": {
+          "observed_correctness_regressions": 0,
+          "total_cost_ratio": 0.26120960832152407,
+          "eligible_on_observed_sample": true,
+          "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+          "observed_task_check_regressions": 0,
+          "at_least_one_checks_and_eos_success": true
+        },
+        "token_identical_tasks": 0,
+        "loss_task_indices": []
+      },
+      "reference_comparisons": {
+        "A_normal": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 1.0,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "B_reasoning": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 0.26120960832152407,
+            "eligible_on_observed_sample": true,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "C_concise": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 2.061300240333015,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        }
+      },
+      "regressions_against_union_of_prompting_controls": []
+    },
+    {
+      "suite": "original",
+      "condition": "B_reasoning",
+      "n_unique_tasks": 5,
+      "correct": 5,
+      "task_checks_passed_ignoring_response_truncation": 5,
+      "raw_primary_correct": 5,
+      "automatic_task_checks_passed": 5,
+      "truncated": 0,
+      "mean_output_tokens": 138.4,
+      "mean_task_median_total_seconds": 10.075232333433814,
+      "mean_task_median_model_seconds": 10.071421524765901,
+      "repeat_token_disagreements": 0,
+      "comparison_to_reasoning": {
+        "token_stats": {
+          "n": 5,
+          "baseline_mean": 138.4,
+          "intervened_mean": 138.4,
+          "mean_difference": 0.0,
+          "sd_difference": 0.0,
+          "paired_t": null,
+          "p_value_descriptive_post_selection": null,
+          "cohens_dz": null,
+          "paired_bootstrap_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "seconds_stats": {
+          "n": 5,
+          "baseline_mean": 10.075232333433814,
+          "intervened_mean": 10.075232333433814,
+          "mean_difference": 0.0,
+          "sd_difference": 0.0,
+          "paired_t": null,
+          "p_value_descriptive_post_selection": null,
+          "cohens_dz": null,
+          "paired_bootstrap_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "quality_gate": {
+          "observed_correctness_regressions": 0,
+          "total_cost_ratio": 1.0,
+          "eligible_on_observed_sample": false,
+          "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+          "observed_task_check_regressions": 0,
+          "at_least_one_checks_and_eos_success": true
+        },
+        "token_identical_tasks": 5,
+        "loss_task_indices": []
+      },
+      "reference_comparisons": {
+        "A_normal": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 3.828343093601272,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "B_reasoning": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 1.0,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "C_concise": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 7.891364538917539,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        }
+      },
+      "regressions_against_union_of_prompting_controls": []
+    },
+    {
+      "suite": "original",
+      "condition": "C_concise",
+      "n_unique_tasks": 5,
+      "correct": 5,
+      "task_checks_passed_ignoring_response_truncation": 5,
+      "raw_primary_correct": 5,
+      "automatic_task_checks_passed": 5,
+      "truncated": 0,
+      "mean_output_tokens": 17.4,
+      "mean_task_median_total_seconds": 1.2767414664151147,
+      "mean_task_median_model_seconds": 1.273842850397341,
+      "repeat_token_disagreements": 0,
+      "comparison_to_reasoning": {
+        "token_stats": {
+          "n": 5,
+          "baseline_mean": 138.4,
+          "intervened_mean": 17.4,
+          "mean_difference": 121.0,
+          "sd_difference": 56.824290580701486,
+          "paired_t": 4.76141844469173,
+          "p_value_descriptive_post_selection": 0.008895924818389179,
+          "cohens_dz": 2.129371062330406,
+          "paired_bootstrap_95": [
+            91.6,
+            172.4
+          ]
+        },
+        "seconds_stats": {
+          "n": 5,
+          "baseline_mean": 10.075232333433814,
+          "intervened_mean": 1.2767414664151147,
+          "mean_difference": 8.7984908670187,
+          "sd_difference": 4.528296777164194,
+          "paired_t": 4.344685131345468,
+          "p_value_descriptive_post_selection": 0.012207917484800091,
+          "cohens_dz": 1.9430022589042135,
+          "paired_bootstrap_95": [
+            6.475407775072381,
+            12.849034975585528
+          ]
+        },
+        "quality_gate": {
+          "observed_correctness_regressions": 0,
+          "total_cost_ratio": 0.12672079651983362,
+          "eligible_on_observed_sample": true,
+          "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+          "observed_task_check_regressions": 0,
+          "at_least_one_checks_and_eos_success": true
+        },
+        "token_identical_tasks": 0,
+        "loss_task_indices": []
+      },
+      "reference_comparisons": {
+        "A_normal": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 0.48513068617235705,
+            "eligible_on_observed_sample": true,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "B_reasoning": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 0.12672079651983362,
+            "eligible_on_observed_sample": true,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "C_concise": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 1.0,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        }
+      },
+      "regressions_against_union_of_prompting_controls": []
+    },
+    {
+      "suite": "original",
+      "condition": "E_v8_prefix",
+      "n_unique_tasks": 5,
+      "correct": 5,
+      "task_checks_passed_ignoring_response_truncation": 5,
+      "raw_primary_correct": 5,
+      "automatic_task_checks_passed": 5,
+      "truncated": 0,
+      "mean_output_tokens": 69.8,
+      "mean_task_median_total_seconds": 5.064110217033885,
+      "mean_task_median_model_seconds": 5.0601797921815885,
+      "repeat_token_disagreements": 0,
+      "comparison_to_reasoning": {
+        "token_stats": {
+          "n": 5,
+          "baseline_mean": 138.4,
+          "intervened_mean": 69.8,
+          "mean_difference": 68.6,
+          "sd_difference": 46.54889902027759,
+          "paired_t": 3.2953360119143547,
+          "p_value_descriptive_post_selection": 0.030064596251370968,
+          "cohens_dz": 1.4737190662687107,
+          "paired_bootstrap_95": [
+            33.0,
+            103.8
+          ]
+        },
+        "seconds_stats": {
+          "n": 5,
+          "baseline_mean": 10.075232333433814,
+          "intervened_mean": 5.064110217033885,
+          "mean_difference": 5.011122116399929,
+          "sd_difference": 3.6845219164437286,
+          "paired_t": 3.041157021163287,
+          "p_value_descriptive_post_selection": 0.038358739938268986,
+          "cohens_dz": 1.3600467659143753,
+          "paired_bootstrap_95": [
+            2.1927524491678922,
+            7.980490408441983
+          ]
+        },
+        "quality_gate": {
+          "observed_correctness_regressions": 0,
+          "total_cost_ratio": 0.502629621773491,
+          "eligible_on_observed_sample": true,
+          "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+          "observed_task_check_regressions": 0,
+          "at_least_one_checks_and_eos_success": true
+        },
+        "token_identical_tasks": 0,
+        "loss_task_indices": []
+      },
+      "reference_comparisons": {
+        "A_normal": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 1.9242386411559638,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "B_reasoning": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 0.502629621773491,
+            "eligible_on_observed_sample": true,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        },
+        "C_concise": {
+          "n_paired_tasks": 5,
+          "quality_gate": {
+            "observed_correctness_regressions": 0,
+            "total_cost_ratio": 3.966433573472862,
+            "eligible_on_observed_sample": false,
+            "claim": "Observed-sample multi-dimension guard only; task-check and budget-termination losses are separate. No population noninferiority or general completeness established.",
+            "observed_task_check_regressions": 0,
+            "at_least_one_checks_and_eos_success": true
+          },
+          "task_check_regression_indices": [],
+          "regression_indices": []
+        }
+      },
+      "regressions_against_union_of_prompting_controls": []
+    }
+  ],
+  "donor_probes": [],
+  "errors_or_skips": [],
+  "grading_manifest": {
+    "input_sha256": "d5d7d01b9b1d0b0a96458a8d02bb66ac21afcfcc353b68593744a61e30491852",
+    "diagnostics_sha256": "5d15f569f6c67ec25a25e5fd16130825a0d15b48a53237ee2819c2a7cba828b8",
+    "graded_rows": 60,
+    "source_sha256": {
+      "quality_review.py": "532009d24e7d8c5d1ef2d2086a1b4d5b727f086ea5be7ec0abd4356b34769150",
+      "code_quality.py": "2578f3cb4f4a21a618324db3a0dd3e17c1d06ab7783132f29fdc70fe5ea19c61",
+      "scoring_v2.py": "e22ed1018fa68a00033ac3ae02b8598b12674c49153db5e1b17e035626c5c21f",
+      "evaluation.py": "bad7242069d21aa1d0a070b50952db0ea9aa8b9640c7d28dfb4f7206b8d4b953",
+      "tasks.py": "f480a6744952b628ccb654d205db08af8f184ea226c913111f3aed4a1581d4b7"
+    }
+  },
+  "manual_adjudications": null,
+  "supplemental_code_rescoring": {
+    "rows": 0,
+    "source": "quality_diagnostics.json",
+    "policy": "Accept permitted safe standard-library solutions; enforce executable edge cases, immutability and counted binary-search accesses. Raw benchmark.jsonl remains unchanged."
+  },
+  "supplemental_scalar_rescoring": "If quality_diagnostics.json exists, apply scoring_v2.py. It avoids interpreting 'our answer is correct' as a final-answer anchor. Preserve raw_primary_correct alongside rescored values.",
+  "coverage": {
+    "saved_rows": 60,
+    "completed_marker": true
+  },
+  "interpretation": "Task-paired descriptive intervals. Original set was reused during selection. Small heldout/coding sets do not establish noninferiority; code tests cannot prove general completeness.",
+  "full_noop_and_alpha0_parity": {
+    "comparisons": [],
+    "all_identical": null
+  }
+}

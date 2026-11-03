@@ -1,0 +1,5 @@
+suite,condition,n_unique_tasks,correct,task_checks_passed_ignoring_response_truncation,raw_primary_correct,automatic_task_checks_passed,truncated,mean_output_tokens,mean_task_median_total_seconds,mean_task_median_model_seconds
+original,A_normal,5,5,5,5,5,0,37.2,2.6317474915646017,2.629647808219306
+original,B_reasoning,5,5,5,5,5,0,138.4,10.075232333433814,10.071421524765901
+original,C_concise,5,5,5,5,5,0,17.4,1.2767414664151147,1.273842850397341
+original,E_v8_prefix,5,5,5,5,5,0,69.8,5.064110217033885,5.0601797921815885

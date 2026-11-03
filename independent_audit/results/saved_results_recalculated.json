@@ -1,0 +1,4685 @@
+[
+  {
+    "file": "results/activation_patching/quality_assessment.json",
+    "record": "root",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 78.68,
+      "avg_marker_reduction": 3.12,
+      "baseline_accuracy": 0.92,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.92,
+      "verdict": "EFFECTIVE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 173.56,
+      "intervened_mean": 94.88,
+      "mean_difference": 78.68,
+      "sd_difference": 38.50077921289387,
+      "paired_t": 10.217975013561565,
+      "p_value_descriptive_post_selection": 3.2206722478656145e-10,
+      "cohens_dz": 2.043595002712313,
+      "paired_bootstrap_95": [
+        64.399,
+        93.84
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 2.44,
+      "mean_difference": 3.12,
+      "sd_difference": 1.833030277982336,
+      "paired_t": 8.510497719203702,
+      "p_value_descriptive_post_selection": 1.0378727216486431e-08,
+      "cohens_dz": 1.7020995438407407,
+      "paired_bootstrap_95": [
+        2.4,
+        3.8
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 22,
+        "side": "baseline",
+        "problem": "What is 14 percent of 200?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "28",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v2.json",
+    "record": "root.strategies[0]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -1.7,
+      "avg_marker_reduction": 0.2,
+      "baseline_accuracy": 0.7,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.6,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 161.6,
+      "intervened_mean": 163.3,
+      "mean_difference": -1.7,
+      "sd_difference": 37.65648830030638,
+      "paired_t": -0.14276084321549723,
+      "p_value_descriptive_post_selection": 0.8896240725543694,
+      "cohens_dz": -0.04514494252471674,
+      "paired_bootstrap_95": [
+        -24.902499999999996,
+        18.7
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 6.0,
+      "intervened_mean": 5.6,
+      "mean_difference": 0.4,
+      "sd_difference": 1.577621275493231,
+      "paired_t": 0.8017837257372731,
+      "p_value_descriptive_post_selection": 0.44333185016966015,
+      "cohens_dz": 0.253546276418555,
+      "paired_bootstrap_95": [
+        -0.5,
+        1.3
+      ]
+    },
+    "baseline_correct": 7,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 8
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "6",
+        "independent_extraction": null,
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "100",
+        "independent_extraction": "100",
+        "saved_extraction": "100",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 9
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 7,
+        "replayed_markers": 8
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 9,
+        "side": "baseline",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 4
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v2.json",
+    "record": "root.strategies[1]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 25.8,
+      "avg_marker_reduction": -0.1,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.4,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 188.6,
+      "intervened_mean": 162.8,
+      "mean_difference": 25.8,
+      "sd_difference": 37.46642941799143,
+      "paired_t": 2.1775964483331873,
+      "p_value_descriptive_post_selection": 0.057398821501887694,
+      "cohens_dz": 0.6886164601426046,
+      "paired_bootstrap_95": [
+        4.8,
+        48.4
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.8,
+      "intervened_mean": 5.6,
+      "mean_difference": 0.2,
+      "sd_difference": 1.0327955589886444,
+      "paired_t": 0.6123724356957946,
+      "p_value_descriptive_post_selection": 0.5554454421055856,
+      "cohens_dz": 0.19364916731037088,
+      "paired_bootstrap_95": [
+        -0.4,
+        0.8
+      ]
+    },
+    "baseline_correct": 5,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 2,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "baseline",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "14",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "1",
+        "independent_extraction": "100",
+        "saved_extraction": "1",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "180",
+        "independent_extraction": "180",
+        "saved_extraction": "180",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 9,
+        "side": "baseline",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 4
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v2.json",
+    "record": "root.strategies[2]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 9.1,
+      "avg_marker_reduction": -0.8,
+      "baseline_accuracy": 0.4,
+      "intervened_accuracy": 0.5,
+      "maintained_accuracy": 0.3,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 176.5,
+      "intervened_mean": 167.4,
+      "mean_difference": 9.1,
+      "sd_difference": 37.93986469840573,
+      "paired_t": 0.7584825864901272,
+      "p_value_descriptive_post_selection": 0.46755897454101925,
+      "cohens_dz": 0.23985325388844603,
+      "paired_bootstrap_95": [
+        -10.9,
+        32.9
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.7,
+      "intervened_mean": 6.1,
+      "mean_difference": -0.4,
+      "sd_difference": 1.429840705968481,
+      "paired_t": -0.8846517369293829,
+      "p_value_descriptive_post_selection": 0.3993613590454337,
+      "cohens_dz": -0.27975144247209416,
+      "paired_bootstrap_95": [
+        -1.2,
+        0.4
+      ]
+    },
+    "baseline_correct": 4,
+    "intervened_correct": 5,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 2,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "baseline",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 4
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "18",
+        "independent_extraction": "18",
+        "saved_extraction": "18",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 7,
+        "replayed_markers": 9
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "43",
+        "independent_extraction": "43",
+        "saved_extraction": "43",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "1",
+        "independent_extraction": "100",
+        "saved_extraction": "1",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "1",
+        "independent_extraction": "1",
+        "saved_extraction": "1",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "3",
+        "independent_extraction": "3",
+        "saved_extraction": "3",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 9,
+        "side": "baseline",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v3.json",
+    "record": "root.strategies[0]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -14.5,
+      "avg_marker_reduction": 0.2,
+      "baseline_accuracy": 0.6,
+      "intervened_accuracy": 0.4,
+      "maintained_accuracy": 0.4,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 166.8,
+      "intervened_mean": 181.3,
+      "mean_difference": -14.5,
+      "sd_difference": 46.42377264577564,
+      "paired_t": -0.9877057261655773,
+      "p_value_descriptive_post_selection": 0.3491050485611509,
+      "cohens_dz": -0.3123399752673792,
+      "paired_bootstrap_95": [
+        -42.9,
+        10.6
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.4,
+      "intervened_mean": 5.7,
+      "mean_difference": -0.3,
+      "sd_difference": 0.8232726023485646,
+      "paired_t": -1.1523319193960635,
+      "p_value_descriptive_post_selection": 0.2788729992489171,
+      "cohens_dz": -0.3643993485805122,
+      "paired_bootstrap_95": [
+        -0.8,
+        0.2
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 4,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 2,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 0.5,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "baseline",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 4
+      },
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "16",
+        "independent_extraction": "16",
+        "saved_extraction": "16",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "96",
+        "independent_extraction": "96",
+        "saved_extraction": "96",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "180",
+        "independent_extraction": "180",
+        "saved_extraction": "180",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 9,
+        "side": "baseline",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 3
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v3.json",
+    "record": "root.strategies[1]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -3.0,
+      "avg_marker_reduction": 0.4,
+      "baseline_accuracy": 0.4,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.4,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 179.4,
+      "intervened_mean": 182.4,
+      "mean_difference": -3.0,
+      "sd_difference": 22.686266036231405,
+      "paired_t": -0.41817516224812246,
+      "p_value_descriptive_post_selection": 0.6856203634872509,
+      "cohens_dz": -0.13223859736145252,
+      "paired_bootstrap_95": [
+        -15.3,
+        11.2
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 6.1,
+      "intervened_mean": 6.1,
+      "mean_difference": 0.0,
+      "sd_difference": 1.699673171197595,
+      "paired_t": 0.0,
+      "p_value_descriptive_post_selection": 1.0,
+      "cohens_dz": 0.0,
+      "paired_bootstrap_95": [
+        -0.9,
+        1.1
+      ]
+    },
+    "baseline_correct": 4,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 2,
+    "mcnemar_exact_p": 0.5,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "baseline",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 6
+      },
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "30",
+        "independent_extraction": "30",
+        "saved_extraction": "30",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "6",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "14",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 9
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "180",
+        "independent_extraction": "180",
+        "saved_extraction": "180",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v3.json",
+    "record": "root.strategies[2]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -0.6,
+      "avg_marker_reduction": 0.0,
+      "baseline_accuracy": 0.4,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.3,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 181.8,
+      "intervened_mean": 182.4,
+      "mean_difference": -0.6,
+      "sd_difference": 33.67557637880078,
+      "paired_t": -0.056342512887038364,
+      "p_value_descriptive_post_selection": 0.9562999648676107,
+      "cohens_dz": -0.017817066982043044,
+      "paired_bootstrap_95": [
+        -21.5,
+        17.5
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 6.3,
+      "intervened_mean": 6.1,
+      "mean_difference": 0.2,
+      "sd_difference": 1.4757295747452437,
+      "paired_t": 0.4285714285714286,
+      "p_value_descriptive_post_selection": 0.6783097418055797,
+      "cohens_dz": 0.1355261854357877,
+      "paired_bootstrap_95": [
+        -0.6,
+        1.1
+      ]
+    },
+    "baseline_correct": 4,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 3,
+    "mcnemar_exact_p": 0.625,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 4
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "6",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "6",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "14",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 10
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 9
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 8
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 9,
+        "side": "baseline",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v4.json",
+    "record": "root.strategies[18]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 38.7,
+      "avg_marker_reduction": 1.3,
+      "baseline_accuracy": 0.6,
+      "intervened_accuracy": 0.9,
+      "maintained_accuracy": 0.5,
+      "verdict": "MODERATE"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 124.6,
+      "mean_difference": 38.7,
+      "sd_difference": 48.525022182146174,
+      "paired_t": 2.5220008141190227,
+      "p_value_descriptive_post_selection": 0.032661249261436785,
+      "cohens_dz": 0.7975266833415051,
+      "paired_bootstrap_95": [
+        10.2,
+        66.20249999999997
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 3.4,
+      "mean_difference": 2.2,
+      "sd_difference": 2.0976176963403033,
+      "paired_t": 3.3166247903554,
+      "p_value_descriptive_post_selection": 0.008988517447141369,
+      "cohens_dz": 1.0488088481701516,
+      "paired_bootstrap_95": [
+        1.0,
+        3.4
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 9,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 4,
+    "mcnemar_exact_p": 0.375,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 4
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 0
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 4
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 4
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 2
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 5
+      },
+      {
+        "index": 9,
+        "side": "intervened",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "13",
+        "independent_extraction": "13",
+        "saved_extraction": "13",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 3
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v4.json",
+    "record": "root.strategies[19]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 46.7,
+      "avg_marker_reduction": 1.9,
+      "baseline_accuracy": 0.7,
+      "intervened_accuracy": 0.9,
+      "maintained_accuracy": 0.6,
+      "verdict": "MODERATE"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 165.2,
+      "intervened_mean": 118.5,
+      "mean_difference": 46.7,
+      "sd_difference": 47.27237859234267,
+      "paired_t": 3.1239884923790306,
+      "p_value_descriptive_post_selection": 0.012239689584002155,
+      "cohens_dz": 0.9878919020073303,
+      "paired_bootstrap_95": [
+        20.1,
+        75.70249999999997
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 7.0,
+      "intervened_mean": 3.0,
+      "mean_difference": 4.0,
+      "sd_difference": 3.1622776601683795,
+      "paired_t": 4.0,
+      "p_value_descriptive_post_selection": 0.0031104283103858535,
+      "cohens_dz": 1.2649110640673518,
+      "paired_bootstrap_95": [
+        2.3,
+        5.9
+      ]
+    },
+    "baseline_correct": 7,
+    "intervened_correct": 9,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 3,
+    "mcnemar_exact_p": 0.625,
+    "discrepancies": [
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 0
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "6",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 7,
+        "replayed_markers": 11
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 3
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "60",
+        "independent_extraction": "60",
+        "saved_extraction": "60",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 7,
+        "replayed_markers": 11
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 2
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 9,
+        "side": "baseline",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 4
+      },
+      {
+        "index": 9,
+        "side": "intervened",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "13",
+        "independent_extraction": "13",
+        "saved_extraction": "13",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 3
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v4.json",
+    "record": "root.strategies[20]",
+    "n": 5,
+    "saved_summary": {
+      "avg_token_reduction": -5.2,
+      "avg_marker_reduction": 0.2,
+      "baseline_accuracy": 0.8,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.6,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 5,
+      "baseline_mean": 147.6,
+      "intervened_mean": 152.8,
+      "mean_difference": -5.2,
+      "sd_difference": 8.526429498916883,
+      "paired_t": -1.3637072217011776,
+      "p_value_descriptive_post_selection": 0.24436131565081096,
+      "cohens_dz": -0.6098684098262419,
+      "paired_bootstrap_95": [
+        -13.0,
+        -0.2
+      ]
+    },
+    "marker_stats": {
+      "n": 5,
+      "baseline_mean": 5.2,
+      "intervened_mean": 5.2,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "baseline_correct": 4,
+    "intervened_correct": 3,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v4.json",
+    "record": "root.strategies[21]",
+    "n": 5,
+    "saved_summary": {
+      "avg_token_reduction": -20.6,
+      "avg_marker_reduction": 0.2,
+      "baseline_accuracy": 0.8,
+      "intervened_accuracy": 0.2,
+      "maintained_accuracy": 0.2,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 5,
+      "baseline_mean": 158.0,
+      "intervened_mean": 178.6,
+      "mean_difference": -20.6,
+      "sd_difference": 42.881231325604446,
+      "paired_t": -1.0741995719929662,
+      "p_value_descriptive_post_selection": 0.343214511852861,
+      "cohens_dz": -0.4803966528754903,
+      "paired_bootstrap_95": [
+        -57.8,
+        10.4
+      ]
+    },
+    "marker_stats": {
+      "n": 5,
+      "baseline_mean": 5.8,
+      "intervened_mean": 6.4,
+      "mean_difference": -0.6,
+      "sd_difference": 2.1908902300206643,
+      "paired_t": -0.6123724356957946,
+      "p_value_descriptive_post_selection": 0.5733922538253555,
+      "cohens_dz": -0.2738612787525831,
+      "paired_bootstrap_95": [
+        -2.4,
+        1.0
+      ]
+    },
+    "baseline_correct": 4,
+    "intervened_correct": 1,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 3,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 0.25,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 9
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "6",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "2",
+        "independent_extraction": "2",
+        "saved_extraction": "2",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v4.json",
+    "record": "root.strategies[22]",
+    "n": 5,
+    "saved_summary": {
+      "avg_token_reduction": -6.8,
+      "avg_marker_reduction": -0.4,
+      "baseline_accuracy": 0.8,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.6,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 5,
+      "baseline_mean": 147.6,
+      "intervened_mean": 154.4,
+      "mean_difference": -6.8,
+      "sd_difference": 18.740330840195966,
+      "paired_t": -0.811365731835691,
+      "p_value_descriptive_post_selection": 0.46267410812524473,
+      "cohens_dz": -0.36285378619969405,
+      "paired_bootstrap_95": [
+        -24.0,
+        3.6
+      ]
+    },
+    "marker_stats": {
+      "n": 5,
+      "baseline_mean": 5.2,
+      "intervened_mean": 6.0,
+      "mean_difference": -0.8,
+      "sd_difference": 1.7888543819998322,
+      "paired_t": -0.9999999999999999,
+      "p_value_descriptive_post_selection": 0.373900966300059,
+      "cohens_dz": -0.44721359549995787,
+      "paired_bootstrap_95": [
+        -2.4,
+        0.0
+      ]
+    },
+    "baseline_correct": 4,
+    "intervened_correct": 3,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "18",
+        "independent_extraction": "18",
+        "saved_extraction": "18",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 7,
+        "replayed_markers": 9
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v4.json",
+    "record": "root.strategies[23]",
+    "n": 5,
+    "saved_summary": {
+      "avg_token_reduction": 15.2,
+      "avg_marker_reduction": -0.8,
+      "baseline_accuracy": 0.6,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.4,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 5,
+      "baseline_mean": 170.6,
+      "intervened_mean": 155.4,
+      "mean_difference": 15.2,
+      "sd_difference": 53.709403273542335,
+      "paired_t": 0.6328171825870884,
+      "p_value_descriptive_post_selection": 0.5612243404545879,
+      "cohens_dz": 0.2830044475189252,
+      "paired_bootstrap_95": [
+        -21.0,
+        63.0
+      ]
+    },
+    "marker_stats": {
+      "n": 5,
+      "baseline_mean": 5.2,
+      "intervened_mean": 5.6,
+      "mean_difference": -0.4,
+      "sd_difference": 0.8944271909999159,
+      "paired_t": -1.0000000000000002,
+      "p_value_descriptive_post_selection": 0.3739009663000589,
+      "cohens_dz": -0.447213595499958,
+      "paired_bootstrap_95": [
+        -1.0,
+        0.4
+      ]
+    },
+    "baseline_correct": 3,
+    "intervened_correct": 3,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 1,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "baseline",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 1,
+        "side": "baseline",
+        "problem": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 4
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "6",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": "5",
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "14",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v5.json",
+    "record": "root.strategies[0]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 69.3,
+      "avg_marker_reduction": 1.6,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.9,
+      "maintained_accuracy": 0.4,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 94.0,
+      "mean_difference": 69.3,
+      "sd_difference": 33.88231265883589,
+      "paired_t": 6.467853716370196,
+      "p_value_descriptive_post_selection": 0.00011570351634016099,
+      "cohens_dz": 2.04531493165145,
+      "paired_bootstrap_95": [
+        48.6,
+        88.8
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 1.7,
+      "mean_difference": 3.9,
+      "sd_difference": 1.3703203194062978,
+      "paired_t": 9.0,
+      "p_value_descriptive_post_selection": 8.538051223166285e-06,
+      "cohens_dz": 2.846049894151541,
+      "paired_bootstrap_95": [
+        3.1,
+        4.7
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 10,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 4,
+    "mcnemar_exact_p": 0.125,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 3
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 0
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 0
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 1
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 1
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 3
+      },
+      {
+        "index": 9,
+        "side": "intervened",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 2,
+        "replayed_markers": 0
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v5.json",
+    "record": "root.strategies[1]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 0.0,
+      "avg_marker_reduction": 0.0,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.5,
+      "maintained_accuracy": 0.5,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 163.3,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 5.6,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v5.json",
+    "record": "root.strategies[2]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 0.0,
+      "avg_marker_reduction": 0.0,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.5,
+      "maintained_accuracy": 0.5,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 163.3,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 5.6,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v5.json",
+    "record": "root.strategies[3]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 9.0,
+      "avg_marker_reduction": 1.3,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.6,
+      "maintained_accuracy": 0.4,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 154.3,
+      "mean_difference": 9.0,
+      "sd_difference": 41.02844541697057,
+      "paired_t": 0.6936772439772557,
+      "p_value_descriptive_post_selection": 0.5053921458925803,
+      "cohens_dz": 0.21936000519964463,
+      "paired_bootstrap_95": [
+        -13.402499999999998,
+        34.2
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 4.2,
+      "mean_difference": 1.4,
+      "sd_difference": 2.0110804171997807,
+      "paired_t": 2.2013981571160284,
+      "p_value_descriptive_post_selection": 0.055214533401941594,
+      "cohens_dz": 0.6961432213383857,
+      "paired_bootstrap_95": [
+        0.3,
+        2.6
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 7,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 1,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 0,
+        "side": "intervened",
+        "problem": "What is 7 + 5?",
+        "original_extraction_replay": "12",
+        "independent_extraction": "12",
+        "saved_extraction": "12.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 3
+      },
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "25",
+        "independent_extraction": "25",
+        "saved_extraction": "25",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 1
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 1
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      },
+      {
+        "index": 9,
+        "side": "intervened",
+        "problem": "If 5 + x = 13, what is x?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 3,
+        "replayed_markers": 5
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v5.json",
+    "record": "root.strategies[4]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 0.0,
+      "avg_marker_reduction": 0.0,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.5,
+      "maintained_accuracy": 0.5,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 163.3,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 5.6,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v5.json",
+    "record": "root.strategies[5]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": 0.0,
+      "avg_marker_reduction": 0.0,
+      "baseline_accuracy": 0.5,
+      "intervened_accuracy": 0.5,
+      "maintained_accuracy": 0.5,
+      "verdict": "WEAK"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 163.3,
+      "intervened_mean": 163.3,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 5.6,
+      "intervened_mean": 5.6,
+      "mean_difference": 0.0,
+      "sd_difference": 0.0,
+      "paired_t": null,
+      "p_value_descriptive_post_selection": null,
+      "cohens_dz": null,
+      "paired_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "baseline_correct": 6,
+    "intervened_correct": 6,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "baseline",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "24",
+        "independent_extraction": "24",
+        "saved_extraction": "24.",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 5
+      },
+      {
+        "index": 3,
+        "side": "baseline",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 3,
+        "side": "intervened",
+        "problem": "A square has side length 5. What is its area?",
+        "original_extraction_replay": "5",
+        "independent_extraction": null,
+        "saved_extraction": "5",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "baseline",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 4,
+        "side": "intervened",
+        "problem": "If 2x = 14, what is x?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 5,
+        "replayed_markers": 6
+      },
+      {
+        "index": 5,
+        "side": "baseline",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "10",
+        "independent_extraction": "10",
+        "saved_extraction": "10",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 6,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "baseline",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 6,
+        "side": "intervened",
+        "problem": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+        "original_extraction_replay": "120",
+        "independent_extraction": "120",
+        "saved_extraction": "120",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 4,
+        "replayed_markers": 7
+      },
+      {
+        "index": 7,
+        "side": "baseline",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 7,
+        "side": "intervened",
+        "problem": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+        "original_extraction_replay": "7",
+        "independent_extraction": "7",
+        "saved_extraction": "7",
+        "saved_correct": true,
+        "independent_correct": true,
+        "saved_markers": 4,
+        "replayed_markers": 5
+      },
+      {
+        "index": 8,
+        "side": "baseline",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      },
+      {
+        "index": 8,
+        "side": "intervened",
+        "problem": "What is the square root of 49?",
+        "original_extraction_replay": "4",
+        "independent_extraction": "4",
+        "saved_extraction": "4",
+        "saved_correct": false,
+        "independent_correct": false,
+        "saved_markers": 5,
+        "replayed_markers": 7
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v7.json",
+    "record": "root.strategies[0]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -14.7,
+      "avg_marker_reduction": 1.3,
+      "baseline_accuracy": 1.0,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 1.0,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 73.3,
+      "intervened_mean": 88.0,
+      "mean_difference": -14.7,
+      "sd_difference": 45.76764990446612,
+      "paired_t": -1.0156842595481184,
+      "p_value_descriptive_post_selection": 0.3363052084557368,
+      "cohens_dz": -0.3211875643753676,
+      "paired_bootstrap_95": [
+        -41.4,
+        11.8
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 3.6,
+      "intervened_mean": 2.3,
+      "mean_difference": 1.3,
+      "sd_difference": 1.9465068427541912,
+      "paired_t": 2.111968408188141,
+      "p_value_descriptive_post_selection": 0.06386531521192117,
+      "cohens_dz": 0.6678630516194731,
+      "paired_bootstrap_95": [
+        0.2,
+        2.4
+      ]
+    },
+    "baseline_correct": 10,
+    "intervened_correct": 10,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v7.json",
+    "record": "root.strategies[1]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -29.9,
+      "avg_marker_reduction": 1.2,
+      "baseline_accuracy": 1.0,
+      "intervened_accuracy": 0.9,
+      "maintained_accuracy": 0.9,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 73.3,
+      "intervened_mean": 103.2,
+      "mean_difference": -29.9,
+      "sd_difference": 33.89018212468685,
+      "paired_t": -2.7899555597300645,
+      "p_value_descriptive_post_selection": 0.021055371138861072,
+      "cohens_dz": -0.882261413939695,
+      "paired_bootstrap_95": [
+        -51.1,
+        -11.3
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 3.6,
+      "intervened_mean": 2.4,
+      "mean_difference": 1.2,
+      "sd_difference": 2.3475755815545343,
+      "paired_t": 1.6164477182409742,
+      "p_value_descriptive_post_selection": 0.1404529708782943,
+      "cohens_dz": 0.5111656508223583,
+      "paired_bootstrap_95": [
+        -0.2,
+        2.5
+      ]
+    },
+    "baseline_correct": 10,
+    "intervened_correct": 10,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 2,
+        "side": "intervened",
+        "problem": "What is 6 times 4?",
+        "original_extraction_replay": "6",
+        "independent_extraction": "24",
+        "saved_extraction": "6",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v7.json",
+    "record": "root.strategies[2]",
+    "n": 10,
+    "saved_summary": {
+      "avg_token_reduction": -32.3,
+      "avg_marker_reduction": 0.8,
+      "baseline_accuracy": 1.0,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 1.0,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 10,
+      "baseline_mean": 73.3,
+      "intervened_mean": 105.6,
+      "mean_difference": -32.3,
+      "sd_difference": 45.85981053408553,
+      "paired_t": -2.2272566596741914,
+      "p_value_descriptive_post_selection": 0.05293333097945809,
+      "cohens_dz": -0.7043203978348943,
+      "paired_bootstrap_95": [
+        -60.4,
+        -7.797500000000036
+      ]
+    },
+    "marker_stats": {
+      "n": 10,
+      "baseline_mean": 3.6,
+      "intervened_mean": 2.8,
+      "mean_difference": 0.8,
+      "sd_difference": 2.0976176963403033,
+      "paired_t": 1.2060453783110545,
+      "p_value_descriptive_post_selection": 0.25854720086632965,
+      "cohens_dz": 0.3813850356982369,
+      "paired_bootstrap_95": [
+        -0.4,
+        2.0
+      ]
+    },
+    "baseline_correct": 10,
+    "intervened_correct": 10,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8.json",
+    "record": "root",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 78.68,
+      "avg_marker_reduction": 3.12,
+      "baseline_accuracy": 0.92,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.92,
+      "verdict": "EFFECTIVE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 173.56,
+      "intervened_mean": 94.88,
+      "mean_difference": 78.68,
+      "sd_difference": 38.50077921289387,
+      "paired_t": 10.217975013561565,
+      "p_value_descriptive_post_selection": 3.2206722478656145e-10,
+      "cohens_dz": 2.043595002712313,
+      "paired_bootstrap_95": [
+        64.399,
+        93.84
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 2.44,
+      "mean_difference": 3.12,
+      "sd_difference": 1.833030277982336,
+      "paired_t": 8.510497719203702,
+      "p_value_descriptive_post_selection": 1.0378727216486431e-08,
+      "cohens_dz": 1.7020995438407407,
+      "paired_bootstrap_95": [
+        2.4,
+        3.8
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 22,
+        "side": "baseline",
+        "problem": "What is 14 percent of 200?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "28",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_hardset.json",
+    "record": "root",
+    "n": 12,
+    "saved_summary": {
+      "avg_token_reduction": 50.333333333333336,
+      "avg_marker_reduction": 1.0833333333333333,
+      "baseline_accuracy": 1.0,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 1.0,
+      "verdict": "MODERATE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 12,
+      "baseline_mean": 192.66666666666666,
+      "intervened_mean": 142.33333333333334,
+      "mean_difference": 50.333333333333336,
+      "sd_difference": 33.16167923518002,
+      "paired_t": 5.257869484193522,
+      "p_value_descriptive_post_selection": 0.0002693007447234322,
+      "cohens_dz": 1.5178161810315243,
+      "paired_bootstrap_95": [
+        32.916666666666664,
+        68.75
+      ]
+    },
+    "marker_stats": {
+      "n": 12,
+      "baseline_mean": 4.75,
+      "intervened_mean": 3.6666666666666665,
+      "mean_difference": 1.0833333333333333,
+      "sd_difference": 1.880924981991251,
+      "paired_t": 1.9951761955756844,
+      "p_value_descriptive_post_selection": 0.07139138740891672,
+      "cohens_dz": 0.5759577567981774,
+      "paired_bootstrap_95": [
+        0.08333333333333333,
+        2.1666666666666665
+      ]
+    },
+    "baseline_correct": 12,
+    "intervened_correct": 12,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_heads.json",
+    "record": "root.strategies[0]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 3.88,
+      "avg_marker_reduction": 0.12,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.96,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 170.76,
+      "mean_difference": 3.88,
+      "sd_difference": 15.42000864677665,
+      "paired_t": 1.2581056498989263,
+      "p_value_descriptive_post_selection": 0.22045646705513366,
+      "cohens_dz": 0.25162112997978525,
+      "paired_bootstrap_95": [
+        -1.240999999999999,
+        10.56
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 5.44,
+      "mean_difference": 0.12,
+      "sd_difference": 0.43969686527576396,
+      "paired_t": 1.364576478442026,
+      "p_value_descriptive_post_selection": 0.18504506368370852,
+      "cohens_dz": 0.2729152956884052,
+      "paired_bootstrap_95": [
+        0.0,
+        0.32
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_heads.json",
+    "record": "root.strategies[1]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": -6.64,
+      "avg_marker_reduction": -0.32,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 0.96,
+      "maintained_accuracy": 0.92,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 181.28,
+      "mean_difference": -6.64,
+      "sd_difference": 27.130671450101147,
+      "paired_t": -1.2237072739265442,
+      "p_value_descriptive_post_selection": 0.23294122286844293,
+      "cohens_dz": -0.24474145478530884,
+      "paired_bootstrap_95": [
+        -17.48,
+        3.400999999999985
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 5.88,
+      "mean_difference": -0.32,
+      "sd_difference": 1.1445523142259597,
+      "paired_t": -1.3979264906576607,
+      "p_value_descriptive_post_selection": 0.17492274942280742,
+      "cohens_dz": -0.27958529813153216,
+      "paired_bootstrap_95": [
+        -0.8,
+        0.08
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 22,
+        "side": "intervened",
+        "problem": "What is 14 percent of 200?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "28",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_heads.json",
+    "record": "root.strategies[2]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": -1.16,
+      "avg_marker_reduction": -0.04,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 0.88,
+      "maintained_accuracy": 0.88,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 175.8,
+      "mean_difference": -1.16,
+      "sd_difference": 22.309713878338588,
+      "paired_t": -0.25997644038059387,
+      "p_value_descriptive_post_selection": 0.7970992919713544,
+      "cohens_dz": -0.05199528807611877,
+      "paired_bootstrap_95": [
+        -10.0,
+        7.4
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 5.6,
+      "mean_difference": -0.04,
+      "sd_difference": 0.9345230512584124,
+      "paired_t": -0.21401291250192653,
+      "p_value_descriptive_post_selection": 0.8323448071369224,
+      "cohens_dz": -0.0428025825003853,
+      "paired_bootstrap_95": [
+        -0.4,
+        0.32
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 5,
+        "side": "intervened",
+        "problem": "What is 100 divided by 4?",
+        "original_extraction_replay": "100",
+        "independent_extraction": "25",
+        "saved_extraction": "100",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 13,
+        "side": "intervened",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 22,
+        "side": "intervened",
+        "problem": "What is 14 percent of 200?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "28",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_heads.json",
+    "record": "root.strategies[3]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": -3.72,
+      "avg_marker_reduction": 0.08,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 0.92,
+      "maintained_accuracy": 0.88,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 178.36,
+      "mean_difference": -3.72,
+      "sd_difference": 27.29242874254079,
+      "paired_t": -0.6815076875517541,
+      "p_value_descriptive_post_selection": 0.5020742289691001,
+      "cohens_dz": -0.13630153751035082,
+      "paired_bootstrap_95": [
+        -14.76,
+        5.8
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 5.48,
+      "mean_difference": 0.08,
+      "sd_difference": 1.3203534880225571,
+      "paired_t": 0.3029491750720973,
+      "p_value_descriptive_post_selection": 0.7645389550694487,
+      "cohens_dz": 0.06058983501441946,
+      "paired_bootstrap_95": [
+        -0.32,
+        0.64
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 24,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 22,
+        "side": "intervened",
+        "problem": "What is 14 percent of 200?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "28",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_heads.json",
+    "record": "root.strategies[4]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": -10.72,
+      "avg_marker_reduction": -0.36,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 0.92,
+      "maintained_accuracy": 0.92,
+      "verdict": "WEAK",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 185.36,
+      "mean_difference": -10.72,
+      "sd_difference": 31.176273029340756,
+      "paired_t": -1.7192561775923545,
+      "p_value_descriptive_post_selection": 0.0984414031685206,
+      "cohens_dz": -0.3438512355184709,
+      "paired_bootstrap_95": [
+        -23.88,
+        -0.32
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 5.92,
+      "mean_difference": -0.36,
+      "sd_difference": 1.5242484486898233,
+      "paired_t": -1.1809098454698777,
+      "p_value_descriptive_post_selection": 0.2492096622412087,
+      "cohens_dz": -0.2361819690939755,
+      "paired_bootstrap_95": [
+        -1.0,
+        0.16
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 13,
+        "side": "intervened",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 22,
+        "side": "intervened",
+        "problem": "What is 14 percent of 200?",
+        "original_extraction_replay": "14",
+        "independent_extraction": "28",
+        "saved_extraction": "14",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 6,
+        "replayed_markers": 6
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_single_layers.json",
+    "record": "root.strategies[0]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 79.76,
+      "avg_marker_reduction": 3.12,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.96,
+      "verdict": "EFFECTIVE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 94.88,
+      "mean_difference": 79.76,
+      "sd_difference": 41.21011202767269,
+      "paired_t": 9.677236493125882,
+      "p_value_descriptive_post_selection": 9.292798597104561e-10,
+      "cohens_dz": 1.9354472986251765,
+      "paired_bootstrap_95": [
+        64.48,
+        96.0
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 2.44,
+      "mean_difference": 3.12,
+      "sd_difference": 1.87794213613377,
+      "paired_t": 8.306965214655994,
+      "p_value_descriptive_post_selection": 1.6102924296578873e-08,
+      "cohens_dz": 1.661393042931199,
+      "paired_bootstrap_95": [
+        2.36,
+        3.84
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_single_layers.json",
+    "record": "root.strategies[1]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 69.92,
+      "avg_marker_reduction": 3.68,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.96,
+      "verdict": "EFFECTIVE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 104.72,
+      "mean_difference": 69.92,
+      "sd_difference": 48.46899352507057,
+      "paired_t": 7.212858666420821,
+      "p_value_descriptive_post_selection": 1.87630905651628e-07,
+      "cohens_dz": 1.4425717332841645,
+      "paired_bootstrap_95": [
+        52.318000000000005,
+        89.52099999999999
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 1.88,
+      "mean_difference": 3.68,
+      "sd_difference": 1.886796226411321,
+      "paired_t": 9.751980496058511,
+      "p_value_descriptive_post_selection": 8.00932784360353e-10,
+      "cohens_dz": 1.9503960992117022,
+      "paired_bootstrap_95": [
+        2.96,
+        4.4
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_single_layers.json",
+    "record": "root.strategies[2]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 76.56,
+      "avg_marker_reduction": 2.88,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.96,
+      "verdict": "EFFECTIVE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 98.08,
+      "mean_difference": 76.56,
+      "sd_difference": 44.03036830794552,
+      "paired_t": 8.693999498771435,
+      "p_value_descriptive_post_selection": 7.017827518590088e-09,
+      "cohens_dz": 1.7387998997542868,
+      "paired_bootstrap_95": [
+        60.24,
+        93.84
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 2.68,
+      "mean_difference": 2.88,
+      "sd_difference": 2.127596452964393,
+      "paired_t": 6.768200792935329,
+      "p_value_descriptive_post_selection": 5.321646148556521e-07,
+      "cohens_dz": 1.3536401585870659,
+      "paired_bootstrap_95": [
+        2.04,
+        3.68
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 25,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 0,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  },
+  {
+    "file": "results/activation_patching/quality_assessment_v8_single_layers.json",
+    "record": "root.strategies[3]",
+    "n": 25,
+    "saved_summary": {
+      "avg_token_reduction": 77.08,
+      "avg_marker_reduction": 3.28,
+      "baseline_accuracy": 0.96,
+      "intervened_accuracy": 1.0,
+      "maintained_accuracy": 0.96,
+      "verdict": "EFFECTIVE",
+      "marker_method": "enumerated_steps+step_word+connectors_v1"
+    },
+    "token_stats": {
+      "n": 25,
+      "baseline_mean": 174.64,
+      "intervened_mean": 97.56,
+      "mean_difference": 77.08,
+      "sd_difference": 46.06600337197343,
+      "paired_t": 8.36625649696534,
+      "p_value_descriptive_post_selection": 1.416078043460306e-08,
+      "cohens_dz": 1.6732512993930682,
+      "paired_bootstrap_95": [
+        60.24,
+        95.56099999999999
+      ]
+    },
+    "marker_stats": {
+      "n": 25,
+      "baseline_mean": 5.56,
+      "intervened_mean": 2.28,
+      "mean_difference": 3.28,
+      "sd_difference": 2.18936824982307,
+      "paired_t": 7.490745333191588,
+      "p_value_descriptive_post_selection": 9.907236162933214e-08,
+      "cohens_dz": 1.4981490666383177,
+      "paired_bootstrap_95": [
+        2.44,
+        4.12
+      ]
+    },
+    "baseline_correct": 25,
+    "intervened_correct": 24,
+    "marker_rescoring_scope": "Common v8 marker estimator. Earlier artifacts can intentionally use other marker definitions; differences alone are not historical bugs.",
+    "answer_rescoring_scope": "Common independent final-scalar estimator; all 50 main-v8 final answers separately inspected/regression-tested. Other versions may require manual adjudication.",
+    "paired_accuracy_losses": 1,
+    "paired_accuracy_gains": 0,
+    "mcnemar_exact_p": 1.0,
+    "discrepancies": [
+      {
+        "index": 13,
+        "side": "baseline",
+        "problem": "What is 81 divided by 9?",
+        "original_extraction_replay": "81",
+        "independent_extraction": "9",
+        "saved_extraction": "81",
+        "saved_correct": false,
+        "independent_correct": true,
+        "saved_markers": 8,
+        "replayed_markers": 8
+      },
+      {
+        "index": 19,
+        "side": "intervened",
+        "problem": "What is the square root of 64?",
+        "original_extraction_replay": "8",
+        "independent_extraction": "-8",
+        "saved_extraction": "8",
+        "saved_correct": true,
+        "independent_correct": false,
+        "saved_markers": 3,
+        "replayed_markers": 3
+      }
+    ],
+    "token_count_limits": "Counts replay stored integers; text re-tokenization is separate and cannot recover discarded EOS/token IDs."
+  }
+]

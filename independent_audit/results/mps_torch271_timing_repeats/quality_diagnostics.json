@@ -1,0 +1,902 @@
+[
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "A_normal",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "B_reasoning",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "C_concise",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "E_v8_prefix",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "E_v8_prefix",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "B_reasoning",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "A_normal",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 0,
+    "condition": "C_concise",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "B_reasoning",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "C_concise",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "A_normal",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "E_v8_prefix",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "A_normal",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "B_reasoning",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "C_concise",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 1,
+    "condition": "E_v8_prefix",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "12",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "E_v8_prefix",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "C_concise",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "A_normal",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "B_reasoning",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "A_normal",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "E_v8_prefix",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "B_reasoning",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 2,
+    "condition": "C_concise",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "24",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "B_reasoning",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "A_normal",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "C_concise",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "E_v8_prefix",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "E_v8_prefix",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "A_normal",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "B_reasoning",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 3,
+    "condition": "C_concise",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "25",
+      "passed": true
+    },
+    "requested_final_format": true,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "A_normal",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "C_concise",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "B_reasoning",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "E_v8_prefix",
+    "repeat": 1,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "E_v8_prefix",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "C_concise",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "A_normal",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "original",
+    "task_index": 4,
+    "condition": "B_reasoning",
+    "repeat": 2,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "7",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  }
+]

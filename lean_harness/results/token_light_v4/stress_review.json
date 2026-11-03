@@ -1,0 +1,1034 @@
+[
+  {
+    "stage": "development",
+    "task_id": "code_interleave",
+    "profile": "terse",
+    "base_checks_passed": true,
+    "combined_case_count": 6,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def interleave(a, b):\n    \"\"\"Return a new list that alternates items from a and b, starting with a.\n    Handles empty inputs.\n    \"\"\"\n    if not a:\n        return b\n    if not b:\n        return a\n    return a[:1] + b[:1] + interleave(a[1:], b[1:])"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_interleave",
+    "profile": "nosys",
+    "base_checks_passed": false,
+    "combined_case_count": 6,
+    "passed": false,
+    "grade": {
+      "functional": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def interleave(a, b):\n    \"\"\"\n    Interleave elements from two lists, a and b, starting with a, and appending the remaining elements of the longer list.\n    Both lists are guaranteed to be of equal length or one is empty.\n    \"\"\"\n    if not a or not b:\n        return []\n    result = []\n    for i in range(len(a)):\n        result.append(a[i])\n        result.append(b[i])\n    if len(a) > len(b):\n        result.extend(a[len(b):])\n    elif len(b) > len(a):\n        result.extend(b[len(a):])\n    return result"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_interleave",
+    "profile": "legacy",
+    "base_checks_passed": false,
+    "combined_case_count": 6,
+    "passed": false,
+    "grade": {
+      "functional": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def interleave(a, b):\n    \"\"\"\n    Interleave elements from two lists, a and b, starting with a, and appending the remaining elements of the longer list.\n    Both lists are guaranteed to be of equal length or one is a prefix of the other.\n    \"\"\"\n    result = []\n    a_iter = iter(a)\n    b_iter = iter(b)\n    while a_iter or b_iter:\n        if a_iter:\n            result.append(next(a_iter))\n        if b_iter:\n            result.append(next(b_iter))\n    return result"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_interleave",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 6,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def interleave(a, b):\n    \"\"\"Return a new list that alternates items from a and b, starting with a.\n    Handles empty inputs.\n    \"\"\"\n    if not a:\n        return b\n    if not b:\n        return a\n    return a[:1] + b[:1] + interleave(a[1:], b[1:])"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_clip_values",
+    "profile": "terse",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def clip_values(values, lo, hi):\n    \"\"\"\n    Returns a new list with each numeric value clipped to the inclusive range [lo, hi].\n    \n    Parameters:\n    values (list): A list of numeric values.\n    lo (float): The lower bound of the range.\n    hi (float): The upper bound of the range.\n    \n    Returns:\n    list: A new list with values clipped to [lo, hi].\n    \"\"\"\n    return [max(lo, min(value, hi)) for value in values]"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_clip_values",
+    "profile": "nosys",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def clip_values(values, lo, hi):\n    \"\"\"\n    Clips each value in the list to the inclusive range [lo, hi].\n    \n    Parameters:\n    values (list): The list of numeric values to be clipped.\n    lo (float): The lower bound of the clipping range.\n    hi (float): The upper bound of the clipping range.\n    \n    Returns:\n    list: A new list with each value clipped to [lo, hi].\n    \"\"\"\n    return [max(lo, min(value, hi)) for value in values]\n\ndef check_solution():\n    assert clip_values([1, 2, 3, 4, 5], 3, 4) == [3, 3, 3, 4, 4], 'Test case 1 failed'\n    assert clip_values([-1, 0, 1, 2, 3], -2, 2) == [-1, 0, 0, 2, 2], 'Test case 2 failed'\n    assert clip_values([10, 20, 30, 40, 50], 15, 35) == [15, 20, 30, 35, 35], 'Test case 3 failed'\n    assert clip_values([], 1, 10) == [], 'Test case 4 failed'\n    assert clip_values([1.5, 2.5, 3.5], 1, 4) == [1, 2, 3], 'Test case 5 failed'\n    print('All test cases passed!')"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_clip_values",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def clip_values(values, lo, hi):\n    \"\"\"\n    Clips each numeric value in the input list to the inclusive range [lo, hi].\n    \n    Parameters:\n    values (list): The input list of numeric values.\n    lo (float): The lower bound of the range.\n    hi (float): The upper bound of the range.\n    \n    Returns:\n    list: A new list with each value clipped to the range [lo, hi].\n    \"\"\"\n    if not values:\n        return []\n    clipped_values = [max(lo, min(value, hi)) for value in values]\n    return clipped_values"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_clip_values",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def clip_values(values, lo, hi):\n    \"\"\"\n    Returns a new list with each numeric value clipped to the inclusive range [lo, hi].\n    \n    Parameters:\n    values (list): A list of numeric values.\n    lo (float): The lower bound of the range.\n    hi (float): The upper bound of the range.\n    \n    Returns:\n    list: A new list with values clipped to [lo, hi].\n    \"\"\"\n    return [max(lo, min(value, hi)) for value in values]"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_adjacent_differences",
+    "profile": "terse",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def adjacent_differences(values):\n    return [values[i] - values[i - 1] for i in range(1, len(values))]"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_adjacent_differences",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def adjacent_differences(values):\n    if len(values) < 2:\n        return []\n    differences = []\n    for i in range(1, len(values)):\n        differences.append(values[i] - values[i - 1])\n    return differences"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_adjacent_differences",
+    "profile": "nosys",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def adjacent_differences(values):\n    \"\"\"\n    Returns a new list where each element is the difference between the current and previous element.\n    If the list has fewer than two elements, returns an empty list.\n    \n    :param values: List of integers\n    :return: List of differences between consecutive elements\n    \"\"\"\n    if len(values) < 2:\n        return []\n    differences = [values[i] - values[i - 1] for i in range(1, len(values))]\n    return differences"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_adjacent_differences",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def adjacent_differences(values):\n    return [values[i] - values[i - 1] for i in range(1, len(values))]"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_even_first",
+    "profile": "terse",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def even_first(values):\n    \"\"\"\n    Returns a new list with all even integers followed by all odd integers,\n    preserving the original order within each group. Handles empty input.\n    \"\"\"\n    evens, odds = ([], [])\n    for value in values:\n        if value % 2 == 0:\n            evens.append(value)\n        else:\n            odds.append(value)\n    return evens + odds"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_even_first",
+    "profile": "nosys",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def even_first(values):\n    evens = [x for x in values if x % 2 == 0]\n    odds = [x for x in values if x % 2 != 0]\n    return evens + odds"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_even_first",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def even_first(values):\n    \"\"\"\n    Returns a new list with all even integers followed by all odd integers, preserving original order within each group.\n    \n    Parameters:\n    values (list): The input list of integers.\n    \n    Returns:\n    list: A new list with even integers followed by odd integers.\n    \"\"\"\n    even = [x for x in values if x % 2 == 0]\n    odd = [x for x in values if x % 2 != 0]\n    return even + odd"
+    }
+  },
+  {
+    "stage": "development",
+    "task_id": "code_even_first",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def even_first(values):\n    \"\"\"\n    Returns a new list with all even integers followed by all odd integers,\n    preserving the original order within each group. Handles empty input.\n    \"\"\"\n    evens, odds = ([], [])\n    for value in values:\n        if value % 2 == 0:\n            evens.append(value)\n        else:\n            odds.append(value)\n    return evens + odds"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_rotate_right",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 7,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def rotate_right(values, k):\n    \"\"\"\n    Rotate the list to the right by k positions. Negative k rotates to the left.\n    Handles empty input and k larger than the length of the list.\n    \"\"\"\n    if not values or k == 0:\n        return values\n    k = k % len(values)\n    return values[-k:] + values[:-k]"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_rotate_right",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 7,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def rotate_right(values, k):\n    \"\"\"Return a new list with elements rotated right by k positions.\n    k can be negative for left rotation.\n    Handles empty input and k larger than list length.\n    \"\"\"\n    if not values or k == 0:\n        return values\n    k %= len(values)\n    return values[-k:] + values[:-k]"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_merge_sorted",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 6,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def merge_sorted(a, b):\n    \"\"\"\n    Merge two sorted lists into a single sorted list, including duplicates.\n    \n    Parameters:\n    a (list): First sorted list.\n    b (list): Second sorted list.\n    \n    Returns:\n    list: Merged sorted list containing all elements from both input lists.\n    \"\"\"\n    merged = []\n    i, j = (0, 0)\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            merged.append(a[i])\n            i += 1\n        else:\n            merged.append(b[j])\n            j += 1\n    merged.extend(a[i:])\n    merged.extend(b[j:])\n    return merged"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_merge_sorted",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 6,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def merge_sorted(a, b):\n    \"\"\"\n    Merge two sorted lists a and b into a new sorted list, including duplicates.\n    \n    Parameters:\n    a (list): The first sorted list.\n    b (list): The second sorted list.\n    \n    Returns:\n    list: A new sorted list containing all values from a and b, including duplicates.\n    \"\"\"\n    merged_list = []\n    i, j = (0, 0)\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            merged_list.append(a[i])\n            i += 1\n        else:\n            merged_list.append(b[j])\n            j += 1\n    while i < len(a):\n        merged_list.append(a[i])\n        i += 1\n    while j < len(b):\n        merged_list.append(b[j])\n        j += 1\n    return merged_list"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_prefix_sums",
+    "profile": "legacy",
+    "base_checks_passed": false,
+    "combined_case_count": 5,
+    "passed": false,
+    "grade": {
+      "functional": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def prefix_sums(values):\n    \"\"\"\n    Returns a new list of inclusive running sums for the input list of numbers.\n    \n    Parameters:\n    values (list): A list of numbers.\n    \n    Returns:\n    list: A new list containing the running sums of the input list.\n    \"\"\"\n    if not values:\n        return []\n    prefix_sums = [0]\n    for value in values:\n        prefix_sums.append(prefix_sums[-1] + value)\n    return prefix_sums"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_prefix_sums",
+    "profile": "steps",
+    "base_checks_passed": false,
+    "combined_case_count": 5,
+    "passed": false,
+    "grade": {
+      "functional": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def prefix_sums(values):\n    if not values:\n        return []\n    prefix_sums = [0]\n    for value in values:\n        prefix_sums.append(prefix_sums[-1] + value)\n    return prefix_sums"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_moving_sums",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 8,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def moving_sums(values, k):\n    if k <= 0 or k > len(values):\n        return []\n    if not values:\n        return []\n    result = []\n    for i in range(len(values)):\n        if i + k > len(values):\n            break\n        window_sum = sum(values[i:i + k])\n        result.append(window_sum)\n    return result"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_moving_sums",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 8,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def moving_sums(values, k):\n    if k <= 0 or k > len(values):\n        return []\n    if not values:\n        return []\n    return [sum(values[i:i + k]) for i in range(len(values) - k + 1)]"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_expand_runs",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def expand_runs(pairs):\n    if not pairs:\n        return []\n    result = []\n    for value, count in pairs:\n        if count == 0:\n            continue\n        result.extend([value] * count)\n    return result"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_expand_runs",
+    "profile": "steps",
+    "base_checks_passed": false,
+    "combined_case_count": 5,
+    "passed": false,
+    "grade": {
+      "functional": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def expand_runs(pairs):\n    return [item[0] * item[1] for item in pairs]"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_nonzero_indices",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def nonzero_indices(values):\n    \"\"\"\n    Returns a list of indices of all nonzero numbers in the input list, in original order.\n    \n    Parameters:\n    values (list): A list of numbers.\n    \n    Returns:\n    list: A list of indices of all nonzero numbers in the input list, in original order.\n    \"\"\"\n    indices = [i for i, value in enumerate(values) if value != 0]\n    return indices"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_nonzero_indices",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def nonzero_indices(values):\n    \"\"\"\n    Returns a list of indices of all nonzero numbers in the input list, in original order.\n    \n    :param values: List of numbers\n    :return: List of indices of nonzero numbers\n    \"\"\"\n    return [i for i, value in enumerate(values) if value != 0]"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_flatten_once",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def flatten_once(rows):\n    return [item for sublist in rows for item in sublist]"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_flatten_once",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 5,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def flatten_once(rows):\n    \"\"\"\n    Flattens exactly one level of a list of lists.\n    \n    Parameters:\n    rows (list of lists): The list of lists to be flattened.\n    \n    Returns:\n    list: A new list with exactly one level of nesting removed.\n    \"\"\"\n    flattened = []\n    for row in rows:\n        if isinstance(row, list):\n            flattened.extend(row)\n        else:\n            flattened.append(row)\n    return flattened"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_keep_last",
+    "profile": "steps",
+    "base_checks_passed": false,
+    "combined_case_count": 5,
+    "passed": false,
+    "grade": {
+      "functional": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def keep_last(items):\n    \"\"\"\n    Returns a list containing only the last occurrence of each hashable item in the input list,\n    in the order of those last occurrences. Handles empty input.\n    \n    :param items: List of hashable items\n    :return: List of items with only their last occurrences\n    \"\"\"\n    if not items:\n        return []\n    last_occurrences = []\n    for item in items:\n        if item not in last_occurrences:\n            last_occurrences.append(item)\n    return last_occurrences"
+    }
+  },
+  {
+    "stage": "validation",
+    "task_id": "code_keep_last",
+    "profile": "legacy",
+    "base_checks_passed": false,
+    "combined_case_count": 5,
+    "passed": false,
+    "grade": {
+      "functional": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def keep_last(items):\n    \"\"\"\n    Returns a list containing only the last occurrence of each hashable item in the input list, in the order of those last occurrences.\n    \n    Parameters:\n    items (list): A list of hashable items.\n    \n    Returns:\n    list: A list of items, each being the last occurrence of a unique item in the input list.\n    \"\"\"\n    if not items:\n        return []\n    last_occurrences = []\n    for item in items:\n        if item not in last_occurrences:\n            last_occurrences.append(item)\n    return last_occurrences"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_00",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 4,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def dedup(items):\n    seen = set()\n    deduped = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            deduped.append(item)\n    return deduped"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_00",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 4,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def dedup(items):\n    seen = set()\n    return [x for x in items if x not in seen and (not seen.add(x))]"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_01",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 4,
+    "passed": false,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def runs(values):\n    if not values:\n        return []\n    result = []\n    count = 1\n    for i in range(1, len(values)):\n        if values[i] == values[i - 1]:\n            count += 1\n        else:\n            result.append((values[i - 1], count))\n            count = 1\n    result.append((values[-1], count))\n    return result"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_01",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 4,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def runs(values):\n    if not values:\n        return []\n    result = []\n    current_value = values[0]\n    count = 1\n    for value in values[1:]:\n        if value == current_value:\n            count += 1\n        else:\n            result.append((current_value, count))\n            current_value = value\n            count = 1\n    result.append((current_value, count))\n    return result"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_02",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 7,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [
+        {
+          "n": 256,
+          "x": -1,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 0,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 42,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 85,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 86,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": -1,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 0,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 682,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1365,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1366,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": -1,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 0,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 10922,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21845,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21846,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "normalized_tested_source": "def lower_bound(a, x):\n    \"\"\"\n    Finds the first index i where a[i] >= x in a sorted list, or len(a) if none.\n    Uses O(log n) time complexity, no imports, and handles empty lists.\n    \"\"\"\n    if not a:\n        return 0\n    left, right = (0, len(a) - 1)\n    result = len(a)\n    while left <= right:\n        mid = (left + right) // 2\n        if a[mid] >= x:\n            result = mid\n            right = mid - 1\n        else:\n            left = mid + 1\n    return result"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_02",
+    "profile": "steps",
+    "base_checks_passed": true,
+    "combined_case_count": 7,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [
+        {
+          "n": 256,
+          "x": -1,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 0,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 42,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 85,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 86,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": -1,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 0,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 682,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1365,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1366,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": -1,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 0,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 10922,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21845,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21846,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "normalized_tested_source": "def lower_bound(a, x):\n    left, right = (0, len(a))\n    while left < right:\n        mid = (left + right) // 2\n        if a[mid] < x:\n            left = mid + 1\n        else:\n            right = mid\n    return left"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_03",
+    "profile": "steps",
+    "base_checks_passed": false,
+    "combined_case_count": 7,
+    "passed": false,
+    "grade": {
+      "functional": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def balanced(s):\n    stack = []\n    for char in s:\n        if char in '([{':\n            stack.append(char)\n        elif char in ')]}':\n            if not stack or not match(stack.pop(), char):\n                return False\n    return not stack"
+    }
+  },
+  {
+    "stage": "regression",
+    "task_id": "old_coding_03",
+    "profile": "legacy",
+    "base_checks_passed": true,
+    "combined_case_count": 7,
+    "passed": true,
+    "grade": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def balanced(s):\n    \"\"\"\n    Check if all brackets in the string are balanced and correctly nested.\n    Ignore all other characters.\n    \n    Parameters:\n    s (str): The string to check.\n    \n    Returns:\n    bool: True if all brackets are balanced and correctly nested, False otherwise.\n    \"\"\"\n    stack = []\n    for char in s:\n        if char in '([{':\n            stack.append(char)\n        elif char in ')]}':\n            if not stack:\n                return False\n            top = stack.pop()\n            if char == ')' and top != '(' or (char == ']' and top != '[') or (char == '}' and top != '{'):\n                return False\n    return not stack"
+    }
+  }
+]

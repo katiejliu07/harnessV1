@@ -1,0 +1,13 @@
+{
+  "stage": "measurements_complete",
+  "pid": 56642,
+  "completed_stages": [
+    "code_cache_parity",
+    "equal_length_donors",
+    "budget_1024",
+    "budget_quality_review",
+    "budget_report"
+  ],
+  "utc": "2026-10-29T12:50:14Z",
+  "note": "Final interpretation and integrity receipt still required"
+}

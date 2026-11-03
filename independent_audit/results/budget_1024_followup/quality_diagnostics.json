@@ -1,0 +1,813 @@
+[
+  {
+    "suite": "coding",
+    "task_index": 0,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def dedup(items):\n    seen = set()\n    deduped = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            deduped.append(item)\n    return deduped"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": true
+  },
+  {
+    "suite": "coding",
+    "task_index": 0,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "executable_and_complexity": {
+      "passed": false,
+      "error": "Multiple solution blocks require manual adjudication",
+      "unsupported_or_unexecutable": true
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 0,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def dedup(items):\n    seen = set()\n    dedup_items = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            dedup_items.append(item)\n    return dedup_items\nitems = [1, 2, 2, 3, 4, 3, 5]"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 0,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def dedup(items):\n    if not items:\n        return []\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\nitems = [1, 2, 2, 3, 4, 4, 5]\nitems = []\nitems = [1, 1, 1, 1]"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 1,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def runs(values):\n    if not values:\n        return []\n    result = []\n    current_value = values[0]\n    count = 1\n    for value in values[1:]:\n        if value == current_value:\n            count += 1\n        else:\n            result.append((current_value, count))\n            current_value = value\n            count = 1\n    result.append((current_value, count))\n    return result"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 1,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def runs(values):\n    if not values:\n        return []\n    result = []\n    count = 1\n    prev_value = values[0]\n    for value in values[1:]:\n        if value == prev_value:\n            count += 1\n        else:\n            result.append((prev_value, count))\n            count = 1\n        prev_value = value\n    result.append((prev_value, count))\n    return result\nvalues = [1, 1, 2, 2, 2, 3, 3, 3, 3, 4]"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 1,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def runs(values):\n    if not values:\n        return []\n    result = []\n    current_value = values[0]\n    count = 1\n    for value in values[1:]:\n        if value == current_value:\n            count += 1\n        else:\n            result.append((current_value, count))\n            current_value = value\n            count = 1\n    result.append((current_value, count))\n    return result"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": true
+  },
+  {
+    "suite": "coding",
+    "task_index": 1,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def runs(values):\n    if not values:\n        return []\n    result = []\n    current_value = values[0]\n    count = 1\n    for i in range(1, len(values)):\n        if values[i] == current_value:\n            count += 1\n        else:\n            result.append((current_value, count))\n            current_value = values[i]\n            count = 1\n    result.append((current_value, count))\n    return result"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 2,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [
+        {
+          "n": 256,
+          "x": -1,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 0,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 42,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 85,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 86,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": -1,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 0,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 682,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1365,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1366,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": -1,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 0,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 10922,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21845,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21846,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "normalized_tested_source": "def lower_bound(a, x):\n    if not a:\n        return len(a)\n    n = len(a)\n    low, high = (0, n - 1)\n    while low <= high:\n        mid = (low + high) // 2\n        if a[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return low\na = [1, 2, 4, 4, 5, 6, 8]\nx = 4"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 2,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [
+        {
+          "n": 256,
+          "x": -1,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 0,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 42,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 85,
+          "accesses": 10,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 86,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": -1,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 0,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 682,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1365,
+          "accesses": 14,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1366,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": -1,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 0,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 10922,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21845,
+          "accesses": 18,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21846,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "normalized_tested_source": "def lower_bound(a, x):\n    if not a:\n        return len(a)\n\n    def binary_search(sublist, target):\n        left, right = (0, len(sublist) - 1)\n        while left <= right:\n            mid = (left + right) // 2\n            if sublist[mid] < target:\n                left = mid + 1\n            else:\n                right = mid - 1\n        return left\n    index = binary_search(a, x)\n    if 0 <= index < len(a) and a[index] >= x:\n        return index\n    else:\n        return len(a)"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 2,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [
+        {
+          "n": 256,
+          "x": -1,
+          "accesses": 15,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 0,
+          "accesses": 15,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 42,
+          "accesses": 10,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 85,
+          "accesses": 10,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 86,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": -1,
+          "accesses": 23,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 0,
+          "accesses": 23,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 682,
+          "accesses": 14,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1365,
+          "accesses": 14,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1366,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": -1,
+          "accesses": 31,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 0,
+          "accesses": 31,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 10922,
+          "accesses": 18,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21845,
+          "accesses": 18,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21846,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "normalized_tested_source": "def lower_bound(a, x):\n    if not a:\n        return len(a)\n    left, right = (0, len(a) - 1)\n    while left <= right:\n        mid = (left + right) // 2\n        if a[mid] < x:\n            left = mid + 1\n        else:\n            if mid == 0 or a[mid - 1] < x:\n                return mid\n            right = mid - 1\n    return len(a)\na = [1, 2, 4, 4, 5, 6, 8]\nx = 4\na = [1, 2, 4, 4, 5, 6, 8]\nx = 3\na = [1, 2, 4, 4, 5, 6, 8]\nx = 9\na = []\nx = 1"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 2,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [
+        {
+          "n": 256,
+          "x": -1,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 0,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 42,
+          "accesses": 8,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 85,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 256,
+          "x": 86,
+          "accesses": 9,
+          "budget": 26,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": -1,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 0,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 682,
+          "accesses": 12,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1365,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 4096,
+          "x": 1366,
+          "accesses": 13,
+          "budget": 34,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": -1,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 0,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 10922,
+          "accesses": 16,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21845,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        },
+        {
+          "n": 65536,
+          "x": 21846,
+          "accesses": 17,
+          "budget": 42,
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "normalized_tested_source": "def lower_bound(a, x):\n    \"\"\"\n    Finds the first index i where a[i] >= x in a sorted list, or len(a) if none.\n    Uses O(log n) time complexity, no imports, and handles empty lists.\n    \"\"\"\n    if not a:\n        return 0\n    left, right = (0, len(a) - 1)\n    result = len(a)\n    while left <= right:\n        mid = (left + right) // 2\n        if a[mid] >= x:\n            result = mid\n            right = mid - 1\n        else:\n            left = mid + 1\n    return result"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": true
+  },
+  {
+    "suite": "coding",
+    "task_index": 3,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def balanced(s):\n    stack = []\n    bracket_map = {')': '(', ']': '[', '}': '{'}\n    for char in s:\n        if char in bracket_map.values():\n            stack.append(char)\n        elif char in bracket_map:\n            if not stack or stack[-1] != bracket_map[char]:\n                return False\n            stack.pop()\n    return not stack"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 3,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def balanced(s):\n    \"\"\"\n    Check if all brackets in the string are balanced and correctly nested.\n    Ignore all other characters.\n    \n    Parameters:\n    s (str): The string to check.\n    \n    Returns:\n    bool: True if all brackets are balanced and correctly nested, False otherwise.\n    \"\"\"\n    stack = []\n    for char in s:\n        if char in '([{':\n            stack.append(char)\n        elif char in ')]}':\n            if not stack:\n                return False\n            top = stack.pop()\n            if char == ')' and top != '(' or (char == ']' and top != '[') or (char == '}' and top != '{'):\n                return False\n    return not stack"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": true
+  },
+  {
+    "suite": "coding",
+    "task_index": 3,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": true,
+      "normalized_tested_source": "def balanced(s):\n    stack = []\n    for char in s:\n        if char in '([{':\n            stack.append(char)\n        elif char in ')]}':\n            if not stack:\n                return False\n            last_open = stack.pop()\n            if last_open == '(' and char != ')' or (last_open == '[' and char != ']') or (last_open == '{' and char != '}'):\n                return False\n    return not stack"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "coding",
+    "task_index": 3,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": false,
+    "executable_and_complexity": {
+      "functional": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "complexity": [],
+      "passed": false,
+      "normalized_tested_source": "def balanced(s):\n    balance = 0\n    for char in s:\n        if char in '([{':\n            balance += 1\n        elif char in ')]}':\n            balance -= 1\n            if balance < 0:\n                return False\n    return balance == 0"
+    },
+    "has_requested_code_fence": true,
+    "only_code_if_concise_requested": null
+  },
+  {
+    "suite": "heldout_arithmetic",
+    "task_index": 5,
+    "condition": "E_v8_prefix",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "486/5",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "heldout_arithmetic",
+    "task_index": 5,
+    "condition": "B_reasoning",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "486/5",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "heldout_arithmetic",
+    "task_index": 5,
+    "condition": "C_concise",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "486/5",
+      "passed": true
+    },
+    "requested_final_format": false,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  },
+  {
+    "suite": "heldout_arithmetic",
+    "task_index": 5,
+    "condition": "A_normal",
+    "repeat": 0,
+    "donor_variant": "same",
+    "raw_primary_correct": true,
+    "scalar_evaluation_v2": {
+      "answer": "486/5",
+      "passed": true
+    },
+    "requested_final_format": null,
+    "known_false_intermediate_statement": false,
+    "reasoning_soundness": "Not established by scalar scoring or marker counts; requires adjudication"
+  }
+]

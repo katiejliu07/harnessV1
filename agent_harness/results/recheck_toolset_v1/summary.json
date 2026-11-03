@@ -1,0 +1,20 @@
+{
+  "by_condition": {
+    "code_toolset": {
+      "n": 6,
+      "correct": 6,
+      "tokens": 190430,
+      "cost_usd": 0.18255449999999998,
+      "turns": 34
+    },
+    "full_tools": {
+      "n": 6,
+      "correct": 6,
+      "tokens": 625453,
+      "cost_usd": 0.4543403,
+      "turns": 33
+    }
+  },
+  "losses": [],
+  "usage_matches_modelUsage": true
+}

@@ -1,0 +1,32 @@
+R code_toolset  inventory  rep=0 verified=True turns=7 input=42910 modelUsage_input=42910 out=1118 cost=$0.0329424
+R full_tools    inventory  rep=0 verified=True turns=7 input=144301 modelUsage_input=144301 out=1289 cost=$0.08223149999999999
+R full_tools    exprcalc   rep=0 verified=True turns=5 input=95121 modelUsage_input=95121 out=1046 cost=$0.0752971
+R code_toolset  exprcalc   rep=0 verified=True turns=5 input=28870 modelUsage_input=28870 out=1033 cost=$0.032131599999999996
+R full_tools    slots      rep=0 verified=True turns=5 input=69416 modelUsage_input=69416 out=1009 cost=$0.0684684
+R code_toolset  slots      rep=0 verified=True turns=5 input=20207 modelUsage_input=20207 out=856 cost=$0.0253887
+R code_toolset  inventory  rep=1 verified=True turns=7 input=43196 modelUsage_input=43196 out=1031 cost=$0.0323935
+R full_tools    inventory  rep=1 verified=True turns=7 input=145277 modelUsage_input=145277 out=1358 cost=$0.08393560000000001
+R full_tools    exprcalc   rep=1 verified=True turns=4 input=95079 modelUsage_input=95079 out=1169 cost=$0.07627329999999999
+R code_toolset  exprcalc   rep=1 verified=True turns=5 input=28908 modelUsage_input=28908 out=1121 cost=$0.0331636
+R code_toolset  slots      rep=1 verified=True turns=5 input=20211 modelUsage_input=20211 out=969 cost=$0.026534699999999998
+R full_tools    slots      rep=1 verified=True turns=5 input=69410 modelUsage_input=69410 out=978 cost=$0.0681344
+{
+  "by_condition": {
+    "code_toolset": {
+      "n": 6,
+      "correct": 6,
+      "tokens": 190430,
+      "cost_usd": 0.18255449999999998,
+      "turns": 34
+    },
+    "full_tools": {
+      "n": 6,
+      "correct": 6,
+      "tokens": 625453,
+      "cost_usd": 0.4543403,
+      "turns": 33
+    }
+  },
+  "losses": [],
+  "usage_matches_modelUsage": true
+}

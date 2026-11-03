@@ -1,0 +1,928 @@
+{
+  "environment": {
+    "repository_commit": "6c54c6926f508bb7515b96c52f54e03eb3949327",
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "original_model_revision": "not recorded in repository",
+    "device": "mps",
+    "dtype": "torch.float16",
+    "platform": "macOS-15.1-arm64-arm-64bit",
+    "python": "3.12.3",
+    "cuda_available": false,
+    "cuda_version": null,
+    "mps_available": true,
+    "torch_threads": 4,
+    "packages": {
+      "xxhash": "4.0.2",
+      "opentelemetry-sdk": "1.45.1",
+      "filelock": "4.2.4",
+      "setuptools": "84.2.1",
+      "wandb": "0.31.0",
+      "click": "8.5.0",
+      "einops": "0.8.2",
+      "googleapis-common-protos": "1.76.0",
+      "packaging": "26.3",
+      "accelerate": "1.15.0",
+      "networkx": "3.7",
+      "protobuf": "7.36.2",
+      "fsspec": "2023.6.0",
+      "dill": "0.3.7",
+      "Pygments": "2.21.0",
+      "requests": "2.34.2",
+      "pyarrow": "14.0.2",
+      "rich": "15.0.0",
+      "certifi": "2026.10.23",
+      "yarl": "1.25.1",
+      "jaxtyping": "0.3.11",
+      "opentelemetry-proto": "1.45.1",
+      "opentelemetry-api": "1.45.1",
+      "sentencepiece": "0.2.2",
+      "torch": "2.7.1",
+      "propcache": "0.5.4",
+      "iniconfig": "2.3.1",
+      "numpy": "1.26.4",
+      "better-abc": "0.0.3",
+      "httpcore": "1.0.9",
+      "aiohappyeyeballs": "2.7.1",
+      "wadler_lindig": "0.1.8",
+      "transformers-stream-generator": "0.0.5",
+      "sympy": "1.14.0",
+      "huggingface_hub": "0.36.2",
+      "pluggy": "1.7.0",
+      "fancy-einsum": "0.0.3",
+      "safetensors": "0.8.0",
+      "tqdm": "4.70.1",
+      "urllib3": "2.8.0",
+      "h11": "0.16.0",
+      "sniffio": "1.3.1",
+      "pydantic_core": "2.50.1",
+      "mdurl": "0.1.2",
+      "mpmath": "1.3.0",
+      "transformer-lens": "2.16.1",
+      "PyYAML": "6.0.3",
+      "scipy": "1.16.3",
+      "pytest": "8.4.2",
+      "frozenlist": "1.8.0",
+      "aiosignal": "1.4.0",
+      "typeguard": "4.6.0",
+      "opentelemetry-exporter-http-transport": "0.66b1",
+      "datasets": "2.14.4",
+      "opentelemetry-semantic-conventions": "0.66b1",
+      "multiprocess": "0.70.15",
+      "Jinja2": "3.1.6",
+      "annotated-types": "0.8.0",
+      "regex": "2026.9.29",
+      "markdown-it-py": "4.2.0",
+      "tzdata": "2026.6",
+      "opentelemetry-exporter-otlp-proto-http": "1.45.1",
+      "typing-inspection": "0.4.4",
+      "distro": "1.9.0",
+      "pandas": "3.0.6",
+      "beartype": "0.14.1",
+      "hf-xet": "1.7.1",
+      "aiohttp": "3.14.5",
+      "attrs": "26.1.0",
+      "opentelemetry-exporter-otlp-common": "0.66b1",
+      "multidict": "7.2.1",
+      "transformers": "4.57.1",
+      "httpx": "0.28.1",
+      "typing_extensions": "4.16.0",
+      "MarkupSafe": "3.0.4",
+      "cwevals": "0.0.1b1",
+      "pydantic": "2.14.1",
+      "tokenizers": "0.22.2",
+      "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+      "psutil": "7.2.2",
+      "python-dateutil": "3.0.0",
+      "charset-normalizer": "3.5.2",
+      "platformdirs": "4.14.0",
+      "anyio": "4.15.1",
+      "six": "1.17.0",
+      "idna": "3.20"
+    },
+    "model_load_seconds": 9.468654082971625,
+    "generation": {
+      "do_sample": false,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_new_tokens": 320,
+      "batch_size": 1,
+      "eos_token_id": 151645
+    },
+    "transformer_lens_config": {
+      "n_layers": 28,
+      "d_model": 1536,
+      "n_ctx": 2048,
+      "d_head": 128,
+      "model_name": "Qwen2.5-1.5B-Instruct",
+      "n_heads": 12,
+      "d_mlp": 8960,
+      "act_fn": "silu",
+      "d_vocab": 151936,
+      "eps": 1e-06,
+      "use_attn_result": false,
+      "use_attn_scale": true,
+      "attn_scale": 11.313708498984761,
+      "use_split_qkv_input": false,
+      "use_hook_mlp_in": false,
+      "use_attn_in": false,
+      "use_qk_norm": false,
+      "use_local_attn": false,
+      "ungroup_grouped_query_attention": false,
+      "original_architecture": "Qwen2ForCausalLM",
+      "from_checkpoint": false,
+      "checkpoint_index": null,
+      "checkpoint_label_type": null,
+      "checkpoint_value": null,
+      "tokenizer_name": "Qwen/Qwen2.5-1.5B-Instruct",
+      "window_size": null,
+      "attn_types": null,
+      "init_mode": "gpt2",
+      "normalization_type": "RMSPre",
+      "device": "mps",
+      "n_devices": 1,
+      "attention_dir": "causal",
+      "attn_only": false,
+      "seed": null,
+      "initializer_range": 0.02,
+      "init_weights": false,
+      "scale_attn_by_inverse_layer_idx": false,
+      "positional_embedding_type": "rotary",
+      "final_rms": true,
+      "d_vocab_out": 151936,
+      "parallel_attn_mlp": false,
+      "rotary_dim": 128,
+      "n_params": 1420296192,
+      "use_hook_tokens": false,
+      "gated_mlp": true,
+      "default_prepend_bos": false,
+      "dtype": "torch.float16",
+      "tokenizer_prepends_bos": false,
+      "n_key_value_heads": 2,
+      "post_embedding_ln": false,
+      "rotary_base": 1000000.0,
+      "trust_remote_code": false,
+      "rotary_adjacent_pairs": false,
+      "load_in_4bit": false,
+      "num_experts": null,
+      "experts_per_token": null,
+      "relative_attention_max_distance": null,
+      "relative_attention_num_buckets": null,
+      "decoder_start_token_id": null,
+      "tie_word_embeddings": false,
+      "use_normalization_before_and_after": false,
+      "attn_scores_soft_cap": -1.0,
+      "output_logits_soft_cap": -1.0,
+      "use_NTK_by_parts_rope": false,
+      "NTK_by_parts_low_freq_factor": 1.0,
+      "NTK_by_parts_high_freq_factor": 4.0,
+      "NTK_by_parts_factor": 8.0,
+      "NTK_original_ctx_len": 8192
+    }
+  },
+  "records": [
+    {
+      "task_index": 0,
+      "prompt": "What is 7 + 5?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.2545075409580022,
+          0.047500416985712945,
+          0.04718891601078212
+        ],
+        "early": [
+          0.01304770796559751,
+          0.019499708083458245,
+          0.012294957996346056
+        ]
+      },
+      "full_median_seconds": 0.047500416985712945,
+      "early_median_seconds": 0.01304770796559751
+    },
+    {
+      "task_index": 1,
+      "prompt": "If Sarah has 20 dollars and spends 8, how much does she have left?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09949116699863225,
+          0.05093683407176286,
+          0.051200415939092636
+        ],
+        "early": [
+          0.013792791054584086,
+          0.013888999936170876,
+          0.013466083095408976
+        ]
+      },
+      "full_median_seconds": 0.051200415939092636,
+      "early_median_seconds": 0.013792791054584086
+    },
+    {
+      "task_index": 2,
+      "prompt": "What is 6 times 4?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.047144958982244134,
+          0.04570887505542487,
+          0.04563158401288092
+        ],
+        "early": [
+          0.012159958016127348,
+          0.012793959002010524,
+          0.012339624925516546
+        ]
+      },
+      "full_median_seconds": 0.04570887505542487,
+      "early_median_seconds": 0.012339624925516546
+    },
+    {
+      "task_index": 3,
+      "prompt": "A square has side length 5. What is its area?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09132358396891505,
+          0.04601862502750009,
+          0.04601154092233628
+        ],
+        "early": [
+          0.012652999954298139,
+          0.012628750060684979,
+          0.012268542079254985
+        ]
+      },
+      "full_median_seconds": 0.04601862502750009,
+      "early_median_seconds": 0.012628750060684979
+    },
+    {
+      "task_index": 4,
+      "prompt": "If 2x = 14, what is x?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.04723799997009337,
+          0.04690854193177074,
+          0.046789166051894426
+        ],
+        "early": [
+          0.012195915915071964,
+          0.012265458004549146,
+          0.012492084060795605
+        ]
+      },
+      "full_median_seconds": 0.04690854193177074,
+      "early_median_seconds": 0.012265458004549146
+    },
+    {
+      "task_index": 5,
+      "prompt": "What is 100 divided by 4?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09603249991778284,
+          0.04575512500014156,
+          0.04599295894149691
+        ],
+        "early": [
+          0.012474542018026114,
+          0.012436834047548473,
+          0.01230454200413078
+        ]
+      },
+      "full_median_seconds": 0.04599295894149691,
+      "early_median_seconds": 0.012436834047548473
+    },
+    {
+      "task_index": 6,
+      "prompt": "A triangle has angles 60 degrees, 60 degrees, and what is the third angle?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09779291693121195,
+          0.05207179090939462,
+          0.05289662501309067
+        ],
+        "early": [
+          0.013729208963923156,
+          0.014085999922826886,
+          0.013696374953724444
+        ]
+      },
+      "full_median_seconds": 0.05289662501309067,
+      "early_median_seconds": 0.013729208963923156
+    },
+    {
+      "task_index": 7,
+      "prompt": "If Bob has 3 apples and Ann gives him 4 more, how many does Bob have?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09554316697176546,
+          0.051627457956783473,
+          0.05212116602342576
+        ],
+        "early": [
+          0.013968084007501602,
+          0.014811833971180022,
+          0.014038750086911023
+        ]
+      },
+      "full_median_seconds": 0.05212116602342576,
+      "early_median_seconds": 0.014038750086911023
+    },
+    {
+      "task_index": 8,
+      "prompt": "What is the square root of 49?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.08823333296459168,
+          0.046191749977879226,
+          0.04661529196891934
+        ],
+        "early": [
+          0.012817958951927722,
+          0.012989000068046153,
+          0.012203124933876097
+        ]
+      },
+      "full_median_seconds": 0.04661529196891934,
+      "early_median_seconds": 0.012817958951927722
+    },
+    {
+      "task_index": 9,
+      "prompt": "If 5 + x = 13, what is x?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09207983303349465,
+          0.04593691695481539,
+          0.04682145896367729
+        ],
+        "early": [
+          0.012284833006560802,
+          0.012567791971378028,
+          0.013586165965534747
+        ]
+      },
+      "full_median_seconds": 0.04682145896367729,
+      "early_median_seconds": 0.012567791971378028
+    },
+    {
+      "task_index": 10,
+      "prompt": "What is 9 + 8?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.05468291603028774,
+          0.045385500066913664,
+          0.045566792017780244
+        ],
+        "early": [
+          0.012193292030133307,
+          0.012160875019617379,
+          0.01201987499371171
+        ]
+      },
+      "full_median_seconds": 0.045566792017780244,
+      "early_median_seconds": 0.012160875019617379
+    },
+    {
+      "task_index": 11,
+      "prompt": "What is 15 - 6?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.08879995800089091,
+          0.045752958045341074,
+          0.046491082990542054
+        ],
+        "early": [
+          0.01319870911538601,
+          0.012509334017522633,
+          0.0123722079442814
+        ]
+      },
+      "full_median_seconds": 0.046491082990542054,
+      "early_median_seconds": 0.012509334017522633
+    },
+    {
+      "task_index": 12,
+      "prompt": "What is 7 times 8?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.04671145894099027,
+          0.04535799997393042,
+          0.04541558399796486
+        ],
+        "early": [
+          0.012392709031701088,
+          0.012505124905146658,
+          0.012482042075134814
+        ]
+      },
+      "full_median_seconds": 0.04541558399796486,
+      "early_median_seconds": 0.012482042075134814
+    },
+    {
+      "task_index": 13,
+      "prompt": "What is 81 divided by 9?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.045770791941322386,
+          0.04648291599005461,
+          0.04574066703207791
+        ],
+        "early": [
+          0.012170083005912602,
+          0.012125874985940754,
+          0.012189207947812974
+        ]
+      },
+      "full_median_seconds": 0.045770791941322386,
+      "early_median_seconds": 0.012170083005912602
+    },
+    {
+      "task_index": 14,
+      "prompt": "If 3x + 5 = 20, what is x?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09099091601092368,
+          0.04600795893929899,
+          0.046912582940422
+        ],
+        "early": [
+          0.012433415977284312,
+          0.013024582993239164,
+          0.012371583026833832
+        ]
+      },
+      "full_median_seconds": 0.046912582940422,
+      "early_median_seconds": 0.012433415977284312
+    },
+    {
+      "task_index": 15,
+      "prompt": "If 4x - 6 = 10, what is x?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.04888170899357647,
+          0.045937374932691455,
+          0.04602466698270291
+        ],
+        "early": [
+          0.012460708036087453,
+          0.012380584026686847,
+          0.012560916016809642
+        ]
+      },
+      "full_median_seconds": 0.04602466698270291,
+      "early_median_seconds": 0.012460708036087453
+    },
+    {
+      "task_index": 16,
+      "prompt": "A rectangle has length 8 and width 3. What is its area?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.04694595793262124,
+          0.0459059999557212,
+          0.04616999998688698
+        ],
+        "early": [
+          0.012290582992136478,
+          0.01239424990490079,
+          0.012461458100005984
+        ]
+      },
+      "full_median_seconds": 0.04616999998688698,
+      "early_median_seconds": 0.01239424990490079
+    },
+    {
+      "task_index": 17,
+      "prompt": "If a train travels 120 miles in 3 hours, what is its average speed?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.05629495799075812,
+          0.05200916691683233,
+          0.05205504095647484
+        ],
+        "early": [
+          0.01373904210049659,
+          0.01379895897116512,
+          0.013767417054623365
+        ]
+      },
+      "full_median_seconds": 0.05205504095647484,
+      "early_median_seconds": 0.013767417054623365
+    },
+    {
+      "task_index": 18,
+      "prompt": "If a store has 50 items and sells 18, how many are left?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.0580349579686299,
+          0.05086033302359283,
+          0.05055324989371002
+        ],
+        "early": [
+          0.013456791988573968,
+          0.013612625072710216,
+          0.014755584066733718
+        ]
+      },
+      "full_median_seconds": 0.05086033302359283,
+      "early_median_seconds": 0.013612625072710216
+    },
+    {
+      "task_index": 19,
+      "prompt": "What is the square root of 64?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.0497805830091238,
+          0.045824917033314705,
+          0.04593191691674292
+        ],
+        "early": [
+          0.012396374950185418,
+          0.012261167052201927,
+          0.012486333027482033
+        ]
+      },
+      "full_median_seconds": 0.04593191691674292,
+      "early_median_seconds": 0.012396374950185418
+    },
+    {
+      "task_index": 20,
+      "prompt": "If 6 + x = 25, what is x?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.050930165918543935,
+          0.04616012494079769,
+          0.04596929100807756
+        ],
+        "early": [
+          0.012376875034533441,
+          0.012334999977611005,
+          0.012371207936666906
+        ]
+      },
+      "full_median_seconds": 0.04616012494079769,
+      "early_median_seconds": 0.012371207936666906
+    },
+    {
+      "task_index": 21,
+      "prompt": "If x / 5 = 7, what is x?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.05341745796613395,
+          0.04637791705317795,
+          0.046378124970942736
+        ],
+        "early": [
+          0.012475249939598143,
+          0.01343262498266995,
+          0.012143249972723424
+        ]
+      },
+      "full_median_seconds": 0.046378124970942736,
+      "early_median_seconds": 0.012475249939598143
+    },
+    {
+      "task_index": 22,
+      "prompt": "What is 14 percent of 200?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09081895800773054,
+          0.04603758407756686,
+          0.045870334026403725
+        ],
+        "early": [
+          0.013120166957378387,
+          0.012791041983291507,
+          0.01233741594478488
+        ]
+      },
+      "full_median_seconds": 0.04603758407756686,
+      "early_median_seconds": 0.012791041983291507
+    },
+    {
+      "task_index": 23,
+      "prompt": "What is 3/4 of 32?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.05244137498084456,
+          0.04623358300887048,
+          0.0458664579782635
+        ],
+        "early": [
+          0.012274749926291406,
+          0.01203204202465713,
+          0.01212604099418968
+        ]
+      },
+      "full_median_seconds": 0.04623358300887048,
+      "early_median_seconds": 0.01212604099418968
+    },
+    {
+      "task_index": 24,
+      "prompt": "A triangle has angles 90 degrees and 45 degrees. What is the third angle?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.05965245794504881,
+          0.052249499945901334,
+          0.051924832980148494
+        ],
+        "early": [
+          0.013773499988019466,
+          0.013879042002372444,
+          0.013858375023119152
+        ]
+      },
+      "full_median_seconds": 0.052249499945901334,
+      "early_median_seconds": 0.013858375023119152
+    },
+    {
+      "task_index": 25,
+      "prompt": "What is 38 plus 47?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.053691833978518844,
+          0.046765708015300333,
+          0.04604995797853917
+        ],
+        "early": [
+          0.013080167002044618,
+          0.012537000002339482,
+          0.012268541962839663
+        ]
+      },
+      "full_median_seconds": 0.046765708015300333,
+      "early_median_seconds": 0.012537000002339482
+    },
+    {
+      "task_index": 26,
+      "prompt": "What is 23 times 17?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.04687716695480049,
+          0.045962875010445714,
+          0.04574241698719561
+        ],
+        "early": [
+          0.012540999916382134,
+          0.01229954103473574,
+          0.012183333048596978
+        ]
+      },
+      "full_median_seconds": 0.045962875010445714,
+      "early_median_seconds": 0.01229954103473574
+    },
+    {
+      "task_index": 27,
+      "prompt": "What is 18 percent of 350?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.04711204196792096,
+          0.04593679204117507,
+          0.04600916604977101
+        ],
+        "early": [
+          0.012723415973596275,
+          0.012771124951541424,
+          0.012627333053387702
+        ]
+      },
+      "full_median_seconds": 0.04600916604977101,
+      "early_median_seconds": 0.012723415973596275
+    },
+    {
+      "task_index": 28,
+      "prompt": "Solve 7x - 11 = 80 for x.",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.049808333977125585,
+          0.0467769589740783,
+          0.0471737920306623
+        ],
+        "early": [
+          0.012277958914637566,
+          0.012359415995888412,
+          0.012473166105337441
+        ]
+      },
+      "full_median_seconds": 0.0471737920306623,
+      "early_median_seconds": 0.012359415995888412
+    },
+    {
+      "task_index": 29,
+      "prompt": "A car travels 154 miles in 2 hours and 86 miles in 3 hours. What is its average speed in miles per hour?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.10416545800399035,
+          0.055315042030997574,
+          0.05556225008331239
+        ],
+        "early": [
+          0.014564957935363054,
+          0.015005624969489872,
+          0.015055708005093038
+        ]
+      },
+      "full_median_seconds": 0.05556225008331239,
+      "early_median_seconds": 0.015005624969489872
+    },
+    {
+      "task_index": 30,
+      "prompt": "A 120 dollar item is discounted 25 percent, then taxed 8 percent. What is its final price?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.09687941696029156,
+          0.052324957912787795,
+          0.05349912494421005
+        ],
+        "early": [
+          0.01395574992056936,
+          0.014234417001716793,
+          0.014101624954491854
+        ]
+      },
+      "full_median_seconds": 0.05349912494421005,
+      "early_median_seconds": 0.014101624954491854
+    },
+    {
+      "task_index": 31,
+      "prompt": "What is 13/16 of 240?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.052561167045496404,
+          0.04619516700040549,
+          0.04745866602752358
+        ],
+        "early": [
+          0.01227412500884384,
+          0.012362041976302862,
+          0.012628916068933904
+        ]
+      },
+      "full_median_seconds": 0.04745866602752358,
+      "early_median_seconds": 0.012362041976302862
+    },
+    {
+      "task_index": 32,
+      "prompt": "What is 47 squared minus 39 squared?",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.0498681670287624,
+          0.04602300003170967,
+          0.047040208941325545
+        ],
+        "early": [
+          0.012441083090379834,
+          0.012955499929375947,
+          0.01231433404609561
+        ]
+      },
+      "full_median_seconds": 0.047040208941325545,
+      "early_median_seconds": 0.012441083090379834
+    },
+    {
+      "task_index": 33,
+      "prompt": "Write a Python function dedup(items) returning a list of first occurrences in original order. Items are hashable. Handle empty input. Do not modify input.",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.055695666000247,
+          0.05520837497897446,
+          0.05627520801499486
+        ],
+        "early": [
+          0.015156500041484833,
+          0.014491250040009618,
+          0.014686792041175067
+        ]
+      },
+      "full_median_seconds": 0.055695666000247,
+      "early_median_seconds": 0.014686792041175067
+    },
+    {
+      "task_index": 34,
+      "prompt": "Write a Python function runs(values) that returns a list of (value, count) tuples for consecutive equal values. Handle empty input. Do not modify input.",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.05520583293400705,
+          0.05520275002345443,
+          0.05651062505785376
+        ],
+        "early": [
+          0.014647375093773007,
+          0.014631665893830359,
+          0.01468704198487103
+        ]
+      },
+      "full_median_seconds": 0.05520583293400705,
+      "early_median_seconds": 0.014647375093773007
+    },
+    {
+      "task_index": 35,
+      "prompt": "Write a Python function lower_bound(a, x) returning the first index i where a[i] >= x in a sorted list, or len(a) if none. Use O(log n) time, no imports, and handle empty lists.",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.11361237498931587,
+          0.06586295797023922,
+          0.06631012493744493
+        ],
+        "early": [
+          0.017302708001807332,
+          0.01839262491557747,
+          0.017321084043942392
+        ]
+      },
+      "full_median_seconds": 0.06631012493744493,
+      "early_median_seconds": 0.017321084043942392
+    },
+    {
+      "task_index": 36,
+      "prompt": "Write a Python function balanced(s) that returns whether all (), [], {} brackets are balanced and correctly nested, ignoring all other characters. Handle empty strings.",
+      "bitwise_equal": true,
+      "max_absolute_error": 0.0,
+      "timings": {
+        "full": [
+          0.10336916707456112,
+          0.055047541041858494,
+          0.05601325002498925
+        ],
+        "early": [
+          0.014896292006596923,
+          0.01506420795340091,
+          0.014637332991696894
+        ]
+      },
+      "full_median_seconds": 0.05601325002498925,
+      "early_median_seconds": 0.014896292006596923
+    }
+  ],
+  "all_bitwise_equal": true,
+  "aggregate_median_time_ratio": 0.2675814197314205,
+  "scope": "Donor-forward-only cost; does not remove donor preparation or generation costs. Applied only to this separate optimization experiment."
+}

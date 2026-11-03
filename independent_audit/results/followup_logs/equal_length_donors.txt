@@ -1,0 +1,28 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:root:With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+WARNING:root:You are not using LayerNorm, so the writing weights can't be centered! Skipping
+Loaded pretrained model Qwen/Qwen2.5-1.5B-Instruct into HookedTransformer
+equal-length donor original 0 F_layer3 answer=12 target=12
+equal-length donor original 0 F_layer2 answer=12 target=12
+equal-length donor original 0 E_v8_prefix answer=12 target=12
+equal-length donor original 0 F_layer6 answer=12 target=12
+equal-length donor original 1 E_v8_prefix answer=12 target=12
+equal-length donor original 1 F_layer6 answer=12 target=12
+equal-length donor original 1 F_layer3 answer=12 target=12
+equal-length donor original 1 F_layer2 answer=12 target=12
+equal-length donor original 2 F_layer6 answer=24 target=24
+equal-length donor original 2 F_layer2 answer=24 target=24
+equal-length donor original 2 E_v8_prefix answer=24 target=24
+equal-length donor original 2 F_layer3 answer=24 target=24
+equal-length donor heldout_arithmetic 0 F_layer6 answer=85 target=85
+equal-length donor heldout_arithmetic 0 F_layer3 answer=85 target=85
+equal-length donor heldout_arithmetic 0 E_v8_prefix answer=85 target=85
+equal-length donor heldout_arithmetic 0 F_layer2 answer=85 target=85
+equal-length donor heldout_arithmetic 1 E_v8_prefix answer=391 target=391
+equal-length donor heldout_arithmetic 1 F_layer2 answer=391 target=391
+equal-length donor heldout_arithmetic 1 F_layer6 answer=391 target=391
+equal-length donor heldout_arithmetic 1 F_layer3 answer=391 target=391
+equal-length donor heldout_arithmetic 2 F_layer6 answer=63 target=63
+equal-length donor heldout_arithmetic 2 F_layer2 answer=63 target=63
+equal-length donor heldout_arithmetic 2 F_layer3 answer=63 target=63
+equal-length donor heldout_arithmetic 2 E_v8_prefix answer=63 target=63
