@@ -19,7 +19,7 @@ import random
 import shutil
 import tempfile
 
-from independent_audit.model import ROOT
+ROOT=Path(__file__).resolve().parents[1]      # repo root; avoids importing torch via independent_audit.model
 from lean_harness.differential import differential
 from lean_harness.hard_tasks import HARD
 from . import agents

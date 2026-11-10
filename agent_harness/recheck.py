@@ -21,7 +21,7 @@ import shutil
 import subprocess
 import tempfile
 
-from independent_audit.model import ROOT
+ROOT=Path(__file__).resolve().parents[1]      # repo root; avoids importing torch via independent_audit.model
 from . import agents
 from .pilot import CLAUDE_TOOL_ARGS,single
 from .run import load_config,run_task

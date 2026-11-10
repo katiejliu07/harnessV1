@@ -1,7 +1,6 @@
 """General-task features: check types, structured output, transient retries,
 batches, verbatim context files, Codex sandbox, CLI."""
 import json
-import stat
 import sys
 import threading
 import time
@@ -9,6 +8,7 @@ import time
 from agent_harness import agents
 from agent_harness.run import load_config,main,run_task,run_tasks,toolset_of,transient
 from agent_harness.verify import check,has_check,validate
+from _portable import TRUE,fake_cli
 
 
 def runner_of(texts,errors=None,usage=None):
@@ -54,9 +54,9 @@ def test_regex_contains_and_combined_checks():
     v=check({"contains":["alpha","beta"]},"alpha only")
     assert not v["passed"] and v["missing"]==["beta"]
     # every check must pass; cheap ones run first and stop the expensive ones
-    v=check({"contains":["x"],"check_cmd":"echo ran > /dev/null; exit 0"},"no")
+    v=check({"contains":["x"],"check_cmd":TRUE},"no")
     assert not v["passed"] and v["failed"]=="contains" and "check_cmd" not in v["how"]
-    assert check({"contains":["x"],"check_cmd":"true"},"x")["passed"]
+    assert check({"contains":["x"],"check_cmd":TRUE},"x")["passed"]
 
 
 def test_unknown_check_fails_closed():
@@ -87,17 +87,18 @@ def test_toolset_inferred_from_cmd_in_checks_list():
 # ---- structured output and CLI flags ----------------------------------------
 
 def _fake(tmp_path,name,body):
-    p=tmp_path/name
-    p.write_text(f"#!{sys.executable}\n{body}")
-    p.chmod(p.stat().st_mode|stat.S_IEXEC)
-    return str(p)
+    return fake_cli(tmp_path/f"{name}.py",body)
+
+
+def _args_file(cmd):
+    return cmd[-1]+".args"                      # the fake writes sys.argv[0]+'.args'
 
 
 def test_schema_reaches_claude_and_structured_output_is_the_answer(tmp_path):
     cmd=_fake(tmp_path,"claude","import sys,json\nopen(sys.argv[0]+'.args','w').write(json.dumps(sys.argv))\n"
               "print(json.dumps({'result':'','structured_output':{'n':3},'usage':{'input_tokens':1,'output_tokens':1}}))\n")
     r=agents.run({"agent":"claude"},"q",{"agents":{"claude":{"command":cmd}},"output_schema":{"type":"object"}})
-    argv=json.loads(open(cmd+".args").read())
+    argv=json.loads(open(_args_file(cmd)).read())
     assert argv[argv.index("--json-schema")+1]=='{"type": "object"}' and json.loads(r["text"])=={"n":3}
 
 
@@ -107,11 +108,11 @@ def test_codex_sandbox_follows_the_toolset(tmp_path):
     config={"agents":{"codex":{"command":cmd,"extra_args":[]}}}
     for toolset,mode in (("none","read-only"),("read","read-only"),("code","workspace-write")):
         agents.run({"agent":"codex"},"q",{**config,"task_toolset":toolset})
-        argv=json.loads(open(cmd+".args").read())
+        argv=json.loads(open(_args_file(cmd)).read())
         assert argv[argv.index("-s")+1]==mode
     # an explicit sandbox in extra_args wins
     agents.run({"agent":"codex"},"q",{"agents":{"codex":{"command":cmd,"extra_args":["-s","read-only"]}},"task_toolset":"code"})
-    argv=json.loads(open(cmd+".args").read())
+    argv=json.loads(open(_args_file(cmd)).read())
     assert argv.count("-s")==1 and argv[argv.index("-s")+1]=="read-only"
 
 
@@ -220,13 +221,13 @@ def test_code_tasks_can_edit_and_shell_stays_opt_in(tmp_path):
     cmd=_fake(tmp_path,"claude","import sys,json\nopen(sys.argv[0]+'.args','a').write(json.dumps(sys.argv)+'\\n')\n"
               "print(json.dumps({'result':'done','usage':{'input_tokens':1,'output_tokens':1}}))\n")
     config=load_config(); config["agents"]["claude"]["command"]=cmd
-    run_task({"prompt":"fix","check_cmd":"true","workdir":str(tmp_path),"allowed_tools":["Bash(pytest*)"]},config)
-    argv=json.loads(open(cmd+".args").read().splitlines()[0])
+    run_task({"prompt":"fix","check_cmd":TRUE,"workdir":str(tmp_path),"allowed_tools":["Bash(pytest*)"]},config)
+    argv=json.loads(open(_args_file(cmd)).read().splitlines()[0])
     assert argv[argv.index("--permission-mode")+1]=="acceptEdits"
-    assert argv[argv.index("--allowedTools")+1]=="Bash(pytest*)" and "true" not in argv   # check_cmd never leaked
-    open(cmd+".args","w").close()
+    assert argv[argv.index("--allowedTools")+1]=="Bash(pytest*)" and TRUE not in argv   # check_cmd never leaked
+    open(_args_file(cmd),"w").close()
     run_task({"prompt":"What is 3+4?","expected":"7"},config)            # lean rung, no tools: no permissions
-    argv=json.loads(open(cmd+".args").read().splitlines()[0])
+    argv=json.loads(open(_args_file(cmd)).read().splitlines()[0])
     assert "--permission-mode" not in argv and "--allowedTools" not in argv
 
 

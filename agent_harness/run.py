@@ -174,7 +174,8 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     profile=config["profiles"][path]
     steps,toolset=steps_for(path,task,profile,config)
     tools=toolset!="none"
-    hygiene=config["hygiene_instruction"].format(compact=Path(__file__).with_name("compact.py"))
+    hygiene=config["hygiene_instruction"].format(compact=Path(__file__).with_name("compact.py"),
+                                                 python="python" if os.name=="nt" else "python3")
     budget=task.get("token_budget")
     retry=config.get("retry",{})
     max_retries=int(retry.get("transient_retries",0))

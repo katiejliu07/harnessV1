@@ -3,7 +3,6 @@ output, crashing runners, rung isolation, and exactness of lost_facts."""
 import os
 import random
 import shutil
-import stat
 import sys
 import time
 
@@ -11,12 +10,11 @@ from agent_harness import agents
 from agent_harness import compact as C
 from agent_harness.run import load_config,run_task
 from agent_harness.verify import check
+from _portable import FALSE,can_symlink,fake_cli,py_cmd
 
 
 def _script(path,body):
-    path.write_text(f"#!{sys.executable}\n{body}")
-    path.chmod(path.stat().st_mode|stat.S_IEXEC)
-    return str(path)
+    return fake_cli(path,body)
 
 
 def _usage_runner(texts):
@@ -71,7 +69,7 @@ def test_codex_cut_off_event_line_is_skipped(tmp_path):
 # ---- check and run_task ------------------------------------------------------
 
 def test_check_cmd_timeout_fails_the_check(tmp_path):
-    v=check({"check_cmd":f"{sys.executable} -c 'import time; time.sleep(30)'"},"",str(tmp_path),timeout=1)
+    v=check({"check_cmd":py_cmd("import time; time.sleep(30)")},"",str(tmp_path),timeout=1)
     assert v["passed"] is False and v["timed_out"]
 
 
@@ -115,7 +113,7 @@ def test_each_rung_starts_from_the_original_files(tmp_path):
         (tmp_path/"newdir"/"deep").mkdir(parents=True,exist_ok=True)
         (tmp_path/"node_modules"/"dep.js").write_text("changed\n")    # SKIP dirs are left alone
         return {"text":"","error":False,"usage":{"input_tokens":1,"output_tokens":1},"seconds":0.}
-    report=run_task({"prompt":"fix","check_cmd":"false","workdir":str(tmp_path)},load_config(),runner=run)
+    report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},load_config(),runner=run)
     assert len(seen)==4
     first=seen[0]
     assert all(s==first for s in seen)                                 # same starting files every rung
@@ -131,7 +129,7 @@ def test_passing_rung_keeps_its_edits(tmp_path):
     def run(step,prompt,config,workdir=None):
         (tmp_path/"pkg"/"a.py").write_text("x = 2\n")
         return {"text":"","error":False,"usage":{},"seconds":0.}
-    report=run_task({"prompt":"fix","check_cmd":"grep -q 'x = 2' pkg/a.py","workdir":str(tmp_path)},load_config(),runner=run)
+    report=run_task({"prompt":"fix","check_cmd":py_cmd("import sys; sys.exit(0 if 'x = 2' in open('pkg/a.py').read() else 1)"),"workdir":str(tmp_path)},load_config(),runner=run)
     assert report["verified"] and (tmp_path/"pkg"/"a.py").read_text()=="x = 2\n"
     assert report["rung_isolation"]["restores"]==0
 
@@ -140,11 +138,11 @@ def test_isolation_off_or_oversized_shares_the_workdir(tmp_path):
     _project(tmp_path)
     config=load_config(); config["isolate_rungs_max_mb"]=0
     run,_=_usage_runner(["x"]*4)
-    report=run_task({"prompt":"fix","check_cmd":"false","workdir":str(tmp_path)},config,runner=run)
+    report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},config,runner=run)
     assert report["rung_isolation"]["skipped"] and report["rung_isolation"]["restores"]==0
     config["isolate_rungs"]=False
     run,_=_usage_runner(["x"]*4)
-    assert "rung_isolation" not in run_task({"prompt":"fix","check_cmd":"false","workdir":str(tmp_path)},config,runner=run)
+    assert "rung_isolation" not in run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},config,runner=run)
 
 
 # ---- compaction fast path ----------------------------------------------------
@@ -242,12 +240,14 @@ def _tree(root):
 import pytest
 
 
-@pytest.mark.parametrize("cloning",[True,False])
-def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning):
+@pytest.mark.parametrize("cloning,windows_fingerprint",[(True,False),(False,False),(False,True)])
+def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning,windows_fingerprint):
     from agent_harness import workspace as W
     from agent_harness.workspace import Snapshot
     if not cloning:
-        monkeypatch.setattr(W,"_clonefile",None)            # plain-copy path, as on ext4
+        monkeypatch.setattr(W,"_clonefile",None)            # plain-copy path, as on ext4 / Windows
+    if windows_fingerprint:
+        monkeypatch.setattr(W,"FINGERPRINT_IS_PROOF",False) # Windows rules: confirm by content
     rng=random.Random(7)
     for trial in range(25):
         root=tmp_path/f"t{trial}"
@@ -257,7 +257,9 @@ def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning):
             d.mkdir(exist_ok=True)
             (d/f"f{i}.txt").write_bytes(os.urandom(rng.randint(0,64)))
         (root/"empty").mkdir()
-        os.symlink("d0/f0.txt",root/"link")
+        links=can_symlink(tmp_path)
+        if links:
+            os.symlink("d0/f0.txt",root/"link")
         (root/"node_modules").mkdir(); (root/"node_modules"/"x").write_text("dep")
         before=_tree(root)
         snap=Snapshot(root,10**8)
@@ -277,8 +279,8 @@ def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning):
                     elif op==4: (root/"newdir"/"deep").mkdir(parents=True,exist_ok=True); (root/"newdir"/"deep"/"z").write_text("z")
                     elif op==5 and f: f.unlink(); f.mkdir(); (f/"inner").write_text("i")    # file -> dir
                     elif op==6: shutil.rmtree(root/"d1",ignore_errors=True); (root/"d1").write_text("now a file")  # dir -> file
-                    elif op==7 and f and f.is_file(): f.chmod(0o600 if f.stat().st_mode&0o777!=0o600 else 0o644)
-                    elif op==8: (root/"link").unlink(missing_ok=True); os.symlink("elsewhere",root/"link")
+                    elif op==7 and f and f.is_file() and os.name!="nt": f.chmod(0o600 if f.stat().st_mode&0o777!=0o600 else 0o644)
+                    elif op==8 and links: (root/"link").unlink(missing_ok=True); os.symlink("elsewhere",root/"link")
                 except OSError:
                     pass
             (root/"node_modules"/"x").write_text("changed")
@@ -301,3 +303,28 @@ def test_snapshot_is_cloned_and_cleaned_up(tmp_path):
     from agent_harness.workspace import wait_for_cleanup
     snap.close(); wait_for_cleanup()
     assert not os.path.exists(d)
+
+
+@pytest.mark.parametrize("windows_fingerprint",[False,True])
+def test_edit_that_restores_mtime_is_still_undone(tmp_path,monkeypatch,windows_fingerprint):
+    """Same size, mtime put back with utime(): POSIX catches it by ctime,
+    the Windows path by comparing content."""
+    from agent_harness import workspace as W
+    if windows_fingerprint:
+        monkeypatch.setattr(W,"FINGERPRINT_IS_PROOF",False)
+    f=tmp_path/"w"/"a.txt"
+    f.parent.mkdir(); f.write_text("original")
+    st=os.stat(f)
+    snap=W.Snapshot(tmp_path/"w",10**6)
+    f.write_text("tampered")                                   # same length
+    os.utime(f,ns=(st.st_atime_ns,st.st_mtime_ns))
+    snap.restore()
+    assert f.read_text()=="original"
+    snap.close(wait=True)
+
+
+def test_command_accepts_lists_and_resolves_path(tmp_path):
+    assert agents.command({"command":["npx","claude"]})==["npx","claude"]
+    exe=agents.command({"command":"python3" if os.name!="nt" else "python"})[0]
+    assert os.path.isabs(exe)                                   # found on PATH (PATHEXT on Windows)
+    assert agents.command({"command":"no-such-cli-xyz"})==["no-such-cli-xyz"]

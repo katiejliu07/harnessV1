@@ -66,13 +66,21 @@ def solution_source(text,function):
 
 
 CHILD=r'''
-import json,sys,resource,types,itertools,collections,math,functools,bisect,typing,re
-resource.setrlimit(resource.RLIMIT_CPU,(2,2))
-resource.setrlimit(resource.RLIMIT_FSIZE,(0,0))
-# Darwin rejects RLIMIT_AS here; do not turn every valid solution into a false
-# failure. CPU/timeout limits remain, and this harness is not a general sandbox.
-if sys.platform!='darwin':
-    resource.setrlimit(resource.RLIMIT_AS,(1024**3,1024**3))
+import json,sys,types,itertools,collections,math,functools,bisect,typing,re
+try:
+    import resource
+except ImportError:
+    # Windows has no resource module. Without this guard every solution failed
+    # there, so a function+cases task could never pass. The parent's 4 s
+    # timeout still applies; this harness is not a general sandbox.
+    resource=None
+if resource is not None:
+    resource.setrlimit(resource.RLIMIT_CPU,(2,2))
+    resource.setrlimit(resource.RLIMIT_FSIZE,(0,0))
+    # Darwin rejects RLIMIT_AS here; do not turn every valid solution into a false
+    # failure. CPU/timeout limits remain, and this harness is not a general sandbox.
+    if sys.platform!='darwin':
+        resource.setrlimit(resource.RLIMIT_AS,(1024**3,1024**3))
 data=json.load(sys.stdin)
 modules={'itertools':itertools,'collections':collections,'math':math,'functools':functools,'bisect':bisect,'typing':typing,'re':re}
 facades={name:types.SimpleNamespace(**{attr:getattr(module,attr) for attr in data['allowed'][name]}) for name,module in modules.items()}

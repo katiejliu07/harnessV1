@@ -23,6 +23,7 @@ point two concurrent tasks at one workdir with isolation on.
 """
 import ctypes
 import errno
+import filecmp
 import os
 import shutil
 import subprocess
@@ -78,8 +79,18 @@ def _clone_or_copy(src,dst,dev):
 
 # ---- scanning ----------------------------------------------------------------
 
+# On POSIX any content write or utime() bumps st_ctime, and user tools cannot
+# set it back, so an equal fingerprint proves the file is unchanged. On Windows
+# st_ctime is the *creation* time (and DirEntry.stat() leaves st_ino 0), so a
+# write that restores the old mtime would go unseen: there, an equal fingerprint
+# is confirmed by comparing content before a file is skipped.
+FINGERPRINT_IS_PROOF=os.name!="nt"
+
+
 def _sig(st):
-    return (st.st_size,st.st_mtime_ns,st.st_ctime_ns,st.st_ino,st.st_mode)
+    if FINGERPRINT_IS_PROOF:
+        return (st.st_size,st.st_mtime_ns,st.st_ctime_ns,st.st_ino,st.st_mode)
+    return (st.st_size,st.st_mtime_ns,st.st_mode)
 
 
 def _scan(root,skipped=None):
@@ -206,8 +217,9 @@ class Snapshot:
                 os.remove(path)                          # replaced by a file or link
             os.makedirs(path,exist_ok=True)
         for rel,want in self.entries.items():
-            if now.get(rel)==want:
-                continue                                 # untouched: no read, no write
+            if now.get(rel)==want and (FINGERPRINT_IS_PROOF or want[0]!="file"
+                                       or filecmp.cmp(os.path.join(self.dir,rel),os.path.join(self.workdir,rel),shallow=False)):
+                continue                                 # untouched: no read, no write (POSIX)
             dst=os.path.join(self.workdir,rel)
             if os.path.lexists(dst):
                 _remove(dst)

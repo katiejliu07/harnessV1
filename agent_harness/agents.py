@@ -174,6 +174,17 @@ def _exec_stream(cmd,timeout,workdir,on_text):
     return rc,result_line,"".join(x for x in err_chunks if x),timed_out[0]
 
 
+def command(agent):
+    """The agent's argv prefix. "command" may be a string or a list (e.g.
+    ["npx", "claude"] or [python, script]); a bare name is resolved through PATH,
+    which on Windows also finds claude.cmd / claude.exe via PATHEXT."""
+    import shutil
+    cmd=agent["command"]
+    if isinstance(cmd,(list,tuple)):
+        return list(cmd)
+    return [shutil.which(cmd) or cmd]
+
+
 # Codex sandbox per toolset: a read-only sandbox can never pass a coding task's
 # check, so a code rung needs workspace-write (still confined to the workdir).
 CODEX_SANDBOX={"none":"read-only","read":"read-only","code":"workspace-write","full":"workspace-write"}
@@ -192,7 +203,7 @@ def run(step,prompt,config,workdir=None,timeout=None):
     if step["agent"]=="claude":
         on_text=config.get("on_text")
         fmt=["stream-json","--verbose","--include-partial-messages"] if on_text else ["json"]
-        cmd=[agent["command"],"-p",prompt,"--output-format",*fmt,"--no-session-persistence"]
+        cmd=[*command(agent),"-p",prompt,"--output-format",*fmt,"--no-session-persistence"]
         if step.get("model"):
             cmd+=["--model",step["model"]]
         if step.get("effort"):
@@ -242,7 +253,7 @@ def run(step,prompt,config,workdir=None,timeout=None):
                     json.dump(schema,f)
                     schema_path=f.name
             full=prompt if not system else f"{system}\n\n{prompt}"
-            cmd=[agent["command"],"exec","--json","-o",out_path]
+            cmd=[*command(agent),"exec","--json","-o",out_path]
             if step.get("model"):
                 cmd+=["-m",step["model"]]
             if step.get("effort"):

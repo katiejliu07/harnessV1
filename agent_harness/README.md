@@ -124,3 +124,12 @@ Import cost: the research graders, `concurrent.futures` and `argparse` load only
 - **Streaming:** pass `on_text` to stream the answer as it's generated. This applies to unchecked tasks only, because a checked rung's answer can still fail its check and be replaced.
 - **Declared toolset:** on unchecked tasks the harness now honours a toolset the caller *declares*. Claude Code's normal system prompt stays; only the unneeded tools are dropped. A toolset the harness only infers is still never applied to unchecked tasks.
 - **Not worth it:** pre-starting `claude` with stream-json input (1.71 → 1.66 s, and it used 2k more tokens). MCP connectors cost no tokens because their tools load on demand. Claude Code's own startup (about 0.9 s of each call, against about 0.9 s of API time) only goes away if you call the API directly instead of the CLI.
+
+## Platforms (2026-11-10)
+
+Lambda's audit ran V2's tests on Windows: 40 passed, 15 failed. Fixes:
+- **Function-case checks could never pass on Windows.** The sandboxed grader imported `resource`, which Windows doesn't have, so every `function`+`cases` task failed on every rung. It now applies resource limits only where they exist; the 4 s timeout still applies everywhere.
+- **Restore fingerprints on Windows.** `st_ctime` there is the creation time, so an equal fingerprint doesn't prove a file is unchanged. Windows confirms by comparing content, which only happens during escalation. On POSIX, ctime remains proof. A test covers an edit that puts back the original mtime, on both paths.
+- `command` may be a list (`["npx", "claude"]`), and bare names resolve through PATH/PATHEXT (`claude.cmd`, `claude.exe`). The hygiene hint uses `python` on Windows.
+- **No torch needed.** The harness, its pilots and its tests no longer import `torch` (they used to, via `independent_audit.model`, just for a path).
+- The tests are cross-platform (no `/bin/sh`, `true`, `grep` or shebangs), and CI runs them plus `python -m agent_harness.bench` on Ubuntu, macOS and Windows (`.github/workflows/harness-tests.yml`).

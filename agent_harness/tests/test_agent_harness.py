@@ -1,10 +1,10 @@
 import json
 import os
-import stat
 
 from agent_harness.compact import compact,compact_checked,facts
 from agent_harness.run import load_config,route,run_task
 from agent_harness import agents
+from _portable import FALSE,TRUE,fake_cli
 
 
 def fake_runner(answers):
@@ -72,14 +72,10 @@ def test_compaction_never_loses_facts_or_touches_code():
 
 
 def test_cli_output_parsing_with_fake_commands(tmp_path):
-    claude=tmp_path/"claude"
-    claude.write_text("#!/bin/sh\necho '{\"type\":\"result\",\"result\":\"Final answer: 7\",\"is_error\":false,\"usage\":{\"input_tokens\":12,\"output_tokens\":5,\"cache_read_input_tokens\":3}}'\n")
-    codex=tmp_path/"codex"
-    codex.write_text("#!/bin/sh\nwhile [ \"$1\" != \"-o\" ]; do shift; done\necho 'Final answer: 7' > \"$2\"\n"
-                     "echo '{\"type\":\"turn.completed\",\"usage\":{\"input_tokens\":20,\"cached_input_tokens\":4,\"output_tokens\":6}}'\n")
-    for p in (claude,codex):
-        p.chmod(p.stat().st_mode|stat.S_IEXEC)
-    config={"agents":{"claude":{"command":str(claude)},"codex":{"command":str(codex),"extra_args":[]}}}
+    claude=fake_cli(tmp_path/"claude.py","import json\nprint(json.dumps({'type':'result','result':'Final answer: 7','is_error':False,'usage':{'input_tokens':12,'output_tokens':5,'cache_read_input_tokens':3}}))\n")
+    codex=fake_cli(tmp_path/"codex.py","import json,sys\na=sys.argv\nopen(a[a.index('-o')+1],'w').write('Final answer: 7\\n')\n"
+                   "print(json.dumps({'type':'turn.completed','usage':{'input_tokens':20,'cached_input_tokens':4,'output_tokens':6}}))\n")
+    config={"agents":{"claude":{"command":claude},"codex":{"command":codex,"extra_args":[]}}}
     a=agents.run({"agent":"claude","model":"sonnet","effort":"low"},"q",config)
     assert a["text"]=="Final answer: 7" and a["usage"]=={"input_tokens":12,"output_tokens":5,"cache_read_input_tokens":3}
     b=agents.run({"agent":"codex","model":"m","effort":"low"},"q",config)
@@ -98,23 +94,23 @@ def test_toolset_rung_only_for_tool_tasks_and_hygiene_only_with_tools(tmp_path):
         p["toolset_first_rung"]=True; p["hygiene"]=True
     # tool task: the declared/inferred toolset first, then the full-tools ladder
     run,calls=fake_runner(["x"]*4)            # check always fails: toolset rung + 3 ladder rungs
-    report=run_task({"prompt":"fix the bug","check_cmd":"false","workdir":str(tmp_path)},config,runner=run)
+    report=run_task({"prompt":"fix the bug","check_cmd":FALSE,"workdir":str(tmp_path)},config,runner=run)
     assert calls[0][0]["toolset"]=="Bash,Read,Edit,Write" and "toolset" not in calls[1][0]
     assert report["toolset"]=="code"
     run,calls=fake_runner(["x"]*4)
-    run_task({"prompt":"look","check_cmd":"false","workdir":str(tmp_path),"toolset":"read"},config,runner=run)
+    run_task({"prompt":"look","check_cmd":FALSE,"workdir":str(tmp_path),"toolset":"read"},config,runner=run)
     assert calls[0][0]["toolset"]=="Read,Grep,Glob"
     # tool-free task gets the lean rung instead, never a toolset rung
     run,calls=fake_runner(["Final answer: 7"])
     run_task({"prompt":"What is 3+4?","expected":"7"},config,runner=run)
     assert calls[0][0].get("lean") and "toolset" not in calls[0][0] and not calls[0][2]
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix the bug","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
+    run_task({"prompt":"fix the bug","check_cmd":TRUE,"workdir":str(tmp_path)},config,runner=run)
     step,_,system=calls[0]
     assert not step.get("lean") and not system          # claude: hygiene measured no saving
     config["hygiene_agents"]=["claude","codex"]
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix the bug","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
+    run_task({"prompt":"fix the bug","check_cmd":TRUE,"workdir":str(tmp_path)},config,runner=run)
     assert "compact.py" in calls[0][2]
 
 
@@ -155,7 +151,7 @@ def test_lean_first_rung_falls_through_to_the_unchanged_ladder(tmp_path):
     assert calls[1][0]["model"]=="sonnet" and calls[1][0]["effort"]=="low"
     # tool tasks never get a lean rung; unchecked paths never do either
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
+    run_task({"prompt":"fix","check_cmd":TRUE,"workdir":str(tmp_path)},config,runner=run)
     assert not calls[0][0].get("lean")
     run,calls=fake_runner(["x"])
     run_task({"prompt":"Pick the database architecture","important":True},config,runner=run)
@@ -167,7 +163,7 @@ def test_hygiene_reaches_codex_tool_runs_only(tmp_path):
     assert config["hygiene_agents"]==["codex"]
     config["profiles"]["technical"]["ladder"]=[{"agent":"codex","model":None,"effort":"low"}]
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
+    run_task({"prompt":"fix","check_cmd":TRUE,"workdir":str(tmp_path)},config,runner=run)
     assert "compact.py" in calls[0][2]
     run,calls=fake_runner(["Final answer: 7"])
     run_task({"prompt":"What is 3+4?","expected":"7"},config,runner=run)   # no tools: no hygiene
@@ -186,10 +182,9 @@ def test_budget_stops_escalation_and_says_so():
 
 
 def test_cli_toolset_flags(tmp_path):
-    claude=tmp_path/"claude"
-    claude.write_text("#!/bin/sh\necho \"$@\" > \"$(dirname \"$0\")/args.txt\"\necho '{\"result\":\"ok\",\"usage\":{\"input_tokens\":1,\"output_tokens\":1}}'\n")
-    claude.chmod(claude.stat().st_mode|stat.S_IEXEC)
-    config={"agents":{"claude":{"command":str(claude)}}}
+    claude=fake_cli(tmp_path/"claude.py","import json,os,sys\nopen(os.path.join(os.path.dirname(sys.argv[0]),'args.txt'),'w').write(' '.join(sys.argv[1:]))\n"
+                    "print(json.dumps({'result':'ok','usage':{'input_tokens':1,'output_tokens':1}}))\n")
+    config={"agents":{"claude":{"command":claude}}}
     agents.run({"agent":"claude","model":"sonnet","toolset":"Bash,Read,Edit,Write"},"q",config)
     args=(tmp_path/"args.txt").read_text()
     assert "--tools Bash,Read,Edit,Write --strict-mcp-config" in args and "--setting-sources" not in args   # permissions kept
