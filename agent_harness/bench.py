@@ -62,7 +62,9 @@ def main():
             rows.append((f"coding task passes, {label}",_median_ms(lambda:run_task({"prompt":"fix","check_cmd":true,"workdir":d},config,runner=_runner("done")),reps)))
             rows.append((f"coding task, 4 rungs fail, {label}",_median_ms(lambda:run_task({"prompt":"fix","check_cmd":false,"workdir":d},config,runner=_runner("done")),reps)))
             snap=Snapshot(d,10**10)
-            rows.append((f"  snapshot only, {label} [{snap.method}]",snap.seconds*1000))
+            rows.append((f"  snapshot: caller waits (scan), {label}",snap.seconds*1000))
+            snap.ready()
+            rows.append((f"  snapshot: background copy, {label} [{snap.method}]",(snap.build_seconds or 0)*1000))
             with open(os.path.join(d,"pkg0","f0.py"),"wb") as f:
                 f.write(b"edited")
             rows.append((f"  restore 1 changed file, {label}",snap.restore()*1000))
@@ -70,7 +72,9 @@ def main():
         finally:
             shutil.rmtree(d,ignore_errors=True)
     wait_for_cleanup()
-    print(f"platform: {sys.platform}, python {sys.version.split()[0]}")
+    from . import workspace
+    print(f"platform: {sys.platform}, python {sys.version.split()[0]}, "
+          f"windows change-time fingerprints: {bool(workspace._win) if os.name=='nt' else 'n/a'}")
     for name,ms in rows:
         print(f"{name:46s} {ms:9.2f} ms")
 

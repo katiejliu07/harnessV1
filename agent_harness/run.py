@@ -210,15 +210,24 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     snap=None
     checked=has_check(task)
     if workdir and checked and (len(steps)>1 or max_retries) and config.get("isolate_rungs",True):
-        snap=Snapshot(workdir,int(config.get("isolate_rungs_max_mb",100))*1024*1024)
+        snap=Snapshot(workdir,int(config.get("isolate_rungs_max_mb",100))*1024*1024,
+                      background=config.get("snapshot_background",True))
         isolation={"snapshot_seconds":snap.seconds,"skipped":snap.skipped,"restores":0,"restore_seconds":0.}
 
     def restore():
-        nonlocal exception
+        nonlocal exception,snap
         if snap is None or snap.dir is None:
             return True
         try:
-            isolation["restore_seconds"]+=snap.restore()
+            took=snap.restore()
+            if took is None:
+                # The background copy couldn't be trusted (or the workdir is too
+                # big): carry on unisolated, as before isolation existed, and say so.
+                isolation["skipped"]=snap.skipped
+                snap.close()
+                snap=None
+                return True
+            isolation["restore_seconds"]+=took
         except OSError as exc:
             # A half-restored workdir is worse than none: stop and report.
             exception=f"restore: {exc!r}"[:500]
@@ -256,6 +265,10 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
                 break
     finally:
         if snap is not None:
+            if isolation is not None and snap._thread is not None and not snap._thread.is_alive():
+                isolation["build_seconds"]=snap.build_seconds
+                isolation["method"]=snap.method
+                isolation["skipped"]=isolation["skipped"] or snap.skipped
             snap.close()
     verified=attempts[-1]["verified"] if attempts else None
     text=result["text"] if result else ""

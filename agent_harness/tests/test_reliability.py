@@ -113,7 +113,8 @@ def test_each_rung_starts_from_the_original_files(tmp_path):
         (tmp_path/"newdir"/"deep").mkdir(parents=True,exist_ok=True)
         (tmp_path/"node_modules"/"dep.js").write_text("changed\n")    # SKIP dirs are left alone
         return {"text":"","error":False,"usage":{"input_tokens":1,"output_tokens":1},"seconds":0.}
-    report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},load_config(),runner=run)
+    config=load_config(); config["snapshot_background"]=False      # this fake agent edits instantly
+    report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},config,runner=run)
     assert len(seen)==4
     first=seen[0]
     assert all(s==first for s in seen)                                 # same starting files every rung
@@ -262,7 +263,7 @@ def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning,window
             os.symlink("d0/f0.txt",root/"link")
         (root/"node_modules").mkdir(); (root/"node_modules"/"x").write_text("dep")
         before=_tree(root)
-        snap=Snapshot(root,10**8)
+        snap=Snapshot(root,10**8,background=False)
         assert snap.dir and snap.skipped is None
         assert snap.method==("clone" if cloning and sys.platform=="darwin" else snap.method)
         for _ in range(3):                                   # several escalations in a row
@@ -294,12 +295,12 @@ def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning,window
 def test_snapshot_is_cloned_and_cleaned_up(tmp_path):
     from agent_harness.workspace import Snapshot
     (tmp_path/"w").mkdir(); (tmp_path/"w"/"a").write_text("a")
-    snap=Snapshot(tmp_path/"w",10**6)
+    snap=Snapshot(tmp_path/"w",10**6,background=False)
     d=snap.dir
     assert os.path.exists(os.path.join(d,"a"))
     snap.close(wait=True)
     assert not os.path.exists(d)
-    snap=Snapshot(tmp_path/"w",10**6); d=snap.dir
+    snap=Snapshot(tmp_path/"w",10**6,background=False); d=snap.dir
     from agent_harness.workspace import wait_for_cleanup
     snap.close(); wait_for_cleanup()
     assert not os.path.exists(d)
@@ -315,7 +316,7 @@ def test_edit_that_restores_mtime_is_still_undone(tmp_path,monkeypatch,windows_f
     f=tmp_path/"w"/"a.txt"
     f.parent.mkdir(); f.write_text("original")
     st=os.stat(f)
-    snap=W.Snapshot(tmp_path/"w",10**6)
+    snap=W.Snapshot(tmp_path/"w",10**6,background=False)
     f.write_text("tampered")                                   # same length
     os.utime(f,ns=(st.st_atime_ns,st.st_mtime_ns))
     snap.restore()
@@ -328,3 +329,49 @@ def test_command_accepts_lists_and_resolves_path(tmp_path):
     exe=agents.command({"command":"python3" if os.name!="nt" else "python"})[0]
     assert os.path.isabs(exe)                                   # found on PATH (PATHEXT on Windows)
     assert agents.command({"command":"no-such-cli-xyz"})==["no-such-cli-xyz"]
+
+
+def test_background_snapshot_never_restores_an_edit_it_copied(tmp_path,monkeypatch):
+    """The agent edits a file before the background copy reaches it: the
+    snapshot must declare itself unusable, not restore the edited content."""
+    import threading as th
+    from agent_harness import workspace as W
+    w=tmp_path/"w"; w.mkdir()
+    for i in range(40):
+        (w/f"f{i}.txt").write_text(f"original {i}")
+    gate=th.Event()
+    real=W.Snapshot._copy_tree
+    monkeypatch.setattr(W,"_clonefile",None)                   # per-file path: checks each file
+    monkeypatch.setattr(W.Snapshot,"_copy_tree",lambda self,n:(gate.wait(),real(self,n))[1])
+    snap=W.Snapshot(w,10**6)                                    # background
+    (w/"f7.txt").write_text("edited by the agent")              # before the copier starts
+    gate.set()
+    assert snap.restore() is None and "changed" in snap.skipped
+    assert (w/"f7.txt").read_text()=="edited by the agent"      # nothing was "restored"
+    snap.close(wait=True)
+
+
+def test_close_during_background_copy_is_safe(tmp_path,monkeypatch):
+    import threading as th
+    from agent_harness import workspace as W
+    w=tmp_path/"w"; w.mkdir(); (w/"a").write_text("a")
+    gate=th.Event(); real=W.Snapshot._copy_tree
+    monkeypatch.setattr(W.Snapshot,"_copy_tree",lambda self,n:(gate.wait(),real(self,n))[1])
+    snap=W.Snapshot(w,10**6)
+    root=snap.root
+    snap.close()                                                # returns at once
+    gate.set(); W.wait_for_cleanup()
+    assert not os.path.exists(root)
+
+
+def test_realistic_agent_gets_isolation_with_background_snapshot(tmp_path):
+    _project(tmp_path)
+    seen=[]
+    def run(step,prompt,config,workdir=None):
+        time.sleep(0.3)                                         # agent startup before its first edit
+        seen.append((tmp_path/"pkg"/"a.py").read_text())
+        (tmp_path/"pkg"/"a.py").write_text("broken\n")
+        return {"text":"","error":False,"usage":{},"seconds":0.3}
+    report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},load_config(),runner=run)
+    assert seen==["x = 1\n"]*4 and report["rung_isolation"]["restores"]==3
+    assert report["rung_isolation"]["snapshot_seconds"]<report["rung_isolation"].get("build_seconds",1)+1

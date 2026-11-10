@@ -6,13 +6,19 @@ told, and a later pass can owe credit to an earlier rung's edits. The ladder's
 measured accuracy assumes each rung starts fresh, so the workdir is snapshotted
 before the first rung and restored before each escalation.
 
-Kept cheap because it runs before every checked task with a workdir:
-  - files are cloned copy-on-write where the filesystem allows it (APFS
-    clonefile, Linux FICLONE on btrfs/xfs), else copied;
-  - each file's stat fingerprint (size, mtime, ctime, inode, mode) is kept,
-    and restore only rewrites files whose fingerprint changed. Any content
-    write or utime() bumps ctime, and ctime cannot be set back by user tools,
-    so an unchanged fingerprint means unchanged content without reading it.
+Kept off the critical path because it runs before every checked task with a
+workdir:
+  - only the fingerprint scan runs before the first rung. The copy is built in
+    the background while the agent starts up (seconds before its first edit),
+    cloned copy-on-write where the filesystem allows it (APFS clonefile, Linux
+    reflink) and otherwise copied by parallel threads. Every file is checked
+    against its fingerprint just before and just after it is copied; if the
+    agent got there first, the snapshot is marked unusable and the ladder runs
+    unisolated (reported), so a restore never brings back wrong content;
+  - restore only rewrites files whose fingerprint changed. The fingerprint
+    includes the change time (POSIX st_ctime; NTFS ChangeTime on Windows,
+    read per directory), which any content write or utime() bumps, so an
+    unchanged fingerprint means unchanged content without reading it.
 
 Directories in SKIP (VCS data, dependencies, caches) are neither copied nor
 restored. A workdir over max_bytes is not snapshotted; the report says so and
@@ -25,6 +31,7 @@ import ctypes
 import errno
 import filecmp
 import os
+import struct
 import shutil
 import subprocess
 import sys
@@ -79,27 +86,102 @@ def _clone_or_copy(src,dst,dev):
 
 # ---- scanning ----------------------------------------------------------------
 
-# On POSIX any content write or utime() bumps st_ctime, and user tools cannot
-# set it back, so an equal fingerprint proves the file is unchanged. On Windows
-# st_ctime is the *creation* time (and DirEntry.stat() leaves st_ino 0), so a
-# write that restores the old mtime would go unseen: there, an equal fingerprint
-# is confirmed by comparing content before a file is skipped.
-FINGERPRINT_IS_PROOF=os.name!="nt"
+# Whether an equal fingerprint proves a file unchanged. POSIX: st_ctime is bumped
+# by any content write or utime() and user tools cannot set it back. Windows:
+# os.stat's st_ctime is the *creation* time, so the NTFS ChangeTime is read per
+# directory instead (_win_change_times); if that fails, equal fingerprints are
+# confirmed by comparing content. Tests set this False to force that fallback.
+FINGERPRINT_IS_PROOF=True
+
+_win=None
+if os.name=="nt":
+    try:
+        from ctypes import wintypes as _wt
+        _k32=ctypes.WinDLL("kernel32",use_last_error=True)
+        _CreateFileW=_k32.CreateFileW
+        _CreateFileW.argtypes=[_wt.LPCWSTR,_wt.DWORD,_wt.DWORD,ctypes.c_void_p,_wt.DWORD,_wt.DWORD,_wt.HANDLE]
+        _CreateFileW.restype=_wt.HANDLE
+        _GetInfo=_k32.GetFileInformationByHandleEx
+        _GetInfo.argtypes=[_wt.HANDLE,ctypes.c_int,ctypes.c_void_p,_wt.DWORD]
+        _GetInfo.restype=_wt.BOOL
+        _CloseHandle=_k32.CloseHandle
+        _CloseHandle.argtypes=[_wt.HANDLE]
+        _win=True
+    except (OSError,AttributeError):
+        _win=None
+_INVALID_HANDLE=ctypes.c_void_p(-1).value
 
 
-def _sig(st):
-    if FINGERPRINT_IS_PROOF:
+def _win_change_times(path):
+    """{name: NTFS ChangeTime} for one directory, in one enumeration
+    (FILE_FULL_DIR_INFO: ChangeTime at offset 32, name length at 60, name at 68)."""
+    h=_CreateFileW(path,0x0001,0x7,None,3,0x02000000,None)   # LIST_DIRECTORY, share all, OPEN_EXISTING, BACKUP_SEMANTICS
+    if h in (None,_INVALID_HANDLE):
+        raise OSError(ctypes.get_last_error(),"CreateFileW failed",path)
+    out={}
+    buf=ctypes.create_string_buffer(64*1024)
+    cls=0xF                                                    # FileFullDirectoryRestartInfo, then FileFullDirectoryInfo
+    try:
+        while True:
+            if not _GetInfo(h,cls,buf,len(buf)):
+                err=ctypes.get_last_error()
+                if err==18:                                    # ERROR_NO_MORE_FILES
+                    break
+                raise OSError(err,"GetFileInformationByHandleEx failed",path)
+            cls=0xE
+            raw=buf.raw
+            off=0
+            while True:
+                nxt,=struct.unpack_from("<I",raw,off)
+                change,=struct.unpack_from("<q",raw,off+32)
+                nlen,=struct.unpack_from("<I",raw,off+60)
+                out[raw[off+68:off+68+nlen].decode("utf-16-le")]=change
+                if not nxt:
+                    break
+                off+=nxt
+    finally:
+        _CloseHandle(h)
+    return out
+
+
+def _sig(st,change=None):
+    if os.name!="nt":
         return (st.st_size,st.st_mtime_ns,st.st_ctime_ns,st.st_ino,st.st_mode)
-    return (st.st_size,st.st_mtime_ns,st.st_mode)
+    return (st.st_size,st.st_mtime_ns,change,st.st_mode)
+
+
+def _quick(path):
+    """The fields of a fingerprint that one stat() can read, for checking a
+    file just before and after it is copied."""
+    st=os.lstat(path)
+    return (st.st_size,st.st_mtime_ns,st.st_ctime_ns) if os.name!="nt" else (st.st_size,st.st_mtime_ns)
+
+
+def _quick_of(sig):
+    return sig[:3] if os.name!="nt" else sig[:2]
+
+
+def _dir_change_times(path):
+    if os.name!="nt" or not _win:
+        return None
+    try:
+        return _win_change_times(path)
+    except OSError:
+        return None
 
 
 def _scan(root,skipped=None):
-    """({rel: ("file", sig) | ("link", target)}, {rel dirs}) outside SKIP.
-    SKIP dirs found below the top level are added to skipped when given."""
+    """({rel: ("file", sig) | ("link", target)}, {rel dirs}, proof) outside SKIP.
+    proof says whether equal fingerprints prove equal content. SKIP dirs found
+    below the top level are added to skipped when given."""
     entries,dirs={},{"."}
+    proof=FINGERPRINT_IS_PROOF
     stack=[(root,"")]
     while stack:
         path,rel=stack.pop()
+        changes=_dir_change_times(path)
+        if os.name=="nt" and changes is None:
+            proof=False
         with os.scandir(path) as it:
             for e in it:
                 r=f"{rel}{e.name}"
@@ -113,8 +195,19 @@ def _scan(root,skipped=None):
                     dirs.add(r)
                     stack.append((e.path,r+"/"))
                 elif e.is_file(follow_symlinks=False):
-                    entries[r]=("file",_sig(e.stat(follow_symlinks=False)))
-    return entries,dirs
+                    change=changes.get(e.name) if changes else None
+                    if os.name=="nt" and change is None:
+                        proof=False
+                    entries[r]=("file",_sig(e.stat(follow_symlinks=False),change))
+    return entries,dirs,proof
+
+
+def _sig_of(path):
+    st=os.lstat(path)
+    if os.name!="nt":
+        return _sig(st)
+    changes=_dir_change_times(os.path.dirname(path)) or {}
+    return _sig(st,changes.get(os.path.basename(path)))
 
 
 def _snapshot_parent(workdir):
@@ -140,28 +233,61 @@ def _remove(p):
 
 
 class Snapshot:
-    def __init__(self,workdir,max_bytes):
+    """Snapshot(workdir, max_bytes, background=True).
+
+    seconds: time spent on the caller's path (the scan, plus the copy when
+    background=False). build_seconds: time the copy took. restore() waits for
+    the copy and returns None when the snapshot is unusable (see skipped)."""
+
+    def __init__(self,workdir,max_bytes,background=True,jobs=8):
         start=time.perf_counter()
         self.workdir=os.path.abspath(str(workdir))
         self.dir=None
         self.skipped=None
-        nested_skip=[]
-        # Fingerprints first, copy second: a file changed in between is simply
-        # restored to its newer copy, never to stale content.
-        self.entries,self.dirs=_scan(self.workdir,nested_skip)
-        size=sum(v[1][0] for v in self.entries.values() if v[0]=="file")
         self.method=None
+        self.build_seconds=None
+        self.jobs=jobs
+        self._cancel=threading.Event()
+        self._thread=None
+        nested_skip=[]
+        # Fingerprints first, before the agent can touch anything: they are the
+        # originals every copied file is checked against.
+        self.entries,self.dirs,self.proof=_scan(self.workdir,nested_skip)
+        size=sum(v[1][0] for v in self.entries.values() if v[0]=="file")
         if size>max_bytes:
             self.skipped=f"workdir over {max_bytes} bytes"
         else:
             self.dev=os.stat(self.workdir).st_dev
-            self.dir=tempfile.mkdtemp(prefix=".harness-rung-",dir=_snapshot_parent(self.workdir))
-            try:
-                self.method=self._copy_tree(nested_skip)
-            except OSError as exc:            # unreadable file etc.: run unisolated, and say so
-                self.close()
-                self.skipped=f"snapshot failed: {exc!r}"[:300]
+            self.root=tempfile.mkdtemp(prefix=".harness-rung-",dir=_snapshot_parent(self.workdir))
+            self.dir=self.root                        # None once closed; the copier keeps using root
+            if background:
+                self._thread=threading.Thread(target=self._build,args=(nested_skip,),daemon=True)
+                self._thread.start()
+            else:
+                self._build(nested_skip)
         self.seconds=time.perf_counter()-start
+
+    def _build(self,nested_skip):
+        start=time.perf_counter()
+        try:
+            self.method=self._copy_tree(nested_skip)
+        except Exception as exc:          # noqa: BLE001 - unreadable file, the agent got there first, closed
+            self.skipped=f"snapshot failed: {exc}"[:300]
+        self.build_seconds=time.perf_counter()-start
+
+    def ready(self):
+        """Wait for the copy; True if it can be restored from."""
+        if self._thread is not None:
+            self._thread.join()
+        return self.dir is not None and self.skipped is None
+
+    def _verify_tree(self):
+        """After a whole-tree copy: every original still has its fingerprint, so
+        the copy was taken from the originals."""
+        now,_,_=_scan(self.workdir)
+        for rel,want in self.entries.items():
+            if now.get(rel)!=want:
+                raise OSError(f"{rel} changed while the snapshot was taken")
 
     def _copy_tree(self,nested_skip):
         """Fastest exact copy available. Whole-directory clones copy nested SKIP
@@ -172,7 +298,9 @@ class Snapshot:
             # in the kernel (5k files: ~36 ms vs ~730 ms file by file).
             done=[]
             for name in tops:
-                src,dst=os.path.join(self.workdir,name),os.path.join(self.dir,name)
+                if self._cancel.is_set():
+                    raise OSError("cancelled")
+                src,dst=os.path.join(self.workdir,name),os.path.join(self.root,name)
                 if os.path.islink(src):
                     continue                          # links are restored from their target string
                 if _clonefile(os.fsencode(src),os.fsencode(dst),0)!=0:
@@ -183,32 +311,56 @@ class Snapshot:
                     raise OSError(err,os.strerror(err),src)
                 done.append(name)
             else:
+                self._verify_tree()
                 return "clone"
         if sys.platform.startswith("linux") and not nested_skip and shutil.which("cp"):
             # GNU cp: reflink where supported, else a native-speed copy.
             srcs=[os.path.join(self.workdir,n) for n in tops if not os.path.islink(os.path.join(self.workdir,n))]
-            if not srcs:
+            if srcs:
+                proc=subprocess.run(["cp","-a","--reflink=auto","--",*srcs,self.root+"/"],capture_output=True,text=True)
+                if proc.returncode==0:
+                    self._verify_tree()
+                    return "cp"
+                shutil.rmtree(self.root,ignore_errors=True)
+                os.mkdir(self.root)
+            else:
                 return "cp"
-            proc=subprocess.run(["cp","-a","--reflink=auto","--",*srcs,self.dir+"/"],capture_output=True,text=True)
-            if proc.returncode==0:
-                return "cp"
-            shutil.rmtree(self.dir,ignore_errors=True)
-            os.mkdir(self.dir)
         for d in sorted(self.dirs,key=len):
             if d!=".":
-                os.makedirs(os.path.join(self.dir,d),exist_ok=True)
-        for rel,(kind,_) in self.entries.items():
-            if kind=="file":
-                _clone_or_copy(os.path.join(self.workdir,rel),os.path.join(self.dir,rel),self.dev)
+                os.makedirs(os.path.join(self.root,d),exist_ok=True)
+        files=[rel for rel,(kind,_) in self.entries.items() if kind=="file"]
+
+        def one(rel):
+            if self._cancel.is_set():
+                raise OSError("cancelled")
+            src=os.path.join(self.workdir,rel)
+            want=_quick_of(self.entries[rel][1])
+            if _quick(src)!=want:
+                raise OSError(f"{rel} changed before it was copied")
+            _clone_or_copy(src,os.path.join(self.root,rel),self.dev)
+            if _quick(src)!=want:
+                raise OSError(f"{rel} changed while it was copied")
+
+        if self.jobs>1 and len(files)>32:
+            # Per-file copies are bound by open/close and antivirus scanning
+            # (Windows: ~1 ms per file), not bandwidth: threads overlap them.
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=self.jobs) as pool:
+                list(pool.map(one,files))
+        else:
+            for rel in files:
+                one(rel)
         return "files"
 
     def restore(self):
-        """Put the workdir back as it was at snapshot time. Returns seconds taken.
-        Only entries whose fingerprint changed are touched."""
+        """Put the workdir back as it was at snapshot time. Returns seconds taken,
+        or None if the snapshot is unusable. Only entries whose fingerprint
+        changed are touched."""
+        if not self.ready():
+            return None
         start=time.perf_counter()
-        if self.dir is None:
-            return 0.
-        now,now_dirs=_scan(self.workdir)
+        now,now_dirs,now_proof=_scan(self.workdir)
+        proof=self.proof and now_proof
         for rel in now.keys()-self.entries.keys():      # created by the failed rung
             _remove(os.path.join(self.workdir,rel))
         for d in sorted(self.dirs-now_dirs,key=len):    # original dirs it deleted
@@ -217,20 +369,20 @@ class Snapshot:
                 os.remove(path)                          # replaced by a file or link
             os.makedirs(path,exist_ok=True)
         for rel,want in self.entries.items():
-            if now.get(rel)==want and (FINGERPRINT_IS_PROOF or want[0]!="file"
-                                       or filecmp.cmp(os.path.join(self.dir,rel),os.path.join(self.workdir,rel),shallow=False)):
-                continue                                 # untouched: no read, no write (POSIX)
+            if now.get(rel)==want and (proof or want[0]!="file"
+                                       or filecmp.cmp(os.path.join(self.root,rel),os.path.join(self.workdir,rel),shallow=False)):
+                continue                                 # untouched: no read, no write when proof holds
             dst=os.path.join(self.workdir,rel)
             if os.path.lexists(dst):
                 _remove(dst)
             if want[0]=="link":
                 os.symlink(want[1],dst)
                 continue
-            src=os.path.join(self.dir,rel)
+            src=os.path.join(self.root,rel)
             _clone_or_copy(src,dst,self.dev)
             shutil.copystat(src,dst)
-            # the restored file has a new ctime/inode: remember that as "original"
-            self.entries[rel]=("file",_sig(os.lstat(dst)))
+            # the restored file has a new change time/inode: that is now "original"
+            self.entries[rel]=("file",_sig_of(dst))
         # directories the failed rung created and left empty, deepest first
         for d in sorted(now_dirs-self.dirs,key=lambda r:-r.count("/")):
             path=os.path.join(self.workdir,d)
@@ -239,14 +391,23 @@ class Snapshot:
         return time.perf_counter()-start
 
     def close(self,wait=False):
-        """Delete the snapshot. Off the critical path by default: deleting 5k
-        files takes ~300 ms that the task's caller should not wait for."""
+        """Stop any copy in progress and delete the snapshot. Off the critical
+        path by default: deleting 5k files takes ~300 ms that the task's caller
+        should not wait for."""
+        self._cancel.set()
         if self.dir:
             d,self.dir=self.dir,None
-            if wait:
+            thread=self._thread
+
+            def cleanup():
+                if thread is not None:
+                    thread.join()
                 shutil.rmtree(d,ignore_errors=True)
+
+            if wait:
+                cleanup()
             else:
-                t=threading.Thread(target=shutil.rmtree,args=(d,),kwargs={"ignore_errors":True},daemon=False)
+                t=threading.Thread(target=cleanup,daemon=False)
                 t.start()
                 _cleanups.append(t)
 
