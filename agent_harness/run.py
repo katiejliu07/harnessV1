@@ -123,6 +123,14 @@ def steps_for(path,task,profile,config):
     ladder=[dict(s) for s in (profile["ladder"] if checked else profile["ladder"][:1])]
     if not ladder:
         return [],toolset
+    first=ladder[0]
+    if not checked and task.get("toolset") in config.get("toolsets",{}) and task["toolset"]!="full" and first["agent"]=="claude":
+        # Unchecked, but the caller *declared* the tools it needs (a chatbot turn
+        # with toolset "none"): honor it. Claude Code's own system prompt stays;
+        # only tools the caller said it doesn't need are dropped (no tools: about
+        # 21k -> 3k input tokens). An inferred toolset is never applied here,
+        # since nothing would catch a wrong guess.
+        ladder[0]={**first,"toolset":config["toolsets"][task["toolset"]]}
     if not checked and has_check(task):
         # Format checks only (general/important): keep this preset's full first
         # setup, and on a failed format check climb to the technical ladder's
@@ -133,7 +141,6 @@ def steps_for(path,task,profile,config):
         if key(ladder[0]) in keys:
             ladder+=[dict(r) for r in tech[keys.index(key(ladder[0]))+1:]]
         return ladder,toolset
-    first=ladder[0]
     # Minimal first rung in front of a checked ladder. A miss is caught by the
     # check and falls through to the unchanged (full-tools) ladder, so accuracy
     # is the ladder's; the saving stays whenever the minimal rung passes.
@@ -158,7 +165,7 @@ def transient(result,config):
     return any(re.search(p,text,re.I) for p in pats)
 
 
-def run_task(task,config=None,runner=None,sleep=None):
+def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     config=config or load_config()
     runner=runner or agents.run              # looked up per call, so it can be swapped (tests, wrappers)
     sleep=sleep or time.sleep
@@ -177,6 +184,10 @@ def run_task(task,config=None,runner=None,sleep=None):
                 **({"agent_timeout":task["timeout"]} if task.get("timeout") else {}),
                 **({"output_schema":task["output_schema"]} if task.get("output_schema") else {}),
                 **({"allowed_tools":list(task["allowed_tools"])} if task.get("allowed_tools") else {})}
+    # Streaming only where the first answer is the answer: a checked rung's text
+    # can still fail its check and be replaced by the next rung's.
+    if on_text is not None and not has_check(task):
+        run_config["on_text"]=on_text
     usd_budget=task.get("max_budget_usd")
     attempts=[]
     result=None

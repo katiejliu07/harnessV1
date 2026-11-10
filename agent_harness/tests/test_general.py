@@ -242,3 +242,47 @@ def test_usd_budget_is_passed_down_and_stops_the_ladder():
     run2,c2=runner_of(["Final answer: 7"])
     run_task({"prompt":"What is 3+4?","expected":"7"},load_config(),runner=run2)
     assert "max_budget_usd" not in c2[0]["config"]
+
+
+def test_declared_toolset_is_honored_on_unchecked_tasks_inferred_is_not(tmp_path):
+    run,calls=runner_of(["Paris"])
+    run_task({"prompt":"Capital of France?","toolset":"none"},load_config(),runner=run)
+    assert calls[0]["step"]["toolset"]=="" and not calls[0]["step"].get("lean")      # tools off, default system prompt kept
+    run,calls=runner_of(["ok"])
+    run_task({"prompt":"Explain this repo","workdir":str(tmp_path)},load_config(),runner=run)   # inferred "code": not applied
+    assert "toolset" not in calls[0]["step"]
+    run,calls=runner_of(["ok"])
+    run_task({"prompt":"Research X","toolset":"full"},load_config(),runner=run)
+    assert "toolset" not in calls[0]["step"]
+
+
+def test_streaming_only_for_unchecked_tasks():
+    run,calls=runner_of(["a","Final answer: 7"])
+    cb=lambda t:None
+    run_task({"prompt":"Hi"},load_config(),runner=run,on_text=cb)
+    assert calls[0]["config"]["on_text"] is cb
+    run_task({"prompt":"3+4?","expected":"7"},load_config(),runner=run,on_text=cb)
+    assert "on_text" not in calls[1]["config"]
+
+
+def test_stream_parsing_and_bad_callback(tmp_path):
+    ev=lambda d:json.dumps({"type":"stream_event","event":{"type":"content_block_delta","delta":{"type":"text_delta","text":d}}})
+    body=("import json,sys,time\n"
+          f"print({ev('Par')!r},flush=True)\ntime.sleep(0.3)\nprint({ev('is')!r},flush=True)\n"
+          "print(json.dumps({'type':'result','result':'Paris','usage':{'input_tokens':5,'output_tokens':2}}))\n")
+    cmd=_fake(tmp_path,"claude",body)
+    got=[]; t0=time.perf_counter()
+    def cb(x): got.append((x,time.perf_counter()-t0))
+    r=agents.run({"agent":"claude"},"q",{"agents":{"claude":{"command":cmd}},"on_text":cb})
+    assert [g[0] for g in got]==["Par","is"] and got[0][1]<got[1][1]-0.2          # first words arrive before the end
+    assert r["text"]=="Paris" and r["usage"]=={"input_tokens":5,"output_tokens":2} and not r["error"]
+    def boom(x): raise RuntimeError("ui died")
+    r=agents.run({"agent":"claude"},"q",{"agents":{"claude":{"command":cmd}},"on_text":boom})
+    assert r["text"]=="Paris" and not r["error"]                                    # answer survives a broken callback
+
+
+def test_stream_timeout(tmp_path):
+    cmd=_fake(tmp_path,"claude","import time\ntime.sleep(30)\n")
+    t=time.perf_counter()
+    r=agents.run({"agent":"claude"},"q",{"agents":{"claude":{"command":cmd}},"on_text":lambda x:None},timeout=1)
+    assert r["timed_out"] and r["error"] and time.perf_counter()-t<10

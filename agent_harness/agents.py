@@ -131,6 +131,49 @@ def _exec(cmd,timeout,workdir):
         return None,_as_text(exc.stdout),_as_text(exc.stderr),True
 
 
+def _exec_stream(cmd,timeout,workdir,on_text):
+    """Like _exec for `claude --output-format stream-json`: text deltas go to
+    on_text as they arrive (a chat UI shows the first words in ~1 s instead of
+    after the whole answer); stdout returned is the final result event, which
+    has the same fields as --output-format json."""
+    import threading
+    proc=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,cwd=workdir,stdin=subprocess.DEVNULL)
+    err_chunks=[]
+    reader=threading.Thread(target=lambda:err_chunks.append(proc.stderr.read()),daemon=True)
+    reader.start()
+    timed_out=[False]
+    def kill():
+        timed_out[0]=True
+        proc.kill()
+    timer=threading.Timer(timeout,kill)
+    timer.start()
+    result_line=""
+    callback_ok=True
+    try:
+        for line in proc.stdout:
+            if not line.startswith("{"):
+                continue
+            if '"type":"result"' in line or '"type": "result"' in line:
+                result_line=line
+                continue
+            if callback_ok and '"text_delta"' in line:
+                try:
+                    e=json.loads(line)
+                    delta=(e.get("event") or {}).get("delta") or {}
+                    if delta.get("type")=="text_delta" and delta.get("text"):
+                        on_text(delta["text"])
+                except ValueError:
+                    pass
+                except Exception:             # noqa: BLE001 - a broken UI callback must not break the run
+                    callback_ok=False
+        proc.wait()
+    finally:
+        timer.cancel()
+    reader.join(timeout=5)
+    rc=None if timed_out[0] else proc.returncode
+    return rc,result_line,"".join(x for x in err_chunks if x),timed_out[0]
+
+
 # Codex sandbox per toolset: a read-only sandbox can never pass a coding task's
 # check, so a code rung needs workspace-write (still confined to the workdir).
 CODEX_SANDBOX={"none":"read-only","read":"read-only","code":"workspace-write","full":"workspace-write"}
@@ -138,15 +181,18 @@ CODEX_SANDBOX={"none":"read-only","read":"read-only","code":"workspace-write","f
 
 def run(step,prompt,config,workdir=None,timeout=None):
     """step: {"agent": "claude"|"codex", "model": ..., "effort": ...}
-    config may carry agent_timeout (seconds), output_schema (JSON Schema dict)
-    and task_toolset (none/read/code/full, picks the Codex sandbox)."""
+    config may carry agent_timeout (seconds), output_schema (JSON Schema dict),
+    task_toolset (none/read/code/full, picks the Codex sandbox) and on_text
+    (callable: stream Claude's answer text as it is generated)."""
     timeout=timeout or config.get("agent_timeout") or 1800
     schema=config.get("output_schema")
     agent=config["agents"][step["agent"]]
     system=config.get("system_append")
     start=time.perf_counter()
     if step["agent"]=="claude":
-        cmd=[agent["command"],"-p",prompt,"--output-format","json","--no-session-persistence"]
+        on_text=config.get("on_text")
+        fmt=["stream-json","--verbose","--include-partial-messages"] if on_text else ["json"]
+        cmd=[agent["command"],"-p",prompt,"--output-format",*fmt,"--no-session-persistence"]
         if step.get("model"):
             cmd+=["--model",step["model"]]
         if step.get("effort"):
@@ -176,7 +222,10 @@ def run(step,prompt,config,workdir=None,timeout=None):
             # A hard stop inside the call, enforced by Claude Code itself.
             cmd+=["--max-budget-usd",f"{max(config['max_budget_usd'],0):.4f}"]
         cmd+=agent.get("extra_args",[])
-        rc,out,err,timed_out=_exec(cmd,timeout,workdir)
+        if on_text:
+            rc,out,err,timed_out=_exec_stream(cmd,timeout,workdir,on_text)
+        else:
+            rc,out,err,timed_out=_exec(cmd,timeout,workdir)
         # A failed run still printed its usage: count it, or the budget undercounts
         # exactly when calls fail and escalate.
         result=parse_claude(out)

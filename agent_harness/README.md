@@ -110,3 +110,17 @@ How rung isolation stays cheap:
 - **Snapshot deletion** runs in a background thread.
 
 Import cost: the research graders, `concurrent.futures` and `argparse` load only when a check, a batch or the CLI needs them.
+
+## Chatbot use: same speed, fewer tokens (2026-11-10, live, median of 3, Sonnet low)
+
+| Setup | Done | First text | Input tokens |
+|---|---|---|---|
+| `claude -p` direct, no harness | 2.73 s | at the end | 21,058 |
+| `run_task` in-process | 2.60 s | at the end | 21,058 |
+| `run_task(..., on_text=cb)` | 2.31 s | **0.98 s** | 21,058 |
+| same, task declares `"toolset": "none"` | 2.35 s | 0.91 s | **2,913** |
+
+- **Speed:** called in-process, the harness runs at the same speed as calling Claude directly. Launched as a CLI, it adds about 0.1–0.2 s of Python startup.
+- **Streaming:** pass `on_text` to stream the answer as it's generated. This applies to unchecked tasks only, because a checked rung's answer can still fail its check and be replaced.
+- **Declared toolset:** on unchecked tasks the harness now honours a toolset the caller *declares*. Claude Code's normal system prompt stays; only the unneeded tools are dropped. A toolset the harness only infers is still never applied to unchecked tasks.
+- **Not worth it:** pre-starting `claude` with stream-json input (1.71 → 1.66 s, and it used 2k more tokens). MCP connectors cost no tokens because their tools load on demand. Claude Code's own startup (about 0.9 s of each call, against about 0.9 s of API time) only goes away if you call the API directly instead of the CLI.
