@@ -62,3 +62,26 @@ Starting small is only allowed when a check stands behind it: an under-equipped 
 - A hung `check_cmd` fails the check (`check_timed_out`). If a runner or check raises unexpectedly, the ladder stops, and the report keeps every earlier attempt plus an `exception` field.
 - Checked tasks with a `workdir` and more than one rung snapshot the workdir first and restore it before each escalation, so every rung starts from the same files (`workspace.py`). `.git`, `node_modules`, virtualenvs and caches are not copied or restored. The cost is reported in `rung_isolation`. Settings: `isolate_rungs` (default true) and `isolate_rungs_max_mb` (default 100; a larger workdir runs unisolated and says so). Restoring deletes files created during the failed rung, so don't share one workdir between concurrent tasks.
 - `compact_checked` only rescans lines that compaction changed when checking for lost facts. The result is identical to the full scan (property-tested). On 10,000 unique lines it takes 15 ms instead of 121 ms.
+
+## General tasks (2026-11-10)
+
+```sh
+python -m agent_harness --prompt "Fix the failing test" --workdir repo --check-cmd "pytest -q"
+python -m agent_harness --prompt "Extract the invoice fields" --context-file invoice.txt --schema invoice.schema.json
+python -m agent_harness tasks.jsonl --jobs 8 --report usage.jsonl     # a batch: JSON list or JSON Lines
+```
+
+Exit code: 0 if everything was verified or unchecked, 1 if a check failed, 2 if an exception happened.
+
+| Task key | What it does |
+|---|---|
+| `expected`, `function`+`cases`, `check_cmd` | **Correctness checks.** Only these route a task to the technical ladder and its cheap first rung. |
+| `regex`, `contains`, `output_schema`, `checks: [{"type": ...}]` | **Format checks.** The task keeps its normal full setup (no cheap rung, because a format check can't catch a wrong answer). If the format is wrong, it climbs to stronger rungs. `output_schema` is also passed to Claude (`--json-schema`) and Codex (`--output-schema`). All checks must pass; cheap ones run first. An unknown check type or schema keyword fails the check instead of passing it. |
+| `context_files` | Files included verbatim. Only free-form `context` is compacted. |
+| `timeout`, `check_timeout` | Seconds per agent call and per check. |
+
+- **Transient API errors** (overloaded, rate limits, 5xx, network) retry the same rung up to 2 times, waiting 10 s and then 30 s (`retry` in config), instead of escalating to a pricier model. Retries are counted in usage and the budget. The harness's own timeout is never retried.
+- **Batches** run in parallel threads. Tasks that share a `workdir` run one after another.
+- **The Codex sandbox follows the toolset:** `code` gets `workspace-write`, everything else `read-only`. The old fixed read-only setting meant a Codex coding rung could never pass.
+- The research graders (`independent_audit`) load only when `expected` or `cases` checks are used.
+- **Live check** (Claude Code 2.1.322): `--json-schema` works on the tool-free lean rung. A schema task answered in 1,126 input tokens and 2.1 s.

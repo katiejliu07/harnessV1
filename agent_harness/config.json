@@ -10,10 +10,14 @@
       "effort_key": "model_reasoning_effort",
       "extra_args": [
         "--skip-git-repo-check",
-        "--ephemeral",
-        "-s",
-        "read-only"
-      ]
+        "--ephemeral"
+      ],
+      "sandbox": {
+        "none": "read-only",
+        "read": "read-only",
+        "code": "workspace-write",
+        "full": "workspace-write"
+      }
     }
   },
   "hygiene_instruction": "Keep tool output short: use quiet or summary flags, limit long output with head, tail or grep, and pipe long logs through `python3 {compact}` before reading them. Do not re-read output you have already seen.",
@@ -81,5 +85,28 @@
     "full": "default"
   },
   "isolate_rungs": true,
-  "isolate_rungs_max_mb": 100
+  "isolate_rungs_max_mb": 100,
+  "retry": {
+    "transient_retries": 2,
+    "backoff_seconds": [
+      10,
+      30
+    ],
+    "patterns": [
+      "overloaded",
+      "rate.?limit",
+      "\\b429\\b",
+      "\\b5\\d\\d\\b",
+      "ECONNRESET",
+      "ETIMEDOUT",
+      "EAI_AGAIN",
+      "socket hang up",
+      "Connection error",
+      "network error",
+      "temporarily unavailable",
+      "Service Unavailable",
+      "stream disconnected"
+    ]
+  },
+  "_note_retry": "A transient API/network error is retried on the same rung (same model, same files) before the ladder treats it as a failed attempt; otherwise an outage escalates to a pricier model. The harness's own timeout is never retried."
 }

@@ -72,9 +72,15 @@ def parse_claude(stdout):
     usage=next(_usage_dicts(data.get("usage",data)),{})
     # total_cost_usd is a list-price estimate; on a subscription it is notional
     # but still a consistent weight across models for cost-per-correct.
-    return {"text":data.get("result",""),"error":bool(data.get("is_error")),
-            "usage":{k:usage.get(k,0) for k in USAGE_KEYS if k in usage},"cost_usd":data.get("total_cost_usd"),
-            "raw":{k:data.get(k) for k in ("num_turns","modelUsage","total_cost_usd","usage")}}
+    text=data.get("result","")
+    if data.get("structured_output") is not None:     # --json-schema runs: the validated object
+        text=json.dumps(data["structured_output"])
+    out={"text":text if isinstance(text,str) else json.dumps(text),"error":bool(data.get("is_error")),
+         "usage":{k:usage.get(k,0) for k in USAGE_KEYS if k in usage},"cost_usd":data.get("total_cost_usd"),
+         "raw":{k:data.get(k) for k in ("num_turns","modelUsage","total_cost_usd","usage","subtype")}}
+    if out["error"]:
+        out["error_text"]=str(data.get("result") or data.get("subtype") or "")[:500]
+    return out
 
 
 def parse_codex(stdout,last_message):
@@ -89,8 +95,11 @@ def parse_codex(stdout,last_message):
                 events.append(e)
     found=[u for e in events for u in _usage_dicts(e)]
     usage=found[-1] if found else {}      # the latest report; confirm cumulative vs per-turn in the pilot
-    return {"text":last_message,"error":any(e.get("type") in ("error","turn.failed") for e in events),
-            "usage":{k:usage.get(k,0) for k in USAGE_KEYS if k in usage}}
+    failed=[e for e in events if e.get("type") in ("error","turn.failed")]
+    out={"text":last_message,"error":bool(failed),"usage":{k:usage.get(k,0) for k in USAGE_KEYS if k in usage}}
+    if failed:
+        out["error_text"]=json.dumps(failed[-1])[:500]
+    return out
 
 
 def _exec(cmd,timeout,workdir):
@@ -103,8 +112,17 @@ def _exec(cmd,timeout,workdir):
         return None,_as_text(exc.stdout),_as_text(exc.stderr),True
 
 
-def run(step,prompt,config,workdir=None,timeout=1800):
-    """step: {"agent": "claude"|"codex", "model": ..., "effort": ...}"""
+# Codex sandbox per toolset: a read-only sandbox can never pass a coding task's
+# check, so a code rung needs workspace-write (still confined to the workdir).
+CODEX_SANDBOX={"none":"read-only","read":"read-only","code":"workspace-write","full":"workspace-write"}
+
+
+def run(step,prompt,config,workdir=None,timeout=None):
+    """step: {"agent": "claude"|"codex", "model": ..., "effort": ...}
+    config may carry agent_timeout (seconds), output_schema (JSON Schema dict)
+    and task_toolset (none/read/code/full, picks the Codex sandbox)."""
+    timeout=timeout or config.get("agent_timeout") or 1800
+    schema=config.get("output_schema")
     agent=config["agents"][step["agent"]]
     system=config.get("system_append")
     start=time.perf_counter()
@@ -126,6 +144,8 @@ def run(step,prompt,config,workdir=None,timeout=1800):
             cmd+=["--tools",step["toolset"],"--strict-mcp-config"]
         if system:
             cmd+=["--append-system-prompt",system]
+        if schema:
+            cmd+=["--json-schema",json.dumps(schema)]
         cmd+=agent.get("extra_args",[])
         rc,out,err,timed_out=_exec(cmd,timeout,workdir)
         # A failed run still printed its usage: count it, or the budget undercounts
@@ -137,14 +157,25 @@ def run(step,prompt,config,workdir=None,timeout=1800):
     else:
         with tempfile.NamedTemporaryFile("r",suffix=".txt",delete=False) as f:
             out_path=f.name
+        schema_path=None
         try:
+            if schema:
+                with tempfile.NamedTemporaryFile("w",suffix=".json",delete=False) as f:
+                    json.dump(schema,f)
+                    schema_path=f.name
             full=prompt if not system else f"{system}\n\n{prompt}"
             cmd=[agent["command"],"exec","--json","-o",out_path]
             if step.get("model"):
                 cmd+=["-m",step["model"]]
             if step.get("effort"):
                 cmd+=["-c",f"{agent.get('effort_key','model_reasoning_effort')}={step['effort']}"]
-            cmd+=agent.get("extra_args",[])+[full]
+            extra=list(agent.get("extra_args",[]))
+            if "-s" not in extra and "--sandbox" not in extra:
+                sandbox=agent.get("sandbox",CODEX_SANDBOX).get(config.get("task_toolset") or "none","read-only")
+                extra+=["-s",sandbox]
+            if schema_path:
+                extra+=["--output-schema",schema_path]
+            cmd+=extra+[full]
             # Codex reads stdin when it is open ("Reading additional input from
             # stdin..."); a swarm worker must never hang on that.
             rc,out,err,timed_out=_exec(cmd,timeout,workdir)
@@ -153,12 +184,15 @@ def run(step,prompt,config,workdir=None,timeout=1800):
             if rc!=0:
                 result["error"]=True
         finally:
-            if os.path.exists(out_path):
-                os.remove(out_path)
+            for path in (out_path,schema_path):
+                if path and os.path.exists(path):
+                    os.remove(path)
     result["seconds"]=time.perf_counter()-start
     result["returncode"]=rc
     if timed_out:
         result["timed_out"]=True
     if rc!=0:
         result["stderr_tail"]=err[-500:]
+        if not result.get("error_text"):
+            result["error_text"]=(err or "")[-500:]
     return result
