@@ -1,0 +1,24 @@
+name: harness tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install pytest
+      - name: unit tests (no model calls, no torch)
+        run: python -m pytest agent_harness/tests -q
+      - name: harness overhead benchmark (fake model)
+        run: python -m agent_harness.bench
