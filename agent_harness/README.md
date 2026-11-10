@@ -55,3 +55,10 @@ Starting small is only allowed when a check stands behind it: an under-equipped 
 - Codex has no verified way to restrict built-in tools or instructions, so it gets no minimal rung. Hygiene is its saving.
 - General and important tasks keep Claude's full fixed overhead, because there is no check to catch a minimal-setup mistake. Lowering it would need a retention-gated pilot.
 - Budget stops apply between attempts. A single attempt can still exceed the remaining budget.
+
+## Failure handling and rung isolation (2026-11-10)
+
+- A timed-out or failed `claude`/`codex` run is a failed attempt, never a crash. Usage it printed before failing is still counted, so budgets don't undercount when calls fail and escalate. Attempts carry `timed_out` when that happened.
+- A hung `check_cmd` fails the check (`check_timed_out`). If a runner or check raises unexpectedly, the ladder stops, and the report keeps every earlier attempt plus an `exception` field.
+- Checked tasks with a `workdir` and more than one rung snapshot the workdir first and restore it before each escalation, so every rung starts from the same files (`workspace.py`). `.git`, `node_modules`, virtualenvs and caches are not copied or restored. The cost is reported in `rung_isolation`. Settings: `isolate_rungs` (default true) and `isolate_rungs_max_mb` (default 100; a larger workdir runs unisolated and says so). Restoring deletes files created during the failed rung, so don't share one workdir between concurrent tasks.
+- `compact_checked` only rescans lines that compaction changed when checking for lost facts. The result is identical to the full scan (property-tested). On 10,000 unique lines it takes 15 ms instead of 121 ms.

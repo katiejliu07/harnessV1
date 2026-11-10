@@ -79,5 +79,7 @@
     "read": "Read,Grep,Glob",
     "code": "Bash,Read,Edit,Write",
     "full": "default"
-  }
+  },
+  "isolate_rungs": true,
+  "isolate_rungs_max_mb": 100
 }

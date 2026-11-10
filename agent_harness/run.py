@@ -36,6 +36,7 @@ from pathlib import Path
 from . import agents
 from .compact import compact_checked
 from .verify import check,has_check
+from .workspace import Snapshot
 
 CONFIG_PATH=Path(__file__).with_name("config.json")
 
@@ -124,28 +125,71 @@ def run_task(task,config=None,runner=agents.run):
     attempts=[]
     result=None
     budget_exhausted=False
-    for step in steps:
-        if budget is not None and attempts and spent(attempts)>=budget:
-            budget_exhausted=True          # the allocator's allotment is used up: report, don't overspend
-            break
+    exception=None
+    workdir=task.get("workdir")
+    # Each rung starts from the same files (see workspace.py). Only checked tasks
+    # escalate, so only they pay for the snapshot.
+    isolation=None
+    snap=None
+    if workdir and path=="technical" and has_check(task) and len(steps)>1 and config.get("isolate_rungs",True):
+        snap=Snapshot(workdir,int(config.get("isolate_rungs_max_mb",100))*1024*1024)
+        isolation={"snapshot_seconds":snap.seconds,"skipped":snap.skipped,"restores":0,"restore_seconds":0.}
+    try:
+        for step in steps:
+            if budget is not None and attempts and spent(attempts)>=budget:
+                budget_exhausted=True          # the allocator's allotment is used up: report, don't overspend
+                break
+            if attempts and snap is not None and snap.dir is not None:
+                try:
+                    isolation["restore_seconds"]+=snap.restore()
+                except OSError as exc:
+                    # A half-restored workdir is worse than none: stop and report.
+                    exception=f"restore: {exc!r}"[:500]
+                    break
+                isolation["restores"]+=1
+            result,verdict,exception=_attempt(step,prompt,config,profile,tools,hygiene,path,task,runner)
+            attempts.append({**step,"usage":result["usage"],"seconds":result["seconds"],"error":result["error"],"verified":verdict["passed"],
+                             **({"timed_out":True} if result.get("timed_out") else {}),
+                             **({"check_timed_out":True} if verdict.get("timed_out") else {}),
+                             **({"exception":exception} if exception else {})})
+            if exception or path!="technical" or verdict["passed"]:
+                break
+    finally:
+        if snap is not None:
+            snap.close()
+    verified=attempts[-1]["verified"] if attempts else None
+    text=result["text"] if result else ""
+    report={"route":path,"toolset":toolset,"text":text,"verified":verified,"attempts":attempts,
+            "usage_total":totals(attempts),"tokens_spent":spent(attempts),"token_budget":budget,
+            "budget_exhausted":budget_exhausted,"compaction":compaction,"handoff":handoff(path,text,verified)}
+    if isolation:
+        report["rung_isolation"]=isolation
+    if exception:
+        report["exception"]=exception
+    return report
+
+
+def _attempt(step,prompt,config,profile,tools,hygiene,path,task,runner):
+    """One rung: (result, verdict, exception). An unexpected runner or check
+    failure becomes a failed attempt, so earlier attempts' usage still reaches
+    the report instead of being lost with a crash."""
+    try:
         # Hygiene is per agent: pilot_v2 measured -36% tokens per correct for Codex
         # and +4% for Claude (6/6 correct either way), so only listed agents get it.
         system=profile.get("system_append")
         if tools and profile.get("hygiene") and step["agent"] in config.get("hygiene_agents",[]):
             system="\n".join(x for x in [system,hygiene] if x)
         result=runner(step,prompt,{**config,"system_append":system},task.get("workdir"))
-        if path=="technical":
-            verdict=check(task,result["text"],task.get("workdir")) if not result["error"] else {"passed":False}
-        else:
-            verdict={"passed":None}
-        attempts.append({**step,"usage":result["usage"],"seconds":result["seconds"],"error":result["error"],"verified":verdict["passed"]})
-        if path!="technical" or verdict["passed"]:
-            break
-    verified=attempts[-1]["verified"] if attempts else None
-    text=result["text"] if result else ""
-    return {"route":path,"toolset":toolset,"text":text,"verified":verified,"attempts":attempts,
-            "usage_total":totals(attempts),"tokens_spent":spent(attempts),"token_budget":budget,
-            "budget_exhausted":budget_exhausted,"compaction":compaction,"handoff":handoff(path,text,verified)}
+    except Exception as exc:                   # noqa: BLE001 - reported, not swallowed
+        return {"text":"","error":True,"usage":{},"seconds":0.},{"passed":False if path=="technical" else None},f"runner: {exc!r}"[:500]
+    if path!="technical":
+        return result,{"passed":None},None
+    if result["error"]:
+        return result,{"passed":False},None
+    try:
+        return result,check(task,result["text"],task.get("workdir")),None
+    except Exception as exc:                   # noqa: BLE001
+        return result,{"passed":False},f"check: {exc!r}"[:500]
 
 
 def main():

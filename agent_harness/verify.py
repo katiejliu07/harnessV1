@@ -24,6 +24,11 @@ def check(task,text,workdir=None,timeout=600):
         verdict=evaluate_code(text,{"function":task["function"],"cases":task["cases"]})
         return {"passed":bool(verdict["passed"]),"how":"cases","detail":verdict.get("functional")}
     if task.get("check_cmd"):
-        proc=subprocess.run(task["check_cmd"],shell=True,capture_output=True,text=True,timeout=timeout,cwd=workdir or task.get("workdir"))
+        try:
+            proc=subprocess.run(task["check_cmd"],shell=True,capture_output=True,text=True,timeout=timeout,cwd=workdir or task.get("workdir"))
+        except subprocess.TimeoutExpired:
+            # A hung check is a failed check, not a crashed task: the attempts
+            # already made (and their usage) must still reach the report.
+            return {"passed":False,"how":"check_cmd","timed_out":True}
         return {"passed":proc.returncode==0,"how":"check_cmd","tail":(proc.stdout+proc.stderr)[-800:]}
     return {"passed":None,"how":"none"}

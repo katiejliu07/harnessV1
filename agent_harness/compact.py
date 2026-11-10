@@ -86,6 +86,10 @@ def _collapse_blocks(lines,max_period=6):
     out,i=[],0
     while i<len(lines):
         for k in range(2,max_period+1):
+            # A period-k repeat needs lines[i+k]==lines[i]; checking that first
+            # skips building slices for the (common) lines that start no repeat.
+            if i+k>=len(lines) or lines[i+k]!=lines[i]:
+                continue
             block=lines[i:i+k]
             if len(block)<k or not any(l.strip() for l in block):
                 continue
@@ -154,16 +158,46 @@ def facts(text):
     return set(FACT.findall("\n".join(lines)))
 
 
+def _line_facts(lines):
+    out=set()
+    for l in lines:
+        out.update(FACT.findall(TIMESTAMP.sub("",l,count=1)))
+    return out
+
+
+def lost_facts(text,out):
+    """facts(BLOB.sub("",text)) - facts(out), without rescanning lines both share.
+
+    No FACT match spans a newline, so facts are a per-line union, and a line
+    present verbatim in both texts contributes the same facts to each side.
+    Only input lines missing from the output can hold a lost fact. Escape codes
+    can span lines (OSC sequences), so text containing ESC takes the full path."""
+    if "\x1b" in text or "\x1b" in out:
+        return facts(BLOB.sub("",text))-facts(out)
+    out_lines=out.split("\n")
+    out_set=set(out_lines)
+    in_set=set(BLOB.sub("",text).split("\n"))
+    candidates=_line_facts(in_set-out_set)
+    if not candidates:
+        return set()
+    # Cheapest first: lines the compactor wrote (markers, collapsed runs) usually
+    # carry the facts of the lines they replaced.
+    candidates-=_line_facts(out_set-in_set)
+    if candidates:
+        candidates-=_line_facts(out_set&in_set)
+    return candidates
+
+
 def compact_checked(text):
     """Compact, but fall back to the original if any fact would disappear.
     A guard against a compaction bug ever costing information."""
     out,report=compact(text)
-    lost=facts(BLOB.sub("",text))-facts(out)
+    if len(out)>=len(text):                    # markers can outweigh tiny savings: never grow the text
+        return text,{**report,"chars_out":len(text),"fallback":"no saving"}
+    lost=lost_facts(text,out)
     if lost:
         report={**report,"fallback":"fact lost","lost_examples":sorted(lost)[:5]}
         return text,report
-    if len(out)>=len(text):                    # markers can outweigh tiny savings: never grow the text
-        return text,{**report,"chars_out":len(text),"fallback":"no saving"}
     return out,report
 
 

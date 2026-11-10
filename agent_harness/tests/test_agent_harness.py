@@ -92,29 +92,29 @@ def test_important_path_is_one_call_on_the_strongest_model():
     assert len(calls)==1 and calls[0][0]["model"]=="opus" and report["verified"] is None
 
 
-def test_toolset_rung_only_for_tool_tasks_and_hygiene_only_with_tools():
+def test_toolset_rung_only_for_tool_tasks_and_hygiene_only_with_tools(tmp_path):
     config=load_config()
     for p in config["profiles"].values():
         p["toolset_first_rung"]=True; p["hygiene"]=True
     # tool task: the declared/inferred toolset first, then the full-tools ladder
     run,calls=fake_runner(["x"]*4)            # check always fails: toolset rung + 3 ladder rungs
-    report=run_task({"prompt":"fix the bug","check_cmd":"false","workdir":"."},config,runner=run)
+    report=run_task({"prompt":"fix the bug","check_cmd":"false","workdir":str(tmp_path)},config,runner=run)
     assert calls[0][0]["toolset"]=="Bash,Read,Edit,Write" and "toolset" not in calls[1][0]
     assert report["toolset"]=="code"
     run,calls=fake_runner(["x"]*4)
-    run_task({"prompt":"look","check_cmd":"false","workdir":".","toolset":"read"},config,runner=run)
+    run_task({"prompt":"look","check_cmd":"false","workdir":str(tmp_path),"toolset":"read"},config,runner=run)
     assert calls[0][0]["toolset"]=="Read,Grep,Glob"
     # tool-free task gets the lean rung instead, never a toolset rung
     run,calls=fake_runner(["Final answer: 7"])
     run_task({"prompt":"What is 3+4?","expected":"7"},config,runner=run)
     assert calls[0][0].get("lean") and "toolset" not in calls[0][0] and not calls[0][2]
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix the bug","check_cmd":"true","workdir":"."},config,runner=run)
+    run_task({"prompt":"fix the bug","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
     step,_,system=calls[0]
     assert not step.get("lean") and not system          # claude: hygiene measured no saving
     config["hygiene_agents"]=["claude","codex"]
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix the bug","check_cmd":"true","workdir":"."},config,runner=run)
+    run_task({"prompt":"fix the bug","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
     assert "compact.py" in calls[0][2]
 
 
@@ -145,7 +145,7 @@ def test_every_pilot_task_is_graded():
             assert has_check(task) and check(task,"",task["workdir"])["passed"] is False   # unsolved task fails its check
 
 
-def test_lean_first_rung_falls_through_to_the_unchanged_ladder():
+def test_lean_first_rung_falls_through_to_the_unchanged_ladder(tmp_path):
     config=load_config()
     assert config["profiles"]["technical"]["lean_first_rung"] is True
     # lean miss -> default rung passes: same answer the ladder would give, one cheap extra try
@@ -155,19 +155,19 @@ def test_lean_first_rung_falls_through_to_the_unchanged_ladder():
     assert calls[1][0]["model"]=="sonnet" and calls[1][0]["effort"]=="low"
     # tool tasks never get a lean rung; unchecked paths never do either
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix","check_cmd":"true","workdir":"."},config,runner=run)
+    run_task({"prompt":"fix","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
     assert not calls[0][0].get("lean")
     run,calls=fake_runner(["x"])
     run_task({"prompt":"Pick the database architecture","important":True},config,runner=run)
     assert not calls[0][0].get("lean") and len(calls)==1
 
 
-def test_hygiene_reaches_codex_tool_runs_only():
+def test_hygiene_reaches_codex_tool_runs_only(tmp_path):
     config=load_config()
     assert config["hygiene_agents"]==["codex"]
     config["profiles"]["technical"]["ladder"]=[{"agent":"codex","model":None,"effort":"low"}]
     run,calls=fake_runner(["done"])
-    run_task({"prompt":"fix","check_cmd":"true","workdir":"."},config,runner=run)
+    run_task({"prompt":"fix","check_cmd":"true","workdir":str(tmp_path)},config,runner=run)
     assert "compact.py" in calls[0][2]
     run,calls=fake_runner(["Final answer: 7"])
     run_task({"prompt":"What is 3+4?","expected":"7"},config,runner=run)   # no tools: no hygiene

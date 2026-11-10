@@ -38,8 +38,37 @@ def _usage_dicts(obj):
             yield from _usage_dicts(v)
 
 
+def _as_text(x):
+    """TimeoutExpired carries partial output as bytes even with text=True."""
+    if x is None:
+        return ""
+    return x.decode(errors="replace") if isinstance(x,bytes) else x
+
+
+def _load_json(stdout):
+    """The result object, even if other lines (warnings) were printed around it."""
+    try:
+        data=json.loads(stdout)
+        if isinstance(data,dict):
+            return data
+    except ValueError:
+        pass
+    for line in reversed(stdout.splitlines()):
+        line=line.strip()
+        if line.startswith("{"):
+            try:
+                data=json.loads(line)
+            except ValueError:
+                continue
+            if isinstance(data,dict):
+                return data
+    return None
+
+
 def parse_claude(stdout):
-    data=json.loads(stdout)
+    data=_load_json(stdout or "")
+    if data is None:
+        return {"text":"","error":True,"usage":{},"parse_error":True}
     usage=next(_usage_dicts(data.get("usage",data)),{})
     # total_cost_usd is a list-price estimate; on a subscription it is notional
     # but still a consistent weight across models for cost-per-correct.
@@ -49,11 +78,29 @@ def parse_claude(stdout):
 
 
 def parse_codex(stdout,last_message):
-    events=[json.loads(l) for l in stdout.splitlines() if l.strip().startswith("{")]
+    events=[]
+    for l in (stdout or "").splitlines():
+        if l.strip().startswith("{"):
+            try:
+                e=json.loads(l)
+            except ValueError:
+                continue                    # a cut-off line (e.g. killed on timeout)
+            if isinstance(e,dict):
+                events.append(e)
     found=[u for e in events for u in _usage_dicts(e)]
     usage=found[-1] if found else {}      # the latest report; confirm cumulative vs per-turn in the pilot
     return {"text":last_message,"error":any(e.get("type") in ("error","turn.failed") for e in events),
             "usage":{k:usage.get(k,0) for k in USAGE_KEYS if k in usage}}
+
+
+def _exec(cmd,timeout,workdir):
+    """(returncode, stdout, stderr, timed_out). A timeout keeps the partial
+    output, so usage already reported is still counted, and never raises."""
+    try:
+        proc=subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,cwd=workdir,stdin=subprocess.DEVNULL)
+        return proc.returncode,proc.stdout,proc.stderr,False
+    except subprocess.TimeoutExpired as exc:
+        return None,_as_text(exc.stdout),_as_text(exc.stderr),True
 
 
 def run(step,prompt,config,workdir=None,timeout=1800):
@@ -80,8 +127,13 @@ def run(step,prompt,config,workdir=None,timeout=1800):
         if system:
             cmd+=["--append-system-prompt",system]
         cmd+=agent.get("extra_args",[])
-        proc=subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,cwd=workdir,stdin=subprocess.DEVNULL)
-        result=parse_claude(proc.stdout) if proc.returncode==0 and proc.stdout.strip() else {"text":"","error":True,"usage":{}}
+        rc,out,err,timed_out=_exec(cmd,timeout,workdir)
+        # A failed run still printed its usage: count it, or the budget undercounts
+        # exactly when calls fail and escalate.
+        result=parse_claude(out)
+        if rc!=0:
+            result["text"]=""
+            result["error"]=True
     else:
         with tempfile.NamedTemporaryFile("r",suffix=".txt",delete=False) as f:
             out_path=f.name
@@ -95,14 +147,18 @@ def run(step,prompt,config,workdir=None,timeout=1800):
             cmd+=agent.get("extra_args",[])+[full]
             # Codex reads stdin when it is open ("Reading additional input from
             # stdin..."); a swarm worker must never hang on that.
-            proc=subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,cwd=workdir,stdin=subprocess.DEVNULL)
+            rc,out,err,timed_out=_exec(cmd,timeout,workdir)
             last=open(out_path).read() if os.path.exists(out_path) else ""
-            result=parse_codex(proc.stdout,last) if proc.returncode==0 else {"text":last,"error":True,"usage":{}}
+            result=parse_codex(out,last)
+            if rc!=0:
+                result["error"]=True
         finally:
             if os.path.exists(out_path):
                 os.remove(out_path)
     result["seconds"]=time.perf_counter()-start
-    result["returncode"]=proc.returncode
-    if proc.returncode!=0:
-        result["stderr_tail"]=proc.stderr[-500:]
+    result["returncode"]=rc
+    if timed_out:
+        result["timed_out"]=True
+    if rc!=0:
+        result["stderr_tail"]=err[-500:]
     return result
