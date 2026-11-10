@@ -13,13 +13,9 @@ call), starting small and escalating only when an objective check fails:
   instructions     - per agent, by evidence (hygiene for Codex tool runs)
   budget           - escalation stops once the task's token_budget is spent
 
-Presets (config "profiles") bundle defaults for three situations:
-  technical - the task brings a check (see verify.py): cheap first, escalate
-              on a failed check.
-  important - flagged important, no check: strongest model straight away,
-              since nothing could catch a cheap model's mistake.
-  general   - everything else: one call.
-The swarm can force a preset with "kind".
+Presets (config "profiles", README): technical (has a correctness check:
+cheap first, escalate on failure), important (no check: strongest model),
+general (one call). "kind" forces one.
 
 Every run returns usage per attempt (for the allocator) and a compact handoff
 for passing results between agents instead of full transcripts.
@@ -173,6 +169,7 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     prompt,compaction=build_prompt(task)
     profile=config["profiles"][path]
     steps,toolset=steps_for(path,task,profile,config)
+    checked=has_check(task)
     tools=toolset!="none"
     hygiene=config["hygiene_instruction"].format(compact=Path(__file__).with_name("compact.py"),
                                                  python="python" if os.name=="nt" else "python3")
@@ -187,7 +184,7 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
                 **({"allowed_tools":list(task["allowed_tools"])} if task.get("allowed_tools") else {})}
     # Streaming only where the first answer is the answer: a checked rung's text
     # can still fail its check and be replaced by the next rung's.
-    if on_text is not None and not has_check(task):
+    if on_text is not None and not checked:
         run_config["on_text"]=on_text
     usd_budget=task.get("max_budget_usd")
     attempts=[]
@@ -208,7 +205,6 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     # escalate, so only they pay for the snapshot.
     isolation=None
     snap=None
-    checked=has_check(task)
     if workdir and checked and (len(steps)>1 or max_retries) and config.get("isolate_rungs",True):
         snap=Snapshot(workdir,int(config.get("isolate_rungs_max_mb",100))*1024*1024,
                       background=config.get("snapshot_background",True))

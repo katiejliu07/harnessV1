@@ -31,7 +31,6 @@ import json
 import re
 import subprocess
 
-LEGACY=("expected","check_cmd","regex","contains","output_schema")
 ORDER={"contains":0,"regex":0,"json":1,"expected":2,"cases":3,"cmd":4}
 
 
