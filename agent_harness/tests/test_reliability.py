@@ -209,3 +209,13 @@ def test_compact_checked_unique_lines_is_fast():
     out,rep=C.compact_checked(text)
     assert out==text and rep["fallback"]=="no saving"
     assert time.perf_counter()-start<0.5
+
+
+def test_zero_usage_falls_back_to_model_usage():
+    import json as _j
+    out=_j.dumps({"result":"","is_error":True,"subtype":"error_max_budget_usd","total_cost_usd":0.05,
+                  "usage":{"input_tokens":0,"output_tokens":0},
+                  "modelUsage":{"claude-sonnet":{"inputTokens":3,"outputTokens":40,"cacheReadInputTokens":100,"cacheCreationInputTokens":9000}}})
+    r=agents.parse_claude(out)
+    assert r["usage"]=={"input_tokens":3,"output_tokens":40,"cache_read_input_tokens":100,"cache_creation_input_tokens":9000}
+    assert r["error_text"]=="error_max_budget_usd" and r["cost_usd"]==0.05

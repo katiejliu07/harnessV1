@@ -30,7 +30,9 @@ Task JSON: {"prompt": str, "context": str?, "context_files": [path]?,
             checks (verify.py): "expected", "function"+"cases", "check_cmd",
             "regex", "contains", "output_schema", "checks": [...],
             "workdir": str?, "token_budget": int?,
-            "timeout": seconds per agent call?, "check_timeout": seconds?}
+            "timeout": seconds per agent call?, "check_timeout": seconds?,
+            "allowed_tools": ["Bash(pytest*)", ...]? (Claude permission rules),
+            "max_budget_usd": float? (hard stop: each Claude call gets what is left)}
 """
 import argparse
 import json
@@ -175,12 +177,23 @@ def run_task(task,config=None,runner=None,sleep=None):
     # What the runner needs to know about the task, beyond the step.
     run_config={**config,"task_toolset":toolset,
                 **({"agent_timeout":task["timeout"]} if task.get("timeout") else {}),
-                **({"output_schema":task["output_schema"]} if task.get("output_schema") else {})}
+                **({"output_schema":task["output_schema"]} if task.get("output_schema") else {}),
+                **({"allowed_tools":list(task["allowed_tools"])} if task.get("allowed_tools") else {})}
+    usd_budget=task.get("max_budget_usd")
     attempts=[]
     result=None
     budget_exhausted=False
     exception=None
     workdir=task.get("workdir")
+
+    def usd_left():
+        return None if usd_budget is None else usd_budget-sum(a.get("cost_usd") or 0 for a in attempts)
+
+    def out_of_budget():
+        if budget is not None and attempts and spent(attempts)>=budget:
+            return True
+        left=usd_left()
+        return left is not None and left<=0
     # Each rung starts from the same files (see workspace.py). Only checked tasks
     # escalate, so only they pay for the snapshot.
     isolation=None
@@ -205,22 +218,24 @@ def run_task(task,config=None,runner=None,sleep=None):
 
     try:
         for step in steps:
-            if budget is not None and attempts and spent(attempts)>=budget:
+            if out_of_budget():
                 budget_exhausted=True          # the allocator's allotment is used up: report, don't overspend
                 break
             if attempts and not restore():
                 break
             tries=0
             while True:
-                result,verdict,exception=_attempt(step,prompt,run_config,profile,tools,hygiene,checked,task,runner)
+                call_config=run_config if usd_budget is None else {**run_config,"max_budget_usd":usd_left()}
+                result,verdict,exception=_attempt(step,prompt,call_config,profile,tools,hygiene,checked,task,runner)
                 attempts.append({**step,"usage":result["usage"],"seconds":result["seconds"],"error":result["error"],"verified":verdict["passed"],
+                                 **({"cost_usd":result["cost_usd"]} if result.get("cost_usd") is not None else {}),
                                  **({"timed_out":True} if result.get("timed_out") else {}),
                                  **({"check_timed_out":True} if verdict.get("timed_out") else {}),
                                  **({"retry":tries} if tries else {}),
                                  **({"exception":exception} if exception else {})})
                 if exception or tries>=max_retries or not transient(result,config):
                     break
-                if budget is not None and spent(attempts)>=budget:
+                if out_of_budget():
                     break
                 attempts[-1]["transient"]=True
                 sleep(backoff[min(tries,len(backoff)-1)])
@@ -237,8 +252,11 @@ def run_task(task,config=None,runner=None,sleep=None):
     report={"route":path,"toolset":toolset,"text":text,"verified":verified,"attempts":attempts,
             "usage_total":totals(attempts),"tokens_spent":spent(attempts),"token_budget":budget,
             "budget_exhausted":budget_exhausted,"compaction":compaction,"handoff":handoff(path,text,verified)}
-    if budget is not None and not budget_exhausted and spent(attempts)>=budget and checked and not verified:
+    if not budget_exhausted and attempts and out_of_budget() and checked and not verified:
         report["budget_exhausted"]=True        # the last rung itself ran the allotment out
+    if usd_budget is not None:
+        report["cost_usd"]=sum(a.get("cost_usd") or 0 for a in attempts)
+        report["max_budget_usd"]=usd_budget
     if isolation:
         report["rung_isolation"]=isolation
     if exception:
@@ -321,9 +339,11 @@ def main(argv=None):
     ap.add_argument("--regex")
     ap.add_argument("--schema",type=Path,help="JSON Schema file: structured output plus a validity check")
     ap.add_argument("--toolset",choices=["none","read","code","full"])
+    ap.add_argument("--allow",action="append",default=[],help='Claude permission rule, e.g. "Bash(pytest*)" (repeatable)')
     ap.add_argument("--kind",choices=["technical","important","general"])
     ap.add_argument("--important",action="store_true")
-    ap.add_argument("--budget",type=int,help="token budget")
+    ap.add_argument("--budget",type=int,help="token budget (reported, checked between attempts)")
+    ap.add_argument("--max-usd",type=float,help="hard spend limit in list-price USD, enforced inside Claude calls")
     ap.add_argument("--timeout",type=int,help="seconds per agent call")
     ap.add_argument("--jobs",type=int,default=4,help="parallel tasks for a batch")
     ap.add_argument("--config",type=Path,default=CONFIG_PATH)
@@ -333,11 +353,13 @@ def main(argv=None):
     if args.prompt or args.prompt_file:
         task={"prompt":args.prompt or args.prompt_file.read_text()}
         for k,v in (("workdir",args.workdir),("check_cmd",args.check_cmd),("expected",args.expected),("regex",args.regex),
-                    ("toolset",args.toolset),("kind",args.kind),("token_budget",args.budget),("timeout",args.timeout)):
+                    ("toolset",args.toolset),("kind",args.kind),("token_budget",args.budget),("timeout",args.timeout),("max_budget_usd",args.max_usd)):
             if v is not None:
                 task[k]=v
         if args.important:
             task["important"]=True
+        if args.allow:
+            task["allowed_tools"]=args.allow
         if args.context_file:
             task["context_files"]=args.context_file
         if args.schema:

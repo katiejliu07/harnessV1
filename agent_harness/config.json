@@ -3,7 +3,19 @@
   "agents": {
     "claude": {
       "command": "claude",
-      "extra_args": []
+      "extra_args": [],
+      "permissions": {
+        "none": [],
+        "read": [],
+        "code": [
+          "--permission-mode",
+          "acceptEdits"
+        ],
+        "full": [
+          "--permission-mode",
+          "acceptEdits"
+        ]
+      }
     },
     "codex": {
       "command": "codex",

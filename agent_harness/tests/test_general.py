@@ -214,3 +214,31 @@ def test_cli_inline_task_and_exit_codes(tmp_path,capsys,monkeypatch):
     assert main([str(f),"--jobs","2"])==0
     lines=[json.loads(l) for l in capsys.readouterr().out.splitlines()]
     assert [l["route"] for l in lines]==["general","technical"]
+
+
+def test_code_tasks_can_edit_and_shell_stays_opt_in(tmp_path):
+    cmd=_fake(tmp_path,"claude","import sys,json\nopen(sys.argv[0]+'.args','a').write(json.dumps(sys.argv)+'\\n')\n"
+              "print(json.dumps({'result':'done','usage':{'input_tokens':1,'output_tokens':1}}))\n")
+    config=load_config(); config["agents"]["claude"]["command"]=cmd
+    run_task({"prompt":"fix","check_cmd":"true","workdir":str(tmp_path),"allowed_tools":["Bash(pytest*)"]},config)
+    argv=json.loads(open(cmd+".args").read().splitlines()[0])
+    assert argv[argv.index("--permission-mode")+1]=="acceptEdits"
+    assert argv[argv.index("--allowedTools")+1]=="Bash(pytest*)" and "true" not in argv   # check_cmd never leaked
+    open(cmd+".args","w").close()
+    run_task({"prompt":"What is 3+4?","expected":"7"},config)            # lean rung, no tools: no permissions
+    argv=json.loads(open(cmd+".args").read().splitlines()[0])
+    assert "--permission-mode" not in argv and "--allowedTools" not in argv
+
+
+def test_usd_budget_is_passed_down_and_stops_the_ladder():
+    calls=[]
+    def run(step,prompt,config,workdir=None):
+        calls.append(config.get("max_budget_usd"))
+        return {"text":"Final answer: 1","error":False,"usage":{"input_tokens":1,"output_tokens":1},"seconds":0.,"cost_usd":0.03}
+    report=run_task({"prompt":"What is 3+4?","expected":"7","max_budget_usd":0.05},load_config(),runner=run)
+    assert calls[0]==0.05 and abs(calls[1]-0.02)<1e-9 and len(calls)==2      # each call gets what is left
+    assert report["budget_exhausted"] and abs(report["cost_usd"]-0.06)<1e-9
+    # without the key nothing is passed
+    run2,c2=runner_of(["Final answer: 7"])
+    run_task({"prompt":"What is 3+4?","expected":"7"},load_config(),runner=run2)
+    assert "max_budget_usd" not in c2[0]["config"]

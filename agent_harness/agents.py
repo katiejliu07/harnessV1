@@ -65,11 +65,30 @@ def _load_json(stdout):
     return None
 
 
+MODEL_USAGE={"inputTokens":"input_tokens","outputTokens":"output_tokens",
+             "cacheReadInputTokens":"cache_read_input_tokens","cacheCreationInputTokens":"cache_creation_input_tokens"}
+
+
+def _from_model_usage(model_usage):
+    out={}
+    for v in model_usage.values():
+        if isinstance(v,dict):
+            for src,dst in MODEL_USAGE.items():
+                if isinstance(v.get(src),(int,float)):
+                    out[dst]=out.get(dst,0)+int(v[src])
+    return out if any(out.values()) else {}
+
+
 def parse_claude(stdout):
     data=_load_json(stdout or "")
     if data is None:
         return {"text":"","error":True,"usage":{},"parse_error":True}
     usage=next(_usage_dicts(data.get("usage",data)),{})
+    if not any(usage.get(k) for k in USAGE_KEYS) and isinstance(data.get("modelUsage"),dict):
+        # Some stops (error_max_budget_usd seen 2026-11-10) report zero "usage"
+        # while modelUsage holds the real per-model totals. The recheck pilot
+        # found the two agree on normal runs, so fall back rather than count 0.
+        usage=_from_model_usage(data["modelUsage"]) or usage
     # total_cost_usd is a list-price estimate; on a subscription it is notional
     # but still a consistent weight across models for cost-per-correct.
     text=data.get("result","")
@@ -144,8 +163,18 @@ def run(step,prompt,config,workdir=None,timeout=None):
             cmd+=["--tools",step["toolset"],"--strict-mcp-config"]
         if system:
             cmd+=["--append-system-prompt",system]
+        # Headless runs cannot ask for permission: without these a code task can
+        # never edit its files and fails every rung. acceptEdits approves edits in
+        # the working directory only; shell commands stay opt-in (allowed_tools).
+        if not step.get("lean"):
+            cmd+=agent.get("permissions",{}).get(config.get("task_toolset") or "none",[])
+            if config.get("allowed_tools"):
+                cmd+=["--allowedTools",*config["allowed_tools"]]
         if schema:
             cmd+=["--json-schema",json.dumps(schema)]
+        if config.get("max_budget_usd") is not None:
+            # A hard stop inside the call, enforced by Claude Code itself.
+            cmd+=["--max-budget-usd",f"{max(config['max_budget_usd'],0):.4f}"]
         cmd+=agent.get("extra_args",[])
         rc,out,err,timed_out=_exec(cmd,timeout,workdir)
         # A failed run still printed its usage: count it, or the budget undercounts
