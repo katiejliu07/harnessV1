@@ -34,14 +34,12 @@ Task JSON: {"prompt": str, "context": str?, "context_files": [path]?,
             "allowed_tools": ["Bash(pytest*)", ...]? (Claude permission rules),
             "max_budget_usd": float? (hard stop: each Claude call gets what is left)}
 """
-import argparse
 import json
 import os
 import re
 import sys
 import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from . import agents
@@ -312,6 +310,7 @@ def run_tasks(tasks,config=None,jobs=4,runner=None,on_done=None):
                 with lock:
                     on_done(i,reports[i])
 
+    from concurrent.futures import ThreadPoolExecutor        # ~7 ms import: only batches pay it
     with ThreadPoolExecutor(max_workers=max(1,jobs)) as pool:
         list(pool.map(work,groups.values()))
     return reports
@@ -328,6 +327,7 @@ def load_tasks(path):
 
 
 def main(argv=None):
+    import argparse
     ap=argparse.ArgumentParser(description="Run tasks through the harness")
     ap.add_argument("task_file",nargs="?",type=str,help="task JSON, JSON list or JSONL ('-' for stdin)")
     ap.add_argument("--prompt",help="run a single task given inline instead of a file")

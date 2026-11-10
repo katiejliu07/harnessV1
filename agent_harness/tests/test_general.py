@@ -130,7 +130,7 @@ def test_transient_error_retries_same_rung_before_escalating():
     report=run_task({"prompt":"What is 3+4?","expected":"7"},config,runner=run,sleep=slept.append)
     assert len(calls)==2 and calls[0]["step"]==calls[1]["step"]          # same rung, not a pricier one
     assert report["verified"] and report["attempts"][0]["transient"] and report["attempts"][1]["retry"]==1
-    assert report["tokens_spent"]==220 and slept==[10]                   # both tries are paid for
+    assert report["tokens_spent"]==220 and slept==[5]                   # both tries are paid for
 
 
 def test_real_failures_and_harness_timeouts_are_not_retried():

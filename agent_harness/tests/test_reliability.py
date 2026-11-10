@@ -2,6 +2,7 @@
 output, crashing runners, rung isolation, and exactness of lost_facts."""
 import os
 import random
+import shutil
 import stat
 import sys
 import time
@@ -219,3 +220,84 @@ def test_zero_usage_falls_back_to_model_usage():
     r=agents.parse_claude(out)
     assert r["usage"]=={"input_tokens":3,"output_tokens":40,"cache_read_input_tokens":100,"cache_creation_input_tokens":9000}
     assert r["error_text"]=="error_max_budget_usd" and r["cost_usd"]==0.05
+
+
+def _tree(root):
+    """Exact picture of a tree outside SKIP: content, mode bits, link targets, dirs."""
+    from agent_harness.workspace import SKIP
+    out={}
+    for dirpath,dirnames,filenames in os.walk(root):
+        dirnames[:]=[d for d in dirnames if d not in SKIP and not os.path.islink(os.path.join(dirpath,d))]
+        rel=os.path.relpath(dirpath,root)
+        out[("dir",rel)]=None
+        for name in filenames+[d for d in os.listdir(dirpath) if os.path.islink(os.path.join(dirpath,d)) and os.path.isdir(os.path.join(dirpath,d))]:
+            p=os.path.join(dirpath,name)
+            if os.path.islink(p):
+                out[("link",os.path.join(rel,name))]=os.readlink(p)
+            else:
+                out[("file",os.path.join(rel,name))]=(open(p,"rb").read(),os.stat(p).st_mode&0o777)
+    return out
+
+
+import pytest
+
+
+@pytest.mark.parametrize("cloning",[True,False])
+def test_restore_is_exact_under_random_edits(tmp_path,monkeypatch,cloning):
+    from agent_harness import workspace as W
+    from agent_harness.workspace import Snapshot
+    if not cloning:
+        monkeypatch.setattr(W,"_clonefile",None)            # plain-copy path, as on ext4
+    rng=random.Random(7)
+    for trial in range(25):
+        root=tmp_path/f"t{trial}"
+        root.mkdir()
+        for i in range(12):
+            d=root/f"d{i%3}"
+            d.mkdir(exist_ok=True)
+            (d/f"f{i}.txt").write_bytes(os.urandom(rng.randint(0,64)))
+        (root/"empty").mkdir()
+        os.symlink("d0/f0.txt",root/"link")
+        (root/"node_modules").mkdir(); (root/"node_modules"/"x").write_text("dep")
+        before=_tree(root)
+        snap=Snapshot(root,10**8)
+        assert snap.dir and snap.skipped is None
+        assert snap.method==("clone" if cloning and sys.platform=="darwin" else snap.method)
+        for _ in range(3):                                   # several escalations in a row
+            files=[p for p in root.rglob("*") if p.is_file() and not p.is_symlink() and "node_modules" not in p.parts]
+            for _ in range(rng.randint(1,6)):
+                op=rng.randrange(9)
+                f=rng.choice(files) if files else None
+                try:
+                    if op==0 and f: f.write_bytes(os.urandom(rng.randint(0,64)))
+                    elif op==1 and f:                        # same size, same second: content-only change
+                        data=bytearray(f.read_bytes() or b"x"); data[0]^=0xFF; f.write_bytes(bytes(data))
+                    elif op==2 and f: f.unlink()
+                    elif op==3: (root/f"new{rng.randint(0,99)}.txt").write_text("junk")
+                    elif op==4: (root/"newdir"/"deep").mkdir(parents=True,exist_ok=True); (root/"newdir"/"deep"/"z").write_text("z")
+                    elif op==5 and f: f.unlink(); f.mkdir(); (f/"inner").write_text("i")    # file -> dir
+                    elif op==6: shutil.rmtree(root/"d1",ignore_errors=True); (root/"d1").write_text("now a file")  # dir -> file
+                    elif op==7 and f and f.is_file(): f.chmod(0o600 if f.stat().st_mode&0o777!=0o600 else 0o644)
+                    elif op==8: (root/"link").unlink(missing_ok=True); os.symlink("elsewhere",root/"link")
+                except OSError:
+                    pass
+            (root/"node_modules"/"x").write_text("changed")
+            snap.restore()
+            after=_tree(root)
+            assert after==before,(trial,set(after)^set(before))
+        snap.close()
+        assert (root/"node_modules"/"x").read_text()=="changed"        # SKIP dirs untouched
+
+
+def test_snapshot_is_cloned_and_cleaned_up(tmp_path):
+    from agent_harness.workspace import Snapshot
+    (tmp_path/"w").mkdir(); (tmp_path/"w"/"a").write_text("a")
+    snap=Snapshot(tmp_path/"w",10**6)
+    d=snap.dir
+    assert os.path.exists(os.path.join(d,"a"))
+    snap.close(wait=True)
+    assert not os.path.exists(d)
+    snap=Snapshot(tmp_path/"w",10**6); d=snap.dir
+    from agent_harness.workspace import wait_for_cleanup
+    snap.close(); wait_for_cleanup()
+    assert not os.path.exists(d)

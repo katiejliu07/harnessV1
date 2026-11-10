@@ -80,7 +80,7 @@ Exit code: 0 if everything was verified or unchecked, 1 if a check failed, 2 if 
 | `context_files` | Files included verbatim. Only free-form `context` is compacted. |
 | `timeout`, `check_timeout` | Seconds per agent call and per check. |
 
-- **Transient API errors** (overloaded, rate limits, 5xx, network) retry the same rung up to 2 times, waiting 10 s and then 30 s (`retry` in config), instead of escalating to a pricier model. Retries are counted in usage and the budget. The harness's own timeout is never retried.
+- **Transient API errors** (overloaded, rate limits, 5xx, network) retry the same rung once after 5 s (`retry` in config), instead of escalating to a pricier model. Claude Code already retries internally before it exits, so a longer wait would mostly add lag. Retries are counted in usage and the budget. The harness's own timeout is never retried.
 - **Batches** run in parallel threads. Tasks that share a `workdir` run one after another.
 - **The Codex sandbox follows the toolset:** `code` gets `workspace-write`, everything else `read-only`. The old fixed read-only setting meant a Codex coding rung could never pass.
 - The research graders (`independent_audit`) load only when `expected` or `cases` checks are used.
@@ -89,3 +89,24 @@ Exit code: 0 if everything was verified or unchecked, 1 if a check failed, 2 if 
 - **Hard spend limit:** `max_budget_usd` / `--max-usd` gives each Claude call whatever is left (`--max-budget-usd`), and the ladder stops when it reaches zero. Claude Code checks the limit *after* each model turn, so one turn can overshoot: a $0.0001 limit still spent $0.016–0.048. Codex has no equivalent. `token_budget` still only reports.
 - **Usage fallback:** when a run stops on the spend limit, Claude Code reports zero `usage` but still fills in `modelUsage`. The harness falls back to `modelUsage`, so these tokens are counted.
 - **Live end-to-end** (2026-11-10, Claude Code 2.1.322, plain default config plus `allowed_tools: ["Bash(python3 -m unittest*)"]`): the `inventory` multi-file bug fix passed its hidden tests on the code-toolset rung. 44k input tokens, 16.8 s, workdir snapshot 2 ms.
+
+## Overhead (2026-11-10)
+
+Harness time per task with an instant fake model, so the model call itself isn't counted (`40c1812` → this branch):
+
+| Case | Before | Now |
+|---|---|---|
+| General task / exact-answer task | 0.02–0.05 ms | same |
+| General task with a 2k-line log | 28 ms | 6 ms |
+| Coding task with check, 10 files | 7 ms | 11 ms |
+| Coding task with check, 5k files / 50 MB | 8 ms | 111 ms (snapshot) |
+| Same, all 4 rungs fail (3 restores) | 27 ms | 313 ms |
+| CLI process, start to finish | 67 ms | 64 ms |
+
+How rung isolation stays cheap:
+- **macOS:** one APFS `clonefile()` per top-level entry clones whole folders in the kernel (5k files: 36 ms, vs 727 ms cloning file by file).
+- **Linux:** `cp -a --reflink=auto` is used where possible. Plain ext4 has no reflink, so it falls back to a native-speed copy; expect more than on macOS.
+- **Restore** compares stat fingerprints and rewrites only the files that changed.
+- **Snapshot deletion** runs in a background thread.
+
+Import cost: the research graders, `concurrent.futures` and `argparse` load only when a check, a batch or the CLI needs them.

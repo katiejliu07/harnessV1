@@ -99,10 +99,9 @@
   "isolate_rungs": true,
   "isolate_rungs_max_mb": 100,
   "retry": {
-    "transient_retries": 2,
+    "transient_retries": 1,
     "backoff_seconds": [
-      10,
-      30
+      5
     ],
     "patterns": [
       "overloaded",
@@ -120,5 +119,5 @@
       "stream disconnected"
     ]
   },
-  "_note_retry": "A transient API/network error is retried on the same rung (same model, same files) before the ladder treats it as a failed attempt; otherwise an outage escalates to a pricier model. The harness's own timeout is never retried."
+  "_note_retry": "A transient API/network error is retried once on the same rung (same model, same files) before the ladder treats it as a failed attempt; otherwise an outage escalates to a pricier model. Claude Code already retries API errors internally before exiting, so one short extra try is enough. The harness's own timeout is never retried."
 }
