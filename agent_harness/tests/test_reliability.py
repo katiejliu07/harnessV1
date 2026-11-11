@@ -375,3 +375,23 @@ def test_realistic_agent_gets_isolation_with_background_snapshot(tmp_path):
     report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},load_config(),runner=run)
     assert seen==["x = 1\n"]*4 and report["rung_isolation"]["restores"]==3
     assert report["rung_isolation"]["snapshot_seconds"]<report["rung_isolation"].get("build_seconds",1)+1
+
+
+def test_usage_split_counts_cache_reads_once_for_both_agents():
+    from agent_harness.run import totals
+    claude={"input_tokens":100,"cache_creation_input_tokens":50,"cache_read_input_tokens":1000,"output_tokens":10}
+    codex={"input_tokens":10634,"cached_input_tokens":8960,"output_tokens":5}   # Lambda live row: cached is a subset
+    t=totals([{"usage":claude},{"usage":codex}],{"cached_input":0.1,"output":8})
+    assert (t["new_input"],t["cached_input"])==(150+1674,1000+8960)
+    assert t["input_total"]==1150+10634
+    assert t["weighted_tokens"]==round(1824+0.1*9960+8*15,1)
+
+
+def test_unreadable_workdir_entry_runs_unisolated(tmp_path,monkeypatch):
+    import agent_harness.workspace as ws
+    def boom(*a,**k):
+        raise PermissionError(13,"Permission denied")
+    monkeypatch.setattr(ws,"_scan",boom)
+    run,calls=_usage_runner(["wrong","right","x","y","z"])
+    report=run_task({"prompt":"fix","check_cmd":FALSE,"workdir":str(tmp_path)},load_config(),runner=run)
+    assert len(calls)>1 and report["rung_isolation"]["skipped"].startswith("snapshot failed")

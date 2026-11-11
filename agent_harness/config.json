@@ -1,5 +1,5 @@
 {
-  "_note": "Profiles are presets of independent settings. Ladders run cheapest first; escalation only on a failed objective check. Technical first rungs: tool-free tasks try lean mode (pilot_v2: ~96% fewer tokens per correct, its one miss caught by the check); tool tasks try only their toolset (pilot_toolset_v1: 6/6 vs 6/6 correct, -77% tokens per correct). General/important have no check, so they never start minimal. Hygiene only for hygiene_agents on tool runs (pilot_v2: Codex -36%, Claude +4%).",
+  "_note": "Profiles are presets of independent settings. Ladders run cheapest first; escalation only on a failed objective check. Technical first rungs: tool-free tasks try lean mode (pilot_v2: ~96% fewer tokens per correct, its one miss caught by the check); tool tasks try only their toolset (pilot_toolset_v1: 6/6 vs 6/6 correct, -77% tokens per correct). General/important have no check, so they never start minimal. Hygiene only for hygiene_agents on tool runs; off by default: Lambda's counterbalanced A/B (2026-11-10, 5 Codex coding tasks x 3 pairs, 15/15 pass both ways) measured +8% weighted tokens and +10% time with it. The pilot_v2 -36% (3 tasks x 2) did not replicate.",
   "agents": {
     "claude": {
       "command": "claude",
@@ -19,7 +19,28 @@
       "extra_args": [
         "--skip-git-repo-check",
         "--ephemeral"
-      ]
+      ],
+      "toolset_args": {
+        "_note": "Tools a none/read/code rung never needs. Measured 2026-11-10 (codex-cli 0.164.0, trivial question): fixed input 16,926 -> 11,549 per model turn (web search 2,456; plugins 2,006). Live A/B ab_codex_toolset_v1 (6 coding tasks x 3 pairs): 18/18 vs 18/18 pass, tokens -32.7%, weighted -29%, time -19%.",
+        "none": [
+          "-c",
+          "web_search=\"disabled\"",
+          "--disable",
+          "plugins"
+        ],
+        "read": [
+          "-c",
+          "web_search=\"disabled\"",
+          "--disable",
+          "plugins"
+        ],
+        "code": [
+          "-c",
+          "web_search=\"disabled\"",
+          "--disable",
+          "plugins"
+        ]
+      }
     }
   },
   "hygiene_instruction": "Keep tool output short: use quiet or summary flags, limit long output with head, tail or grep, and pipe long logs through `{python} {compact}` before reading them. Do not re-read output you have already seen.",
@@ -68,9 +89,7 @@
       ]
     }
   },
-  "hygiene_agents": [
-    "codex"
-  ],
+  "hygiene_agents": [],
   "toolsets": {
     "none": "",
     "read": "Read,Grep,Glob",
@@ -100,5 +119,10 @@
       "stream disconnected"
     ]
   },
-  "_note_retry": "A transient API/network error is retried once on the same rung (same model, same files) before the ladder treats it as a failed attempt; otherwise an outage escalates to a pricier model. Claude Code already retries API errors internally before exiting, so one short extra try is enough. The harness's own timeout is never retried."
+  "_note_retry": "A transient API/network error is retried once on the same rung (same model, same files) before the ladder treats it as a failed attempt; otherwise an outage escalates to a pricier model. Claude Code already retries API errors internally before exiting, so one short extra try is enough. The harness's own timeout is never retried.",
+  "report_weights": {
+    "_note": "Illustrative weighted_tokens = new input + cached_input*w + output*w. Not prices; budgets use total tokens.",
+    "cached_input": 0.1,
+    "output": 8
+  }
 }

@@ -27,6 +27,13 @@ def input_total(usage):
     return sum(usage.get(k,0) for k in ("input_tokens","cache_creation_input_tokens","cache_read_input_tokens","cache_write_input_tokens"))
 
 
+def input_split(usage):
+    """(new, cached) input tokens. Claude reports cache reads beside input_tokens;
+    Codex's cached_input_tokens is a subset of its input_tokens."""
+    cached=usage.get("cache_read_input_tokens",0)+usage.get("cached_input_tokens",0)
+    return input_total(usage)-cached,cached
+
+
 def _usage_dicts(obj):
     if isinstance(obj,dict):
         if any(k in obj for k in ("input_tokens","output_tokens")):
@@ -262,6 +269,9 @@ def run(step,prompt,config,workdir=None,timeout=None):
             if "-s" not in extra and "--sandbox" not in extra:
                 sandbox=agent.get("sandbox",CODEX_SANDBOX).get(config.get("task_toolset") or "none","read-only")
                 extra+=["-s",sandbox]
+            if step.get("toolset") is not None:
+                # A minimal rung: drop tools this toolset never uses (config toolset_args).
+                extra+=agent.get("toolset_args",{}).get(step["toolset"],[])
             if schema_path:
                 extra+=["--output-schema",schema_path]
             cmd+=extra+[full]

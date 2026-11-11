@@ -160,7 +160,8 @@ def test_lean_first_rung_falls_through_to_the_unchanged_ladder(tmp_path):
 
 def test_hygiene_reaches_codex_tool_runs_only(tmp_path):
     config=load_config()
-    assert config["hygiene_agents"]==["codex"]
+    assert config["hygiene_agents"]==[]                 # off by default: Lambda's 15-pair A/B, +8% weighted
+    config["hygiene_agents"]=["codex"]
     config["profiles"]["technical"]["ladder"]=[{"agent":"codex","model":None,"effort":"low"}]
     run,calls=fake_runner(["done"])
     run_task({"prompt":"fix","check_cmd":TRUE,"workdir":str(tmp_path)},config,runner=run)

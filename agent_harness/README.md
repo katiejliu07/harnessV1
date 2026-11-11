@@ -10,6 +10,9 @@ python -m agent_harness task.json --report usage.jsonl
 from agent_harness import run_task
 report = run_task({"prompt": "...", "check_cmd": "pytest -q", "workdir": "repo", "token_budget": 200000})
 # report["tokens_spent"], report["budget_exhausted"], report["usage_total"], report["handoff"]
+# usage_total also splits new_input / cached_input and gives an illustrative weighted_tokens
+# (new + 0.1 × cached + 8 × output, config report_weights): cache re-reads are cheap, so a
+# run can use more total tokens and still cost less. Budgets use total tokens.
 ```
 
 ## Design: independent settings, start small, escalate on a failed check
@@ -19,9 +22,9 @@ There is one dispatcher. It sets each setting separately per task from cheap sig
 | Setting | Starts at | Moves up when |
 |---|---|---|
 | Model and effort | Sonnet low | the check fails: Sonnet high, then Opus high |
-| Tools | none (lean mode) or only the task's `toolset` (`read` / `code`) | the check fails: all tools |
+| Tools | Claude: none (lean mode) or only the task's `toolset` (`read` / `code`). Codex: no web search or plugins | the check fails: all tools |
 | Context | compacted (repetition out, never facts) | — |
-| Instructions | output hygiene for Codex tool runs only | — |
+| Instructions | none by default (output hygiene is opt-in per agent: `hygiene_agents`) | — |
 | Budget | `token_budget` from the allocator | escalation stops once it is spent (`budget_exhausted`) |
 
 Presets bundle the defaults (`config.json` → `profiles`):
@@ -42,7 +45,9 @@ Starting small is only allowed when a check stands behind it: an under-equipped 
 | Lean first rung, tool-free tasks (`pilot_v2`, 12 hard tasks) | Default 12/12 at 21,134 tokens per correct. Lean 11/12 at 847 tokens per correct; its miss was caught by the check. Probably overstated: each run used a fresh folder, which breaks the cache and inflates the default's cost. |
 | Toolset first rung, easy tool tasks (`pilot_toolset_v1`, 3 tasks × 2) | Full tools 6/6 at 134,664 tokens per correct. Code toolset 6/6 at 30,369 tokens per correct (−77%). |
 | Toolset first rung, recheck (`recheck_toolset_v1`, 3 multi-file projects × 2, hidden tests) | Full tools 6/6, code toolset 6/6. Turns 33 vs 34, so the saving is per-turn tool overhead. **Tokens −70%; Claude's list-price cost −60%.** Reported usage matched the per-model totals on every run. Treat about 60–70% as the realistic range; 12 pairs cannot rule out a loss rate of up to about 22%, so the check-backed fallback still matters. |
-| Output hygiene (`pilot_v2`, 3 tasks × 2) | Codex 6/6 both ways, −36% tokens per correct: on. Claude 6/6 both ways, +4%: off. |
+| Output hygiene (`pilot_v2`, 3 tasks × 2) | Codex 6/6 both ways, −36% tokens per correct. Claude 6/6 both ways, +4%. |
+| Output hygiene, Codex, Lambda's counterbalanced A/B (2026-11-10, 5 coding tasks × 3 pairs, alternating order) | 15/15 both ways. With hygiene: total tokens +5.3%, weighted +8.0%, time +10.5% (per task −18% to +43%). The pilot saving did not replicate: **off by default**. |
+| **Codex toolset first rung, live A/B** (`ab_codex_toolset_v1`, 2026-11-10, codex-cli 0.164.0, installed default model; 6 coding tasks × 3 pairs, alternating order, hidden tests) | Plain Codex 18/18, harness 18/18, no fallbacks needed. **Tokens −32.7%** (fewer in 18/18 pairs), weighted −29.0% (15/18), time −19.1% (15/18). Per task, weighted: CSV −54%, exprcalc −37%, slots −31%, tests −25%, inventory −23%, log 0%. Fixed input per model turn 16,926 → 11,549 (web search 2,456, plugins 2,006). `python -m agent_harness.ab_codex` reruns it. |
 | Compaction (no model call) | Noisy logs −80.6% with zero facts lost. Prose about 0%. It falls back to the original if any fact would be lost or the text would grow. |
 | End to end through the CLI | All three presets answered correctly. Technical solved on the lean rung with 619 input tokens. |
 
@@ -52,7 +57,7 @@ Starting small is only allowed when a check stands behind it: an under-equipped 
 - Every test task was written by the person testing the ideas (graded by hidden tests where noted, nothing tuned to them). All runs were Sonnet low on small Python projects. Tasks needing web, search or sub-agent tools would fail the minimal rung and pay for an extra attempt before falling back.
 - The pilots are small (12 lean tasks; 3 tool tasks × 2 repeats; 3 multi-file projects × 2). Agent runs vary run to run (one full-tools run used 227k tokens where its repeat used 115k). Re-run `python -m agent_harness.pilot --parts ABC` after CLI or model updates.
 - How cached tokens count against subscription limits is not documented in what we found. Reports list every token category so the allocator can weight them.
-- Codex has no verified way to restrict built-in tools or instructions, so it gets no minimal rung. Hygiene is its saving.
+- Codex's minimal rung only drops web search and plugins (`agents.codex.toolset_args`); its built-in instructions stay. Output hygiene (a "keep output short" instruction, the approach RTK also uses for Codex) measured worse in Lambda's larger A/B and is off. Asking the model to be brief changes how it works; removing tools it never calls doesn't.
 - General and important tasks keep Claude's full fixed overhead, because there is no check to catch a minimal-setup mistake. Lowering it would need a retention-gated pilot.
 - Budget stops apply between attempts. A single attempt can still exceed the remaining budget.
 

@@ -92,12 +92,21 @@ def build_prompt(task):
     return "\n\n".join(parts),report
 
 
-def totals(attempts):
-    out={}
+def totals(attempts,weights=None):
+    """Summed usage. new_input/cached_input are split per attempt (Claude and
+    Codex count cache reads differently); weighted_tokens is an illustrative
+    cost weight (config report_weights), not a price, and budgets ignore it."""
+    out={"new_input":0,"cached_input":0}
     for a in attempts:
         for k,v in a["usage"].items():
             out[k]=out.get(k,0)+v
+        new,cached=agents.input_split(a["usage"])
+        out["new_input"]+=new
+        out["cached_input"]+=cached
     out["input_total"]=agents.input_total(out)
+    if weights:
+        out["weighted_tokens"]=round(out["new_input"]+weights.get("cached_input",1)*out["cached_input"]
+                                     +weights.get("output",1)*out.get("output_tokens",0),1)
     return out
 
 
@@ -120,13 +129,23 @@ def steps_for(path,task,profile,config):
     if not ladder:
         return [],toolset
     first=ladder[0]
-    if not checked and task.get("toolset") in config.get("toolsets",{}) and task["toolset"]!="full" and first["agent"]=="claude":
+
+    def minimal(name):
+        # Claude takes a --tools list; Codex takes the toolset name (agents.py
+        # maps it to config toolset_args). None: this agent has no minimal setup.
+        if first["agent"]=="claude":
+            return config["toolsets"][name]
+        if name in config["agents"].get(first["agent"],{}).get("toolset_args",{}):
+            return name
+        return None
+    declared=task.get("toolset")
+    if not checked and declared in config.get("toolsets",{}) and declared!="full" and minimal(declared) is not None:
         # Unchecked, but the caller *declared* the tools it needs (a chatbot turn
         # with toolset "none"): honor it. Claude Code's own system prompt stays;
         # only tools the caller said it doesn't need are dropped (no tools: about
         # 21k -> 3k input tokens). An inferred toolset is never applied here,
         # since nothing would catch a wrong guess.
-        ladder[0]={**first,"toolset":config["toolsets"][task["toolset"]]}
+        ladder[0]={**first,"toolset":minimal(declared)}
     if not checked and has_check(task):
         # Format checks only (general/important): keep this preset's full first
         # setup, and on a failed format check climb to the technical ladder's
@@ -142,11 +161,12 @@ def steps_for(path,task,profile,config):
     # is the ladder's; the saving stays whenever the minimal rung passes.
     #  - no tools: lean mode (pilot_v2: ~21k -> ~0.6k input, 1 of 12 missed and caught)
     #  - some tools: only that toolset (fixed overhead 20,933 -> 6,031 for Bash,Read,Edit,Write)
-    if checked and first["agent"]=="claude":
-        if toolset=="none" and profile.get("lean_first_rung"):
+    if checked:
+        if toolset=="none" and profile.get("lean_first_rung") and first["agent"]=="claude":
             ladder.insert(0,{**first,"lean":True,"system_prompt":profile.get("lean_system_prompt")})
-        elif toolset in config.get("toolsets",{}) and toolset!="full" and profile.get("toolset_first_rung"):
-            ladder.insert(0,{**first,"toolset":config["toolsets"][toolset]})
+        elif (toolset in config.get("toolsets",{}) and toolset!="full" and profile.get("toolset_first_rung")
+              and minimal(toolset) is not None):
+            ladder.insert(0,{**first,"toolset":minimal(toolset)})
     return ladder,toolset
 
 
@@ -206,9 +226,13 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     isolation=None
     snap=None
     if workdir and checked and (len(steps)>1 or max_retries) and config.get("isolate_rungs",True):
-        snap=Snapshot(workdir,int(config.get("isolate_rungs_max_mb",100))*1024*1024,
-                      background=config.get("snapshot_background",True))
-        isolation={"snapshot_seconds":snap.seconds,"skipped":snap.skipped,"restores":0,"restore_seconds":0.}
+        try:
+            snap=Snapshot(workdir,int(config.get("isolate_rungs_max_mb",100))*1024*1024,
+                          background=config.get("snapshot_background",True))
+            isolation={"snapshot_seconds":snap.seconds,"skipped":snap.skipped,"restores":0,"restore_seconds":0.}
+        except OSError as exc:
+            # Unreadable entries in the workdir: run unisolated, as with an oversized one.
+            isolation={"snapshot_seconds":0.,"skipped":f"snapshot failed: {exc}"[:300],"restores":0,"restore_seconds":0.}
 
     def restore():
         nonlocal exception,snap
@@ -269,7 +293,7 @@ def run_task(task,config=None,runner=None,sleep=None,on_text=None):
     verified=attempts[-1]["verified"] if attempts else None
     text=result["text"] if result else ""
     report={"route":path,"toolset":toolset,"text":text,"verified":verified,"attempts":attempts,
-            "usage_total":totals(attempts),"tokens_spent":spent(attempts),"token_budget":budget,
+            "usage_total":totals(attempts,config.get("report_weights")),"tokens_spent":spent(attempts),"token_budget":budget,
             "budget_exhausted":budget_exhausted,"compaction":compaction,"handoff":handoff(path,text,verified)}
     if not budget_exhausted and attempts and out_of_budget() and checked and not verified:
         report["budget_exhausted"]=True        # the last rung itself ran the allotment out
