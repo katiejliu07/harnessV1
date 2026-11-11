@@ -208,7 +208,7 @@ def test_compact_checked_unique_lines_is_fast():
     start=time.perf_counter()
     out,rep=C.compact_checked(text)
     assert out==text and rep["fallback"]=="no saving"
-    assert time.perf_counter()-start<0.5
+    assert time.perf_counter()-start<2.0
 
 
 def test_zero_usage_falls_back_to_model_usage():

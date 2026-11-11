@@ -24,19 +24,19 @@
         "_note": "Tools a none/read/code rung never needs. Measured 2026-11-10 (codex-cli 0.164.0, trivial question): fixed input 16,926 -> 11,549 per model turn (web search 2,456; plugins 2,006). Live A/B ab_codex_toolset_v1 (6 coding tasks x 3 pairs): 18/18 vs 18/18 pass, tokens -32.7%, weighted -29%, time -19%.",
         "none": [
           "-c",
-          "web_search=\"disabled\"",
+          "web_search=disabled",
           "--disable",
           "plugins"
         ],
         "read": [
           "-c",
-          "web_search=\"disabled\"",
+          "web_search=disabled",
           "--disable",
           "plugins"
         ],
         "code": [
           "-c",
-          "web_search=\"disabled\"",
+          "web_search=disabled",
           "--disable",
           "plugins"
         ]

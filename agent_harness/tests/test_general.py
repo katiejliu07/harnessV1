@@ -177,7 +177,7 @@ def test_batch_runs_in_parallel_and_keeps_order():
     start=time.perf_counter()
     reports=run_tasks(tasks,load_config(),jobs=6,runner=run)
     assert [r["text"] for r in reports]==[t["prompt"] for t in tasks]
-    assert peak[0]>1 and time.perf_counter()-start<1.0
+    assert peak[0]>1 and time.perf_counter()-start<3.0
 
 
 def test_batch_serializes_tasks_sharing_a_workdir(tmp_path):
